@@ -1,52 +1,54 @@
 using UnityEngine;
+using UnityEngine.UIElements;
+
 
 public class CameraController : MonoBehaviour
 {
     [SerializeField] private Transform target;
     [SerializeField] private Vector3 offset;
-    [SerializeField] private float height;
+    [SerializeField] private float lookheight;
+    [SerializeField] private float posheight;
 
     private Quaternion targetRotation;
 
     private float yRotation;
     private float xRotation;
-    private float yRotationClamped;
+    private float xRotationClamped;
 
-    [SerializeField] private float yRotationMin;
-    [SerializeField] private float yRotationMax;
+    [SerializeField] private float xRotationMin;
+    [SerializeField] private float xRotationMax;
 
     [SerializeField] private float xSensitivity;
     [SerializeField] private float ySensitivity;
 
-    [SerializeField] private bool invertY;
-
-
-    private int yInvertedValue;
+    [SerializeField] private bool invertX;
+    private int xInvertedValue;
 
     private Vector3 desiredPos;
 
     private void Start()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        UnityEngine.Cursor.visible = false;
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
 
-        yInvertedValue = invertY ? 1 : -1; 
+        xInvertedValue = invertX ? -1 : 1;
     }
 
     private void Update()
     {
         yRotation += Input.GetAxis("Mouse X") * ySensitivity;
-        xRotation -= Input.GetAxis("Mouse Y") * xSensitivity * yInvertedValue; 
+        xRotation += Input.GetAxis("Mouse Y") * xSensitivity * xInvertedValue;
     }
 
     private void LateUpdate()
     {
-        yRotationClamped = Mathf.Clamp(xRotation, yRotationMin, yRotationMax);
-        targetRotation = Quaternion.Euler(yRotationClamped, yRotation, 0.0f);
+        xRotationClamped = Mathf.Clamp(xRotation, xRotationMin, xRotationMax);
+        targetRotation = Quaternion.Euler(xRotationClamped, yRotation, 0.0f);
 
-        desiredPos = target.position - targetRotation * offset + Vector3.up * height;
+        desiredPos = target.position - targetRotation * offset + Vector3.up * posheight;
 
-        transform.SetPositionAndRotation(desiredPos, targetRotation);
+        transform.position = desiredPos;
+        transform.LookAt(target.position + Vector3.up * lookheight);
     }
 
     public Quaternion YRotation => Quaternion.Euler(0.0f, yRotation, 0.0f);
