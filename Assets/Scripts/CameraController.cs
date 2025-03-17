@@ -10,15 +10,17 @@ public class CameraController : MonoBehaviour
 
     private float yRotation;
     private float xRotation;
-    private float xRotationClamped;
+    private float yRotationClamped;
 
-    [SerializeField] private float xRotationMin;
-    [SerializeField] private float xRotationMax;
+    [SerializeField] private float yRotationMin;
+    [SerializeField] private float yRotationMax;
 
     [SerializeField] private float xSensitivity;
     [SerializeField] private float ySensitivity;
 
     [SerializeField] private bool invertY;
+
+
     private int yInvertedValue;
 
     private Vector3 desiredPos;
@@ -39,8 +41,8 @@ public class CameraController : MonoBehaviour
 
     private void LateUpdate()
     {
-        xRotationClamped = Mathf.Clamp(xRotation, xRotationMin, xRotationMax);
-        targetRotation = Quaternion.Euler(xRotationClamped, yRotation, 0.0f);
+        yRotationClamped = Mathf.Clamp(xRotation, yRotationMin, yRotationMax);
+        targetRotation = Quaternion.Euler(yRotationClamped, yRotation, 0.0f);
 
         desiredPos = target.position - targetRotation * offset + Vector3.up * height;
 
