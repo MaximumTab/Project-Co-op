@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     [SerializeField] private Transform target;
     [SerializeField] private Vector3 offset;
     [SerializeField] private float height;
@@ -14,8 +14,13 @@ public class CameraController : MonoBehaviour
     [SerializeField]private float xRotationMin;
     [SerializeField]private float xRotationMax;
 
-   
-  
+
+    private void Start()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     private void Update() 
     {
         yRotation += Input.GetAxis("Mouse X");
@@ -26,5 +31,6 @@ public class CameraController : MonoBehaviour
         xRotationClamped = Mathf.Clamp(xRotation, xRotationMin, xRotationMax);
         targetRotation = Quaternion.Euler(xRotation, yRotation, 0.0f);
         transform.position = target.position - targetRotation * offset + Vector3.up;
+        transform.rotation = targetRotation;
     }
 }
