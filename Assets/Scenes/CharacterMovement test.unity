@@ -300,6 +300,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1314977135051964829, guid: 723a75b0141b9f940918872b702fdf4c, type: 3}
+      propertyPath: yRotationMax
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1314977135051964829, guid: 723a75b0141b9f940918872b702fdf4c, type: 3}
+      propertyPath: yRotationMin
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1314977135051964829, guid: 723a75b0141b9f940918872b702fdf4c, type: 3}
       propertyPath: ySensitivity
       value: 1
       objectReference: {fileID: 0}
