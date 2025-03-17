@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
+    [SerializeField] private Transform CameraRotation;
     private Rigidbody rb;// Start is called once before the first execution of Update after the MonoBehaviour is created
     private bool isGrounded;
     private bool jumpCooldown=true;
@@ -34,6 +35,7 @@ public class CharacterMovement : MonoBehaviour
     void Move()
     {
         Vector3 inputVector = new Vector3(Input.GetAxis("Horizontal"),0, Input.GetAxis("Vertical"));
+        
         rb.AddForce(inputVector*Speed);
     }
 
