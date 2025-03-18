@@ -21,7 +21,12 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private int BonusJumps = 0;
     [SerializeField] private float CayoteLength=0.5f;
     [SerializeField] private float JumpWait = 0.2f;
+
+    private bool Firing;
     
+    private Quaternion LastLook;
+    private bool LookCooldown=true;
+    [SerializeField] private float TurnDuration = 0.25f;
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
@@ -34,6 +39,7 @@ public class CharacterMovement : MonoBehaviour
         Move();
         Jump();
         Shoot();
+        Look();
     }
 
     
@@ -99,13 +105,44 @@ public class CharacterMovement : MonoBehaviour
     {
         if (Input.GetButton("Fire1"))
         {
-            //Add attack
-            transform.rotation=CameraRot;
+            Firing = true;
         }
         else
         {
-            transform.rotation=Quaternion.LookRotation(inputVector);
+            Firing = false;
         }
+    }
+
+    void Look()
+    {
+        if (Firing&&LookCooldown)
+        {
+            StartCoroutine(LerpRotation(transform.rotation, CameraRot));
+        }
+        else if(inputVector!=Vector3.zero&&LookCooldown)
+        {
+            StartCoroutine(LerpRotation(transform.rotation, Quaternion.LookRotation(inputVector)));
+        }
+        else
+        {
+            transform.rotation = LastLook;
+        }
+    }
+
+
+    IEnumerator LerpRotation(Quaternion target, Quaternion goal)
+    {
+        LookCooldown = false;
+        Quaternion StartRot = target;
+        for(float time=0;time<TurnDuration;time+=Time.deltaTime){
+            transform.rotation=Quaternion.Lerp(StartRot, goal,time/TurnDuration);
+            yield return null;
+        }
+
+        LastLook = goal;
+        transform.rotation = goal;
+        LookCooldown = true;
+        yield return null;
     }
 
     private void OnTriggerStay(Collider other)
