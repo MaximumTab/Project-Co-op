@@ -22,8 +22,14 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private float CayoteLength=0.5f;
     [SerializeField] private float JumpWait = 0.2f;
 
+    [SerializeField] private float DashDistance = 5;
+    [SerializeField] private float BaseDashDist = 20;
+    [SerializeField] private float DashDownTime = 2;
+    [SerializeField] private float DashDuration = 0.1f;
+    private bool DashCool = true;
+
     [SerializeField] private float DropGrav = 0.2f;
-    [SerializeField] private float VertSpeed = 20f;
+    [SerializeField] private float TerminalVel = 20f;
 
     private bool Firing;
     
@@ -46,9 +52,6 @@ public class CharacterMovement : MonoBehaviour
         Look();
         Drop();
     }
-
-    
-
     void Jump()
     {
         if (isJumpable())
@@ -81,7 +84,7 @@ public class CharacterMovement : MonoBehaviour
 
     void Drop()
     {
-        if (rb.linearVelocity.y < -VertSpeed)
+        if (rb.linearVelocity.y < -TerminalVel)
         {
             rb.AddForce(-Physics.gravity);
         }
@@ -91,8 +94,29 @@ public class CharacterMovement : MonoBehaviour
     {
         CameraRot=Quaternion.Euler(0,CameraRotation.rotation.eulerAngles.y,0);
         inputVector =CameraRot*new Vector3(Input.GetAxis("Horizontal"),0, Input.GetAxis("Vertical"));
-        
+        Dash();
         rb.AddForce(SpeedLimit()*Acceleration);
+    }
+
+    void Dash()
+    {
+        if (isDash())
+        {
+            StartCoroutine(Dashing());
+        }
+    }
+
+    bool isDash()
+    {
+        if (Input.GetButtonDown("Debug Multiplier") && DashCool)
+        {
+            StartCoroutine(DashCoolDown());
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     Vector3 SpeedLimit()
@@ -145,8 +169,7 @@ public class CharacterMovement : MonoBehaviour
             transform.rotation = LastLook;
         }
     }
-
-
+    
     IEnumerator LerpRotation(Quaternion target, Quaternion goal)
     {
         LookCooldown = false;
@@ -188,5 +211,26 @@ public class CharacterMovement : MonoBehaviour
         isGrounded = false;
         yield return new WaitForSeconds(JumpWait);
         jumpCooldown = true;
+    }
+
+    IEnumerator DashCoolDown()
+    {
+        DashCool = false;
+        yield return new WaitForSeconds(DashDownTime);
+        DashCool = true;
+    }
+
+    IEnumerator Dashing()
+    {
+        Vector3 Start = rb.linearVelocity;
+        Vector3 End = inputVector * (DashDistance * BaseDashDist);
+        for (float time = 0; time < DashDuration; time += Time.deltaTime)
+        {
+            rb.linearVelocity = Vector3.Lerp(Start, End, time / DashDuration);
+            yield return null;
+        }
+        rb.linearVelocity = End;
+        yield return null;
+
     }
 }

@@ -336,7 +336,23 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3730273723118347317, guid: 723a75b0141b9f940918872b702fdf4c, type: 3}
+      propertyPath: DropGrav
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3730273723118347317, guid: 723a75b0141b9f940918872b702fdf4c, type: 3}
       propertyPath: BonusJumps
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3730273723118347317, guid: 723a75b0141b9f940918872b702fdf4c, type: 3}
+      propertyPath: BaseDashDist
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3730273723118347317, guid: 723a75b0141b9f940918872b702fdf4c, type: 3}
+      propertyPath: DashDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3730273723118347317, guid: 723a75b0141b9f940918872b702fdf4c, type: 3}
+      propertyPath: DashDownTime
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3730273723118347317, guid: 723a75b0141b9f940918872b702fdf4c, type: 3}
