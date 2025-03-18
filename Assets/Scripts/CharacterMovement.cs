@@ -22,6 +22,9 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private float CayoteLength=0.5f;
     [SerializeField] private float JumpWait = 0.2f;
 
+    [SerializeField] private float DropGrav = 0.2f;
+    [SerializeField] private float VertSpeed = 20f;
+
     private bool Firing;
     
     private Quaternion LastLook;
@@ -31,6 +34,7 @@ public class CharacterMovement : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody>();
         Jumps = BonusJumps;
+        Physics.gravity *=1+DropGrav;
     }
 
     // Update is called once per frame
@@ -40,6 +44,7 @@ public class CharacterMovement : MonoBehaviour
         Jump();
         Shoot();
         Look();
+        Drop();
     }
 
     
@@ -61,12 +66,24 @@ public class CharacterMovement : MonoBehaviour
         }else if (Input.GetButtonDown("Jump") && Jumps > 0&&jumpCooldown)
         {
             Jumps--;
+            if (rb.linearVelocity.y<0)
+            {
+                rb.linearVelocity.Set(rb.linearVelocity.x,0,rb.linearVelocity.z);
+            }
             StartCoroutine(JumpCooldown());
             return true;
         }
         else
         {
             return false;
+        }
+    }
+
+    void Drop()
+    {
+        if (rb.linearVelocity.y < -VertSpeed)
+        {
+            rb.AddForce(-Physics.gravity);
         }
     }
 
