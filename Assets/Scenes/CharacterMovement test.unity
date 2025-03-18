@@ -339,6 +339,10 @@ PrefabInstance:
       propertyPath: BonusJumps
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3730273723118347317, guid: 723a75b0141b9f940918872b702fdf4c, type: 3}
+      propertyPath: TurnDuration
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 7839474449267695542, guid: 723a75b0141b9f940918872b702fdf4c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.482
