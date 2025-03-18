@@ -36,7 +36,8 @@ public class CharacterMovement : MonoBehaviour
     {
         Vector3 inputVector = new Vector3(Input.GetAxis("Horizontal"),0, Input.GetAxis("Vertical"));
         
-        rb.AddForce(inputVector*Speed);
+        transform.rotation=Quaternion.Euler(0,CameraRotation.rotation.eulerAngles.y,0);
+        rb.AddRelativeForce(inputVector*Speed);
     }
 
     private void OnTriggerStay(Collider other)
