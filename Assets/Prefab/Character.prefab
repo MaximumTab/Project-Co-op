@@ -276,6 +276,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 809086207983335298}
+  - component: {fileID: 2350495789340216471}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -300,6 +301,18 @@ Transform:
   - {fileID: 7839474449267695542}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2350495789340216471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3189890991512007504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e98681d5459eb7448e68bc1acf51fdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6952167681960351349
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,7 +330,7 @@ GameObject:
   - component: {fileID: 6710203622488334222}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -454,11 +467,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CameraRotation: {fileID: 7839474449267695542}
+  Acceleration: 20
   Speed: 5
   JumpForce: 10
   BonusJumps: 0
   CayoteLength: 0.5
   JumpWait: 0.2
+  DashDistance: 5
+  BaseDashDist: 20
+  DashDownTime: 2
+  DashDuration: 0.1
+  DropGrav: 0.2
+  TerminalVel: 20
+  TurnDuration: 0.25
 --- !u!65 &6710203622488334222
 BoxCollider:
   m_ObjectHideFlags: 0
