@@ -12,11 +12,10 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private float PMaxExp;
     [SerializeField] private float PMaxHp;
     private float PCurHP;
-    [SerializeField] private float PCurAtk;
+    [SerializeField] public float PCurAtk {  get; private set; }=0;
     
     
     private GameObject Player;
-    private GameObject Weapon;//Weapon to be added
     private class PLvl
     {
         
@@ -43,7 +42,6 @@ public class PlayerStats : MonoBehaviour
     void Start()
     {
         Player = gameObject.GetComponentInChildren<CharacterMovement>().gameObject;
-        //Weapon = gameObject.GetComponentInChildren<Weapon>().gameObject;
         myPLvl = new PLvl();
 
     }
