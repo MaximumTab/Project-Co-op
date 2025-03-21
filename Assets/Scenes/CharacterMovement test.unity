@@ -359,6 +359,14 @@ PrefabInstance:
       propertyPath: TurnDuration
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 5442272469156207744, guid: 723a75b0141b9f940918872b702fdf4c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6164245294500637854, guid: 723a75b0141b9f940918872b702fdf4c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7839474449267695542, guid: 723a75b0141b9f940918872b702fdf4c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.482

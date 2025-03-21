@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78e1288dc23475144b98ad81e957cd3a, type: 3}
   m_Name: Beak
   m_EditorClassIdentifier: 
-  WName: 
-  WAtkPers: []
-  WCoolDown: 0
-  WCols: []
+  WName: Beak
+  WAtkPers:
+  - 25
+  - 50
+  WCoolDown: 1

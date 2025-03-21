@@ -473,6 +473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CameraRotation: {fileID: 7839474449267695542}
+  Weapon: {fileID: 6304769730475069498}
   Acceleration: 20
   Speed: 5
   JumpForce: 10
@@ -568,6 +569,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb25ebf711eff534d993b8f43dace404, type: 3}
+--- !u!1 &6304769730475069498 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1831454744318722604, guid: bb25ebf711eff534d993b8f43dace404, type: 3}
+  m_PrefabInstance: {fileID: 5626588889080156694}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7474235763884140061 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3002908209076630539, guid: bb25ebf711eff534d993b8f43dace404, type: 3}

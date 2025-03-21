@@ -8,6 +8,9 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private Transform CameraRotation;
     private Rigidbody rb;
 
+    [SerializeField] private GameObject Weapon;
+    private Weapon Wp;
+
     private Quaternion CameraRot;
     private Vector3 inputVector;
 
@@ -41,6 +44,7 @@ public class CharacterMovement : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
         Jumps = BonusJumps;
         Physics.gravity *=1+DropGrav;
+        Wp = Weapon.GetComponent<Weapon>();
     }
 
     // Update is called once per frame
@@ -144,14 +148,24 @@ public class CharacterMovement : MonoBehaviour
 
     void Shoot()
     {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1")&&!Firing)
         {
-            Firing = true;
+            StartCoroutine(WFiring());
         }
-        else
+    }
+
+    IEnumerator WFiring()
+    {
+        Firing = true;
+        Wp.Attack();
+        Weapon.transform.rotation = CameraRotation.rotation;
+        for (float i = 0; i < Wp.WD.WCoolDown; i += Time.deltaTime)
         {
-            Firing = false;
+            Weapon.transform.position = gameObject.transform.position;
+            yield return null;
         }
+        Firing = false;
+        yield return null;
     }
 
     void Look()
