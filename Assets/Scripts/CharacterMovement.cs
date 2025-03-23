@@ -195,8 +195,8 @@ public class CharacterMovement : MonoBehaviour
 
         LastLook = goal;
         transform.rotation = goal;
-        LookCooldown = true;
         yield return null;
+        LookCooldown = true;
     }
 
     private void OnTriggerStay(Collider other)

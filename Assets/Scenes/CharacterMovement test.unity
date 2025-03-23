@@ -340,6 +340,10 @@ PrefabInstance:
       value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3730273723118347317, guid: 723a75b0141b9f940918872b702fdf4c, type: 3}
+      propertyPath: JumpForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3730273723118347317, guid: 723a75b0141b9f940918872b702fdf4c, type: 3}
       propertyPath: BonusJumps
       value: 1
       objectReference: {fileID: 0}
