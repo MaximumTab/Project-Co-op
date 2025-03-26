@@ -4,10 +4,10 @@ public class EntityManager : MonoBehaviour
 {
     public EntityData ED;
     private Rigidbody rb;
-    private Vector3 MoveDir;
-    private Quaternion LookDir;
-    private Quaternion LastLook;
-    private bool LookCooldown=true;
+    public Vector3 MoveDir;
+    public Quaternion LookDir;
+    public Quaternion LastLook;
+    public bool LookCooldown=true;
     public float TurnDuration = 0.25f;
     
     [SerializeField] private GameObject Weapon;
@@ -39,7 +39,7 @@ public class EntityManager : MonoBehaviour
     public float DropGrav = 0.2f;
     public float TerminalVel = 20f;
     
-    private bool Attacking;
+    public bool Attacking;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -62,19 +62,19 @@ public class EntityManager : MonoBehaviour
         Drop();
     }
 
-    public void MoveInput()//Change MoveDir in Child
+    public virtual void MoveInput()//Change MoveDir in Child
     {
         
     }
-    public (bool,int) AtkInput() //Choose how to Shoot in Child
+    public virtual (bool,int) AtkInput() //Choose how to Shoot in Child
     {
         return (false,0);
     }
-    public bool JumpInput() //Choose how to Jump in Child
+    public virtual bool JumpInput() //Choose how to Jump in Child
     {
         return false;
     }
-    public bool DashInput() //Choose how to Dash in Child
+    public virtual bool DashInput() //Choose how to Dash in Child
     {
         return false;
     }
@@ -125,9 +125,9 @@ public class EntityManager : MonoBehaviour
             rb.AddForce(new Vector3(0,-DropGrav,0));
         }
     }
-    void Look()
+    public virtual void Look()
     {
-        if (MoveDir != Vector3.zero)
+        if (MoveDir != Vector3.zero&&LookCooldown)
         {
             StartCoroutine(LerpRotation(transform.rotation, Quaternion.LookRotation(MoveDir)));
         }
@@ -174,7 +174,7 @@ public class EntityManager : MonoBehaviour
         return AdjustedSpeed;
     }
     
-    IEnumerator LerpRotation(Quaternion target, Quaternion goal)
+    public IEnumerator LerpRotation(Quaternion target, Quaternion goal)
     {
         LookCooldown = false;
         Quaternion StartRot = target;
@@ -231,5 +231,18 @@ public class EntityManager : MonoBehaviour
         }
         Attacking = false;
         yield return null;
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (jumpCooldown)
+        {
+            isGrounded = true;
+            Jumps = BonusJumps;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        StartCoroutine(CayoteTime());
     }
 }

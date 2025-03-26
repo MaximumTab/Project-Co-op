@@ -37,13 +37,13 @@ public class Weapon : MonoBehaviour
 
     void DamageMelee(int i)
     {
-        //Debug.Log(PS.PCurAtk*WD.WAtkPers[i]/100+" Was done as damage");
+        Debug.Log(PS.Atk*WD.WAtkPers[i]/100+" Was done as damage");
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        /*if (other.gameObject.transform.IsChildOf(PS.gameObject.transform))
-            return;*/
+        if (other.gameObject.transform.IsChildOf(PS.gameObject.transform.parent))
+            return;
         for (int i = 0; i < WCols.Length; i++)
         {
             if(WCols[i].bounds.Intersects(other.bounds)&&WCols[i].enabled)//https://discussions.unity.com/t/is-there-a-way-to-know-which-of-the-triggers-in-a-game-object-has-triggered-the-on-trigger-enter/861484/9
@@ -57,7 +57,7 @@ public class Weapon : MonoBehaviour
     {
         Atking = true;
         WAnim.SetBool("Attack"+i,true);
-        yield return new WaitForSeconds(WD.WCoolDown[1]);
+        yield return new WaitForSeconds(WD.WCoolDown[0]);
         WAnim.SetBool("Attack"+i, false);
         Atking = false;
     }

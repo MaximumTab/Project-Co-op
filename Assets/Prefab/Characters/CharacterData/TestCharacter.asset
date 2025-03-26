@@ -9,14 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78e1288dc23475144b98ad81e957cd3a, type: 3}
-  m_Name: Beak
+  m_Script: {fileID: 11500000, guid: b97e52964d20cb2459cb7755ca1834d4, type: 3}
+  m_Name: TestCharacter
   m_EditorClassIdentifier: 
-  WName: Beak
-  WAtkPers:
-  - 25
-  - 50
-  WCoolDown:
-  - 1
-  - 1
-  - 1
+  Name: Normal
+  BaseAtk: 20
+  GrowAtk: 2
+  BaseHp: 100
+  GrowHp: 20
+  BaseAspd: 1
+  GrowAspd: -0.01
+  BaseAC: 1
+  GrowAC: -0.01

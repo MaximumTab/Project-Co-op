@@ -104,7 +104,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -276,7 +276,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 809086207983335298}
-  - component: {fileID: 2350495789340216471}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -302,23 +301,6 @@ Transform:
   - {fileID: 7474235763884140061}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2350495789340216471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3189890991512007504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e98681d5459eb7448e68bc1acf51fdb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PCurLvl: 1
-  PBaseMaxExp: 100
-  PMultExp: 5
-  PMaxExp: 0
-  PMaxHp: 0
 --- !u!1 &6952167681960351349
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,8 +314,8 @@ GameObject:
   - component: {fileID: 8517880701958729603}
   - component: {fileID: 4458325625486747279}
   - component: {fileID: 596183653875223720}
-  - component: {fileID: 3730273723118347317}
   - component: {fileID: 6710203622488334222}
+  - component: {fileID: 1163477506103887481}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Player
@@ -442,7 +424,7 @@ Rigidbody:
   m_GameObject: {fileID: 6952167681960351349}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 0.5
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -460,33 +442,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &3730273723118347317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6952167681960351349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9f70159713615141ac2ea8572126371, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CameraRotation: {fileID: 7839474449267695542}
-  Weapon: {fileID: 6304769730475069498}
-  Acceleration: 20
-  Speed: 5
-  JumpForce: 10
-  BonusJumps: 0
-  CayoteLength: 0.5
-  JumpWait: 0.2
-  DashDistance: 5
-  BaseDashDist: 20
-  DashDownTime: 2
-  DashDuration: 0.1
-  DropGrav: 0.2
-  TerminalVel: 20
-  TurnDuration: 0.25
 --- !u!65 &6710203622488334222
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -508,6 +463,43 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Center: {x: 0, y: -0.8, z: 0}
+--- !u!114 &1163477506103887481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6952167681960351349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2cb3251927a91f42a78dff74f0a55cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ED: {fileID: 11400000, guid: abba732553e20f845839c9d46811ede6, type: 2}
+  MoveDir: {x: 0, y: 0, z: 0}
+  LookDir: {x: 0, y: 0, z: 0, w: 0}
+  LastLook: {x: 0, y: 0, z: 0, w: 0}
+  LookCooldown: 1
+  TurnDuration: 0.15
+  Weapon: {fileID: 6304769730475069498}
+  Lvl: 0
+  Atk: 20
+  Hp: 0
+  Aspd: 0
+  Acceleration: 0
+  Speed: 0
+  JumpForce: 10
+  BonusJumps: 0
+  CayoteLength: 0.5
+  JumpWait: 0.2
+  DashDistance: 5
+  BaseDashDist: 20
+  DashDownTime: 2
+  DashDuration: 0.1
+  DropGrav: 0.5
+  TerminalVel: 20
+  Attacking: 0
+  CameraRotation: {fileID: 7839474449267695542}
 --- !u!1001 &5626588889080156694
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -563,7 +555,7 @@ PrefabInstance:
     - target: {fileID: 7384121748485347283, guid: bb25ebf711eff534d993b8f43dace404, type: 3}
       propertyPath: PS
       value: 
-      objectReference: {fileID: 2350495789340216471}
+      objectReference: {fileID: 1163477506103887481}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
