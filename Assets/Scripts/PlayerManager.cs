@@ -4,18 +4,27 @@ public class PlayerManager : EntityManager
 {
     [SerializeField] private Transform CameraRotation;
     private Quaternion CameraRot;
+    private InputSystem_Actions input;
+    private Vector2 moveInput;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public override void OnChildStart()
+    {
+        input = new InputSystem_Actions();
+        input.Enable();
+    }
+
     public override void MoveInput()
     {
+        moveInput = input.Player.Move.ReadValue<Vector2>();
         CameraRot=Quaternion.Euler(0,CameraRotation.rotation.eulerAngles.y,0);
-        MoveDir =CameraRot*new Vector3(Input.GetAxis("Horizontal"),0, Input.GetAxis("Vertical"));
+        MoveDir =CameraRot*new Vector3(moveInput.x,0, moveInput.y);
     }
     public override (bool,int) AtkInput() //Choose how to Shoot in Child
     {
         for (int i = 1; i < 4; i++)
         {
-            if (Input.GetButton("Fire" + i))
+            if (Input.GetButton("Fire" + i))//input.Player.Attack.IsPressed()
             {
                 return (true, i-1);
             }
@@ -24,7 +33,7 @@ public class PlayerManager : EntityManager
     }
     public override bool JumpInput() //Choose how to Jump in Child
     {
-        if (Input.GetButtonDown("Jump"))
+        if (input.Player.Jump.triggered)
         {
             return true;
         }
@@ -32,7 +41,7 @@ public class PlayerManager : EntityManager
     }
     public override bool DashInput() //Choose how to Dash in Child
     {
-        if (Input.GetButtonDown("Debug Multiplier"))
+        if (input.Player.Sprint.triggered)
         {
             return true;
         }

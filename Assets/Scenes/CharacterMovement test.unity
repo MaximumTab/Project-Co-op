@@ -329,7 +329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1314977135051964829, guid: 723a75b0141b9f940918872b702fdf4c, type: 3}
       propertyPath: xSensitivity
-      value: 1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1314977135051964829, guid: 723a75b0141b9f940918872b702fdf4c, type: 3}
       propertyPath: yRotationMax
@@ -341,7 +341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1314977135051964829, guid: 723a75b0141b9f940918872b702fdf4c, type: 3}
       propertyPath: ySensitivity
-      value: 1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3189890991512007504, guid: 723a75b0141b9f940918872b702fdf4c, type: 3}
       propertyPath: m_Name
