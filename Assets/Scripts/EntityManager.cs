@@ -1,5 +1,9 @@
+using System;
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.InputSystem;
 public class EntityManager : MonoBehaviour
 {
     public EntityData ED;
@@ -17,6 +21,8 @@ public class EntityManager : MonoBehaviour
     public float Atk;
     public float Hp;
     public float Aspd;
+    private Vector2 moveInput;
+
 
     public float Acceleration;
     public float Speed;
@@ -40,6 +46,8 @@ public class EntityManager : MonoBehaviour
     public float TerminalVel = 20f;
     
     public bool Attacking;
+    
+    private InputSystem_Actions input;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -50,11 +58,15 @@ public class EntityManager : MonoBehaviour
         {
             Wp = Weapon.GetComponent<Weapon>();
         }
+        input = new InputSystem_Actions();
+        input.Enable();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //moveInput = input.Player.Move.ReadValue<Vector2>();
+
         Move();
         Jump();
         Shoot();
@@ -80,16 +92,16 @@ public class EntityManager : MonoBehaviour
     }
     bool isJumpable()
     {
-        if (JumpInput() && isGrounded)
+        if (JumpInput() && isGrounded)//input.Player.Jump.triggered
         {
             StartCoroutine(JumpCooldown());
             return true;
-        }else if (JumpInput() && Jumps > 0&&jumpCooldown)
+        }else if (JumpInput() && Jumps > 0&&jumpCooldown)//input.Player.Jump.triggered
         {
             Jumps--;
             if (rb.linearVelocity.y<0)
             {
-                rb.linearVelocity.Set(rb.linearVelocity.x,0,rb.linearVelocity.z);
+                rb.linearVelocity = new Vector3(rb.linearVelocity.x,0,rb.linearVelocity.z);
             }
             StartCoroutine(JumpCooldown());
             return true;
@@ -102,7 +114,7 @@ public class EntityManager : MonoBehaviour
     
     void Shoot()
     {
-        if (AtkInput().Item1&&!Attacking)
+        if (AtkInput().Item1&&!Attacking)//input.Player.Attack.IsPressed()
         {
             StartCoroutine(WFiring(AtkInput().Item2));
         }
@@ -138,13 +150,14 @@ public class EntityManager : MonoBehaviour
     }
     void Move()
     {
-        MoveInput();
+        MoveInput();//inputVector =CameraRot*new Vector3(moveInput.x,0, moveInput.y);
         Dash();
         rb.AddForce(SpeedLimit()*Acceleration);
     }
+
     void Dash()
     {
-        if (DashInput()&& DashCool)
+        if (DashInput()&& DashCool)//input.Player.Sprint.triggered
         {
             StartCoroutine(Dashing());
             StartCoroutine(DashCoolDown());

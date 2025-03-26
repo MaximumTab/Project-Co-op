@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.InputSystem;
 
 
 public class CameraController : MonoBehaviour
@@ -26,18 +27,24 @@ public class CameraController : MonoBehaviour
 
     private Vector3 desiredPos;
 
+    private InputSystem_Actions input;
+
     private void Start()
     {
         UnityEngine.Cursor.visible = false;
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
 
         xInvertedValue = invertX ? -1 : 1;
+
+        input = new InputSystem_Actions();
+        input.Enable();
     }
 
     private void Update()
     {
-        yRotation += Input.GetAxis("Mouse X") * ySensitivity;
-        xRotation += Input.GetAxis("Mouse Y") * xSensitivity * xInvertedValue;
+        Vector2 lookInput = input.Player.Look.ReadValue<Vector2>();
+        yRotation += lookInput.x * ySensitivity;
+        xRotation += lookInput.y * xSensitivity * xInvertedValue;
     }
 
     private void LateUpdate()
