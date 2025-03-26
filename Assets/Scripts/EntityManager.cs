@@ -16,6 +16,7 @@ public class EntityManager : MonoBehaviour
     public int Lvl;
     public float Atk;
     public float Hp;
+    public float MaxHp;
     public float Aspd;
 
 
@@ -53,6 +54,7 @@ public class EntityManager : MonoBehaviour
         {
             Wp = Weapon.GetComponent<Weapon>();
         }
+        LevelUp();
         OnChildStart();
     }
 
@@ -66,10 +68,22 @@ public class EntityManager : MonoBehaviour
         Drop();
     }
 
+    public void LevelUp()
+    {
+        Hp = ED.BaseHp + ED.GrowHp * Lvl;
+        MaxHp = ED.BaseHp + ED.GrowHp * Lvl;
+        Atk = ED.BaseAtk + ED.GrowAtk * Lvl;
+        Lvl++;
+    }
+
+    public void ChangeHp(float AddHp)
+    {
+        Hp += AddHp;
+    }
+
     public virtual void OnChildStart()
     {
     }
-
     public virtual void MoveInput()//Change MoveDir in Child
     {
         

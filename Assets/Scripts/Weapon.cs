@@ -10,6 +10,7 @@ public class Weapon : MonoBehaviour
 
     private Animator WAnim;
     private bool Atking;
+    EntityManager TargetEM;
     
     [SerializeField] private EntityManager PS;
 
@@ -38,12 +39,22 @@ public class Weapon : MonoBehaviour
     void DamageMelee(int i)
     {
         Debug.Log(PS.Atk*WD.WAtkPers[i]/100+" Was done as damage");
+        TargetEM.ChangeHp(-PS.Atk*WD.WAtkPers[i]/100);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.transform.IsChildOf(PS.gameObject.transform.parent))
             return;
+        TargetEM=null;
+        if (other.gameObject.GetComponent<EntityManager>())
+        {
+            TargetEM = other.gameObject.GetComponent<EntityManager>();
+        }
+        else
+        {
+            return;
+        }
         for (int i = 0; i < WCols.Length; i++)
         {
             if(WCols[i].bounds.Intersects(other.bounds)&&WCols[i].enabled)//https://discussions.unity.com/t/is-there-a-way-to-know-which-of-the-triggers-in-a-game-object-has-triggered-the-on-trigger-enter/861484/9

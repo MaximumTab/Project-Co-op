@@ -314,8 +314,8 @@ GameObject:
   - component: {fileID: 8517880701958729603}
   - component: {fileID: 4458325625486747279}
   - component: {fileID: 596183653875223720}
-  - component: {fileID: 6710203622488334222}
   - component: {fileID: 1163477506103887481}
+  - component: {fileID: 7328471659442591423}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Player
@@ -442,27 +442,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!65 &6710203622488334222
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6952167681960351349}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 0.5, z: 1}
-  m_Center: {x: 0, y: -0.8, z: 0}
 --- !u!114 &1163477506103887481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -485,6 +464,7 @@ MonoBehaviour:
   Lvl: 0
   Atk: 20
   Hp: 0
+  MaxHp: 0
   Aspd: 0
   Acceleration: 0
   Speed: 0
@@ -500,6 +480,29 @@ MonoBehaviour:
   TerminalVel: 20
   Attacking: 0
   CameraRotation: {fileID: 7839474449267695542}
+--- !u!136 &7328471659442591423
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6952167681960351349}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.4
+  m_Height: 1.25
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!1001 &5626588889080156694
 PrefabInstance:
   m_ObjectHideFlags: 0
