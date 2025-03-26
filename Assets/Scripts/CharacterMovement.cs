@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CharacterMovement : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class CharacterMovement : MonoBehaviour
 
     private Quaternion CameraRot;
     private Vector3 inputVector;
+    private Vector2 moveInput;
 
     [SerializeField] private float Acceleration = 20;
     [SerializeField] private float Speed=10;
@@ -39,17 +41,24 @@ public class CharacterMovement : MonoBehaviour
     private Quaternion LastLook;
     private bool LookCooldown=true;
     [SerializeField] private float TurnDuration = 0.25f;
+
+    private InputSystem_Actions input;
+
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
         Jumps = BonusJumps;
         Physics.gravity *=1+DropGrav;
         Wp = Weapon.GetComponent<Weapon>();
+        input = new InputSystem_Actions();
+        input.Enable();
     }
 
     // Update is called once per frame
     void Update()
     {
+        moveInput = input.Player.Move.ReadValue<Vector2>();
+
         Move();
         Jump();
         Shoot();
@@ -66,16 +75,16 @@ public class CharacterMovement : MonoBehaviour
 
     bool isJumpable()
     {
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (input.Player.Jump.triggered && isGrounded)
         {
             StartCoroutine(JumpCooldown());
             return true;
-        }else if (Input.GetButtonDown("Jump") && Jumps > 0&&jumpCooldown)
+        }else if (input.Player.Jump.triggered && Jumps > 0&&jumpCooldown)
         {
             Jumps--;
             if (rb.linearVelocity.y<0)
             {
-                rb.linearVelocity.Set(rb.linearVelocity.x,0,rb.linearVelocity.z);
+                rb.linearVelocity = new Vector3(rb.linearVelocity.x,0,rb.linearVelocity.z);
             }
             StartCoroutine(JumpCooldown());
             return true;
@@ -97,7 +106,7 @@ public class CharacterMovement : MonoBehaviour
     void Move()
     {
         CameraRot=Quaternion.Euler(0,CameraRotation.rotation.eulerAngles.y,0);
-        inputVector =CameraRot*new Vector3(Input.GetAxis("Horizontal"),0, Input.GetAxis("Vertical"));
+        inputVector =CameraRot*new Vector3(moveInput.x,0, moveInput.y);
         Dash();
         rb.AddForce(SpeedLimit()*Acceleration);
     }
@@ -112,7 +121,7 @@ public class CharacterMovement : MonoBehaviour
 
     bool isDash()
     {
-        if (Input.GetButtonDown("Debug Multiplier") && DashCool)
+        if (input.Player.Sprint.triggered && DashCool)
         {
             StartCoroutine(DashCoolDown());
             return true;
@@ -148,7 +157,7 @@ public class CharacterMovement : MonoBehaviour
 
     void Shoot()
     {
-        if (Input.GetButton("Fire1")&&!Firing)
+        if (input.Player.Attack.IsPressed()&&!Firing)
         {
             StartCoroutine(WFiring());
         }
