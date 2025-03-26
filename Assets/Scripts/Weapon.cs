@@ -11,7 +11,7 @@ public class Weapon : MonoBehaviour
     private Animator WAnim;
     private bool Atking;
     
-    [SerializeField] private PlayerStats PS;
+    [SerializeField] private EntityManager PS;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -27,23 +27,23 @@ public class Weapon : MonoBehaviour
         
     }
 
-    public void Attack()
+    public void Attack(int i)
     {
         if (!Atking)
         {
-            StartCoroutine(Attacking());
+            StartCoroutine(Attacking(i));
         }
     }
 
     void DamageMelee(int i)
     {
-        Debug.Log(PS.PCurAtk*WD.WAtkPers[i]/100+" Was done as damage");
+        //Debug.Log(PS.PCurAtk*WD.WAtkPers[i]/100+" Was done as damage");
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.transform.IsChildOf(PS.gameObject.transform))
-            return;
+        /*if (other.gameObject.transform.IsChildOf(PS.gameObject.transform))
+            return;*/
         for (int i = 0; i < WCols.Length; i++)
         {
             if(WCols[i].bounds.Intersects(other.bounds)&&WCols[i].enabled)//https://discussions.unity.com/t/is-there-a-way-to-know-which-of-the-triggers-in-a-game-object-has-triggered-the-on-trigger-enter/861484/9
@@ -53,12 +53,12 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    IEnumerator Attacking()
+    IEnumerator Attacking(int i)
     {
         Atking = true;
-        WAnim.SetBool("Attack",true);
-        yield return new WaitForSeconds(WD.WCoolDown);
-        WAnim.SetBool("Attack", false);
+        WAnim.SetBool("Attack"+i,true);
+        yield return new WaitForSeconds(WD.WCoolDown[1]);
+        WAnim.SetBool("Attack"+i, false);
         Atking = false;
     }
 }

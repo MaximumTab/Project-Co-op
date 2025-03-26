@@ -5,5 +5,5 @@ public class WeaponData : ScriptableObject
 {
     public string WName;
     public float[] WAtkPers;
-    public float WCoolDown;
+    public float[] WCoolDown;
 }
