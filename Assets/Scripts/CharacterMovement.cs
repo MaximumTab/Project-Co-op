@@ -40,12 +40,21 @@ public class CharacterMovement : NetworkBehaviour
     private Quaternion LastLook;
     private bool LookCooldown=true;
     [SerializeField] private float TurnDuration = 0.25f;
-    void Start()
+    public override void OnNetworkSpawn()
     {
         rb = gameObject.GetComponent<Rigidbody>();
         Jumps = BonusJumps;
         Physics.gravity *=1+DropGrav;
         Wp = Weapon.GetComponent<Weapon>();
+
+  if (!IsOwner) 
+{
+    Camera cam = gameObject.transform.parent?.GetComponentInChildren<Camera>();
+    if (cam != null)
+    {
+        cam.enabled = false; 
+    }
+}
     }
 
     // Update is called once per frame
