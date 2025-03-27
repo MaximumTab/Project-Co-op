@@ -9,16 +9,20 @@ public class Weapon : MonoBehaviour
     public Collider[] WCols;
 
     private Animator WAnim;
-    private bool[] Atking;
-    EntityManager TargetEM;
+    public bool[] Atking;
+    private EntityManager TargetEM;
     
-    [SerializeField] private EntityManager PS;
+    public EntityManager PS;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public virtual void Start()
     {
-        WAnim = gameObject.GetComponent<Animator>();
+        if (gameObject.GetComponent<Animator>())
+        {
+            WAnim = gameObject.GetComponent<Animator>();
+        }
+
         Atking = new bool[WD.WNumAtks];
     }
 
@@ -46,13 +50,13 @@ public class Weapon : MonoBehaviour
         return false;
     }
 
-    void DamageMelee(int i)
+    void Damage(int i)
     {
         Debug.Log(PS.SM.Atk*WD.WAtkPers[i]/100+" Was done as damage");
         TargetEM.SM.ChangeHp(-PS.SM.Atk*WD.WAtkPers[i]/100);
     }
 
-    private void OnTriggerEnter(Collider other)
+    public virtual void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.transform.IsChildOf(PS.gameObject.transform.parent))
             return;
@@ -69,7 +73,8 @@ public class Weapon : MonoBehaviour
         {
             if(WCols[i].bounds.Intersects(other.bounds)&&WCols[i].enabled)//https://discussions.unity.com/t/is-there-a-way-to-know-which-of-the-triggers-in-a-game-object-has-triggered-the-on-trigger-enter/861484/9
             {
-                DamageMelee(i);
+                Damage(i);
+                break;
             }
         }
     }
@@ -80,7 +85,8 @@ public class Weapon : MonoBehaviour
         WAnim.SetBool("Attack"+i,true);
         yield return null;
         WAnim.SetBool("Attack"+i, false);
-        yield return new WaitForSeconds(WD.WCoolDown[0]);
+        WAnim.SetFloat("Speed",PS.SM.CurAspd());
+        yield return new WaitForSeconds(WD.WCoolDown[i]*PS.SM.CurAcd());
         Atking[i] = false;
     }
 }

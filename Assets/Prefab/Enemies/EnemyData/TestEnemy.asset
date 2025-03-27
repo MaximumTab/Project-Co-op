@@ -17,7 +17,7 @@ MonoBehaviour:
   GrowAtk: 10
   BaseHp: 300
   GrowHp: 100
-  BaseAspd: 1
+  BaseAspd: 100
   GrowAspd: 0
-  BaseAC: 1
+  BaseAC: 100
   GrowAC: 0

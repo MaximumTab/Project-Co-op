@@ -38,7 +38,7 @@ public class EntityManager : MonoBehaviour
     public float DropGrav = 0.2f;
     public float TerminalVel = 20f;
     
-    public bool Attacking;
+    public bool[] Attacking;
 
     public StatManager SM=new StatManager();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -49,6 +49,7 @@ public class EntityManager : MonoBehaviour
         if (Weapon != null)
         {
             Wp = Weapon.GetComponent<Weapon>();
+            Attacking = new bool[Wp.WD.WNumAtks];
         }
         OnChildStart();
         SM.LevelUp(ED,Lvl);
@@ -89,7 +90,7 @@ public class EntityManager : MonoBehaviour
     
     void Shoot()
     {
-        if (AtkInput().Item1&&!Attacking)
+        if (AtkInput().Item1&&!Attacking.Max())
         {
             StartCoroutine(WFiring(AtkInput().Item2));
         }
@@ -209,15 +210,16 @@ public class EntityManager : MonoBehaviour
     }
     IEnumerator WFiring(int a)
     {
-        Attacking = true;
+        Attacking[a] = true;
         Wp.Attack(a);
         Weapon.transform.rotation = LookDir;
-        for (float i = 0; i < Wp.WD.WCoolDown[a]; i += Time.deltaTime)
+        for (float i=0;i<(Wp.WD.WAtkDuration[a]+0.01f)/SM.CurAspd();i+=Time.deltaTime)
         {
             Weapon.transform.position = gameObject.transform.position;
             yield return null;
         }
-        Attacking = false;
+
+        Attacking[a] = false;
         yield return null;
     }
     public virtual void OnChildStart()
@@ -248,9 +250,12 @@ public class EntityManager : MonoBehaviour
         public float MaxHp { get; private set; }
         public Dictionary<int,float> HpAddBuffs;
         public Dictionary<int,float> HpPercBuffs; 
-        public float Aspd { get; private set; }
+        public float Aspd { get; private set; }//Start on 100
         public Dictionary<int,float> AspdAddBuffs;
-        public Dictionary<int,float> AspdPercBuffs; 
+        public Dictionary<int,float> AspdPercBuffs;
+        public float Acd { get; private set; }
+        public Dictionary<int,float> AcdAddBuffs;
+        public Dictionary<int,float> AcdPercBuffs; 
         public void ChangeHp(float AddHp)
         {
             Hp += AddHp;
@@ -261,6 +266,7 @@ public class EntityManager : MonoBehaviour
             MaxHp = ED.BaseHp + ED.GrowHp * Lvl;
             Atk = ED.BaseAtk + ED.GrowAtk * Lvl;
             Aspd = ED.BaseAspd + ED.GrowAspd * Lvl;
+            Acd = ED.BaseAC + ED.GrowAC * Lvl;
         }
 
         public int IncreaseLvl(int Lvl)
@@ -273,9 +279,17 @@ public class EntityManager : MonoBehaviour
             return Hp / MaxHp * 100;
         }
 
+        public float CurAspd()
+        {
+            return Aspd / 100;//tailored to animation speed
+        }
+        public float CurAcd()
+        {
+            return 100 / Acd;//tailored for wait seconds
+        }
+
         public int FindEmptyKey(Dictionary<int,float> BuffList)
         {
-            
             for (int i = 0; i < BuffList.Count; i++)
             {
                 if (!BuffList.ContainsKey(i))

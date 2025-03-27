@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class PlayerManager : EntityManager
@@ -50,7 +51,7 @@ public class PlayerManager : EntityManager
     public override void Look()
     {
         LookDir = CameraRotation.rotation;
-        if (Attacking&&LookCooldown)
+        if (Attacking.Max()&&LookCooldown)
         {
             StartCoroutine(LerpRotation(transform.rotation, CameraRot));
         }else if (MoveDir != Vector3.zero&&LookCooldown)

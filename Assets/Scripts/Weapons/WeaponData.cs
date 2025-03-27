@@ -6,6 +6,7 @@ public class WeaponData : ScriptableObject
 {
     public string WName;
     public float[] WAtkPers;
+    public float[] WAtkDuration;
     public float[] WCoolDown;
     public int WNumAtks;
     public WActiveHpPercRangeForAtks[] WAHPRFA;
