@@ -52,6 +52,7 @@ MonoBehaviour:
   WCols:
   - {fileID: 401802443055812246}
   - {fileID: 1990138754066366088}
+  WNumAtks: 3
   PS: {fileID: 0}
 --- !u!95 &3321441722792030293
 Animator:

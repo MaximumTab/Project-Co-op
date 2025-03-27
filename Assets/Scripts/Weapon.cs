@@ -9,7 +9,7 @@ public class Weapon : MonoBehaviour
     public Collider[] WCols;
 
     private Animator WAnim;
-    private bool Atking;
+    private bool[] Atking;
     EntityManager TargetEM;
     
     [SerializeField] private EntityManager PS;
@@ -19,7 +19,7 @@ public class Weapon : MonoBehaviour
     void Start()
     {
         WAnim = gameObject.GetComponent<Animator>();
-        Atking = false;
+        Atking = new bool[WD.WNumAtks];
     }
 
     // Update is called once per frame
@@ -30,16 +30,26 @@ public class Weapon : MonoBehaviour
 
     public void Attack(int i)
     {
-        if (!Atking)
+        if (!Atking[i]&&Castable(i))
         {
             StartCoroutine(Attacking(i));
         }
     }
 
+    private bool Castable(int i)
+    {
+        if (WD.WAHPRFA[i].LowLim <= PS.SM.CurHpPerc() && PS.SM.CurHpPerc() <= WD.WAHPRFA[i].HighLim||WD.WAHPRFA[i].HighLim>=100&&WD.WAHPRFA[i].HighLim<=PS.SM.CurHpPerc())
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     void DamageMelee(int i)
     {
-        Debug.Log(PS.Atk*WD.WAtkPers[i]/100+" Was done as damage");
-        TargetEM.ChangeHp(-PS.Atk*WD.WAtkPers[i]/100);
+        Debug.Log(PS.SM.Atk*WD.WAtkPers[i]/100+" Was done as damage");
+        TargetEM.SM.ChangeHp(-PS.SM.Atk*WD.WAtkPers[i]/100);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -66,11 +76,12 @@ public class Weapon : MonoBehaviour
 
     IEnumerator Attacking(int i)
     {
-        Atking = true;
+        Atking[i] = true;
         WAnim.SetBool("Attack"+i,true);
-        yield return new WaitForSeconds(WD.WCoolDown[0]);
+        yield return null;
         WAnim.SetBool("Attack"+i, false);
-        Atking = false;
+        yield return new WaitForSeconds(WD.WCoolDown[0]);
+        Atking[i] = false;
     }
 }
  

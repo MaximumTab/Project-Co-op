@@ -1,5 +1,8 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using Unity.Mathematics;
 public class EntityManager : MonoBehaviour
 {
     public EntityData ED;
@@ -12,13 +15,7 @@ public class EntityManager : MonoBehaviour
     
     [SerializeField] private GameObject Weapon;
     private Weapon Wp;
-    
     public int Lvl;
-    public float Atk;
-    public float Hp;
-    public float MaxHp;
-    public float Aspd;
-
 
     public float Acceleration;
     public float Speed;
@@ -42,9 +39,8 @@ public class EntityManager : MonoBehaviour
     public float TerminalVel = 20f;
     
     public bool Attacking;
-    
-    
 
+    public StatManager SM=new StatManager();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -54,8 +50,9 @@ public class EntityManager : MonoBehaviour
         {
             Wp = Weapon.GetComponent<Weapon>();
         }
-        LevelUp();
         OnChildStart();
+        SM.LevelUp(ED,Lvl);
+        Lvl=SM.IncreaseLvl(Lvl);
     }
 
     // Update is called once per frame
@@ -67,39 +64,7 @@ public class EntityManager : MonoBehaviour
         Look();
         Drop();
     }
-
-    public void LevelUp()
-    {
-        Hp = ED.BaseHp + ED.GrowHp * Lvl;
-        MaxHp = ED.BaseHp + ED.GrowHp * Lvl;
-        Atk = ED.BaseAtk + ED.GrowAtk * Lvl;
-        Lvl++;
-    }
-
-    public void ChangeHp(float AddHp)
-    {
-        Hp += AddHp;
-    }
-
-    public virtual void OnChildStart()
-    {
-    }
-    public virtual void MoveInput()//Change MoveDir in Child
-    {
-        
-    }
-    public virtual (bool,int) AtkInput() //Choose how to Shoot in Child
-    {
-        return (false,0);
-    }
-    public virtual bool JumpInput() //Choose how to Jump in Child
-    {
-        return false;
-    }
-    public virtual bool DashInput() //Choose how to Dash in Child
-    {
-        return false;
-    }
+    
     bool isJumpable()
     {
         if (JumpInput() && isGrounded)
@@ -255,9 +220,111 @@ public class EntityManager : MonoBehaviour
         Attacking = false;
         yield return null;
     }
+    public virtual void OnChildStart()
+    {
+    }
+    public virtual void MoveInput()//Change MoveDir in Child
+    {
+        
+    }
+    public virtual (bool,int) AtkInput() //Choose how to Shoot in Child
+    {
+        return (false,0);
+    }
+    public virtual bool JumpInput() //Choose how to Jump in Child
+    {
+        return false;
+    }
+    public virtual bool DashInput() //Choose how to Dash in Child
+    {
+        return false;
+    }
+     public struct StatManager
+    {
+        public float Atk { get; private set; }
+        public Dictionary<int,float> AtkAddBuffs;
+        public Dictionary<int,float> AtkPercBuffs; 
+        public float Hp { get; private set; }
+        public float MaxHp { get; private set; }
+        public Dictionary<int,float> HpAddBuffs;
+        public Dictionary<int,float> HpPercBuffs; 
+        public float Aspd { get; private set; }
+        public Dictionary<int,float> AspdAddBuffs;
+        public Dictionary<int,float> AspdPercBuffs; 
+        public void ChangeHp(float AddHp)
+        {
+            Hp += AddHp;
+        }
+        public void LevelUp(EntityData ED, int Lvl)
+        {
+            Hp = ED.BaseHp + ED.GrowHp * Lvl;
+            MaxHp = ED.BaseHp + ED.GrowHp * Lvl;
+            Atk = ED.BaseAtk + ED.GrowAtk * Lvl;
+            Aspd = ED.BaseAspd + ED.GrowAspd * Lvl;
+        }
+
+        public int IncreaseLvl(int Lvl)
+        {
+            return Lvl + 1;
+        }
+
+        public float CurHpPerc()
+        {
+            return Hp / MaxHp * 100;
+        }
+
+        public int FindEmptyKey(Dictionary<int,float> BuffList)
+        {
+            
+            for (int i = 0; i < BuffList.Count; i++)
+            {
+                if (!BuffList.ContainsKey(i))
+                {
+                    return i;
+                }
+            }
+            return BuffList.Count;
+        }
+    }
+    public void HpAddBuff(float Add, float Time)
+    {
+        StartCoroutine(AddBuff(Add, Time, SM.HpAddBuffs));
+    }
+    public void HpPercBuff(float Add, float Time)
+    {
+        StartCoroutine(AddBuff(Add, Time, SM.HpPercBuffs));
+    }
+    public void AtkAddBuff(float Add, float Time)
+    {
+        StartCoroutine(AddBuff(Add, Time, SM.AtkAddBuffs));
+    }
+    public void AtkPercBuff(float Add, float Time)
+    {
+        StartCoroutine(AddBuff(Add, Time, SM.AtkPercBuffs));
+    }
+    public void AspdAddBuff(float Add, float Time)
+    {
+        StartCoroutine(AddBuff(Add, Time, SM.AspdAddBuffs));
+    }
+    public void AspdPercBuff(float Add, float Time)
+    {
+        StartCoroutine(AddBuff(Add, Time, SM.AspdPercBuffs));
+    }
+    
+    IEnumerator AddBuff(float Add, float Time,Dictionary<int,float> BuffList)//Set Time to -1 for infinite buff
+    {
+        int BuffLoc=SM.FindEmptyKey(BuffList);
+        BuffList.Add(BuffLoc,Add);
+        if (Time != -1)
+        {
+            yield return new WaitForSeconds(Time);
+            BuffList.Remove(BuffLoc);
+        }
+        yield return null;
+    }
     private void OnTriggerStay(Collider other)
     {
-        if (jumpCooldown)
+        if (jumpCooldown&&!other.gameObject.transform.IsChildOf(gameObject.transform.parent))
         {
             isGrounded = true;
             Jumps = BonusJumps;

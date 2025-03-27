@@ -20,3 +20,11 @@ MonoBehaviour:
   - 1
   - 1
   - 1
+  WNumAtks: 3
+  WAHPRFA:
+  - LowLim: 0
+    HighLim: 100
+  - LowLim: 0
+    HighLim: 100
+  - LowLim: 0
+    HighLim: 100
