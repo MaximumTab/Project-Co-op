@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Rock
   BaseAtk: 20
-  GrowAtk: 10
+  GrowAtk: 5
   BaseHp: 300
   GrowHp: 100
   BaseAspd: 100
-  GrowAspd: 0
+  GrowAspd: 20
   BaseAC: 100
   GrowAC: 0
