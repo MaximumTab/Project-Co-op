@@ -10,27 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 78e1288dc23475144b98ad81e957cd3a, type: 3}
-  m_Name: Beak
+  m_Name: RockWeap
   m_EditorClassIdentifier: 
-  WName: Beak
+  WName: RockWeap
   WAtkPers:
-  - 25
-  - 50
-  - 75
-  - 75
+  - 100
   WAtkDuration:
-  - 1
-  - 1
-  - 5
+  - 3
   WCoolDown:
-  - 1
-  - 4
-  - 20
-  WNumAtks: 3
+  - 5
+  WNumAtks: 1
   WAHPRFA:
   - LowLim: 0
-    HighLim: 100
-  - LowLim: 0
-    HighLim: 100
-  - LowLim: 0
-    HighLim: 100
+    HighLim: 50
