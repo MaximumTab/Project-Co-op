@@ -1,3 +1,5 @@
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerManager : EntityManager
@@ -8,8 +10,9 @@ public class PlayerManager : EntityManager
     private Vector2 moveInput;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public override void OnChildStart()
+    public override void Start()
     {
+        base.Start();
         input = new InputSystem_Actions();
         input.Enable();
     }
@@ -50,7 +53,7 @@ public class PlayerManager : EntityManager
     public override void Look()
     {
         LookDir = CameraRotation.rotation;
-        if (Attacking&&LookCooldown)
+        if (Attacking.Max()&&LookCooldown)
         {
             StartCoroutine(LerpRotation(transform.rotation, CameraRot));
         }else if (MoveDir != Vector3.zero&&LookCooldown)
