@@ -657,7 +657,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundList:
   - name: Jump
-    sounds: []
+    sounds:
+    - {fileID: 8300000, guid: 4d02920213decb24995984f2a8797202, type: 3}
   - name: Dash
     sounds: []
 --- !u!4 &758474800

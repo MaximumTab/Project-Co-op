@@ -134,6 +134,7 @@ public class EntityManager : MonoBehaviour
         if (isJumpable())
         {
             rb.AddForce(0,JumpForce,0,ForceMode.Impulse);
+            SoundManager.PlaySound(SoundType.Jump);
         }
     }
     void Drop()
