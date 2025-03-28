@@ -682,9 +682,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 3002908209076630539}
     m_Modifications:
     - target: {fileID: -3452428096149016465, guid: 6f1ca26a9c9bc4a48ae9df61b3d13ae3, type: 3}
-      propertyPath: Wp
-      value: 
-      objectReference: {fileID: 7384121748485347283}
+      propertyPath: IntBetweenSpawns
+      value: 0.08
+      objectReference: {fileID: 0}
     - target: {fileID: 686073080502442627, guid: 6f1ca26a9c9bc4a48ae9df61b3d13ae3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -728,10 +728,6 @@ PrefabInstance:
     - target: {fileID: 2315194499577281722, guid: 6f1ca26a9c9bc4a48ae9df61b3d13ae3, type: 3}
       propertyPath: m_Name
       value: TempSpawner
-      objectReference: {fileID: 0}
-    - target: {fileID: 2315194499577281722, guid: 6f1ca26a9c9bc4a48ae9df61b3d13ae3, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

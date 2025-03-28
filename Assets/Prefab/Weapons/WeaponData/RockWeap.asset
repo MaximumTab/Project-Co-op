@@ -9,15 +9,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b97e52964d20cb2459cb7755ca1834d4, type: 3}
-  m_Name: TestEnemy
+  m_Script: {fileID: 11500000, guid: 78e1288dc23475144b98ad81e957cd3a, type: 3}
+  m_Name: RockWeap
   m_EditorClassIdentifier: 
-  Name: Rock
-  BaseAtk: 20
-  GrowAtk: 10
-  BaseHp: 300
-  GrowHp: 100
-  BaseAspd: 100
-  GrowAspd: 0
-  BaseAC: 100
-  GrowAC: 0
+  WName: RockWeap
+  WAtkPers:
+  - 100
+  - 100
+  - 100
+  - 100
+  WAtkDuration:
+  - 3
+  WCoolDown:
+  - 5
+  WNumAtks: 1
+  WAHPRFA:
+  - LowLim: 0
+    HighLim: 50

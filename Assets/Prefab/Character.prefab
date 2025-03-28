@@ -462,10 +462,6 @@ MonoBehaviour:
   TurnDuration: 0.15
   Weapon: {fileID: 6304769730475069498}
   Lvl: 0
-  Atk: 20
-  Hp: 0
-  MaxHp: 0
-  Aspd: 0
   Acceleration: 0
   Speed: 0
   JumpForce: 10
@@ -478,7 +474,7 @@ MonoBehaviour:
   DashDuration: 0.1
   DropGrav: 0.5
   TerminalVel: 20
-  Attacking: 0
+  Attacking: 
   CameraRotation: {fileID: 7839474449267695542}
 --- !u!136 &7328471659442591423
 CapsuleCollider:
@@ -511,6 +507,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 809086207983335298}
     m_Modifications:
+    - target: {fileID: 1448220409534665282, guid: bb25ebf711eff534d993b8f43dace404, type: 3}
+      propertyPath: Wp
+      value: 
+      objectReference: {fileID: 2912706714463421893}
     - target: {fileID: 1831454744318722604, guid: bb25ebf711eff534d993b8f43dace404, type: 3}
       propertyPath: m_Name
       value: Beak
@@ -555,6 +555,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7218890990004772503, guid: bb25ebf711eff534d993b8f43dace404, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7384121748485347283, guid: bb25ebf711eff534d993b8f43dace404, type: 3}
       propertyPath: PS
       value: 
@@ -568,6 +572,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb25ebf711eff534d993b8f43dace404, type: 3}
+--- !u!114 &2912706714463421893 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7384121748485347283, guid: bb25ebf711eff534d993b8f43dace404, type: 3}
+  m_PrefabInstance: {fileID: 5626588889080156694}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6304769730475069498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffd750ab6b5b07547b57f7a24dc12dbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6304769730475069498 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1831454744318722604, guid: bb25ebf711eff534d993b8f43dace404, type: 3}

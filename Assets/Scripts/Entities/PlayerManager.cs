@@ -14,7 +14,7 @@ public class PlayerManager : EntityManager
     {
         base.Start();
         input = new InputSystem_Actions();
-                input.Enable();
+        input.Enable();
     }
 
     public override void MoveInput()

@@ -106,9 +106,10 @@ public class EntityManager : MonoBehaviour
     
     void Shoot()
     {
-        if (AtkInput().Item1&&!Attacking.Max())
+        (bool, int) InputAtk=AtkInput();
+        if (InputAtk.Item1&&!Attacking.Max())
         {
-            StartCoroutine(WFiring(AtkInput().Item2));
+            StartCoroutine(WFiring(InputAtk.Item2));
         }
     }
     void Jump()
@@ -229,9 +230,10 @@ public class EntityManager : MonoBehaviour
         Attacking[a] = true;
         Wp.Attack(a);
         Weapon.transform.rotation = LookDir;
-        for (float i=0;i<(Wp.WD.WAtkDuration[a]+0.01f)/SM.CurAspd();i+=Time.deltaTime)
+        for (float i=0;i<(Wp.WD.WAtkDuration[a]+0.05f)/SM.CurAspd();i+=Time.deltaTime)
         {
             Weapon.transform.position = gameObject.transform.position;
+            Weapon.transform.rotation = LookDir;
             yield return null;
         }
 
