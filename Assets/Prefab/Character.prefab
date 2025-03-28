@@ -455,7 +455,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ED: {fileID: 11400000, guid: abba732553e20f845839c9d46811ede6, type: 2}
-  rb: {fileID: 0}
   MoveDir: {x: 0, y: 0, z: 0}
   LookDir: {x: 0, y: 0, z: 0, w: 0}
   LastLook: {x: 0, y: 0, z: 0, w: 0}
@@ -463,6 +462,10 @@ MonoBehaviour:
   TurnDuration: 0.15
   Weapon: {fileID: 6304769730475069498}
   Lvl: 0
+  Atk: 20
+  Hp: 0
+  MaxHp: 0
+  Aspd: 0
   Acceleration: 0
   Speed: 0
   JumpForce: 10
@@ -475,7 +478,7 @@ MonoBehaviour:
   DashDuration: 0.1
   DropGrav: 0.5
   TerminalVel: 20
-  Attacking: 
+  Attacking: 0
   CameraRotation: {fileID: 7839474449267695542}
 --- !u!136 &7328471659442591423
 CapsuleCollider:
@@ -508,10 +511,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 809086207983335298}
     m_Modifications:
-    - target: {fileID: 555242105558560994, guid: bb25ebf711eff534d993b8f43dace404, type: 3}
-      propertyPath: PS
-      value: 
-      objectReference: {fileID: 1163477506103887481}
     - target: {fileID: 1831454744318722604, guid: bb25ebf711eff534d993b8f43dace404, type: 3}
       propertyPath: m_Name
       value: Beak
@@ -556,18 +555,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7218890990004772503, guid: bb25ebf711eff534d993b8f43dace404, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7384121748485347283, guid: bb25ebf711eff534d993b8f43dace404, type: 3}
       propertyPath: PS
       value: 
       objectReference: {fileID: 1163477506103887481}
-    - target: {fileID: 7384121748485347283, guid: bb25ebf711eff534d993b8f43dace404, type: 3}
-      propertyPath: WNumAtks
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

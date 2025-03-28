@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: TestEnemy
   m_EditorClassIdentifier: 
   Name: Rock
-  BaseAtk: 20
-  GrowAtk: 5
+  BaseAtk: 50
+  GrowAtk: 10
   BaseHp: 300
   GrowHp: 100
-  BaseAspd: 100
-  GrowAspd: 20
-  BaseAC: 100
+  BaseAspd: 1
+  GrowAspd: 0
+  BaseAC: 1
   GrowAC: 0
