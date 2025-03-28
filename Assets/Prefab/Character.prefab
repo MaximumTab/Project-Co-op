@@ -455,6 +455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ED: {fileID: 11400000, guid: abba732553e20f845839c9d46811ede6, type: 2}
+  rb: {fileID: 0}
   MoveDir: {x: 0, y: 0, z: 0}
   LookDir: {x: 0, y: 0, z: 0, w: 0}
   LastLook: {x: 0, y: 0, z: 0, w: 0}
@@ -507,10 +508,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 809086207983335298}
     m_Modifications:
-    - target: {fileID: 1448220409534665282, guid: bb25ebf711eff534d993b8f43dace404, type: 3}
-      propertyPath: Wp
+    - target: {fileID: 555242105558560994, guid: bb25ebf711eff534d993b8f43dace404, type: 3}
+      propertyPath: PS
       value: 
-      objectReference: {fileID: 2912706714463421893}
+      objectReference: {fileID: 1163477506103887481}
     - target: {fileID: 1831454744318722604, guid: bb25ebf711eff534d993b8f43dace404, type: 3}
       propertyPath: m_Name
       value: Beak
@@ -572,17 +573,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb25ebf711eff534d993b8f43dace404, type: 3}
---- !u!114 &2912706714463421893 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7384121748485347283, guid: bb25ebf711eff534d993b8f43dace404, type: 3}
-  m_PrefabInstance: {fileID: 5626588889080156694}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6304769730475069498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffd750ab6b5b07547b57f7a24dc12dbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6304769730475069498 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1831454744318722604, guid: bb25ebf711eff534d993b8f43dace404, type: 3}

@@ -32,12 +32,27 @@ public class Weapon : MonoBehaviour
         
     }
 
-    public void Attack(int i)
+    public virtual void SpecialAttack(int i)
+    {
+        /*
+         switch(i)
+         {
+            case 0:
+                break;
+         }
+         */
+    }
+
+    public bool Attack(int i)
     {
         if (!Atking[i]&&Castable(i))
         {
             StartCoroutine(Attacking(i));
+            StartCoroutine(SpecialDuration(i));
+            return true;
         }
+
+        return false;
     }
 
     private bool Castable(int i)
@@ -78,6 +93,15 @@ public class Weapon : MonoBehaviour
                 Damage(i);
                 break;
             }
+        }
+    }
+
+    IEnumerator SpecialDuration(int i)
+    {
+        for (float a = 0; a < WD.WAtkDuration[i]/PS.SM.CurAspd(); a += Time.deltaTime)
+        {
+            SpecialAttack(i);
+            yield return null;
         }
     }
 

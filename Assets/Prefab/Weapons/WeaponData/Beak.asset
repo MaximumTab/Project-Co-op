@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WName: Beak
   WAtkPers:
-  - 10
   - 25
   - 50
   - 75
@@ -22,11 +21,11 @@ MonoBehaviour:
   WAtkDuration:
   - 1
   - 1
-  - 1
+  - 5
   WCoolDown:
   - 1
   - 4
-  - 0.5
+  - 20
   WNumAtks: 3
   WAHPRFA:
   - LowLim: 0

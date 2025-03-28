@@ -9,7 +9,7 @@ public class EntityManager : MonoBehaviour
 {
     private Animator Anim;
     public EntityData ED;
-    private Rigidbody rb;
+    public Rigidbody rb;
     public Vector3 MoveDir;
     public Quaternion LookDir;
     public Quaternion LastLook;
@@ -228,13 +228,14 @@ public class EntityManager : MonoBehaviour
     IEnumerator WFiring(int a)
     {
         Attacking[a] = true;
-        Wp.Attack(a);
-        Weapon.transform.rotation = LookDir;
-        for (float i=0;i<(Wp.WD.WAtkDuration[a]+0.05f)/SM.CurAspd();i+=Time.deltaTime)
+        if (Wp.Attack(a))
         {
-            Weapon.transform.position = gameObject.transform.position;
-            Weapon.transform.rotation = LookDir;
-            yield return null;
+            for (float i = 0; i < (Wp.WD.WAtkDuration[a] + 0.05f) / SM.CurAspd(); i += Time.deltaTime)
+            {
+                Weapon.transform.position = gameObject.transform.position;
+                Weapon.transform.rotation = LookDir;
+                yield return null;
+            }
         }
 
         Attacking[a] = false;
