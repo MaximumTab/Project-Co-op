@@ -15,9 +15,6 @@ MonoBehaviour:
   WName: RockWeap
   WAtkPers:
   - 100
-  - 100
-  - 100
-  - 100
   WAtkDuration:
   - 3
   WCoolDown:
