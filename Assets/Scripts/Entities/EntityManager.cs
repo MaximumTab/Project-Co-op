@@ -42,7 +42,7 @@ public class EntityManager : MonoBehaviour
 
     public StatManager SM=new StatManager();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public virtual void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
         Jumps = BonusJumps;
@@ -51,7 +51,6 @@ public class EntityManager : MonoBehaviour
             Wp = Weapon.GetComponent<Weapon>();
             Attacking = new bool[Wp.WD.WNumAtks];
         }
-        OnChildStart();
         SM.LevelUp(ED,Lvl);
         Lvl=SM.IncreaseLvl(Lvl);
     }
@@ -221,9 +220,6 @@ public class EntityManager : MonoBehaviour
 
         Attacking[a] = false;
         yield return null;
-    }
-    public virtual void OnChildStart()
-    {
     }
     public virtual void MoveInput()//Change MoveDir in Child
     {

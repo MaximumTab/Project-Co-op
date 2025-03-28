@@ -1,4 +1,5 @@
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerManager : EntityManager
@@ -9,10 +10,11 @@ public class PlayerManager : EntityManager
     private Vector2 moveInput;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public override void OnChildStart()
+    public override void Start()
     {
+        base.Start();
         input = new InputSystem_Actions();
-        input.Enable();
+                input.Enable();
     }
 
     public override void MoveInput()

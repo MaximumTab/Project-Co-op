@@ -71,6 +71,8 @@ public class Weapon : MonoBehaviour
         }
         for (int i = 0; i < WCols.Length; i++)
         {
+            if (WCols[i] == null)
+                continue;
             if(WCols[i].bounds.Intersects(other.bounds)&&WCols[i].enabled)//https://discussions.unity.com/t/is-there-a-way-to-know-which-of-the-triggers-in-a-game-object-has-triggered-the-on-trigger-enter/861484/9
             {
                 Damage(i);

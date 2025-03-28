@@ -7,25 +7,13 @@ public class ProjectileSpawner : MonoBehaviour
     private Weapon WProj;
 
     public Weapon Wp;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        GameObject TempProj=Instantiate(Proj);
-        TempProj.transform.position = gameObject.transform.position;
-        WProj = TempProj.GetComponent<Weapon>();
-        WProj.WD = Wp.WD;
-        WProj.PS = Wp.PS;
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     private void OnEnable()
     {
-        //Create new Projectile
+        GameObject TempProj=Instantiate(Proj,gameObject.transform.position,gameObject.transform.rotation);
+        WProj = TempProj.GetComponent<Weapon>();
+        WProj.WD = Wp.WD;
+        WProj.PS = Wp.PS;
     }
 }
