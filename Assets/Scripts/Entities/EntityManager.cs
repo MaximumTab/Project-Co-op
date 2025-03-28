@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Unity.Mathematics;
+using Unity.VisualScripting;
+
 public class EntityManager : MonoBehaviour
 {
+    private Animator Anim;
     public EntityData ED;
     private Rigidbody rb;
     public Vector3 MoveDir;
@@ -44,6 +47,7 @@ public class EntityManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public virtual void Start()
     {
+        Anim = gameObject.GetComponentInParent<Animator>();
         rb = gameObject.GetComponent<Rigidbody>();
         Jumps = BonusJumps;
         if (Weapon != null)
@@ -63,8 +67,21 @@ public class EntityManager : MonoBehaviour
         Shoot();
         Look();
         Drop();
+        if (SM.Hp <= 0)
+        {
+            OnDeath();
+        }
     }
-    
+
+    public virtual void OnDeath()
+    {
+        if (Anim)
+        {
+            Anim.SetBool("Death", true);
+        }
+    }
+
+
     bool isJumpable()
     {
         if (JumpInput() && isGrounded)
