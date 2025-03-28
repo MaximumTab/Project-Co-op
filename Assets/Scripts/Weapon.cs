@@ -1,0 +1,76 @@
+using System;
+using System.Collections;
+using Unity.VisualScripting;
+using UnityEngine;
+
+public class Weapon : MonoBehaviour
+{
+    public WeaponData WD;
+    public Collider[] WCols;
+
+    private Animator WAnim;
+    private bool Atking;
+    EntityManager TargetEM;
+    
+    [SerializeField] private EntityManager PS;
+
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        WAnim = gameObject.GetComponent<Animator>();
+        Atking = false;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public void Attack(int i)
+    {
+        if (!Atking)
+        {
+            StartCoroutine(Attacking(i));
+        }
+    }
+
+    void DamageMelee(int i)
+    {
+        Debug.Log(PS.Atk*WD.WAtkPers[i]/100+" Was done as damage");
+        TargetEM.ChangeHp(-PS.Atk*WD.WAtkPers[i]/100);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.transform.IsChildOf(PS.gameObject.transform.parent))
+            return;
+        TargetEM=null;
+        if (other.gameObject.GetComponent<EntityManager>())
+        {
+            TargetEM = other.gameObject.GetComponent<EntityManager>();
+        }
+        else
+        {
+            return;
+        }
+        for (int i = 0; i < WCols.Length; i++)
+        {
+            if(WCols[i].bounds.Intersects(other.bounds)&&WCols[i].enabled)//https://discussions.unity.com/t/is-there-a-way-to-know-which-of-the-triggers-in-a-game-object-has-triggered-the-on-trigger-enter/861484/9
+            {
+                DamageMelee(i);
+            }
+        }
+    }
+
+    IEnumerator Attacking(int i)
+    {
+        Atking = true;
+        WAnim.SetBool("Attack"+i,true);
+        yield return new WaitForSeconds(WD.WCoolDown[0]);
+        WAnim.SetBool("Attack"+i, false);
+        Atking = false;
+    }
+}
+ 
