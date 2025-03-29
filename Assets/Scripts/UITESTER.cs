@@ -13,13 +13,13 @@ public class UITESTER : MonoBehaviour
         // Health controls
         if (Input.GetKeyDown(KeyCode.H))
         {
-            HealthManager.Instance.TakeDamage(10f);
+            PlayerHealthManager.Instance.TakeDamage(10f);
             Debug.Log("Took 10 damage.");
         }
 
         if (Input.GetKeyDown(KeyCode.J))
         {
-            HealthManager.Instance.Heal(5f);
+            PlayerHealthManager.Instance.Heal(5f);
             Debug.Log("Healed 5 HP.");
         }
 

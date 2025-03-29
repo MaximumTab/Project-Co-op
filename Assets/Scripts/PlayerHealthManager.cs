@@ -2,9 +2,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class HealthManager : MonoBehaviour
+public class PlayerHealthManager : MonoBehaviour
 {
-    public static HealthManager Instance { get; private set; }
+    public static PlayerHealthManager Instance { get; private set; }
 
     [Header("Health Settings")]
     public float maxHealth = 50f;
