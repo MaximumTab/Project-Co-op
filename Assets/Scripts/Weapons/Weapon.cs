@@ -67,10 +67,16 @@ public class Weapon : MonoBehaviour
 
     void Damage(int i)
     {
-        Debug.Log(PS.SM.Atk*WD.WAtkPers[i]/100+" Was done as damage");
-        TargetEM.SM.ChangeHp(-PS.SM.Atk*WD.WAtkPers[i]/100);
-    }
+        float damageAmount = PS.SM.Atk * WD.WAtkPers[i] / 100;
 
+        TargetEM.SM.ChangeHp(-damageAmount);
+
+        string attackerName = PS.ED != null ? PS.ED.Name : PS.gameObject.name;
+        string targetName = TargetEM.ED != null ? TargetEM.ED.Name : TargetEM.gameObject.name;
+        float targetCurrentHp = TargetEM.SM.Hp;
+
+        Debug.Log($"[DAMAGE] {attackerName} dealt {damageAmount} damage to {targetName}. Current HP: {targetCurrentHp}");
+    }
     public virtual void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.transform.IsChildOf(PS.gameObject.transform.parent))
