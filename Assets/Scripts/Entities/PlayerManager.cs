@@ -25,13 +25,13 @@ public class PlayerManager : EntityManager
     }
     public override (bool,int) AtkInput() //Choose how to Shoot in Child
     {
-        for (int i = 1; i < 4; i++)
-        {
-            if (Input.GetButton("Fire" + i))//input.Player.Attack.IsPressed()
-            {
-                return (true, i-1);
-            }
-        }
+        if (input.Player.Attack1.IsPressed())
+            return (true, 0); 
+        if (input.Player.Attack2.IsPressed())
+            return (true, 1);
+        if (input.Player.Attack3.IsPressed())
+            return (true, 2);
+        
         return (false,0);
     }
     public override bool JumpInput() //Choose how to Jump in Child
