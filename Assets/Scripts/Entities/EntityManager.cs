@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 
 public class EntityManager : MonoBehaviour
 {
-    private Animator Anim;
+    protected Animator Anim;
     public EntityData ED;
     public Rigidbody rb;
     public Vector3 MoveDir;
