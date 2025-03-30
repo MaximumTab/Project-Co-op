@@ -68,6 +68,10 @@ public class Weapon : MonoBehaviour
     {
         float damageAmount = PS.SM.Atk * WD.WAtkPers[i] / 100;
 
+        if (TargetEM.SM.Hp > 0&&TargetEM.SM.Hp-damageAmount<=0)
+        {
+            PS.AddXP(TargetEM.SM.Exp);
+        }
         TargetEM.SM.ChangeHp(-damageAmount);
 
         string attackerName = PS.ED != null ? PS.ED.Name : PS.gameObject.name;
@@ -87,10 +91,6 @@ public class Weapon : MonoBehaviour
         }
 
         Debug.Log($"[DAMAGE] {attackerName} dealt {damageAmount} damage to {targetName}. Current HP: {targetCurrentHp}");
-        if (TargetEM.SM.Hp <= 0)
-        {
-            PS.AddXP(TargetEM.SM.Exp);
-        }
     }
 
     public virtual void OnTriggerEnter(Collider other)
