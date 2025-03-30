@@ -32,11 +32,13 @@ public class PauseMenuController : MonoBehaviour
             Debug.Log("Reaches is paused condition");
             Time.timeScale = 0; // Pauses the game
             pauseMenuWindow.SetActive(true);
+            
         }
         else
         {
             Time.timeScale = 1; // Resumes the game
             pauseMenuWindow.SetActive(false);
+        
         }
 
     }
