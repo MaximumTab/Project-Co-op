@@ -47,7 +47,7 @@ public class EntityManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public virtual void Start()
     {
-        Anim = gameObject.GetComponentInParent<Animator>();
+        Anim = gameObject.GetComponentInChildren<Animator>();
         rb = gameObject.GetComponent<Rigidbody>();
         Jumps = BonusJumps;
         if (Weapon != null)
@@ -120,6 +120,11 @@ public class EntityManager : MonoBehaviour
         (bool, int) InputAtk=AtkInput();
         if (InputAtk.Item1&&!Attacking.Max())
         {
+            if (Anim)
+            {
+                Anim.SetTrigger("IsAttacking");
+            }
+
             StartCoroutine(WFiring(InputAtk.Item2));
         }
     }
@@ -129,6 +134,10 @@ public class EntityManager : MonoBehaviour
         {
             rb.AddForce(0,JumpForce,0,ForceMode.Impulse);
             SoundManager.Play3DSound(SoundType.Jump, transform, 1f, 2f, 10f);
+            if (Anim)
+            {
+                Anim.SetTrigger("IsJumping");
+            }
         }
     }
     void Drop()
@@ -158,6 +167,13 @@ public class EntityManager : MonoBehaviour
         MoveInput();
         Dash();
         rb.AddForce(SpeedLimit()*Acceleration);
+        if (Anim && new Vector2(rb.linearVelocity.x, rb.linearVelocity.z).magnitude > 0.5f)
+        {
+            Anim.SetBool("IsWalking",true);
+        }else if (Anim)
+        {
+            Anim.SetBool("IsWalking",false);
+        }
     }
 
     void Dash()
@@ -229,6 +245,11 @@ public class EntityManager : MonoBehaviour
     {
         Vector3 Start = rb.linearVelocity;
         Vector3 End = MoveDir * (DashDistance * BaseDashDist);
+        if (Anim)
+        {
+            Anim.SetTrigger("IsDashing");
+        }
+
         for (float time = 0; time < DashDuration; time += Time.deltaTime)
         {
             rb.linearVelocity = Vector3.Lerp(Start, End, time / DashDuration);
@@ -248,12 +269,24 @@ public class EntityManager : MonoBehaviour
             {
                 uiCooldown.TriggerCooldown(a);
             }
+
+            if (Anim)
+            {
+                Anim.SetFloat("Speed", SM.CurAspd());
+                Anim.SetInteger("Attack",a);
+            }
+
             for (float i = 0; i < (Wp.WD.WAtkDuration[a] + 0.05f) / SM.CurAspd(); i += Time.deltaTime)
             {
                 Weapon.transform.position = gameObject.transform.position;
                 Weapon.transform.rotation = LookDir;
                 yield return null;
             }
+        }
+
+        if (Anim)
+        {
+            Anim.SetInteger("Attack", -1);
         }
 
         Attacking[a] = false;
