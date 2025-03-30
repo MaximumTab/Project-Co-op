@@ -22,7 +22,6 @@ public class Weapon : MonoBehaviour
         {
             WAnim = gameObject.GetComponent<Animator>();
         }
-
         Atking = new bool[WD.WNumAtks];
     }
 
@@ -69,6 +68,10 @@ public class Weapon : MonoBehaviour
     {
         float damageAmount = PS.SM.Atk * WD.WAtkPers[i] / 100;
 
+        if (TargetEM.SM.Hp > 0&&TargetEM.SM.Hp-damageAmount<=0)
+        {
+            PS.AddXP(TargetEM.SM.Exp);
+        }
         TargetEM.SM.ChangeHp(-damageAmount);
 
         string attackerName = PS.ED != null ? PS.ED.Name : PS.gameObject.name;
@@ -82,12 +85,9 @@ public class Weapon : MonoBehaviour
         }
 
         // HUD check for Boss
-        if (TargetEM is BaseEnemyManager && TargetEM.ED.isBoss)
+        if (TargetEM is BaseEnemyManager && TargetEM.ED.isBoss&&HealthManager.Instance[1])
         {
-            if (HealthManager.Instance[1])
-            {
-                HealthManager.Instance[1].TakeDamage(damageAmount);
-            }
+            HealthManager.Instance[1].TakeDamage(damageAmount);
         }
 
         Debug.Log($"[DAMAGE] {attackerName} dealt {damageAmount} damage to {targetName}. Current HP: {targetCurrentHp}");

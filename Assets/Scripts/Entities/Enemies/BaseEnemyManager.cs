@@ -12,6 +12,7 @@ public class BaseEnemyManager : EntityManager
         { 
             HealthManager.Instance[1].Init(SM.MaxHp, ED.Name);
         }
+        Anim = gameObject.GetComponentInParent<Animator>();
     }
 
 
@@ -28,3 +29,5 @@ public class BaseEnemyManager : EntityManager
     }
     
 }
+
+//easteregg Rickytalk
