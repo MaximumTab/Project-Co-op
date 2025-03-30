@@ -16,7 +16,21 @@ MonoBehaviour:
   WAtkPers:
   - 25
   - 50
+  - 75
+  - 75
+  WAtkDuration:
+  - 1
+  - 1
+  - 5
   WCoolDown:
   - 1
-  - 1
-  - 1
+  - 4
+  - 20
+  WNumAtks: 3
+  WAHPRFA:
+  - LowLim: 0
+    HighLim: 100
+  - LowLim: 0
+    HighLim: 100
+  - LowLim: 0
+    HighLim: 100
