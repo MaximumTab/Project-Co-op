@@ -265,7 +265,8 @@ public class EntityManager : MonoBehaviour
         return false;
     }
      public struct StatManager
-    {
+     {
+        public float Exp { get; private set; }
         public float Atk { get; private set; }
         public Dictionary<int,float> AtkAddBuffs;
         public Dictionary<int,float> AtkPercBuffs; 
@@ -278,13 +279,14 @@ public class EntityManager : MonoBehaviour
         public Dictionary<int,float> AspdPercBuffs;
         public float Acd { get; private set; }
         public Dictionary<int,float> AcdAddBuffs;
-        public Dictionary<int,float> AcdPercBuffs; 
+        public Dictionary<int,float> AcdPercBuffs;
         public void ChangeHp(float AddHp)
         {
             Hp += AddHp;
         }
         public void LevelUp(EntityData ED, int Lvl)
         {
+            Exp = ED.BaseExp * ED.GrowExp * Lvl;
             Hp = ED.BaseHp + ED.GrowHp * Lvl;
             MaxHp = ED.BaseHp + ED.GrowHp * Lvl;
             Atk = ED.BaseAtk + ED.GrowAtk * Lvl;

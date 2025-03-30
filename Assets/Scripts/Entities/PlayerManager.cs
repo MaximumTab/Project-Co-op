@@ -8,6 +8,7 @@ public class PlayerManager : EntityManager
     private Quaternion CameraRot;
     private InputSystem_Actions input;
     private Vector2 moveInput;
+    public float Exp=0;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void Start()
