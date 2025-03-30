@@ -153,6 +153,7 @@ public class EntityManager : MonoBehaviour
     {
         if (DashInput()&& DashCool)
         {
+            SoundManager.Play3DSound(SoundType.Dash, transform, 1f, 2f, 10f);
             StartCoroutine(Dashing());
             StartCoroutine(DashCoolDown());
         }
