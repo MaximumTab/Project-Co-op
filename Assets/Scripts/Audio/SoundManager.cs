@@ -3,8 +3,8 @@ using System;
 
 public enum SoundType
 {
-     Jump,
-     Dash
+    Jump,
+    Dash
 }
 
 [RequireComponent(typeof(AudioSource)), ExecuteInEditMode]
@@ -31,6 +31,32 @@ public class SoundManager : MonoBehaviour
         instance.audioSource.PlayOneShot(randomClip, volume);
     }
 
+    public static void Play3DSound(SoundType sound, Transform parent, float spatialBlend = 1f, float minDistance = 1f, float maxDistance = 50f)
+    {
+        AudioClip[] clips = instance.soundList[(int)sound].Sounds;
+        AudioClip randomClip = clips[UnityEngine.Random.Range(0, clips.Length)];
+        
+        GameObject soundObject = new GameObject("3D_Sound");
+        soundObject.transform.SetParent(parent, false); // Spawn under the triggering object
+        soundObject.transform.localPosition = Vector3.zero; // Ensure it's positioned correctly relative to the parent
+        
+        AudioSource newAudioSource = soundObject.AddComponent<AudioSource>();
+        newAudioSource.clip = randomClip;
+        newAudioSource.spatialBlend = spatialBlend; // 3D sound
+        newAudioSource.rolloffMode = AudioRolloffMode.Linear;
+        newAudioSource.minDistance = minDistance;
+        newAudioSource.maxDistance = maxDistance;
+        newAudioSource.Play();
+        
+        instance.StartCoroutine(instance.DestroyAfterPlay(newAudioSource));
+    }
+
+    private System.Collections.IEnumerator DestroyAfterPlay(AudioSource source)
+    {
+        yield return new WaitForSeconds(source.clip.length);
+        Destroy(source.gameObject);
+    }
+
 #if UNITY_EDITOR
     private void OnEnable()
     {
@@ -47,9 +73,7 @@ public class SoundManager : MonoBehaviour
 [Serializable]
 public struct SoundList
 {
-   
-    public AudioClip[] Sounds {get => sounds; }
+    public AudioClip[] Sounds { get => sounds; }
     [HideInInspector] public string name;
     [SerializeField] private AudioClip[] sounds;
 }
-
