@@ -20,6 +20,24 @@ public class PlayerManager : EntityManager
         }
         input = new InputSystem_Actions();
         input.Enable();
+        XPManager.Instance.UpdateXPUI(Exp,SM.Exp,Lvl);
+    }
+
+    public override void LevelingUp()
+    {
+        if (Exp >= SM.Exp)
+        {
+            Exp -= SM.Exp;
+            SM.LevelUp(ED,Lvl);
+            Lvl = SM.IncreaseLvl(Lvl);
+            XPManager.Instance.UpdateXPUI(Exp,SM.Exp,Lvl);
+        }
+    }
+
+    public override void AddXP(float Xp)
+    {
+        Exp += Xp;
+        XPManager.Instance.UpdateXPUI(Exp,SM.Exp,Lvl);
     }
 
     public override void MoveInput()
