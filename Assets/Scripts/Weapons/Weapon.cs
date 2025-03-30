@@ -75,8 +75,24 @@ public class Weapon : MonoBehaviour
         string targetName = TargetEM.ED != null ? TargetEM.ED.Name : TargetEM.gameObject.name;
         float targetCurrentHp = TargetEM.SM.Hp;
 
+        // HUD check for Player
+        if (TargetEM is PlayerManager && PlayerHealthManager.Instance != null)
+        {
+            PlayerHealthManager.Instance.TakeDamage(damageAmount);
+        }
+
+        // HUD check for Boss
+        if (TargetEM is BaseEnemyManager && TargetEM.ED != null && TargetEM.ED.Name == "Rock")
+        {
+            if (BossHealthManager.Instance != null)
+            {
+                BossHealthManager.Instance.TakeDamage(damageAmount);
+            }
+        }
+
         Debug.Log($"[DAMAGE] {attackerName} dealt {damageAmount} damage to {targetName}. Current HP: {targetCurrentHp}");
     }
+
     public virtual void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.transform.IsChildOf(PS.gameObject.transform.parent))
