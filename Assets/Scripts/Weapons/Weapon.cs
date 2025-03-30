@@ -76,17 +76,17 @@ public class Weapon : MonoBehaviour
         float targetCurrentHp = TargetEM.SM.Hp;
 
         // HUD check for Player
-        if (TargetEM is PlayerManager && PlayerHealthManager.Instance != null)
+        if (TargetEM is PlayerManager && HealthManager.Instance[0])
         {
-            PlayerHealthManager.Instance.TakeDamage(damageAmount);
+            HealthManager.Instance[0].TakeDamage(damageAmount);
         }
 
         // HUD check for Boss
-        if (TargetEM is BaseEnemyManager && TargetEM.ED != null && TargetEM.ED.Name == "Rock")
+        if (TargetEM is BaseEnemyManager && TargetEM.ED.isBoss)
         {
-            if (BossHealthManager.Instance != null)
+            if (HealthManager.Instance[1])
             {
-                BossHealthManager.Instance.TakeDamage(damageAmount);
+                HealthManager.Instance[1].TakeDamage(damageAmount);
             }
         }
 

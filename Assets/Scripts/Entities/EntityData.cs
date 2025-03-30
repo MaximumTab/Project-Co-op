@@ -4,6 +4,7 @@ using UnityEngine;
 public class EntityData : ScriptableObject
 {
     public string Name;
+    public bool isBoss;
     
     public float BaseAtk;//initial attack at base lvl
     public float GrowAtk;//additive increase of attack per level

@@ -54,17 +54,17 @@ public class XPManager : MonoBehaviour
 
     void UpdateXPUI()
     {
-        if (xpSlider != null)
+        if (xpSlider)
         {
             xpSlider.value = currentXP / xpToNextLevel;
         }
 
-        if (xpText != null)
+        if (xpText)
         {
             xpText.text = $"{Mathf.FloorToInt(currentXP)} / {Mathf.FloorToInt(xpToNextLevel)}";
         }
 
-        if (levelText != null)
+        if (levelText)
         {
             levelText.text = $"Lvl {currentLevel}";
         }
