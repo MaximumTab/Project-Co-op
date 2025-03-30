@@ -13,6 +13,11 @@ public class PlayerManager : EntityManager
     public override void Start()
     {
         base.Start();
+        if (PlayerHealthManager.Instance != null)
+        {
+            PlayerHealthManager.Instance.maxHealth = SM.MaxHp;
+            PlayerHealthManager.Instance.Heal(SM.Hp);
+        }
         input = new InputSystem_Actions();
         input.Enable();
     }
