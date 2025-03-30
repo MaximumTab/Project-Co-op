@@ -67,10 +67,21 @@ public class EntityManager : MonoBehaviour
         Shoot();
         Look();
         Drop();
+        LevelingUp();
         if (SM.Hp <= 0)
         {
             OnDeath();
         }
+    }
+
+    public virtual void AddXP(float xp)
+    {
+        
+    }
+
+    public virtual void LevelingUp()
+    {
+        
     }
 
     public virtual void OnDeath()
@@ -232,8 +243,8 @@ public class EntityManager : MonoBehaviour
         Attacking[a] = true;
         if (Wp.Attack(a))
         {
-            var uiCooldown = FindObjectOfType<AttackCooldownUI>();
-            if (uiCooldown != null)
+            AttackCooldownUI uiCooldown = FindObjectOfType<AttackCooldownUI>();
+            if (uiCooldown)
             {
                 uiCooldown.TriggerCooldown(a);
             }
@@ -286,7 +297,7 @@ public class EntityManager : MonoBehaviour
         }
         public void LevelUp(EntityData ED, int Lvl)
         {
-            Exp = ED.BaseExp * ED.GrowExp * Lvl;
+            Exp = ED.BaseExp * ED.GrowExp * Lvl + ED.BaseExp;
             Hp = ED.BaseHp + ED.GrowHp * Lvl;
             MaxHp = ED.BaseHp + ED.GrowHp * Lvl;
             Atk = ED.BaseAtk + ED.GrowAtk * Lvl;

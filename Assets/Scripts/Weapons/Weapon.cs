@@ -22,7 +22,6 @@ public class Weapon : MonoBehaviour
         {
             WAnim = gameObject.GetComponent<Animator>();
         }
-
         Atking = new bool[WD.WNumAtks];
     }
 
@@ -82,15 +81,16 @@ public class Weapon : MonoBehaviour
         }
 
         // HUD check for Boss
-        if (TargetEM is BaseEnemyManager && TargetEM.ED.isBoss)
+        if (TargetEM is BaseEnemyManager && TargetEM.ED.isBoss&&HealthManager.Instance[1])
         {
-            if (HealthManager.Instance[1])
-            {
-                HealthManager.Instance[1].TakeDamage(damageAmount);
-            }
+            HealthManager.Instance[1].TakeDamage(damageAmount);
         }
 
         Debug.Log($"[DAMAGE] {attackerName} dealt {damageAmount} damage to {targetName}. Current HP: {targetCurrentHp}");
+        if (TargetEM.SM.Hp <= 0)
+        {
+            PS.AddXP(TargetEM.SM.Exp);
+        }
     }
 
     public virtual void OnTriggerEnter(Collider other)

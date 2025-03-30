@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: TestCharacter
   m_EditorClassIdentifier: 
   Name: Normal
+  isBoss: 0
   BaseAtk: 20
   GrowAtk: 2
   BaseHp: 100
@@ -21,3 +22,5 @@ MonoBehaviour:
   GrowAspd: 1
   BaseAC: 100
   GrowAC: 1
+  BaseExp: 100
+  GrowExp: 1
