@@ -3559,37 +3559,61 @@ PrefabInstance:
       propertyPath: soundList.Array.data[2].name
       value: Dash
       objectReference: {fileID: 0}
+    - target: {fileID: 2929120746577416200, guid: c8deb23514f24834d825dbfa2fea2af3, type: 3}
+      propertyPath: soundList.Array.data[1].sounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929120746577416200, guid: c8deb23514f24834d825dbfa2fea2af3, type: 3}
+      propertyPath: 'soundList.Array.data[1].sounds.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 691fa6677b8de784da351c3438e09a9f, type: 3}
     - target: {fileID: 8222091133692912226, guid: c8deb23514f24834d825dbfa2fea2af3, type: 3}
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
-    - target: {fileID: 8874894552678893149, guid: c8deb23514f24834d825dbfa2fea2af3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 472.6583
+    - target: {fileID: 8595296399992593235, guid: c8deb23514f24834d825dbfa2fea2af3, type: 3}
+      propertyPath: m_Volume
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8874894552678893149, guid: c8deb23514f24834d825dbfa2fea2af3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 291.6116
+    - target: {fileID: 8595296399992593235, guid: c8deb23514f24834d825dbfa2fea2af3, type: 3}
+      propertyPath: MaxDistance
+      value: 25
       objectReference: {fileID: 0}
-    - target: {fileID: 8874894552678893149, guid: c8deb23514f24834d825dbfa2fea2af3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -79.033005
+    - target: {fileID: 8595296399992593235, guid: c8deb23514f24834d825dbfa2fea2af3, type: 3}
+      propertyPath: rolloffMode
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8874894552678893149, guid: c8deb23514f24834d825dbfa2fea2af3, type: 3}
-      propertyPath: m_LocalRotation.w
+    - target: {fileID: 8595296399992593235, guid: c8deb23514f24834d825dbfa2fea2af3, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8874894552678893149, guid: c8deb23514f24834d825dbfa2fea2af3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.8963623
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874894552678893149, guid: c8deb23514f24834d825dbfa2fea2af3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.025879
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874894552678893149, guid: c8deb23514f24834d825dbfa2fea2af3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.749145
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874894552678893149, guid: c8deb23514f24834d825dbfa2fea2af3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.9918843
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874894552678893149, guid: c8deb23514f24834d825dbfa2fea2af3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.12443944
       objectReference: {fileID: 0}
     - target: {fileID: 8874894552678893149, guid: c8deb23514f24834d825dbfa2fea2af3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.025871921
       objectReference: {fileID: 0}
     - target: {fileID: 8874894552678893149, guid: c8deb23514f24834d825dbfa2fea2af3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.003327875
       objectReference: {fileID: 0}
     - target: {fileID: 8874894552678893149, guid: c8deb23514f24834d825dbfa2fea2af3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
