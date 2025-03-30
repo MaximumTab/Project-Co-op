@@ -2,28 +2,43 @@ using UnityEngine;
 
 public class PauseMenuController : MonoBehaviour
 {
-    public GameObject menuWindow;
- 
-    public void PauseBtn()
-    {
+    [SerializeField] private GameObject pauseMenuWindow;
+    private bool isPaused = false; // Boolean to track whether the game is paused or not
 
-        Time.timeScale = 0f;
-        Debug.Log("time scale is currently = " + Time.timeScale);
-        if(menuWindow != null)
+
+    // Update is called once per frame
+    void Update()
+    {
+        // Check if the 'P' key is pressed
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            menuWindow.SetActive(true);
+            Debug.Log("This thing is working");
+            TogglePause();
         }
-        
-
-        //note for future: remember to change timescale back to 1 if redirecting scenes
     }
 
-    public void PlayBtn()
+
+    void TogglePause()
     {
-        Time.timeScale = 1f;
-        Debug.Log("time scale is currently = " + Time.timeScale);
-        menuWindow.SetActive(false);
-    
+        Debug.Log("Reaches toggle pause");
+
+        // Toggle the pause state
+        isPaused = !isPaused;
+        Debug.Log("ispaused is currently = " + isPaused);
+
+        // Set the time scale based on the pause state
+        if (isPaused)
+        {
+            Debug.Log("Reaches is paused condition");
+            Time.timeScale = 0; // Pauses the game
+            pauseMenuWindow.SetActive(true);
+        }
+        else
+        {
+            Time.timeScale = 1; // Resumes the game
+            pauseMenuWindow.SetActive(false);
+        }
+
     }
-    
+
 }
