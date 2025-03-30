@@ -8,15 +8,15 @@ public class PlayerManager : EntityManager
     private Quaternion CameraRot;
     private InputSystem_Actions input;
     private Vector2 moveInput;
+    public float Exp=0;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void Start()
     {
         base.Start();
-        if (PlayerHealthManager.Instance != null)
+        if (HealthManager.Instance[0])
         {
-            PlayerHealthManager.Instance.maxHealth = SM.MaxHp;
-            PlayerHealthManager.Instance.Heal(SM.Hp);
+            HealthManager.Instance[0].SetHp(SM.MaxHp);
         }
         input = new InputSystem_Actions();
         input.Enable();

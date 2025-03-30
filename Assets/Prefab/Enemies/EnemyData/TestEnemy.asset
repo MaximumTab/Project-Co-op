@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b97e52964d20cb2459cb7755ca1834d4, type: 3}
   m_Name: TestEnemy
   m_EditorClassIdentifier: 
-  Name: Rock
+  Name: The Rock
+  isBoss: 1
   BaseAtk: 20
   GrowAtk: 5
   BaseHp: 300
@@ -21,3 +22,5 @@ MonoBehaviour:
   GrowAspd: 20
   BaseAC: 100
   GrowAC: 0
+  BaseExp: 0
+  GrowExp: 0
