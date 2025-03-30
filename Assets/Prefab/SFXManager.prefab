@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2929120746577416200}
   - component: {fileID: 8595296399992593235}
   m_Layer: 0
-  m_Name: SoundManager
+  m_Name: SFXManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8222091133692912226}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 472.6583, y: 291.6116, z: -79.033005}
+  m_LocalRotation: {x: -0.12443944, y: -0.025871921, z: 0.003327875, w: -0.9918843}
+  m_LocalPosition: {x: 3.8963623, y: 6.025879, z: 3.749145}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -50,7 +50,9 @@ MonoBehaviour:
     sounds:
     - {fileID: 8300000, guid: 4d02920213decb24995984f2a8797202, type: 3}
   - name: Dash
-    sounds: []
+    sounds:
+    - {fileID: 8300000, guid: 691fa6677b8de784da351c3438e09a9f, type: 3}
+  audioMixerGroup: {fileID: 1791762942064209643, guid: ee487c256b1f039409f22f13091e2cd0, type: 2}
 --- !u!82 &8595296399992593235
 AudioSource:
   m_ObjectHideFlags: 0
@@ -60,11 +62,11 @@ AudioSource:
   m_GameObject: {fileID: 8222091133692912226}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1791762942064209643, guid: ee487c256b1f039409f22f13091e2cd0, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.429
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -73,9 +75,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 25
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -108,7 +110,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

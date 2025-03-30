@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using UnityEngine.Audio;
 
 public enum SoundType
 {
@@ -13,6 +14,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SoundList[] soundList;
     private static SoundManager instance;
     private AudioSource audioSource;
+    [SerializeField] private AudioMixerGroup audioMixerGroup;
 
     private void Awake()
     {
@@ -22,6 +24,7 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        audioSource.outputAudioMixerGroup = audioMixerGroup;
     }
 
     public static void PlaySound(SoundType sound, float volume = 1)
@@ -46,8 +49,12 @@ public class SoundManager : MonoBehaviour
         newAudioSource.rolloffMode = AudioRolloffMode.Linear;
         newAudioSource.minDistance = minDistance;
         newAudioSource.maxDistance = maxDistance;
+
+          
+        if (instance.audioMixerGroup != null)
+        newAudioSource.outputAudioMixerGroup = instance.audioMixerGroup;
+
         newAudioSource.Play();
-        
         instance.StartCoroutine(instance.DestroyAfterPlay(newAudioSource));
     }
 
