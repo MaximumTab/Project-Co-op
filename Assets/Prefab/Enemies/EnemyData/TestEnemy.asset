@@ -22,5 +22,5 @@ MonoBehaviour:
   GrowAspd: 20
   BaseAC: 100
   GrowAC: 0
-  BaseExp: 0
-  GrowExp: 0
+  BaseExp: 100
+  GrowExp: 0.2
