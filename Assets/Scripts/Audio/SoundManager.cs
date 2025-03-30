@@ -27,14 +27,8 @@ public class SoundManager : MonoBehaviour
         audioSource.outputAudioMixerGroup = audioMixerGroup;
     }
 
-    public static void PlaySound(SoundType sound, float volume = 1)
-    {
-        AudioClip[] clips = instance.soundList[(int)sound].Sounds;
-        AudioClip randomClip = clips[UnityEngine.Random.Range(0, clips.Length)];
-        instance.audioSource.PlayOneShot(randomClip, volume);
-    }
 
-    public static void Play3DSound(SoundType sound, Transform parent, float spatialBlend = 1f, float minDistance = 1f, float maxDistance = 50f)
+    public static void Play3DSound(SoundType sound, Transform parent, float spatialBlend = 1f, float minDistance = 1f, float maxDistance = 50f, float volume = 1)
     {
         AudioClip[] clips = instance.soundList[(int)sound].Sounds;
         AudioClip randomClip = clips[UnityEngine.Random.Range(0, clips.Length)];
@@ -49,6 +43,7 @@ public class SoundManager : MonoBehaviour
         newAudioSource.rolloffMode = AudioRolloffMode.Linear;
         newAudioSource.minDistance = minDistance;
         newAudioSource.maxDistance = maxDistance;
+        newAudioSource.volume = volume; //volume 
 
           
         if (instance.audioMixerGroup != null)

@@ -8,7 +8,7 @@ public class PlaySoundEnter : StateMachineBehaviour
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-       SoundManager.PlaySound(sound, volume );
+       SoundManager.Play3DSound(sound, animator.transform, 1f, 1f, 50f, volume);
     }
     
 }
