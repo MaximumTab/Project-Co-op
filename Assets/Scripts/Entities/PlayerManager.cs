@@ -24,9 +24,13 @@ public class PlayerManager : EntityManager
 
     public override void MoveInput()
     {
-        moveInput = input.Player.Move.ReadValue<Vector2>();
-        CameraRot=Quaternion.Euler(0,CameraRotation.rotation.eulerAngles.y,0);
-        MoveDir =CameraRot*new Vector3(moveInput.x,0, moveInput.y);
+        if(Time.timeScale != 0)
+        {
+            moveInput = input.Player.Move.ReadValue<Vector2>();
+            CameraRot = Quaternion.Euler(0, CameraRotation.rotation.eulerAngles.y, 0);
+            MoveDir = CameraRot * new Vector3(moveInput.x, 0, moveInput.y);
+        }
+      
     }
     public override (bool,int) AtkInput() //Choose how to Shoot in Child
     {

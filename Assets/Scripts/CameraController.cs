@@ -55,7 +55,11 @@ public class CameraController : MonoBehaviour
         desiredPos = target.position - targetRotation * offset + Vector3.up * posheight;
 
         transform.position = desiredPos;
-        transform.LookAt(target.position + Vector3.up * lookheight);
+        if(Time.timeScale != 0)
+        {
+            transform.LookAt(target.position + Vector3.up * lookheight);
+        }
+      
     }
 
     public Quaternion YRotation => Quaternion.Euler(0.0f, yRotation, 0.0f);

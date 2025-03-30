@@ -12,7 +12,6 @@ public class PauseMenuController : MonoBehaviour
         // Check if the 'P' key is pressed
         if (Input.GetKeyDown(KeyCode.P))
         {
-            Debug.Log("This thing is working");
             TogglePause();
         }
     }
@@ -20,7 +19,8 @@ public class PauseMenuController : MonoBehaviour
 
     void TogglePause()
     {
-        Debug.Log("Reaches toggle pause");
+        UnityEngine.Cursor.visible = true;
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
 
         // Toggle the pause state
         isPaused = !isPaused;
@@ -38,7 +38,10 @@ public class PauseMenuController : MonoBehaviour
         {
             Time.timeScale = 1; // Resumes the game
             pauseMenuWindow.SetActive(false);
-        
+
+            UnityEngine.Cursor.visible = false;
+            UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+
         }
 
     }
