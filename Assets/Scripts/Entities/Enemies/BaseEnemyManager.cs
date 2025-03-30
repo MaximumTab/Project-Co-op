@@ -8,9 +8,9 @@ public class BaseEnemyManager : EntityManager
     {
         base.Start();
 
-        if (ED != null && ED.Name == "Rock" && BossHealthManager.Instance != null)
-        {
-            BossHealthManager.Instance.Init(SM.MaxHp, ED.Name);
+        if (ED&& ED.isBoss&& HealthManager.Instance[1])
+        { 
+            HealthManager.Instance[1].Init(SM.MaxHp, ED.Name);
         }
     }
 
