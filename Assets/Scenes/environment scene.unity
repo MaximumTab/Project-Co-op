@@ -2460,7 +2460,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1209748965}
   m_Layer: 0
-  m_Name: ------ SoundManager -------------------------
+  m_Name: ------ Managers -------------------------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3551,6 +3551,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2929120746577416200, guid: c8deb23514f24834d825dbfa2fea2af3, type: 3}
+      propertyPath: soundList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929120746577416200, guid: c8deb23514f24834d825dbfa2fea2af3, type: 3}
+      propertyPath: soundList.Array.data[2].name
+      value: Dash
+      objectReference: {fileID: 0}
     - target: {fileID: 8222091133692912226, guid: c8deb23514f24834d825dbfa2fea2af3, type: 3}
       propertyPath: m_Name
       value: SoundManager
