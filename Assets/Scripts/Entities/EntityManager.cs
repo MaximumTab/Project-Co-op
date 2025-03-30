@@ -231,6 +231,11 @@ public class EntityManager : MonoBehaviour
         Attacking[a] = true;
         if (Wp.Attack(a))
         {
+            var uiCooldown = FindObjectOfType<AttackCooldownUI>();
+            if (uiCooldown != null)
+            {
+                uiCooldown.TriggerCooldown(a);
+            }
             for (float i = 0; i < (Wp.WD.WAtkDuration[a] + 0.05f) / SM.CurAspd(); i += Time.deltaTime)
             {
                 Weapon.transform.position = gameObject.transform.position;
