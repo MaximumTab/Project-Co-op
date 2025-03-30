@@ -216,7 +216,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -523,6 +523,7 @@ MonoBehaviour:
   TerminalVel: 20
   Attacking: 
   CameraRotation: {fileID: 7839474449267695542}
+  Exp: 0
 --- !u!136 &7328471659442591423
 CapsuleCollider:
   m_ObjectHideFlags: 0
