@@ -1312,6 +1312,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 93785388312014302, guid: 7ef7d10e3e49d244388b8828b4e82f2c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 273539187182266091, guid: 7ef7d10e3e49d244388b8828b4e82f2c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 706472240035985244, guid: 7ef7d10e3e49d244388b8828b4e82f2c, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1368,6 +1376,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4107603293069181161, guid: 7ef7d10e3e49d244388b8828b4e82f2c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4172938625372066373, guid: 7ef7d10e3e49d244388b8828b4e82f2c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1412,6 +1424,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5263572222580342214, guid: 7ef7d10e3e49d244388b8828b4e82f2c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5368335161190657665, guid: 7ef7d10e3e49d244388b8828b4e82f2c, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1435,6 +1451,10 @@ PrefabInstance:
     - target: {fileID: 7465443691249842884, guid: 7ef7d10e3e49d244388b8828b4e82f2c, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7550648793657038175, guid: 7ef7d10e3e49d244388b8828b4e82f2c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -25.599976
       objectReference: {fileID: 0}
     - target: {fileID: 7666164436619895911, guid: 7ef7d10e3e49d244388b8828b4e82f2c, type: 3}
       propertyPath: m_IsActive
