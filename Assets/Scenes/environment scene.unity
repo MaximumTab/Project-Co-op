@@ -3135,7 +3135,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8222091133692912226, guid: c8deb23514f24834d825dbfa2fea2af3, type: 3}
       propertyPath: m_Name
-      value: SFXManager
+      value: SoundManager
       objectReference: {fileID: 0}
     - target: {fileID: 8874894552678893149, guid: c8deb23514f24834d825dbfa2fea2af3, type: 3}
       propertyPath: m_LocalPosition.x
