@@ -412,7 +412,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3990237459679831588
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3264,12 +3264,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 5705519153049347747}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee7d9ffe453843648ad12c840e992e49, type: 3}
+  m_Script: {fileID: 11500000, guid: 29175e52af200cc4b864b43b01dbe8bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  UITarget: 0
+  isBoss: 1
   healthSlider: {fileID: 4851177407575120268}
   healthText: {fileID: 7897768730501272575}
+  bossNameText: {fileID: 0}
+  healthBarContainer: {fileID: 0}
 --- !u!1 &5873194986015357540
 GameObject:
   m_ObjectHideFlags: 0
@@ -5658,7 +5661,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 707366276984376815}
-  - component: {fileID: 1048508467467764000}
+  - component: {fileID: 678424782632657594}
   m_Layer: 0
   m_Name: BossHealthManager
   m_TagString: Untagged
@@ -5685,7 +5688,7 @@ RectTransform:
   m_AnchoredPosition: {x: -11.150003, y: 2.9000206}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1048508467467764000
+--- !u!114 &678424782632657594
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5694,10 +5697,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8849828662072103645}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 859edc741bc22a64288ba52baf1faf16, type: 3}
+  m_Script: {fileID: 11500000, guid: 29175e52af200cc4b864b43b01dbe8bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  UITarget: 1
+  isBoss: 1
   healthSlider: {fileID: 6340667390024233350}
   healthText: {fileID: 7407961194501343950}
   bossNameText: {fileID: 4094247200167509752}
