@@ -877,7 +877,6 @@ GameObject:
   - component: {fileID: 2680648150073550598}
   - component: {fileID: 6650901774144829850}
   - component: {fileID: 5366757411481340464}
-  - component: {fileID: 5368335161190657665}
   m_Layer: 0
   m_Name: Attack image 2
   m_TagString: Untagged
@@ -994,20 +993,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5368335161190657665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2974908118014566173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a91d1d78d535b14f8974d240a3d92ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  decrementAmount: 0.1
-  cooldownSlider: {fileID: 5366757411481340464}
 --- !u!1 &3333115270433910807
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,7 +1080,6 @@ GameObject:
   - component: {fileID: 5157279056446842003}
   - component: {fileID: 9139179363961236841}
   - component: {fileID: 1303174137573676244}
-  - component: {fileID: 7465443691249842884}
   m_Layer: 0
   m_Name: Attack image 3
   m_TagString: Untagged
@@ -1212,20 +1196,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7465443691249842884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3405291828637286595}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a91d1d78d535b14f8974d240a3d92ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  decrementAmount: 0.1
-  cooldownSlider: {fileID: 1303174137573676244}
 --- !u!1 &3527430730080229828
 GameObject:
   m_ObjectHideFlags: 0
@@ -1503,7 +1473,7 @@ GameObject:
   - component: {fileID: 8755329402468182207}
   - component: {fileID: 6340667390024233350}
   m_Layer: 0
-  m_Name: BossHealthBar2
+  m_Name: BossHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2246,7 +2216,6 @@ GameObject:
   - component: {fileID: 5918468363346032734}
   - component: {fileID: 4793923133609582077}
   - component: {fileID: 1570408710740053705}
-  - component: {fileID: 1356716999990299966}
   m_Layer: 0
   m_Name: Attack image 3
   m_TagString: Untagged
@@ -2363,20 +2332,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1356716999990299966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5318169165903402498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a91d1d78d535b14f8974d240a3d92ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  decrementAmount: 0.1
-  cooldownSlider: {fileID: 1570408710740053705}
 --- !u!1 &5373636644758942530
 GameObject:
   m_ObjectHideFlags: 0
@@ -2441,7 +2396,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5148017210180003783}
-  - component: {fileID: 5895195345119514557}
+  - component: {fileID: 8247900346516836045}
   m_Layer: 0
   m_Name: HealthManager
   m_TagString: Untagged
@@ -2468,7 +2423,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5895195345119514557
+--- !u!114 &8247900346516836045
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2477,12 +2432,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 5705519153049347747}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee7d9ffe453843648ad12c840e992e49, type: 3}
+  m_Script: {fileID: 11500000, guid: 29175e52af200cc4b864b43b01dbe8bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  UITarget: 0
+  isBoss: 0
   healthSlider: {fileID: 4851177407575120268}
   healthText: {fileID: 7897768730501272575}
+  bossNameText: {fileID: 0}
+  healthBarContainer: {fileID: 0}
 --- !u!1 &6204957910224374768
 GameObject:
   m_ObjectHideFlags: 0
@@ -3690,7 +3648,6 @@ GameObject:
   - component: {fileID: 2436962055232776555}
   - component: {fileID: 1859755726371800017}
   - component: {fileID: 6970982208653611055}
-  - component: {fileID: 7682468489372743594}
   m_Layer: 0
   m_Name: Attack image
   m_TagString: Untagged
@@ -3807,20 +3764,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7682468489372743594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7819869651203895723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a91d1d78d535b14f8974d240a3d92ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  decrementAmount: 0.1
-  cooldownSlider: {fileID: 6970982208653611055}
 --- !u!1 &7874955969410031434
 GameObject:
   m_ObjectHideFlags: 0
@@ -4359,7 +4302,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 707366276984376815}
-  - component: {fileID: 1048508467467764000}
+  - component: {fileID: 3910013297418791723}
   m_Layer: 0
   m_Name: BossHealthManager
   m_TagString: Untagged
@@ -4386,7 +4329,7 @@ RectTransform:
   m_AnchoredPosition: {x: -11.150003, y: 2.9000206}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1048508467467764000
+--- !u!114 &3910013297418791723
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4395,10 +4338,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8849828662072103645}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 859edc741bc22a64288ba52baf1faf16, type: 3}
+  m_Script: {fileID: 11500000, guid: 29175e52af200cc4b864b43b01dbe8bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  UITarget: 1
+  isBoss: 1
   healthSlider: {fileID: 6340667390024233350}
   healthText: {fileID: 7407961194501343950}
   bossNameText: {fileID: 4094247200167509752}
