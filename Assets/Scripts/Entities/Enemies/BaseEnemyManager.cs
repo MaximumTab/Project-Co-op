@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BaseEnemyManager : EntityManager
 {
-    public float[] InAmountPerAttack;
+    public float[] OneInNumberAtkAttempt;
 
     public override void Start()
     {
@@ -27,9 +27,9 @@ public class BaseEnemyManager : EntityManager
 
     public override (bool,int) AtkInput() //Choose how to Shoot in Child
     {
-        for (int i = 0; i < InAmountPerAttack.Length; i++)
+        for (int i = 0; i < OneInNumberAtkAttempt.Length; i++)
         {
-            if (Random.Range(0, InAmountPerAttack[i]) < 1)
+            if (Random.Range(0, OneInNumberAtkAttempt[i]) < 1)
             {
                 return (true, i);
             }

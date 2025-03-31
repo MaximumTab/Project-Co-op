@@ -20,4 +20,7 @@ public class EntityData : ScriptableObject
 
     public float BaseExp;//for players the baseExp is the initial max exp. for enemies this is the base exp given when defeated.
     public float GrowExp;//Multiplies with BaseExp depending on lvl
+    
+    public float JumpForce=10;
+    public int BonusJumps = 0;
 }

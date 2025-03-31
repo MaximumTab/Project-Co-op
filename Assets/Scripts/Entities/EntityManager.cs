@@ -9,39 +9,37 @@ public class EntityManager : MonoBehaviour
 {
     protected Animator Anim;
     public EntityData ED;
-    public Rigidbody rb;
-    public Vector3 MoveDir;
-    public Quaternion LookDir;
-    public Quaternion LastLook;
-    public bool LookCooldown=true;
-    public float TurnDuration = 0.25f;
+    public Rigidbody rb{ get; private set; }
+    protected Vector3 MoveDir;
+    protected Quaternion LookDir;
+    public Quaternion LastLook{ get; private set; }
+    private bool LookCooldown = true;
+    //public float TurnDuration = 0.15f;
     
     [SerializeField] private GameObject Weapon;
-    private Weapon Wp;
+    public Weapon Wp { get; private set; }
     public int Lvl;
 
-    public float Acceleration;
-    public float Speed;
+    private float Acceleration=1000;
+    public readonly float Speed=10;
     
     private bool isGrounded;
     private bool jumpCooldown=true;
     private int Jumps = 0;
     
-    public float JumpForce=10;
-    public int BonusJumps = 0;
-    public float CayoteLength=0.5f;
-    public float JumpWait = 0.2f;
+    private float CayoteLength=0.5f;
+    private float JumpWait = 0.2f;
     
-    public float DashDistance = 5;
-    public float BaseDashDist = 20;
-    public float DashDownTime = 2;
-    public float DashDuration = 0.1f;
+    private float DashDistance = 5;
+    private float BaseDashDist = 5;
+    private float DashDownTime = 2;
+    private float DashDuration = 0.1f;
     private bool DashCool = true;
     
-    public float DropGrav = 0.2f;
-    public float TerminalVel = 20f;
+    private float DropGrav = 0.5f;
+    private float TerminalVel = 20f;
     
-    public bool[] Attacking;
+    private bool[] Attacking;
 
     public StatManager SM=new StatManager();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -49,10 +47,11 @@ public class EntityManager : MonoBehaviour
     {
         Anim = gameObject.GetComponentInChildren<Animator>();
         rb = gameObject.GetComponent<Rigidbody>();
-        Jumps = BonusJumps;
+        Jumps = ED.BonusJumps;
         if (Weapon != null)
         {
             Wp = Weapon.GetComponent<Weapon>();
+            Wp.PS = this;
             Attacking = new bool[Wp.WD.WNumAtks];
         }
         SM.LevelUp(ED,Lvl);
@@ -90,6 +89,11 @@ public class EntityManager : MonoBehaviour
         {
             Anim.SetBool("Death", true);
         }
+    }
+
+    public void ChangeWeapon(GameObject Weap)
+    {
+        Weapon = Weap;
     }
 
 
@@ -132,7 +136,7 @@ public class EntityManager : MonoBehaviour
     {
         if (isJumpable())
         {
-            rb.AddForce(0,JumpForce,0,ForceMode.Impulse);
+            rb.AddForce(0,ED.JumpForce,0,ForceMode.Impulse);
             SoundManager.Play3DSound(SoundType.Jump, transform, 1f, 2f, 10f);
             if (Anim)
             {
@@ -210,7 +214,7 @@ public class EntityManager : MonoBehaviour
         return AdjustedSpeed;
     }
     
-    public IEnumerator LerpRotation(Quaternion target, Quaternion goal)
+   /* public IEnumerator LerpRotation(Quaternion target, Quaternion goal)
     {
         LookCooldown = false;
         Quaternion StartRot = target;
@@ -223,7 +227,7 @@ public class EntityManager : MonoBehaviour
         transform.rotation = goal;
         yield return null;
         LookCooldown = true;
-    }
+    }*/
     IEnumerator CayoteTime()
     {
         yield return new WaitForSeconds(CayoteLength);
@@ -265,7 +269,7 @@ public class EntityManager : MonoBehaviour
         Attacking[a] = true;
         if (Wp.Attack(a))
         {
-            AttackCooldownUI uiCooldown = FindObjectOfType<AttackCooldownUI>();
+            AttackCooldownUI uiCooldown = FindAnyObjectByType<AttackCooldownUI>();
             if (uiCooldown)
             {
                 uiCooldown.TriggerCooldown(a);
@@ -411,7 +415,7 @@ public class EntityManager : MonoBehaviour
         if (jumpCooldown&&!other.gameObject.transform.IsChildOf(gameObject.transform.parent))
         {
             isGrounded = true;
-            Jumps = BonusJumps;
+            Jumps = ED.BonusJumps;
         }
     }
 

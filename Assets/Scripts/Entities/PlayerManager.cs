@@ -9,10 +9,13 @@ public class PlayerManager : EntityManager
     private InputSystem_Actions input;
     private Vector2 moveInput;
     public float Exp=0;
+    [SerializeField] private Weapons[] weaponsArray;
+    [SerializeField] private int WeaponInUse;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void Start()
     {
+        ChangeWeapon(Instantiate(weaponsArray[WeaponInUse].Weapon, transform.parent));
         base.Start();
         if (HealthManager.Instance[0])
         {
@@ -20,7 +23,10 @@ public class PlayerManager : EntityManager
         }
         input = new InputSystem_Actions();
         input.Enable();
-        XPManager.Instance.UpdateXPUI(Exp,SM.Exp,Lvl);
+        if (XPManager.Instance)
+        {
+            XPManager.Instance.UpdateXPUI(Exp, SM.Exp, Lvl);
+        }
     }
 
     public override void Update()
@@ -39,7 +45,11 @@ public class PlayerManager : EntityManager
             Exp -= SM.Exp;
             SM.LevelUp(ED,Lvl);
             Lvl = SM.IncreaseLvl(Lvl);
-            XPManager.Instance.UpdateXPUI(Exp,SM.Exp,Lvl);
+            if (XPManager.Instance)
+            {
+                XPManager.Instance.UpdateXPUI(Exp, SM.Exp, Lvl);
+            }
+
             if (HealthManager.Instance[0])
             {
                 HealthManager.Instance[0].SetHp(SM.MaxHp);
@@ -50,7 +60,10 @@ public class PlayerManager : EntityManager
     public override void AddXP(float Xp)
     {
         Exp += Xp;
-        XPManager.Instance.UpdateXPUI(Exp,SM.Exp,Lvl);
+        if (XPManager.Instance)
+        {
+            XPManager.Instance.UpdateXPUI(Exp, SM.Exp, Lvl);
+        }
     }
 
     public override void MoveInput()
@@ -103,5 +116,10 @@ public class PlayerManager : EntityManager
     {
         LookDir = CameraRotation.rotation;
         transform.rotation= CameraRot;
+    }
+    [System.Serializable]
+    public struct Weapons
+    {
+        public GameObject Weapon;
     }
 }

@@ -47,28 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ED: {fileID: 11400000, guid: 26e16d71edd4af04a9bd683ec4febf12, type: 2}
-  rb: {fileID: 0}
-  MoveDir: {x: 0, y: 0, z: 0}
-  LookDir: {x: 0, y: 0, z: 0, w: 0}
-  LastLook: {x: 0, y: 0, z: 0, w: 0}
-  LookCooldown: 1
-  TurnDuration: 0.25
   Weapon: {fileID: 1356388611776016954}
   Lvl: 5
-  Acceleration: 0
-  Speed: 0
-  JumpForce: 10
-  BonusJumps: 0
-  CayoteLength: 0.5
-  JumpWait: 0.2
-  DashDistance: 5
-  BaseDashDist: 20
-  DashDownTime: 2
-  DashDuration: 0.1
-  DropGrav: 0.2
-  TerminalVel: 20
-  Attacking: 
-  InAmountPerAttack:
+  OneInNumberAtkAttempt:
   - 1
 --- !u!54 &505052740850208989
 Rigidbody:

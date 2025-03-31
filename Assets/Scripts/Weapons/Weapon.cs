@@ -9,7 +9,7 @@ public class Weapon : MonoBehaviour
     public Collider[] WCols;
 
     private Animator WAnim;
-    public bool[] Atking;
+    private bool[] Atking;
     private EntityManager TargetEM;
     
     public EntityManager PS;
@@ -77,18 +77,6 @@ public class Weapon : MonoBehaviour
         string attackerName = PS.ED != null ? PS.ED.Name : PS.gameObject.name;
         string targetName = TargetEM.ED != null ? TargetEM.ED.Name : TargetEM.gameObject.name;
         float targetCurrentHp = TargetEM.SM.Hp;
-
-        // HUD check for Player
-        if (TargetEM is PlayerManager && HealthManager.Instance[0])
-        {
-            HealthManager.Instance[0].TakeDamage(damageAmount);
-        }
-
-        // HUD check for Boss
-        if (TargetEM is BaseEnemyManager && TargetEM.ED.isBoss&&HealthManager.Instance[1])
-        {
-            HealthManager.Instance[1].TakeDamage(damageAmount);
-        }
 
         Debug.Log($"[DAMAGE] {attackerName} dealt {damageAmount} damage to {targetName}. Current HP: {targetCurrentHp}");
     }
