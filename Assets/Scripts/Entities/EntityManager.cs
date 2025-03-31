@@ -60,7 +60,7 @@ public class EntityManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
         Move();
         Jump();
@@ -155,7 +155,7 @@ public class EntityManager : MonoBehaviour
     {
         if (MoveDir != Vector3.zero&&LookCooldown)
         {
-            StartCoroutine(LerpRotation(transform.rotation, Quaternion.LookRotation(MoveDir)));
+            transform.rotation= Quaternion.LookRotation(MoveDir);
         }
         else
         {
@@ -166,7 +166,8 @@ public class EntityManager : MonoBehaviour
     {
         MoveInput();
         Dash();
-        rb.AddForce(SpeedLimit()*Acceleration);
+        Vector3 AdjustedSpeed = SpeedLimit()*Time.deltaTime;
+        rb.AddForce(AdjustedSpeed*Acceleration);
         if (Anim && new Vector2(rb.linearVelocity.x, rb.linearVelocity.z).magnitude > 0.5f)
         {
             Anim.SetBool("IsWalking",true);

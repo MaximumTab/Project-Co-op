@@ -15,6 +15,15 @@ public class BaseEnemyManager : EntityManager
         Anim = gameObject.GetComponentInParent<Animator>();
     }
 
+    public override void Update()
+    {
+        base.Update();
+        if (ED&& ED.isBoss&& HealthManager.Instance[1])
+        { 
+            HealthManager.Instance[1].SetCurHp(SM.Hp);
+        }
+        
+    }
 
     public override (bool,int) AtkInput() //Choose how to Shoot in Child
     {

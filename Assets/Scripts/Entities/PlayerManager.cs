@@ -23,6 +23,15 @@ public class PlayerManager : EntityManager
         XPManager.Instance.UpdateXPUI(Exp,SM.Exp,Lvl);
     }
 
+    public override void Update()
+    {
+        base.Update();
+        if (HealthManager.Instance[0])
+        {
+            HealthManager.Instance[0].SetCurHp(SM.Hp);
+        }
+    }
+
     public override void LevelingUp()
     {
         if (Exp >= SM.Exp)
@@ -31,6 +40,10 @@ public class PlayerManager : EntityManager
             SM.LevelUp(ED,Lvl);
             Lvl = SM.IncreaseLvl(Lvl);
             XPManager.Instance.UpdateXPUI(Exp,SM.Exp,Lvl);
+            if (HealthManager.Instance[0])
+            {
+                HealthManager.Instance[0].SetHp(SM.MaxHp);
+            }
         }
     }
 
@@ -46,6 +59,15 @@ public class PlayerManager : EntityManager
         {
             moveInput = input.Player.Move.ReadValue<Vector2>();
             CameraRot = Quaternion.Euler(0, CameraRotation.rotation.eulerAngles.y, 0);
+            RaycastHit hit;
+            if (rb.SweepTest(CameraRot * new Vector3(moveInput.x, 0, 0), out hit, Mathf.Abs(moveInput.x)/2))
+            {
+                moveInput.x = 0;
+            }
+            if (rb.SweepTest(CameraRot * new Vector3(0, 0, moveInput.y), out hit, Mathf.Abs(moveInput.y)/2))
+            {
+                moveInput.y = 0;
+            }
             MoveDir = CameraRot * new Vector3(moveInput.x, 0, moveInput.y);
         }
       
@@ -80,16 +102,6 @@ public class PlayerManager : EntityManager
     public override void Look()
     {
         LookDir = CameraRotation.rotation;
-        if (Attacking.Max()&&LookCooldown)
-        {
-            StartCoroutine(LerpRotation(transform.rotation, CameraRot));
-        }else if (MoveDir != Vector3.zero&&LookCooldown)
-        {
-            StartCoroutine(LerpRotation(transform.rotation, Quaternion.LookRotation(MoveDir)));
-        }
-        else
-        {
-            transform.rotation = LastLook;
-        }
+        transform.rotation= CameraRot;
     }
 }

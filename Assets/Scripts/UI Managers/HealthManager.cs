@@ -33,6 +33,13 @@ public class HealthManager : MonoBehaviour
         currentHealth = Hp;
         UpdateHealthUI();
     }
+
+    public void SetCurHp(float Hp)
+    {
+        currentHealth = Hp;
+        UpdateHealthUI();
+    }
+
     public void Init(float maxHP, string bossName)
     {
         maxHealth = maxHP;
