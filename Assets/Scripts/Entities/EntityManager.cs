@@ -16,7 +16,9 @@ public class EntityManager : MonoBehaviour
     private bool LookCooldown = true;
     //public float TurnDuration = 0.15f;
     
-    [SerializeField] private GameObject Weapon;
+    private GameObject Weapon;
+    [SerializeField] private Weapons[] weaponsArray;
+    [SerializeField] private int WeaponInUse;
     public Weapon Wp { get; private set; }
     public int Lvl;
 
@@ -40,11 +42,13 @@ public class EntityManager : MonoBehaviour
     private float TerminalVel = 20f;
     
     private bool[] Attacking;
+    private bool[] BusyAtk;
 
     public StatManager SM=new StatManager();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public virtual void Start()
     {
+        ChangeWeapon();
         Anim = gameObject.GetComponentInChildren<Animator>();
         rb = gameObject.GetComponent<Rigidbody>();
         Jumps = ED.BonusJumps;
@@ -52,7 +56,8 @@ public class EntityManager : MonoBehaviour
         {
             Wp = Weapon.GetComponent<Weapon>();
             Wp.PS = this;
-            Attacking = new bool[Wp.WD.WNumAtks];
+            Attacking = new bool[Wp.WD.AbilityStruct.Length];
+            BusyAtk = new bool[Wp.WD.AbilityStruct.Length];
         }
         SM.LevelUp(ED,Lvl);
         Lvl=SM.IncreaseLvl(Lvl);
@@ -91,9 +96,9 @@ public class EntityManager : MonoBehaviour
         }
     }
 
-    public void ChangeWeapon(GameObject Weap)
+    public void ChangeWeapon()
     {
-        Weapon = Weap;
+        Weapon = Instantiate(weaponsArray[WeaponInUse].Weapon,transform.parent);
     }
 
 
@@ -122,7 +127,7 @@ public class EntityManager : MonoBehaviour
     void Shoot()
     {
         (bool, int) InputAtk=AtkInput();
-        if (InputAtk.Item1&&!Attacking.Max())
+        if (InputAtk.Item1&&!Attacking.Max()&&!BusyAtk[InputAtk.Item2])
         {
             if (Anim)
             {
@@ -267,6 +272,7 @@ public class EntityManager : MonoBehaviour
     IEnumerator WFiring(int a)
     {
         Attacking[a] = true;
+        BusyAtk[a] = true;
         if (Wp.Attack(a))
         {
             AttackCooldownUI uiCooldown = FindAnyObjectByType<AttackCooldownUI>();
@@ -277,12 +283,17 @@ public class EntityManager : MonoBehaviour
 
             if (Anim)
             {
-                //Anim.SetFloat("Speed", SM.CurAspd());
-                //Anim.SetInteger("Attack",a);
+                Anim.SetFloat("Speed", SM.CurAspd());
+                Anim.SetInteger("Attack",a);
             }
 
-            for (float i = 0; i < (Wp.WD.WAtkDuration[a] + 0.05f) / SM.CurAspd(); i += Time.deltaTime)
+            for (float i = 0; i < (Wp.WD.AbilityStruct[a].AbilityDuration + 0.05f) / SM.CurAspd(); i += Time.deltaTime)
             {
+                if (Wp.WD.AbilityStruct[a].AbilityUnInterruptDuration / SM.CurAspd() <= i)
+                {
+                    Attacking[a] = false;
+                }
+
                 Weapon.transform.position = gameObject.transform.position;
                 Weapon.transform.rotation = LookDir;
                 yield return null;
@@ -291,10 +302,11 @@ public class EntityManager : MonoBehaviour
 
         if (Anim)
         {
-            //Anim.SetInteger("Attack", -1);
+            Anim.SetInteger("Attack", -1);
         }
 
         Attacking[a] = false;
+        BusyAtk[a] = false;
         yield return null;
     }
     public virtual void MoveInput()//Change MoveDir in Child
@@ -422,5 +434,10 @@ public class EntityManager : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         StartCoroutine(CayoteTime());
+    }
+    [System.Serializable]
+    public struct Weapons
+    {
+        public GameObject Weapon;
     }
 }

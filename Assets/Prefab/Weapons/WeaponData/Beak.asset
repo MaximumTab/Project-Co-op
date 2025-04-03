@@ -13,24 +13,28 @@ MonoBehaviour:
   m_Name: Beak
   m_EditorClassIdentifier: 
   WName: Beak
-  WAtkPers:
-  - 25
-  - 50
-  - 100
-  - 100
-  WAtkDuration:
-  - 1
-  - 1
-  - 5
-  WCoolDown:
-  - 1
-  - 4
-  - 20
-  WNumAtks: 3
-  WAHPRFA:
-  - LowLim: 0
-    HighLim: 100
-  - LowLim: 0
-    HighLim: 100
-  - LowLim: 0
-    HighLim: 100
+  AbilityStruct:
+  - LowHpLim: 0
+    HighHpLim: 100
+    AbilityPercentages:
+    - 15
+    - 40
+    AbilityDuration: 1
+    AbilityUnInterruptDuration: 0
+    IsInterruptable: 1
+    AbilityCooldown: 0.1
+  - LowHpLim: 0
+    HighHpLim: 100
+    AbilityPercentages:
+    - 75
+    AbilityDuration: 1
+    AbilityUnInterruptDuration: 0.8
+    IsInterruptable: 0
+    AbilityCooldown: 4
+  - LowHpLim: 0
+    HighHpLim: 100
+    AbilityPercentages: []
+    AbilityDuration: 5
+    AbilityUnInterruptDuration: 0
+    IsInterruptable: 0
+    AbilityCooldown: 20

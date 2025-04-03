@@ -25,7 +25,7 @@ public class AttackCooldownUI : MonoBehaviour
         if (attackIndex < 0 || attackIndex >= cooldownSliders.Length)
             return;
 
-        float cooldownDuration = playerStats.Wp.WD.WCoolDown[attackIndex] * playerStats.SM.CurAcd();
+        float cooldownDuration = playerStats.Wp.WD.AbilityStruct[attackIndex].AbilityCooldown * playerStats.SM.CurAcd();
         cooldownSliders[attackIndex].maxValue = cooldownDuration;
         cooldownSliders[attackIndex].value = cooldownDuration;
 

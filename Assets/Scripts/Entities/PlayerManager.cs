@@ -9,13 +9,10 @@ public class PlayerManager : EntityManager
     private InputSystem_Actions input;
     private Vector2 moveInput;
     public float Exp=0;
-    [SerializeField] private Weapons[] weaponsArray;
-    [SerializeField] private int WeaponInUse;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void Start()
     {
-        ChangeWeapon(Instantiate(weaponsArray[WeaponInUse].Weapon, transform.parent));
         base.Start();
         if (HealthManager.Instance[0])
         {
@@ -117,9 +114,5 @@ public class PlayerManager : EntityManager
         LookDir = CameraRotation.rotation;
         transform.rotation= CameraRot;
     }
-    [System.Serializable]
-    public struct Weapons
-    {
-        public GameObject Weapon;
-    }
+    
 }

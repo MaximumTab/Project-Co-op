@@ -5,18 +5,17 @@ using UnityEngine.Rendering;
 public class WeaponData : ScriptableObject
 {
     public string WName;
-    public SerializedDictionary<int,float[]> WAtkPers;
-    public float[] WAtkDuration;
-    public float[] WAtkInterruptDuration;
-    public bool[] WIsInterruptable;
-    public float[] WCoolDown;
-    public int WNumAtks;
-    public WActiveHpPercRangeForAtks[] WAHPRFA;
+    public WStruct[] AbilityStruct;
     [System.Serializable]
-    public struct WActiveHpPercRangeForAtks
+    public struct WStruct
     {
-        public float LowLim;
-        public float HighLim;
+        public float LowHpLim;
+        public float HighHpLim;
+        public float[] AbilityPercentages;
+        public float AbilityDuration;
+        public float AbilityUnInterruptDuration;
+        public bool IsInterruptable;
+        public float AbilityCooldown;
     }
     
 }
