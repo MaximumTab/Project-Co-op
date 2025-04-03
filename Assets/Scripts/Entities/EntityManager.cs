@@ -277,8 +277,8 @@ public class EntityManager : MonoBehaviour
 
             if (Anim)
             {
-                Anim.SetFloat("Speed", SM.CurAspd());
-                Anim.SetInteger("Attack",a);
+                //Anim.SetFloat("Speed", SM.CurAspd());
+                //Anim.SetInteger("Attack",a);
             }
 
             for (float i = 0; i < (Wp.WD.WAtkDuration[a] + 0.05f) / SM.CurAspd(); i += Time.deltaTime)
@@ -291,7 +291,7 @@ public class EntityManager : MonoBehaviour
 
         if (Anim)
         {
-            Anim.SetInteger("Attack", -1);
+            //Anim.SetInteger("Attack", -1);
         }
 
         Attacking[a] = false;

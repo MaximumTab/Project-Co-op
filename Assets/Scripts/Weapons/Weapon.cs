@@ -1,12 +1,17 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
     public WeaponData WD;
-    public Collider[] WCols;
+    public GameObject[] WeaponComponents;
+    protected int CompNum;
+    public Collider[] WeaponColliders;
+    private List<WeaponComp> CompScripts;
 
     private Animator WAnim;
     private bool[] Atking;
@@ -46,6 +51,12 @@ public class Weapon : MonoBehaviour
     {
         if (!Atking[i]&&Castable(i))
         {
+            if (WeaponComponents.Length>i&& WeaponComponents[i])
+            {
+                GameObject WC = Instantiate(WeaponComponents[i], gameObject.transform);
+                WC.GetComponent<WeaponComp>().GiveStats(i,this);
+            }
+
             StartCoroutine(Attacking(i));
             StartCoroutine(SpecialDuration(i));
             return true;
@@ -66,7 +77,7 @@ public class Weapon : MonoBehaviour
 
     void Damage(int i)
     {
-        float damageAmount = PS.SM.Atk * WD.WAtkPers[i] / 100;
+        float damageAmount = PS.SM.Atk * WD.WAtkPers[CompNum][i] / 100;
 
         if (TargetEM.SM.Hp > 0&&TargetEM.SM.Hp-damageAmount<=0)
         {
@@ -80,25 +91,29 @@ public class Weapon : MonoBehaviour
 
         Debug.Log($"[DAMAGE] {attackerName} dealt {damageAmount} damage to {targetName}. Current HP: {targetCurrentHp}");
     }
+   
 
     public virtual void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Did you enter?");
         if (other.gameObject.transform.IsChildOf(PS.gameObject.transform.parent))
             return;
         TargetEM=null;
+        Debug.Log("Not hit self");
         if (other.gameObject.GetComponent<EntityManager>())
         {
             TargetEM = other.gameObject.GetComponent<EntityManager>();
+            Debug.Log("Got Enemy");
         }
         else
         {
             return;
         }
-        for (int i = 0; i < WCols.Length; i++)
+        for (int i = 0; i < WeaponColliders.Length; i++)
         {
-            if (WCols[i] == null)
+            if (WeaponColliders[i] == null)
                 continue;
-            if(WCols[i].bounds.Intersects(other.bounds)&&WCols[i].enabled)//https://discussions.unity.com/t/is-there-a-way-to-know-which-of-the-triggers-in-a-game-object-has-triggered-the-on-trigger-enter/861484/9
+            if(WeaponColliders[i].bounds.Intersects(other.bounds)&&WeaponColliders[i].enabled)//https://discussions.unity.com/t/is-there-a-way-to-know-which-of-the-triggers-in-a-game-object-has-triggered-the-on-trigger-enter/861484/9
             {
                 Damage(i);
                 break;
@@ -118,10 +133,10 @@ public class Weapon : MonoBehaviour
     IEnumerator Attacking(int i)
     {
         Atking[i] = true;
-        WAnim.SetBool("Attack"+i,true);
+        //WAnim.SetBool("Attack"+i,true);
         yield return null;
-        WAnim.SetBool("Attack"+i, false);
-        WAnim.SetFloat("Speed",PS.SM.CurAspd());
+        //WAnim.SetBool("Attack"+i, false);
+        //WAnim.SetFloat("Speed",PS.SM.CurAspd());
         yield return new WaitForSeconds(WD.WCoolDown[i]*PS.SM.CurAcd());
         Atking[i] = false;
     }

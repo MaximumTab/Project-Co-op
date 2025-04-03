@@ -1,12 +1,14 @@
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 [CreateAssetMenu(fileName = "WeaponData", menuName = "Weapons/WeaponData")]
 public class WeaponData : ScriptableObject
 {
     public string WName;
-    public float[] WAtkPers;
+    public SerializedDictionary<int,float[]> WAtkPers;
     public float[] WAtkDuration;
+    public float[] WAtkInterruptDuration;
+    public bool[] WIsInterruptable;
     public float[] WCoolDown;
     public int WNumAtks;
     public WActiveHpPercRangeForAtks[] WAHPRFA;

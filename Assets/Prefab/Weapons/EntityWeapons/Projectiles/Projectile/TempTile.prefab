@@ -153,15 +153,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2546831747152760951}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbd461aa5bbb18c42986903c45e36ada, type: 3}
+  m_Script: {fileID: 11500000, guid: 42d9c14f895a22c42bf355e3d57afdaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   WD: {fileID: 0}
   WCols:
   - {fileID: 7655549573330656547}
-  Atking: 
   PS: {fileID: 0}
-  Speed: 30
+  Speed: 10
 --- !u!54 &3754007931656731891
 Rigidbody:
   m_ObjectHideFlags: 0
