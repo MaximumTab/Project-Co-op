@@ -116,8 +116,9 @@ public class Weapon : MonoBehaviour
             {
                 if (WC.WeaponColliders[i] == null)
                     continue;
-                if (WC.WeaponColliders[i].bounds.Intersects(other.bounds) && WC.WeaponColliders[i].enabled) //https://discussions.unity.com/t/is-there-a-way-to-know-which-of-the-triggers-in-a-game-object-has-triggered-the-on-trigger-enter/861484/9
+                if (WC.WeaponColliders[i].bounds.Intersects(other.bounds) && WC.WeaponColliders[i].enabled&&!WC.HitEMYet(WC.WeaponColliders[i],TargetEM)) //https://discussions.unity.com/t/is-there-a-way-to-know-which-of-the-triggers-in-a-game-object-has-triggered-the-on-trigger-enter/861484/9
                 {
+                    //Debug.Log(WC.CompNum+" "+i);
                     Damage(i,WC.CompNum);
                     break;
                 }
