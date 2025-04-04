@@ -44,11 +44,12 @@ public class EntityManager : MonoBehaviour
     private bool[] Attacking;
     private bool[] BusyAtk;
 
-    public StatManager SM=new StatManager();
+    public StatManager SM;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public virtual void Start()
     {
         ChangeWeapon();
+        SM = new StatManager();
         Anim = gameObject.GetComponentInChildren<Animator>();
         rb = gameObject.GetComponent<Rigidbody>();
         Jumps = ED.BonusJumps;
@@ -61,6 +62,7 @@ public class EntityManager : MonoBehaviour
         }
         SM.LevelUp(ED,Lvl);
         Lvl=SM.IncreaseLvl(Lvl);
+        SM.CurAspd();
     }
 
     // Update is called once per frame
@@ -325,22 +327,22 @@ public class EntityManager : MonoBehaviour
     {
         return false;
     }
-     public struct StatManager
+     public class StatManager
      {
         public float Exp { get; private set; }
         public float Atk { get; private set; }
-        public Dictionary<int,float> AtkAddBuffs;
-        public Dictionary<int,float> AtkPercBuffs; 
+        public Dictionary<int,float> AtkAddBuffs=new Dictionary<int, float>();
+        public Dictionary<int,float> AtkPercBuffs=new Dictionary<int, float>();
         public float Hp { get; private set; }
         public float MaxHp { get; private set; }
-        public Dictionary<int,float> HpAddBuffs;
-        public Dictionary<int,float> HpPercBuffs; 
+        public Dictionary<int,float> HpAddBuffs=new Dictionary<int, float>();
+        public Dictionary<int,float> HpPercBuffs=new Dictionary<int, float>();
         public float Aspd { get; private set; }//Start on 100
-        public Dictionary<int,float> AspdAddBuffs;
-        public Dictionary<int,float> AspdPercBuffs;
+        public Dictionary<int,float> AspdAddBuffs=new Dictionary<int, float>();
+        public Dictionary<int,float> AspdPercBuffs=new Dictionary<int, float>();
         public float Acd { get; private set; }
-        public Dictionary<int,float> AcdAddBuffs;
-        public Dictionary<int,float> AcdPercBuffs;
+        public Dictionary<int,float> AcdAddBuffs=new Dictionary<int, float>();
+        public Dictionary<int,float> AcdPercBuffs=new Dictionary<int, float>();
         public void ChangeHp(float AddHp)
         {
             Hp += AddHp;
@@ -371,8 +373,14 @@ public class EntityManager : MonoBehaviour
 
         public float CurAspd()
         {
-            return Aspd / 100;//tailored to animation speed
+            return BuffedAspd() / 100;//tailored to animation speed
         }
+
+        public float BuffedAspd()
+        {
+            return (Aspd + AspdAddBuffs.Values.Sum())*(1+AspdPercBuffs.Values.Sum()/100);
+        }
+
         public float CurAcd()
         {
             return 100 / Acd;//tailored for wait seconds
@@ -390,7 +398,8 @@ public class EntityManager : MonoBehaviour
             return BuffList.Count;
         }
     }
-    public void HpAddBuff(float Add, float Time)
+
+     public void HpAddBuff(float Add, float Time)
     {
         StartCoroutine(AddBuff(Add, Time, SM.HpAddBuffs));
     }

@@ -1,34 +1,50 @@
-using System;
 using System.Collections;
 using UnityEngine;
+using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 
-public class ProjectileSpawner : MonoBehaviour
+public class ProjectileSpawner : WeaponComp
 {
     public GameObject Proj;
-    private Weapon WProj;
-
-    public Weapon Wp;
 
     public int AmtSpawnedPerActivate;
     public float IntBetweenSpawns;
 
 
-    void Start()
+    
+
+    private void Update()
     {
-        Proj.GetComponent<Weapon>().WD=Wp.WD;
-        Proj.GetComponent<Weapon>().PS=Wp.PS;
+        if (OnceOnHit.Count == 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnEnable()
     {
+        Proj.GetComponent<Projectile>().WC=this;
+        Proj.GetComponent<Projectile>().WD=WD;
+        Proj.GetComponent<Projectile>().PS=PS;
         StartCoroutine(ShootProjs());
     }
 
     IEnumerator ShootProjs()
     {
+        WeaponColliderIndex = new Dictionary<Collider, int>();
         for (int i = 0; i < AmtSpawnedPerActivate; i++)
         {
-            Instantiate(Proj,gameObject.transform.position,gameObject.transform.rotation);
+            GameObject TempProj= Instantiate(Proj,gameObject.transform.position,gameObject.transform.rotation);
+            TempProj.GetComponent<Projectile>().WC=this;
+            TempProj.GetComponent<Projectile>().WD=WD;
+            TempProj.GetComponent<Projectile>().PS=PS;
+            
+            WeaponColliders.AddRange(TempProj.GetComponentsInChildren<Collider>());
+            foreach (Collider col in WeaponColliders)
+            {
+                WeaponColliderIndex.Add(col,colliderIndex);
+            }
             yield return new WaitForSeconds(IntBetweenSpawns);
         }
     }

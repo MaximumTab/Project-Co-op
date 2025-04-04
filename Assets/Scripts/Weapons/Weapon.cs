@@ -10,7 +10,7 @@ public class Weapon : MonoBehaviour
     public WeaponData WD;
     public GameObject[] WeaponComponents;
     protected int CompNum;
-    public Collider[] WeaponColliders;
+    public List<Collider> WeaponColliders=new List<Collider>();
     public Dictionary<int,WeaponComp> CompScripts;
 
     private Animator WAnim;
@@ -27,7 +27,12 @@ public class Weapon : MonoBehaviour
         {
             WAnim = gameObject.GetComponent<Animator>();
         }
-        Atking = new bool[WD.AbilityStruct.Length];
+
+        if (WD)
+        {
+            Atking = new bool[WD.AbilityStruct.Length];
+        }
+
         CompScripts = new Dictionary<int, WeaponComp>();
     }
 
@@ -117,14 +122,11 @@ public class Weapon : MonoBehaviour
 
         foreach (WeaponComp WC in CompScripts.Values)
         {
-            for (int i = 0; i < WC.WeaponColliders.Length; i++)
+            foreach (Collider col in WC.OnceOnHit.Keys)
             {
-                if (WC.WeaponColliders[i] == null)
-                    continue;
-                if (WC.WeaponColliders[i].bounds.Intersects(other.bounds) && WC.WeaponColliders[i].enabled&&!WC.HitEMYet(WC.WeaponColliders[i],TargetEM)) //https://discussions.unity.com/t/is-there-a-way-to-know-which-of-the-triggers-in-a-game-object-has-triggered-the-on-trigger-enter/861484/9
+                if (col.bounds.Intersects(other.bounds) &&col.enabled && !WC.HitEMYet(col, TargetEM)) //https://discussions.unity.com/t/is-there-a-way-to-know-which-of-the-triggers-in-a-game-object-has-triggered-the-on-trigger-enter/861484/9
                 {
-                    //Debug.Log(WC.CompNum+" "+i);
-                    Damage(i,WC.CompNum);
+                    Damage(WC.WeaponColliderIndex[col],WC.CompNum);
                     break;
                 }
             }

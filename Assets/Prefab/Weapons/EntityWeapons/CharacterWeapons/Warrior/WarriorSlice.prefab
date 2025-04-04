@@ -217,6 +217,7 @@ MonoBehaviour:
   WeaponColliders: []
   PS: {fileID: 0}
   Index: 0
+  KillAfterDuration: 1
 --- !u!1 &5409830319169443786
 GameObject:
   m_ObjectHideFlags: 0

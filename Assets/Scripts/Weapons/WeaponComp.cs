@@ -8,17 +8,31 @@ public class WeaponComp : Weapon
 {
     private Weapon ParentWeapon;
     public int Index;
-    private Dictionary<Collider, List<EntityManager>> OnceOnHit;
+    public Dictionary<Collider, List<EntityManager>> OnceOnHit;
+    public Dictionary<Collider, int> WeaponColliderIndex;
+    public Animator Anim;
+    protected int colliderIndex = 0;
+    [SerializeField] private bool KillAfterDuration=true;
+    private float Speed;
     public override void Start()
     {
         base.Start();
-        StartCoroutine(KillAfterUse());
-        WeaponColliders =gameObject.GetComponentsInChildren<Collider>();
+        if (KillAfterDuration)
+        {
+            StartCoroutine(KillAfterUse());
+        }
+        
+        WeaponColliders.AddRange(gameObject.GetComponentsInChildren<Collider>());
         OnceOnHit = new Dictionary<Collider, List<EntityManager>>();
+        WeaponColliderIndex = new Dictionary<Collider, int>();
         foreach (Collider col in WeaponColliders)
         {
             OnceOnHit.Add(col,new List<EntityManager>());
+            WeaponColliderIndex.Add(col,colliderIndex++);
         }
+
+        Anim = gameObject.GetComponent<Animator>();
+        Anim.SetFloat("Speed",Speed);
     }
 
     public bool HitEMYet(Collider i,EntityManager TargetEM)
@@ -39,13 +53,14 @@ public class WeaponComp : Weapon
         WD = inheritWeapon.WD;
         PS = inheritWeapon.PS;
         ParentWeapon = inheritWeapon;
+        Speed = PS.SM.CurAspd();
     }
 
     IEnumerator KillAfterUse()
     {
         //Debug.Log("Deleting after "+WD.AbilityStruct[CompNum].AbilityDuration);
         yield return new WaitForSeconds(WD.AbilityStruct[CompNum].AbilityDuration);
-        Destroy(ParentWeapon.CompScripts[Index]);
+        ParentWeapon.CompScripts.Remove(Index);
         Destroy(gameObject);
     }
 }
