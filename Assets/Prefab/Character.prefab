@@ -392,12 +392,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ED: {fileID: 11400000, guid: abba732553e20f845839c9d46811ede6, type: 2}
+  weaponsArray:
+  - Weapon: {fileID: 1831454744318722604, guid: bb25ebf711eff534d993b8f43dace404, type: 3}
+  - Weapon: {fileID: 2855318620135022137, guid: e19b4927f98d59443a96e77dbbc6ead4, type: 3}
+  WeaponInUse: 1
   Lvl: 0
   CameraRotation: {fileID: 7839474449267695542}
   Exp: 0
-  weaponsArray:
-  - Weapon: {fileID: 1831454744318722604, guid: bb25ebf711eff534d993b8f43dace404, type: 3}
-  WeaponInUse: 0
 --- !u!136 &7328471659442591423
 CapsuleCollider:
   m_ObjectHideFlags: 0

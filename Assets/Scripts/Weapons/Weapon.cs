@@ -79,6 +79,11 @@ public class Weapon : MonoBehaviour
         return false;
     }
 
+    public virtual void Damaging(float DamageDealt)
+    {
+        TargetEM.SM.ChangeHp(-DamageDealt);
+    }
+
     void Damage(int i, int CompNum)
     {
         float damageAmount = PS.SM.Atk * WD.AbilityStruct[CompNum].AbilityPercentages[i] / 100;
@@ -87,7 +92,7 @@ public class Weapon : MonoBehaviour
         {
             PS.AddXP(TargetEM.SM.Exp);
         }
-        TargetEM.SM.ChangeHp(-damageAmount);
+        Damaging(damageAmount);
 
         string attackerName = PS.ED != null ? PS.ED.Name : PS.gameObject.name;
         string targetName = TargetEM.ED != null ? TargetEM.ED.Name : TargetEM.gameObject.name;
@@ -137,7 +142,7 @@ public class Weapon : MonoBehaviour
         return CompScripts.Count;
     }
 
-    IEnumerator SpecialDuration(int i)
+    public virtual IEnumerator SpecialDuration(int i)
     {
         for (float a = 0; a < WD.AbilityStruct[i].AbilityDuration/PS.SM.CurAspd(); a += Time.deltaTime)
         {

@@ -344,6 +344,10 @@ public class EntityManager : MonoBehaviour
         public void ChangeHp(float AddHp)
         {
             Hp += AddHp;
+            if (Hp > MaxHp)
+            {
+                Hp = MaxHp;
+            }
         }
         public void LevelUp(EntityData ED, int Lvl)
         {
