@@ -6,7 +6,7 @@ public class Projectile : Weapon
 {
 
     public float Speed=10;
-    private Rigidbody rb;
+    protected Rigidbody rb;
     public WeaponComp WC;
 
     public override void Start()
@@ -17,7 +17,7 @@ public class Projectile : Weapon
         CompScripts.Add(0,WC);
     }
 
-    void Update()
+    public virtual void Update()
     {
         gameObject.transform.LookAt(gameObject.transform.position+rb.linearVelocity);
     }
