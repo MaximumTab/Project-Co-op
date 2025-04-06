@@ -10,6 +10,7 @@ public class ProjectileSpawner : WeaponComp
 
     public int AmtSpawnedPerActivate;
     public float IntBetweenSpawns;
+    private int projectilesShotAtATimeAmt = 0;
 
     public override void Start()
     {
@@ -27,6 +28,7 @@ public class ProjectileSpawner : WeaponComp
         {
             GameObject TempProj= Instantiate(Proj,gameObject.transform.position,gameObject.transform.rotation);
             TempProj.transform.SetParent(PS.transform.parent);
+            TempProj.name = "TempProj" + projectilesShotAtATimeAmt;
             /*TempProj.GetComponent<Projectile>().WC=this;
             TempProj.GetComponent<Projectile>().WD=WD;
             TempProj.GetComponent<Projectile>().PS=PS;*/

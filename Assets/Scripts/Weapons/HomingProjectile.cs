@@ -6,13 +6,15 @@ public class HomingBullet : Projectile
 {
     [SerializeField] float yellowBeeHomCancleDist; 
     [SerializeField] bool isYellow;
-    [SerializeField] private float yOffset;
     private GameObject target;
     private Vector3 targetVelocity;
     private bool isHomingFixed;
 
-    private void Awake()
+
+    public override void Start()
     {
+        base.Start();
+        rb = gameObject.GetComponent<Rigidbody>();
         target = FindAnyObjectByType<PlayerManager>().gameObject;
         StartCoroutine(InitialHoming());
     }

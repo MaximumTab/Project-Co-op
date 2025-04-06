@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1137748150863375299}
+  - component: {fileID: -8909613124708439164}
+  - component: {fileID: 1612679866705056466}
   m_Layer: 0
   m_Name: YellowBeeSpawner
   m_TagString: Untagged
@@ -31,3 +33,47 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &-8909613124708439164
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7274461350891687070}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d1a24da91d56e864788d28ddb009a055, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1612679866705056466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7274461350891687070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a19010fb26293041aa67f9d4d12a867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WD: {fileID: 0}
+  WeaponComponents: []
+  WeaponColliders: []
+  PS: {fileID: 0}
+  Index: 0
+  Anim: {fileID: 0}
+  KillAfterDuration: 1
+  Proj: {fileID: 5397790920941411265, guid: c71a577aea328064fb0fb770c6dea7fb, type: 3}
+  AmtSpawnedPerActivate: 3
+  IntBetweenSpawns: 0.6
