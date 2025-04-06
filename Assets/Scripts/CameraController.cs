@@ -63,4 +63,11 @@ public class CameraController : MonoBehaviour
     }
 
     public Quaternion YRotation => Quaternion.Euler(0.0f, yRotation, 0.0f);
+
+    public float GetXSensitivity() { return xSensitivity; }
+    public float GetYSensitivity() { return ySensitivity; }
+
+    public void SetXSensitivity(float s) { xSensitivity = s;}
+    public void SetYSensitivity(float s) { ySensitivity = s;}
+
 }
