@@ -36,10 +36,9 @@ public class Weapon : MonoBehaviour
         CompScripts = new Dictionary<int, WeaponComp>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void RemoveMe()
     {
-        
+        Destroy(gameObject);
     }
 
     public virtual void SpecialAttack(int i)

@@ -17,6 +17,7 @@ public class EntityManager : MonoBehaviour
     //public float TurnDuration = 0.15f;
     
     private GameObject Weapon;
+    public float timeToDie;
     [SerializeField] private Weapons[] weaponsArray;
     [SerializeField] private int WeaponInUse;
     public Weapon Wp { get; private set; }
@@ -51,15 +52,11 @@ public class EntityManager : MonoBehaviour
         ChangeWeapon();
         SM = new StatManager();
         Anim = gameObject.GetComponentInChildren<Animator>();
-        rb = gameObject.GetComponent<Rigidbody>();
-        Jumps = ED.BonusJumps;
-        if (Weapon != null)
+        if (gameObject.GetComponent<Rigidbody>())
         {
-            Wp = Weapon.GetComponent<Weapon>();
-            Wp.PS = this;
-            Attacking = new bool[Wp.WD.AbilityStruct.Length];
-            BusyAtk = new bool[Wp.WD.AbilityStruct.Length];
+            rb = gameObject.GetComponent<Rigidbody>();
         }
+        Jumps = ED.BonusJumps;
         SM.LevelUp(ED,Lvl);
         Lvl=SM.IncreaseLvl(Lvl);
         SM.CurAspd();
@@ -96,11 +93,35 @@ public class EntityManager : MonoBehaviour
         {
             Anim.SetBool("Death", true);
         }
+
+        StartCoroutine(AfterTimeRemove(timeToDie));
+    }
+
+    public IEnumerator AfterTimeRemove(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Destroy(gameObject.transform.parent.gameObject);
     }
 
     public void ChangeWeapon()
     {
-        Weapon = Instantiate(weaponsArray[WeaponInUse].Weapon,transform.parent);
+        if (Wp)
+        {
+            Wp.RemoveMe();
+        }
+
+        if (weaponsArray.Length > WeaponInUse)
+        {
+            Weapon = Instantiate(weaponsArray[WeaponInUse].Weapon, transform.parent);
+        }
+
+        if (Weapon)
+        {
+            Wp = Weapon.GetComponent<Weapon>();
+            Wp.PS = this;
+            Attacking = new bool[Wp.WD.AbilityStruct.Length];
+            BusyAtk = new bool[Wp.WD.AbilityStruct.Length];
+        }
     }
 
 
@@ -128,15 +149,18 @@ public class EntityManager : MonoBehaviour
     
     void Shoot()
     {
-        (bool, int) InputAtk=AtkInput();
-        if (InputAtk.Item1&&!Attacking.Max()&&!BusyAtk[InputAtk.Item2])
+        if (Weapon)
         {
-            if (Anim)
+            (bool, int) InputAtk = AtkInput();
+            if (InputAtk.Item1 && !Attacking.Max() && !BusyAtk[InputAtk.Item2])
             {
-                Anim.SetTrigger("IsAttacking");
-            }
+                if (Anim)
+                {
+                    Anim.SetTrigger("IsAttacking");
+                }
 
-            StartCoroutine(WFiring(InputAtk.Item2));
+                StartCoroutine(WFiring(InputAtk.Item2));
+            }
         }
     }
     void Jump()
@@ -153,13 +177,16 @@ public class EntityManager : MonoBehaviour
     }
     void Drop()
     {
-        if (rb.linearVelocity.y < -TerminalVel)
+        if (rb)
         {
-            rb.AddForce(-Physics.gravity);
-        }
-        else if(rb.linearVelocity.y<-1)
-        {
-            rb.AddForce(new Vector3(0,-DropGrav,0));
+            if (rb.linearVelocity.y < -TerminalVel)
+            {
+                rb.AddForce(-Physics.gravity);
+            }
+            else if (rb.linearVelocity.y < -1)
+            {
+                rb.AddForce(new Vector3(0, -DropGrav, 0));
+            }
         }
     }
     public virtual void Look()
@@ -177,8 +204,12 @@ public class EntityManager : MonoBehaviour
     {
         MoveInput();
         Dash();
-        Vector3 AdjustedSpeed = SpeedLimit()*Time.deltaTime;
-        rb.AddForce(AdjustedSpeed*Acceleration);
+        if (rb)
+        {
+            Vector3 AdjustedSpeed = SpeedLimit()*Time.deltaTime;
+            rb.AddForce(AdjustedSpeed * Acceleration);
+        }
+
         if (Anim && new Vector2(rb.linearVelocity.x, rb.linearVelocity.z).magnitude > 0.5f)
         {
             Anim.SetBool("IsWalking",true);

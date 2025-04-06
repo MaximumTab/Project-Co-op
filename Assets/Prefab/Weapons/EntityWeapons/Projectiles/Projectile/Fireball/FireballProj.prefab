@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1012712054767124875}
   - component: {fileID: 5999926570963541033}
   - component: {fileID: 385203557546747745}
-  - component: {fileID: 2730980379142147311}
-  - component: {fileID: 9065989948908051116}
+  - component: {fileID: 1183663915307599818}
+  - component: {fileID: 7393996858818669081}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2598247421581179255}
@@ -112,7 +112,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2730980379142147311
+--- !u!114 &1183663915307599818
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,12 +125,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ED: {fileID: 11400000, guid: 5f4cedba36b228346bd7443d42c5076e, type: 2}
-  timeToDie: 0.1
-  weaponsArray: []
+  timeToDie: 0.2
+  weaponsArray:
+  - Weapon: {fileID: 7506048906471645384, guid: 8fd107cf1d7b52d4d87e1ceecbfb2f7b, type: 3}
   WeaponInUse: 0
   Lvl: 0
   OnAttack: 0
---- !u!54 &9065989948908051116
+--- !u!54 &7393996858818669081
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -152,7 +153,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 126
@@ -168,9 +169,9 @@ GameObject:
   - component: {fileID: 2598247421581179255}
   - component: {fileID: 2505887884281762340}
   - component: {fileID: 4790661005224484402}
-  - component: {fileID: 4761829480903556010}
+  - component: {fileID: 1317123985503148492}
   m_Layer: 0
-  m_Name: WandProj
+  m_Name: FireballProj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -231,14 +232,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42d9c14f895a22c42bf355e3d57afdaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WD: {fileID: 11400000, guid: 0d736514b7ba4fd4199aeb43315e1c18, type: 2}
+  WD: {fileID: 0}
   WeaponComponents: []
   WeaponColliders: []
   PS: {fileID: 0}
   Speed: 30
   WC: {fileID: 0}
-  BM: {fileID: 2730980379142147311}
---- !u!136 &4761829480903556010
+  BM: {fileID: 1183663915307599818}
+--- !u!136 &1317123985503148492
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -257,7 +258,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.25
-  m_Height: 1
+  m_Radius: 0.5
+  m_Height: 2
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}

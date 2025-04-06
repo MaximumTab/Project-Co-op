@@ -9,6 +9,8 @@ public class Projectile : Weapon
     protected Rigidbody rb;
     public WeaponComp WC;
 
+    [SerializeField]private ProjEntityManager BM;
+
     public override void Start()
     {
         base.Start();
@@ -27,11 +29,19 @@ public class Projectile : Weapon
         base.OnTriggerEnter(other);
         if (!other.gameObject.transform.IsChildOf(PS.gameObject.transform.parent) &&!other.gameObject.transform.GetComponentInParent<Weapon>())
         {
+            if (BM.Wp)
+            {
+                BM.Wp.WD = WD;
+                BM.Wp.PS = PS;
+            }
+
+            BM.OnAttack = true;
             CompScripts[0].OnceOnHit.Remove(gameObject.GetComponentInChildren<Collider>());
             CompScripts[0].CheckNoProjs();
-            Destroy(gameObject);
-            
+            StartCoroutine(BM.AfterTimeRemove(BM.timeToDie));
             Debug.Log("Eaten by, "+other.gameObject.name);
+            rb.linearVelocity=Vector3.zero;
+            enabled = false;
         }
     }
 }

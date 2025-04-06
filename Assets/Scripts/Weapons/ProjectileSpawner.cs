@@ -26,9 +26,10 @@ public class ProjectileSpawner : WeaponComp
         for (int i = 0; i < AmtSpawnedPerActivate; i++)
         {
             GameObject TempProj= Instantiate(Proj,gameObject.transform.position,gameObject.transform.rotation);
-            TempProj.GetComponent<Projectile>().WC=this;
+            TempProj.transform.SetParent(PS.transform.parent);
+            /*TempProj.GetComponent<Projectile>().WC=this;
             TempProj.GetComponent<Projectile>().WD=WD;
-            TempProj.GetComponent<Projectile>().PS=PS;
+            TempProj.GetComponent<Projectile>().PS=PS;*/
             
             WeaponColliders.AddRange(TempProj.GetComponentsInChildren<Collider>());
             foreach (Collider col in WeaponColliders)
