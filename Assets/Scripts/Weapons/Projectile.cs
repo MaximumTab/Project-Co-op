@@ -28,6 +28,7 @@ public class Projectile : Weapon
         if (!other.gameObject.transform.IsChildOf(PS.gameObject.transform.parent) &&!other.gameObject.transform.GetComponentInParent<Weapon>())
         {
             CompScripts[0].OnceOnHit.Remove(gameObject.GetComponentInChildren<Collider>());
+            CompScripts[0].CheckNoProjs();
             Destroy(gameObject);
             
             Debug.Log("Eaten by, "+other.gameObject.name);

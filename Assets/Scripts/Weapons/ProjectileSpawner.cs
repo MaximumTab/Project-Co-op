@@ -11,19 +11,9 @@ public class ProjectileSpawner : WeaponComp
     public int AmtSpawnedPerActivate;
     public float IntBetweenSpawns;
 
-
-    
-
-    private void Update()
+    public override void Start()
     {
-        if (OnceOnHit.Count == 0)
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    private void OnEnable()
-    {
+        base.Start();
         Proj.GetComponent<Projectile>().WC=this;
         Proj.GetComponent<Projectile>().WD=WD;
         Proj.GetComponent<Projectile>().PS=PS;
@@ -43,6 +33,7 @@ public class ProjectileSpawner : WeaponComp
             WeaponColliders.AddRange(TempProj.GetComponentsInChildren<Collider>());
             foreach (Collider col in WeaponColliders)
             {
+                OnceOnHit.Add(col,new List<EntityManager>());
                 WeaponColliderIndex.Add(col,colliderIndex);
             }
             yield return new WaitForSeconds(IntBetweenSpawns);

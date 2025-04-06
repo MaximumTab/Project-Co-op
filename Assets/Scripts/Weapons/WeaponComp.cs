@@ -63,4 +63,11 @@ public class WeaponComp : Weapon
         ParentWeapon.CompScripts.Remove(Index);
         Destroy(gameObject);
     }
+    public void CheckNoProjs()
+    {
+        if (OnceOnHit.Count == 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
