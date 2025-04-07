@@ -42,7 +42,11 @@ public class Projectile : Weapon
                 CompScripts[0].OnceOnHit.Remove(gameObject.GetComponentInChildren<Collider>());
             }
             
-            CompScripts[0].CheckNoProjs();
+            if(CompScripts[0])
+            {
+                CompScripts[0].CheckNoProjs();
+            }
+            
             StartCoroutine(BM.AfterTimeRemove(BM.timeToDie));
             Debug.Log("Eaten by, "+other.gameObject.name);
             rb.linearVelocity=Vector3.zero;

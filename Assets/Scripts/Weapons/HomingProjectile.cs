@@ -9,14 +9,14 @@ public class HomingBullet : Projectile
     private GameObject target;
     private Vector3 targetVelocity;
     private bool isHomingFixed;
+    private bool hasHomingHappened;
 
 
     public override void Start()
     {
-        base.Start();
-        rb = gameObject.GetComponent<Rigidbody>();
+        ///rb = gameObject.GetComponent<Rigidbody>();
+        base.Start(); 
         target = FindAnyObjectByType<PlayerManager>().gameObject;
-        StartCoroutine(InitialHoming());
     }
 
     public override void Update()
@@ -28,6 +28,10 @@ public class HomingBullet : Projectile
         if (isHomingFixed)
         {
             rb.linearVelocity = targetVelocity;
+        }
+        else if (!hasHomingHappened)
+        {           
+            StartCoroutine(InitialHoming());
         }
 
         base.Update();
@@ -42,10 +46,11 @@ public class HomingBullet : Projectile
 
     IEnumerator InitialHoming()
     {
+        hasHomingHappened = true;
         isHomingFixed = false;
         Vector3 Start = rb.linearVelocity;
         Vector3 End = targetVelocity;
-        float flightCorrectionDuration = Random.Range(1, 3);
+        float flightCorrectionDuration = Random.Range(3, 5);
 
         for (float time = 0; time < flightCorrectionDuration; time += Time.deltaTime)
         {
