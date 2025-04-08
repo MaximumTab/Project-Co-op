@@ -20,6 +20,7 @@ public class EntityManager : MonoBehaviour
     public float timeToDie;
     [SerializeField] private Weapons[] weaponsArray;
     [SerializeField] private int WeaponInUse;
+    [SerializeField] private Vector3 RelativeWeaponSpawnPosition;
     public Weapon Wp { get; private set; }
     public int Lvl;
 
@@ -113,6 +114,7 @@ public class EntityManager : MonoBehaviour
         if (weaponsArray.Length > WeaponInUse)
         {
             Weapon = Instantiate(weaponsArray[WeaponInUse].Weapon, transform.parent);
+            Weapon.transform.position += transform.rotation * RelativeWeaponSpawnPosition;
         }
 
         if (Weapon)

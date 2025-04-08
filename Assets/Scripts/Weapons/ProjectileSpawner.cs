@@ -39,9 +39,9 @@ public class ProjectileSpawner : WeaponComp
         }
 
         foreach (Collider col in WeaponColliders)
-            {
-                OnceOnHit.Add(col,new List<EntityManager>());
-                WeaponColliderIndex.Add(col,colliderIndex);
-            }
+        {
+            OnceOnHit.Add(col,new List<EntityManager>());
+            WeaponColliderIndex.Add(col,colliderIndex);
+        }
     }
 }

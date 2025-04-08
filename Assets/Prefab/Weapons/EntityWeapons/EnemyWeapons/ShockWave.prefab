@@ -73,6 +73,7 @@ MonoBehaviour:
   WeaponColliders: []
   PS: {fileID: 0}
   Index: 0
+  Anim: {fileID: 0}
   KillAfterDuration: 1
 --- !u!1 &3984465049093845253
 GameObject:
