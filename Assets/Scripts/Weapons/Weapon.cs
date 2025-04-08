@@ -75,7 +75,7 @@ public class Weapon : MonoBehaviour
 
     private bool Castable(int i)
     {
-        if (WD.AbilityStruct[i].LowHpLim <= PS.SM.CurHpPerc() && PS.SM.CurHpPerc() <= WD.AbilityStruct[i].HighHpLim||WD.AbilityStruct[i].HighHpLim>=100&&WD.AbilityStruct[i].HighHpLim<=PS.SM.CurHpPerc())
+        if (WD.AbilityStruct[i].LowHpLim < PS.SM.CurHpPerc() && PS.SM.CurHpPerc() <= WD.AbilityStruct[i].HighHpLim||WD.AbilityStruct[i].HighHpLim>=100&&WD.AbilityStruct[i].HighHpLim<=PS.SM.CurHpPerc())
         {
             return true;
         }
@@ -85,6 +85,7 @@ public class Weapon : MonoBehaviour
 
     public virtual void Damaging(float DamageDealt)
     {
+        Debug.Log(DamageDealt+" Incoming Damage");
         TargetEM.SM.ChangeHp(-DamageDealt);
     }
 

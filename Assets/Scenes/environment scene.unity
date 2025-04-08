@@ -1001,6 +1001,10 @@ PrefabInstance:
       propertyPath: m_UnmodifiedMeshVersion
       value: 37
       objectReference: {fileID: 0}
+    - target: {fileID: 4708244058212290256, guid: 91497e4ace39d6944855cb2be048d2af, type: 3}
+      propertyPath: timeToDie
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6829386706185614516, guid: 91497e4ace39d6944855cb2be048d2af, type: 3}
       propertyPath: m_LocalPosition.y
       value: -4
@@ -1401,7 +1405,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1163477506103887481, guid: 723a75b0141b9f940918872b702fdf4c, type: 3}
       propertyPath: WeaponInUse
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1163477506103887481, guid: 723a75b0141b9f940918872b702fdf4c, type: 3}
       propertyPath: Acceleration
