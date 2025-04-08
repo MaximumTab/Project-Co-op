@@ -11,6 +11,7 @@ public class TabMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             ToggleMenu();
+        }
     }
 
 
