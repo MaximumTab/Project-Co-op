@@ -10,33 +10,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 78e1288dc23475144b98ad81e957cd3a, type: 3}
-  m_Name: WarriorWeap
+  m_Name: LawnmowerWeapon
   m_EditorClassIdentifier: 
-  WName: Warrior
+  WName: LawnmowerWeap
   AbilityStruct:
   - LowHpLim: 0
     HighHpLim: 100
     AbilityPercentages:
-    - 30
-    - 30
-    - 75
-    AbilityDuration: 1.5
+    - 10
+    AbilityDuration: 0.26
     AbilityUnInterruptDuration: 0
     IsInterruptable: 0
-    AbilityCooldown: 0.1
+    AbilityCooldown: 0
   - LowHpLim: 0
     HighHpLim: 100
     AbilityPercentages:
     - 200
-    AbilityDuration: 1
-    AbilityUnInterruptDuration: 1
+    AbilityDuration: 5
+    AbilityUnInterruptDuration: 5
     IsInterruptable: 0
-    AbilityCooldown: 4
+    AbilityCooldown: 7
   - LowHpLim: 0
     HighHpLim: 100
     AbilityPercentages:
     - 10
-    AbilityDuration: 5
-    AbilityUnInterruptDuration: 0
+    AbilityDuration: 3
+    AbilityUnInterruptDuration: 3
     IsInterruptable: 0
-    AbilityCooldown: 20
+    AbilityCooldown: 10
