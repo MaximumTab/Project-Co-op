@@ -34,12 +34,14 @@ public class ProjectileSpawner : WeaponComp
             TempProj.GetComponent<Projectile>().PS=PS;*/
             
             WeaponColliders.AddRange(TempProj.GetComponentsInChildren<Collider>());
-            foreach (Collider col in WeaponColliders)
+            
+            yield return new WaitForSeconds(IntBetweenSpawns);
+        }
+
+        foreach (Collider col in WeaponColliders)
             {
                 OnceOnHit.Add(col,new List<EntityManager>());
                 WeaponColliderIndex.Add(col,colliderIndex);
             }
-            yield return new WaitForSeconds(IntBetweenSpawns);
-        }
     }
 }

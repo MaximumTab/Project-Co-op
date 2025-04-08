@@ -75,5 +75,6 @@ MonoBehaviour:
   WD: {fileID: 11400000, guid: e8e0076536699f943ab650e5aa9097ec, type: 2}
   WeaponComponents:
   - {fileID: 7274461350891687070, guid: 253250785099cbd4fbab58e80c3bff3b, type: 3}
+  - {fileID: 4228248874987354783, guid: b80d9d33c70345c44ac45bd7afb43766, type: 3}
   WeaponColliders: []
   PS: {fileID: 0}

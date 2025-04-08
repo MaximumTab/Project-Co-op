@@ -36,8 +36,17 @@ public class Projectile : Weapon
             }
 
             BM.OnAttack = true;
-            CompScripts[0].OnceOnHit.Remove(gameObject.GetComponentInChildren<Collider>());
-            CompScripts[0].CheckNoProjs();
+            
+            foreach (Collider col in gameObject.GetComponentsInChildren<Collider>())
+            {
+                CompScripts[0].OnceOnHit.Remove(gameObject.GetComponentInChildren<Collider>());
+            }
+            
+            if(CompScripts[0])
+            {
+                CompScripts[0].CheckNoProjs();
+            }
+            
             StartCoroutine(BM.AfterTimeRemove(BM.timeToDie));
             Debug.Log("Eaten by, "+other.gameObject.name);
             rb.linearVelocity=Vector3.zero;

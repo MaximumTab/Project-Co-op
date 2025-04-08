@@ -108,7 +108,7 @@ public class Weapon : MonoBehaviour
 
     public virtual void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.transform.IsChildOf(PS.gameObject.transform.parent))
+        if (other.gameObject.transform.IsChildOf(PS.gameObject.transform.parent) )
             return;
         TargetEM=null;
         if (other.gameObject.GetComponent<EntityManager>())
@@ -124,6 +124,10 @@ public class Weapon : MonoBehaviour
         {
             foreach (Collider col in WC.OnceOnHit.Keys)
             {
+                if (!col)
+                {
+                    continue;
+                }
                 if (col.bounds.Intersects(other.bounds) &&col.enabled && !WC.HitEMYet(col, TargetEM)) //https://discussions.unity.com/t/is-there-a-way-to-know-which-of-the-triggers-in-a-game-object-has-triggered-the-on-trigger-enter/861484/9
                 {
                     Damage(WC.WeaponColliderIndex[col],WC.CompNum);
