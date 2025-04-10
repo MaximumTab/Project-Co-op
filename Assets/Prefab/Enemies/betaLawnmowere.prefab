@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 221031996395790322}
   - component: {fileID: 5047787419207975603}
   - component: {fileID: 1758203598136198956}
-  - component: {fileID: 4224462404948228775}
+  - component: {fileID: 4499390029577041607}
   m_Layer: 0
   m_Name: Hitbox
   m_TagString: Untagged
@@ -169,7 +169,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &4224462404948228775
+--- !u!114 &4499390029577041607
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6209097939562859094}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcdd8ab840785be4c9808e1807e58b4b, type: 3}
+  m_Script: {fileID: 11500000, guid: 62e74f3618bdde4448488ffb9dd7bf9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ED: {fileID: 11400000, guid: c23d7c132cf760245a8e37973674acd9, type: 2}
@@ -188,6 +188,6 @@ MonoBehaviour:
   WeaponInUse: 0
   Lvl: 0
   OneInNumberAtkAttempt:
-  - 3
   - 2
   - 1
+  isDashing: 0

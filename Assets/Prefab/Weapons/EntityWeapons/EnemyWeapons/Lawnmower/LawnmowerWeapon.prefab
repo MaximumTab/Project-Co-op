@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 289401954543586347}
   - component: {fileID: 3543759487771702481}
-  - component: {fileID: 7968831483094295359}
+  - component: {fileID: 6409220510033239538}
   m_Layer: 0
   m_Name: LawnmowerWeapon
   m_TagString: Untagged
@@ -60,7 +60,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &7968831483094295359
+--- !u!114 &6409220510033239538
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -69,13 +69,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4818326181242435578}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffd750ab6b5b07547b57f7a24dc12dbd, type: 3}
+  m_Script: {fileID: 11500000, guid: c164dcb6da64f964e8d71b8bb0f4e36d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   WD: {fileID: 11400000, guid: 2ed39b36d93f840438858a8ff0cb36dc, type: 2}
   WeaponComponents:
   - {fileID: 7648020364637815833, guid: 68bd024fcd3702c47b8bd5acb2a95bd3, type: 3}
   - {fileID: 6648455597064657086, guid: 8b0b05ee223811d4ab256cbe7682e8de, type: 3}
-  - {fileID: 7283713613899054084, guid: bdd8f63e1f5110d4797a47ee7fde5891, type: 3}
   WeaponColliders: []
   PS: {fileID: 0}
