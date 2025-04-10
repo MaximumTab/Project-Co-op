@@ -46,6 +46,11 @@ public class Weapon : MonoBehaviour
     {
         if (!Atking[i]&&Castable(i))
         {
+            if (PS is PlayerManager)
+            {
+                AttackCooldownUI.Instance?.TriggerCooldown(i);
+            }
+
             StartCoroutine(Attacking(i));
             StartCoroutine(SpecialDuration(i));
             return true;
