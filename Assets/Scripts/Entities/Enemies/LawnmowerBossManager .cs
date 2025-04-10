@@ -16,7 +16,7 @@ public class LawnmowerBossManager : BaseEnemyManager
 
         MoveDir = direction;
 
-        float speed = 10f;
+        float speed = 8f;
         rb.linearVelocity = direction * speed;
     }
 
