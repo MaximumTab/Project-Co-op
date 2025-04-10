@@ -308,12 +308,6 @@ public class EntityManager : MonoBehaviour
         BusyAtk[a] = true;
         if (Wp.Attack(a))
         {
-            AttackCooldownUI uiCooldown = FindAnyObjectByType<AttackCooldownUI>();
-            if (uiCooldown)
-            {
-                uiCooldown.TriggerCooldown(a);
-            }
-
             if (Anim)
             {
                 Anim.SetFloat("Speed", SM.CurAspd());

@@ -4,9 +4,20 @@ using System.Collections;
 
 public class AttackCooldownUI : MonoBehaviour
 {
+    public static AttackCooldownUI Instance { get; private set; }
     public Slider[] cooldownSliders; // Make sure this matches the number of attacks
     private Weapon weapon;
     private EntityManager playerStats; // Reference to the player EntityManager
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
 
     private void Start()
     {
