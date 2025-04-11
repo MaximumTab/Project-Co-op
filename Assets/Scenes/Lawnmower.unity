@@ -897,6 +897,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4499390029577041607, guid: 5c9acabf2dfbb1148bdead9fa0f5f56f, type: 3}
+      propertyPath: Lvl
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7225548477055481342, guid: 5c9acabf2dfbb1148bdead9fa0f5f56f, type: 3}
       propertyPath: Lvl
       value: 7
