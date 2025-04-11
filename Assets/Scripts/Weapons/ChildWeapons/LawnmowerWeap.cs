@@ -55,7 +55,7 @@ public class LawnmowerWeap : Weapon
 
 
         // STEP 3: Dash 
-        float dashSpeed = 50f;
+        float dashSpeed = 75f;
         float dashDuration = 2f; 
         float timer = 0f;
 
