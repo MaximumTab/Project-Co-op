@@ -9,7 +9,7 @@ public class Weapon : MonoBehaviour
 {
     public WeaponData WD;
     public GameObject[] WeaponComponents;
-    protected int CompNum;
+    public int CompNum;
     public List<Collider> WeaponColliders=new List<Collider>();
     public Dictionary<int,WeaponComp> CompScripts;
 
@@ -52,6 +52,11 @@ public class Weapon : MonoBehaviour
          */
     }
 
+    public void SetCompNum(int CNum)
+    {
+        CompNum = CNum;
+    }
+
     public bool Attack(int i)
     {
         if (!Atking[i]&&Castable(i))
@@ -75,7 +80,7 @@ public class Weapon : MonoBehaviour
 
     private bool Castable(int i)
     {
-        if (WD.AbilityStruct[i].LowHpLim <= PS.SM.CurHpPerc() && PS.SM.CurHpPerc() <= WD.AbilityStruct[i].HighHpLim||WD.AbilityStruct[i].HighHpLim>=100&&WD.AbilityStruct[i].HighHpLim<=PS.SM.CurHpPerc())
+        if (WD.AbilityStruct[i].LowHpLim < PS.SM.CurHpPerc() && PS.SM.CurHpPerc() <= WD.AbilityStruct[i].HighHpLim||WD.AbilityStruct[i].HighHpLim>=100&&WD.AbilityStruct[i].HighHpLim<=PS.SM.CurHpPerc())
         {
             return true;
         }
@@ -85,6 +90,7 @@ public class Weapon : MonoBehaviour
 
     public virtual void Damaging(float DamageDealt)
     {
+        Debug.Log(DamageDealt+" Incoming Damage");
         TargetEM.SM.ChangeHp(-DamageDealt);
     }
 
@@ -118,9 +124,11 @@ public class Weapon : MonoBehaviour
         {
             return;
         }
-
+        Debug.Log(CompScripts.Count+" CompScripts Count");
         foreach (WeaponComp WC in CompScripts.Values)
         {
+            Debug.Log(WC.OnceOnHit.Count+" OnceOnHit Count");
+            Debug.Log(WC.WeaponColliders.Count+" WeaponColliders Count");
             foreach (Collider col in WC.OnceOnHit.Keys)
             {
                 if (!col)

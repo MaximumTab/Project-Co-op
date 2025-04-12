@@ -20,6 +20,7 @@ public class EntityManager : MonoBehaviour
     public float timeToDie;
     [SerializeField] private Weapons[] weaponsArray;
     [SerializeField] private int WeaponInUse;
+    [SerializeField] private Vector3 RelativeWeaponSpawnPosition;
     public Weapon Wp { get; private set; }
     public int Lvl;
 
@@ -113,6 +114,7 @@ public class EntityManager : MonoBehaviour
         if (weaponsArray.Length > WeaponInUse)
         {
             Weapon = Instantiate(weaponsArray[WeaponInUse].Weapon, transform.parent);
+            Weapon.transform.position += transform.rotation * RelativeWeaponSpawnPosition;
         }
 
         if (Weapon)
@@ -224,7 +226,7 @@ public class EntityManager : MonoBehaviour
         if (DashInput()&& DashCool)
         {
             SoundManager.Play3DSound(SoundType.Dash, transform, 1f, 2f, 10f);
-            StartCoroutine(Dashing());
+            StartCoroutine(Dashing(MoveDir));
             StartCoroutine(DashCoolDown());
         }
     }
@@ -284,7 +286,7 @@ public class EntityManager : MonoBehaviour
         yield return new WaitForSeconds(DashDownTime);
         DashCool = true;
     }
-    IEnumerator Dashing()
+    public IEnumerator Dashing(Vector3 MoveDir)
     {
         Vector3 Start = rb.linearVelocity;
         Vector3 End = MoveDir * (DashDistance * BaseDashDist);
@@ -308,12 +310,10 @@ public class EntityManager : MonoBehaviour
         BusyAtk[a] = true;
         if (Wp.Attack(a))
         {
-            AttackCooldownUI uiCooldown = FindAnyObjectByType<AttackCooldownUI>();
-            if (uiCooldown)
+            if (this is PlayerManager)
             {
-                uiCooldown.TriggerCooldown(a);
-            }
-
+                AttackCooldownUI.Instance.TriggerCooldown(a);
+            }   
             if (Anim)
             {
                 Anim.SetFloat("Speed", SM.CurAspd());
@@ -365,6 +365,8 @@ public class EntityManager : MonoBehaviour
         public Dictionary<int,float> AtkAddBuffs=new Dictionary<int, float>();
         public Dictionary<int,float> AtkPercBuffs=new Dictionary<int, float>();
         public float Hp { get; private set; }
+        public Dictionary<int, float> AddDamageReduction = new Dictionary<int, float>();
+        public Dictionary<int, float> PercDamageReduction = new Dictionary<int, float>();
         public float MaxHp { get; private set; }
         public Dictionary<int,float> HpAddBuffs=new Dictionary<int, float>();
         public Dictionary<int,float> HpPercBuffs=new Dictionary<int, float>();
@@ -376,7 +378,15 @@ public class EntityManager : MonoBehaviour
         public Dictionary<int,float> AcdPercBuffs=new Dictionary<int, float>();
         public void ChangeHp(float AddHp)
         {
-            Hp += AddHp;
+            if (AddHp >= 0)
+            {
+                Hp += AddHp;
+            }
+            else
+            {
+                Hp += (AddHp-AddDamageReduction.Values.Sum()) * (1-PercDamageReduction.Values.Sum()/100);
+            }
+
             if (Hp > MaxHp)
             {
                 Hp = MaxHp;
@@ -395,6 +405,16 @@ public class EntityManager : MonoBehaviour
         public int IncreaseLvl(int Lvl)
         {
             return Lvl + 1;
+        }
+
+        public float CurAtk()
+        {
+            return BuffedAtk();
+        }
+
+        public float BuffedAtk()
+        {
+            return (Atk + AtkAddBuffs.Values.Sum()) * (1 + AtkPercBuffs.Values.Sum() / 100);
         }
 
         public float CurHpPerc()
@@ -416,6 +436,10 @@ public class EntityManager : MonoBehaviour
         {
             return 100 / Acd;//tailored for wait seconds
         }
+        public float BuffedAcd()
+        {
+            return (Acd + AcdAddBuffs.Values.Sum())*(1+AcdPercBuffs.Values.Sum()/100);
+        }
 
         public int FindEmptyKey(Dictionary<int,float> BuffList)
         {
@@ -429,6 +453,14 @@ public class EntityManager : MonoBehaviour
             return BuffList.Count;
         }
     }
+     public void DmgReductAddBuff(float Add, float Time)
+     {
+         StartCoroutine(AddBuff(Add, Time, SM.AddDamageReduction));
+     }
+     public void DmgReductPercBuff(float Add, float Time)
+     {
+         StartCoroutine(AddBuff(Add, Time, SM.PercDamageReduction));
+     }
 
      public void HpAddBuff(float Add, float Time)
     {
@@ -459,7 +491,7 @@ public class EntityManager : MonoBehaviour
     {
         int BuffLoc=SM.FindEmptyKey(BuffList);
         BuffList.Add(BuffLoc,Add);
-        if (Time != -1)
+        if (Time >=0)
         {
             yield return new WaitForSeconds(Time);
             BuffList.Remove(BuffLoc);

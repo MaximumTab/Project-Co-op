@@ -11,22 +11,26 @@ public class WarriorWeap : Weapon
         base.Damaging(DamageDealt);
         if (LifeSteal)
         {
-            PS.SM.ChangeHp(DamageDealt * LifeStealPercent / 100);
+            PS.SM.ChangeHp(DamageDealt * WD.AbilityStruct[2].AbilityPercentages[0] / 100);
         }
     }
 
     public override IEnumerator SpecialDuration(int i)
     {
-        if (i == 2)
+        switch(i)
         {
-            LifeSteal = true;
+            case 2:
+                LifeSteal = true;
+                break;
         }
 
         yield return base.SpecialDuration(i);
 
-        if (i == 2)
+        switch(i)
         {
-            LifeSteal = false;
+            case 2:
+                LifeSteal = false;
+                break;
         }
     }
 }
