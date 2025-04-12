@@ -142,7 +142,7 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0.00000011920929}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3426052496805426122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,9 +156,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ED: {fileID: 11400000, guid: 7547f989d2081014d80d2f1b548becd5, type: 2}
+  timeToDie: 0
   weaponsArray:
   - Weapon: {fileID: 1747624984856779055, guid: 26fdebb8b45c77e499b241706ca90b01, type: 3}
   WeaponInUse: 0
+  RelativeWeaponSpawnPosition: {x: 0, y: 0, z: 0}
   Lvl: 5
   OneInNumberAtkAttempt:
   - 3

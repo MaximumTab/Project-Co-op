@@ -9,7 +9,7 @@ public class Weapon : MonoBehaviour
 {
     public WeaponData WD;
     public GameObject[] WeaponComponents;
-    protected int CompNum;
+    public int CompNum;
     public List<Collider> WeaponColliders=new List<Collider>();
     public Dictionary<int,WeaponComp> CompScripts;
 
@@ -50,6 +50,11 @@ public class Weapon : MonoBehaviour
                 break;
          }
          */
+    }
+
+    public void SetCompNum(int CNum)
+    {
+        CompNum = CNum;
     }
 
     public bool Attack(int i)
@@ -119,7 +124,7 @@ public class Weapon : MonoBehaviour
         {
             return;
         }
-
+        
         foreach (WeaponComp WC in CompScripts.Values)
         {
             foreach (Collider col in WC.OnceOnHit.Keys)

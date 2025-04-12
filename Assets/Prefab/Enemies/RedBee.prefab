@@ -99,10 +99,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WD: {fileID: 11400000, guid: e8e0076536699f943ab650e5aa9097ec, type: 2}
   WeaponComponents: []
+  CompNum: 0
   WeaponColliders: []
   PS: {fileID: 0}
   Speed: 8
   WC: {fileID: 0}
+  LifeSpan: 30
   BM: {fileID: 2976532756152712854}
   yellowBeeHomCancleDist: 0
   isYellow: 0
@@ -261,5 +263,6 @@ MonoBehaviour:
   timeToDie: 0.1
   weaponsArray: []
   WeaponInUse: 0
+  RelativeWeaponSpawnPosition: {x: 0, y: 0, z: 0}
   Lvl: 0
   OnAttack: 0

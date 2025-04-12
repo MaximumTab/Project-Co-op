@@ -1,5 +1,4 @@
-using System;
-using Unity.VisualScripting;
+using System.Collections;
 using UnityEngine;
 
 public class Projectile : Weapon
@@ -8,6 +7,7 @@ public class Projectile : Weapon
     public float Speed=10;
     protected Rigidbody rb;
     public WeaponComp WC;
+    [SerializeField] private float LifeSpan=5;
 
     [SerializeField]private ProjEntityManager BM;
 
@@ -17,6 +17,7 @@ public class Projectile : Weapon
         rb = gameObject.GetComponent<Rigidbody>();
         rb.AddRelativeForce(Vector3.forward*Speed,ForceMode.Impulse);
         CompScripts.Add(0,WC);
+        StartCoroutine(LifeSpanExpiring());
     }
 
     public virtual void Update()
@@ -36,10 +37,12 @@ public class Projectile : Weapon
             }
 
             BM.OnAttack = true;
-            
+            int i = 0;
             foreach (Collider col in gameObject.GetComponentsInChildren<Collider>())
             {
-                CompScripts[0].OnceOnHit.Remove(gameObject.GetComponentInChildren<Collider>());
+                
+                CompScripts[0].WeaponColliders.Remove(col);
+                CompScripts[0].OnceOnHit.Remove(col);
             }
             
             if(CompScripts[0])
@@ -52,5 +55,16 @@ public class Projectile : Weapon
             rb.linearVelocity=Vector3.zero;
             enabled = false;
         }
+    }
+
+    IEnumerator LifeSpanExpiring()
+    {
+        yield return new WaitForSeconds(LifeSpan);
+        foreach (Collider col in gameObject.GetComponentsInChildren<Collider>())
+        {
+            CompScripts[0].WeaponColliders.Remove(col);
+            CompScripts[0].OnceOnHit.Remove(col);
+        }
+        Destroy(gameObject);
     }
 }

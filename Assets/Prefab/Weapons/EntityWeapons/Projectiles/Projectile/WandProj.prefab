@@ -128,6 +128,7 @@ MonoBehaviour:
   timeToDie: 0.1
   weaponsArray: []
   WeaponInUse: 0
+  RelativeWeaponSpawnPosition: {x: 0, y: 0, z: 0}
   Lvl: 0
   OnAttack: 0
 --- !u!54 &9065989948908051116
@@ -233,10 +234,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WD: {fileID: 11400000, guid: 0d736514b7ba4fd4199aeb43315e1c18, type: 2}
   WeaponComponents: []
+  CompNum: 0
   WeaponColliders: []
   PS: {fileID: 0}
   Speed: 30
   WC: {fileID: 0}
+  LifeSpan: 30
   BM: {fileID: 2730980379142147311}
 --- !u!136 &4761829480903556010
 CapsuleCollider:
