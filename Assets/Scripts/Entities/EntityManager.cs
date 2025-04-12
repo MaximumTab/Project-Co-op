@@ -316,7 +316,7 @@ public class EntityManager : MonoBehaviour
         BusyAtk[a] = true;
         if (Wp.Attack(a))
         {
-            if (this is PlayerManager)
+            if (this is PlayerManager && AttackCooldownUI.Instance)
             {
                 AttackCooldownUI.Instance.TriggerCooldown(a);
             }   
