@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BaseEnemyManager : EntityManager
 {
-    public float[] InAmountPerAttack;
+    public float[] OneInNumberAtkAttempt;
 
     public override void Start()
     {
@@ -15,12 +15,21 @@ public class BaseEnemyManager : EntityManager
         Anim = gameObject.GetComponentInParent<Animator>();
     }
 
+    public override void Update()
+    {
+        base.Update();
+        if (ED&& ED.isBoss&& HealthManager.Instance[1])
+        { 
+            HealthManager.Instance[1].SetCurHp(SM.Hp);
+        }
+        
+    }
 
     public override (bool,int) AtkInput() //Choose how to Shoot in Child
     {
-        for (int i = 0; i < InAmountPerAttack.Length; i++)
+        for (int i = 0; i < OneInNumberAtkAttempt.Length; i++)
         {
-            if (Random.Range(0, InAmountPerAttack[i]) < 1)
+            if (Random.Range(0, OneInNumberAtkAttempt[i]) < 1)
             {
                 return (true, i);
             }

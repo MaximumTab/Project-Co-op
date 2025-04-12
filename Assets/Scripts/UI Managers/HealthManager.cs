@@ -33,6 +33,18 @@ public class HealthManager : MonoBehaviour
         currentHealth = Hp;
         UpdateHealthUI();
     }
+
+    public void SetCurHp(float Hp)
+    {
+        currentHealth = Hp;
+        UpdateHealthUI();
+        BossEntrance();
+        if (currentHealth <= 0f)
+        {
+            Die();
+        }
+    }
+
     public void Init(float maxHP, string bossName)
     {
         maxHealth = maxHP;
@@ -62,7 +74,7 @@ public class HealthManager : MonoBehaviour
 
     public virtual void BossEntrance()
     {
-        if (!isVisible&&isBoss)
+        if (!isVisible&&isBoss&&currentHealth<maxHealth)
         {
             ShowHealthBar();
             isVisible = true;

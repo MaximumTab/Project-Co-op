@@ -9,58 +9,62 @@ public class EntityManager : MonoBehaviour
 {
     protected Animator Anim;
     public EntityData ED;
-    public Rigidbody rb;
-    public Vector3 MoveDir;
-    public Quaternion LookDir;
-    public Quaternion LastLook;
-    public bool LookCooldown=true;
-    public float TurnDuration = 0.25f;
+    public Rigidbody rb{ get; private set; }
+    protected Vector3 MoveDir;
+    protected Quaternion LookDir;
+    public Quaternion LastLook{ get; private set; }
+    private bool LookCooldown = true;
+    //public float TurnDuration = 0.15f;
     
-    [SerializeField] private GameObject Weapon;
-    private Weapon Wp;
+    private GameObject Weapon;
+    public float timeToDie;
+    [SerializeField] private Weapons[] weaponsArray;
+    [SerializeField] private int WeaponInUse;
+    [SerializeField] private Vector3 RelativeWeaponSpawnPosition;
+    public Weapon Wp { get; private set; }
     public int Lvl;
 
-    public float Acceleration;
-    public float Speed;
+    private float Acceleration=1000;
+    public readonly float Speed=10;
     
     private bool isGrounded;
     private bool jumpCooldown=true;
     private int Jumps = 0;
     
-    public float JumpForce=10;
-    public int BonusJumps = 0;
-    public float CayoteLength=0.5f;
-    public float JumpWait = 0.2f;
+    private float CayoteLength=0.5f;
+    private float JumpWait = 0.2f;
     
-    public float DashDistance = 5;
-    public float BaseDashDist = 20;
-    public float DashDownTime = 2;
-    public float DashDuration = 0.1f;
+    private float DashDistance = 5;
+    private float BaseDashDist = 5;
+    private float DashDownTime = 2;
+    private float DashDuration = 0.1f;
     private bool DashCool = true;
     
-    public float DropGrav = 0.2f;
-    public float TerminalVel = 20f;
+    private float DropGrav = 0.5f;
+    private float TerminalVel = 20f;
     
-    public bool[] Attacking;
+    private bool[] Attacking;
+    private bool[] BusyAtk;
 
-    public StatManager SM=new StatManager();
+    public StatManager SM;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public virtual void Start()
     {
+        ChangeWeapon();
+        SM = new StatManager();
         Anim = gameObject.GetComponentInChildren<Animator>();
-        rb = gameObject.GetComponent<Rigidbody>();
-        Jumps = BonusJumps;
-        if (Weapon != null)
+        if (gameObject.GetComponent<Rigidbody>())
         {
-            Wp = Weapon.GetComponent<Weapon>();
-            Attacking = new bool[Wp.WD.WNumAtks];
+            rb = gameObject.GetComponent<Rigidbody>();
         }
+        Jumps = ED.BonusJumps;
         SM.LevelUp(ED,Lvl);
         Lvl=SM.IncreaseLvl(Lvl);
+        SM.CurAspd();
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
         Move();
         Jump();
@@ -90,6 +94,36 @@ public class EntityManager : MonoBehaviour
         {
             Anim.SetBool("Death", true);
         }
+
+        StartCoroutine(AfterTimeRemove(timeToDie));
+    }
+
+    public IEnumerator AfterTimeRemove(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Destroy(gameObject.transform.parent.gameObject);
+    }
+
+    public void ChangeWeapon()
+    {
+        if (Wp)
+        {
+            Wp.RemoveMe();
+        }
+
+        if (weaponsArray.Length > WeaponInUse)
+        {
+            Weapon = Instantiate(weaponsArray[WeaponInUse].Weapon, transform.parent);
+            Weapon.transform.position += transform.rotation * RelativeWeaponSpawnPosition;
+        }
+
+        if (Weapon)
+        {
+            Wp = Weapon.GetComponent<Weapon>();
+            Wp.PS = this;
+            Attacking = new bool[Wp.WD.AbilityStruct.Length];
+            BusyAtk = new bool[Wp.WD.AbilityStruct.Length];
+        }
     }
 
 
@@ -117,22 +151,25 @@ public class EntityManager : MonoBehaviour
     
     void Shoot()
     {
-        (bool, int) InputAtk=AtkInput();
-        if (InputAtk.Item1&&!Attacking.Max())
+        if (Weapon)
         {
-            if (Anim)
+            (bool, int) InputAtk = AtkInput();
+            if (InputAtk.Item1 && !Attacking.Max() && !BusyAtk[InputAtk.Item2])
             {
-                Anim.SetTrigger("IsAttacking");
-            }
+                if (Anim)
+                {
+                    Anim.SetTrigger("IsAttacking");
+                }
 
-            StartCoroutine(WFiring(InputAtk.Item2));
+                StartCoroutine(WFiring(InputAtk.Item2));
+            }
         }
     }
     void Jump()
     {
         if (isJumpable())
         {
-            rb.AddForce(0,JumpForce,0,ForceMode.Impulse);
+            rb.AddForce(0,ED.JumpForce,0,ForceMode.Impulse);
             SoundManager.Play3DSound(SoundType.Jump, transform, 1f, 2f, 10f);
             if (Anim)
             {
@@ -142,20 +179,23 @@ public class EntityManager : MonoBehaviour
     }
     void Drop()
     {
-        if (rb.linearVelocity.y < -TerminalVel)
+        if (rb)
         {
-            rb.AddForce(-Physics.gravity);
-        }
-        else if(rb.linearVelocity.y<-1)
-        {
-            rb.AddForce(new Vector3(0,-DropGrav,0));
+            if (rb.linearVelocity.y < -TerminalVel)
+            {
+                rb.AddForce(-Physics.gravity);
+            }
+            else if (rb.linearVelocity.y < -1)
+            {
+                rb.AddForce(new Vector3(0, -DropGrav, 0));
+            }
         }
     }
     public virtual void Look()
     {
         if (MoveDir != Vector3.zero&&LookCooldown)
         {
-            StartCoroutine(LerpRotation(transform.rotation, Quaternion.LookRotation(MoveDir)));
+            transform.rotation= Quaternion.LookRotation(MoveDir);
         }
         else
         {
@@ -166,7 +206,12 @@ public class EntityManager : MonoBehaviour
     {
         MoveInput();
         Dash();
-        rb.AddForce(SpeedLimit()*Acceleration);
+        if (rb)
+        {
+            Vector3 AdjustedSpeed = SpeedLimit()*Time.deltaTime;
+            rb.AddForce(AdjustedSpeed * Acceleration);
+        }
+
         if (Anim && new Vector2(rb.linearVelocity.x, rb.linearVelocity.z).magnitude > 0.5f)
         {
             Anim.SetBool("IsWalking",true);
@@ -181,7 +226,7 @@ public class EntityManager : MonoBehaviour
         if (DashInput()&& DashCool)
         {
             SoundManager.Play3DSound(SoundType.Dash, transform, 1f, 2f, 10f);
-            StartCoroutine(Dashing());
+            StartCoroutine(Dashing(MoveDir));
             StartCoroutine(DashCoolDown());
         }
     }
@@ -209,7 +254,7 @@ public class EntityManager : MonoBehaviour
         return AdjustedSpeed;
     }
     
-    public IEnumerator LerpRotation(Quaternion target, Quaternion goal)
+   /* public IEnumerator LerpRotation(Quaternion target, Quaternion goal)
     {
         LookCooldown = false;
         Quaternion StartRot = target;
@@ -222,7 +267,7 @@ public class EntityManager : MonoBehaviour
         transform.rotation = goal;
         yield return null;
         LookCooldown = true;
-    }
+    }*/
     IEnumerator CayoteTime()
     {
         yield return new WaitForSeconds(CayoteLength);
@@ -241,7 +286,7 @@ public class EntityManager : MonoBehaviour
         yield return new WaitForSeconds(DashDownTime);
         DashCool = true;
     }
-    IEnumerator Dashing()
+    public IEnumerator Dashing(Vector3 MoveDir)
     {
         Vector3 Start = rb.linearVelocity;
         Vector3 End = MoveDir * (DashDistance * BaseDashDist);
@@ -262,9 +307,10 @@ public class EntityManager : MonoBehaviour
     IEnumerator WFiring(int a)
     {
         Attacking[a] = true;
+        BusyAtk[a] = true;
         if (Wp.Attack(a))
         {
-            AttackCooldownUI uiCooldown = FindObjectOfType<AttackCooldownUI>();
+            AttackCooldownUI uiCooldown = FindAnyObjectByType<AttackCooldownUI>();
             if (uiCooldown)
             {
                 uiCooldown.TriggerCooldown(a);
@@ -276,8 +322,13 @@ public class EntityManager : MonoBehaviour
                 Anim.SetInteger("Attack",a);
             }
 
-            for (float i = 0; i < (Wp.WD.WAtkDuration[a] + 0.05f) / SM.CurAspd(); i += Time.deltaTime)
+            for (float i = 0; i < (Wp.WD.AbilityStruct[a].AbilityDuration + 0.05f) / SM.CurAspd(); i += Time.deltaTime)
             {
+                if (Wp.WD.AbilityStruct[a].AbilityUnInterruptDuration / SM.CurAspd() <= i)
+                {
+                    Attacking[a] = false;
+                }
+
                 Weapon.transform.position = gameObject.transform.position;
                 Weapon.transform.rotation = LookDir;
                 yield return null;
@@ -290,6 +341,7 @@ public class EntityManager : MonoBehaviour
         }
 
         Attacking[a] = false;
+        BusyAtk[a] = false;
         yield return null;
     }
     public virtual void MoveInput()//Change MoveDir in Child
@@ -308,25 +360,39 @@ public class EntityManager : MonoBehaviour
     {
         return false;
     }
-     public struct StatManager
+     public class StatManager
      {
         public float Exp { get; private set; }
         public float Atk { get; private set; }
-        public Dictionary<int,float> AtkAddBuffs;
-        public Dictionary<int,float> AtkPercBuffs; 
+        public Dictionary<int,float> AtkAddBuffs=new Dictionary<int, float>();
+        public Dictionary<int,float> AtkPercBuffs=new Dictionary<int, float>();
         public float Hp { get; private set; }
+        public Dictionary<int, float> AddDamageReduction = new Dictionary<int, float>();
+        public Dictionary<int, float> PercDamageReduction = new Dictionary<int, float>();
         public float MaxHp { get; private set; }
-        public Dictionary<int,float> HpAddBuffs;
-        public Dictionary<int,float> HpPercBuffs; 
+        public Dictionary<int,float> HpAddBuffs=new Dictionary<int, float>();
+        public Dictionary<int,float> HpPercBuffs=new Dictionary<int, float>();
         public float Aspd { get; private set; }//Start on 100
-        public Dictionary<int,float> AspdAddBuffs;
-        public Dictionary<int,float> AspdPercBuffs;
+        public Dictionary<int,float> AspdAddBuffs=new Dictionary<int, float>();
+        public Dictionary<int,float> AspdPercBuffs=new Dictionary<int, float>();
         public float Acd { get; private set; }
-        public Dictionary<int,float> AcdAddBuffs;
-        public Dictionary<int,float> AcdPercBuffs;
+        public Dictionary<int,float> AcdAddBuffs=new Dictionary<int, float>();
+        public Dictionary<int,float> AcdPercBuffs=new Dictionary<int, float>();
         public void ChangeHp(float AddHp)
         {
-            Hp += AddHp;
+            if (AddHp >= 0)
+            {
+                Hp += AddHp;
+            }
+            else
+            {
+                Hp += (AddHp-AddDamageReduction.Values.Sum()) * (1-PercDamageReduction.Values.Sum()/100);
+            }
+
+            if (Hp > MaxHp)
+            {
+                Hp = MaxHp;
+            }
         }
         public void LevelUp(EntityData ED, int Lvl)
         {
@@ -343,6 +409,16 @@ public class EntityManager : MonoBehaviour
             return Lvl + 1;
         }
 
+        public float CurAtk()
+        {
+            return BuffedAtk();
+        }
+
+        public float BuffedAtk()
+        {
+            return (Atk + AtkAddBuffs.Values.Sum()) * (1 + AtkPercBuffs.Values.Sum() / 100);
+        }
+
         public float CurHpPerc()
         {
             return Hp / MaxHp * 100;
@@ -350,11 +426,21 @@ public class EntityManager : MonoBehaviour
 
         public float CurAspd()
         {
-            return Aspd / 100;//tailored to animation speed
+            return BuffedAspd() / 100;//tailored to animation speed
         }
+
+        public float BuffedAspd()
+        {
+            return (Aspd + AspdAddBuffs.Values.Sum())*(1+AspdPercBuffs.Values.Sum()/100);
+        }
+
         public float CurAcd()
         {
             return 100 / Acd;//tailored for wait seconds
+        }
+        public float BuffedAcd()
+        {
+            return (Acd + AcdAddBuffs.Values.Sum())*(1+AcdPercBuffs.Values.Sum()/100);
         }
 
         public int FindEmptyKey(Dictionary<int,float> BuffList)
@@ -369,7 +455,16 @@ public class EntityManager : MonoBehaviour
             return BuffList.Count;
         }
     }
-    public void HpAddBuff(float Add, float Time)
+     public void DmgReductAddBuff(float Add, float Time)
+     {
+         StartCoroutine(AddBuff(Add, Time, SM.AddDamageReduction));
+     }
+     public void DmgReductPercBuff(float Add, float Time)
+     {
+         StartCoroutine(AddBuff(Add, Time, SM.PercDamageReduction));
+     }
+
+     public void HpAddBuff(float Add, float Time)
     {
         StartCoroutine(AddBuff(Add, Time, SM.HpAddBuffs));
     }
@@ -398,7 +493,7 @@ public class EntityManager : MonoBehaviour
     {
         int BuffLoc=SM.FindEmptyKey(BuffList);
         BuffList.Add(BuffLoc,Add);
-        if (Time != -1)
+        if (Time >=0)
         {
             yield return new WaitForSeconds(Time);
             BuffList.Remove(BuffLoc);
@@ -410,12 +505,17 @@ public class EntityManager : MonoBehaviour
         if (jumpCooldown&&!other.gameObject.transform.IsChildOf(gameObject.transform.parent))
         {
             isGrounded = true;
-            Jumps = BonusJumps;
+            Jumps = ED.BonusJumps;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
         StartCoroutine(CayoteTime());
+    }
+    [System.Serializable]
+    public struct Weapons
+    {
+        public GameObject Weapon;
     }
 }
