@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -6,7 +7,8 @@ public class SkillParent : MonoBehaviour
 {
     public static SkillParent Instance = new SkillParent();
     public static List<Skill>[] SkillTree;
-    [SerializeField]public int Skillpoints = 20;
+    [SerializeField]TMP_Text Skillpointui;
+    [SerializeField]public int Skillpoints = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,11 +18,13 @@ public class SkillParent : MonoBehaviour
         SkillTree[2] = new List<Skill>();
         SkillTree[3] = new List<Skill>();
         GetAllSkills();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         
     }
 
@@ -41,6 +45,11 @@ public class SkillParent : MonoBehaviour
     public int GetSkillPoints()
     {
        return Skillpoints;
+    }
+
+    public void SkillpointText()
+    {
+        Skillpointui.text = "Skillpoint: "+ Skillpoints;
     }
 
     public void ChangeBranch(int i)
