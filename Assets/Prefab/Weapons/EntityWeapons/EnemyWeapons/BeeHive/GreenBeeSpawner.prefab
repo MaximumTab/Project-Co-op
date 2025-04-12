@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7274461350891687070
+--- !u!1 &7242364078355384114
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1137748150863375299}
-  - component: {fileID: -8909613124708439164}
-  - component: {fileID: 1612679866705056466}
+  - component: {fileID: 3774665311486001418}
+  - component: {fileID: 8733640123577647848}
+  - component: {fileID: 5748074521630002993}
   m_Layer: 0
-  m_Name: YellowBeeSpawner
+  m_Name: GreenBeeSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1137748150863375299
+--- !u!4 &3774665311486001418
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7274461350891687070}
+  m_GameObject: {fileID: 7242364078355384114}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -33,14 +33,14 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &-8909613124708439164
+--- !u!95 &8733640123577647848
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7274461350891687070}
+  m_GameObject: {fileID: 7242364078355384114}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: d1a24da91d56e864788d28ddb009a055, type: 2}
@@ -55,13 +55,13 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1612679866705056466
+--- !u!114 &5748074521630002993
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7274461350891687070}
+  m_GameObject: {fileID: 7242364078355384114}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a19010fb26293041aa67f9d4d12a867, type: 3}
@@ -69,11 +69,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WD: {fileID: 0}
   WeaponComponents: []
+  CompNum: 0
   WeaponColliders: []
   PS: {fileID: 0}
   Index: 0
   Anim: {fileID: 0}
-  KillAfterDuration: 1
-  Proj: {fileID: 5397790920941411265, guid: c71a577aea328064fb0fb770c6dea7fb, type: 3}
+  KillAfterDuration: 0
+  Proj: {fileID: 7904286828284205003, guid: 1e85e24cd2e0e1f408a50583a1043d85, type: 3}
   AmtSpawnedPerActivate: 3
   IntBetweenSpawns: 0.6

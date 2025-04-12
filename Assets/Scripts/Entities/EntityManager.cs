@@ -21,6 +21,7 @@ public class EntityManager : MonoBehaviour
     [SerializeField] private Weapons[] weaponsArray;
     [SerializeField] private int WeaponInUse;
     [SerializeField] private Vector3 RelativeWeaponSpawnPosition;
+    [SerializeField] private bool kill;
     public Weapon Wp { get; private set; }
     public int Lvl;
 
@@ -72,6 +73,11 @@ public class EntityManager : MonoBehaviour
         if (SM.Hp <= 0)
         {
             OnDeath();
+        }
+
+        if(kill)
+        {
+           SM.ChangeHp(- SM.MaxHp); 
         }
     }
 
@@ -307,7 +313,7 @@ public class EntityManager : MonoBehaviour
         BusyAtk[a] = true;
         if (Wp.Attack(a))
         {
-            if (this is PlayerManager)
+            if (this is PlayerManager && AttackCooldownUI.Instance)
             {
                 AttackCooldownUI.Instance.TriggerCooldown(a);
             }   
