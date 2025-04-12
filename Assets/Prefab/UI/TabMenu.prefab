@@ -668,6 +668,7 @@ GameObject:
   - component: {fileID: 362106169530851510}
   - component: {fileID: 3982519692642526063}
   - component: {fileID: 5794251731929731947}
+  - component: {fileID: 942410448799644639}
   m_Layer: 5
   m_Name: Tank
   m_TagString: Untagged
@@ -732,6 +733,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &942410448799644639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2176808558857942044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a472601a96d0f9c49a4b74d92abb75a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: Damage not your style allgood
+  tooltipManager: {fileID: 1027867562662294109}
 --- !u!1 &3238226833041002423
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,6 +758,7 @@ GameObject:
   - component: {fileID: 4084704719788627788}
   - component: {fileID: 2662332527803814858}
   - component: {fileID: 6311114349765123609}
+  - component: {fileID: 2515540828128980185}
   m_Layer: 5
   m_Name: Mage
   m_TagString: Untagged
@@ -807,6 +823,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2515540828128980185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3238226833041002423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a472601a96d0f9c49a4b74d92abb75a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: So you wanna be a wizard?
+  tooltipManager: {fileID: 1027867562662294109}
 --- !u!1 &3246229772717575634
 GameObject:
   m_ObjectHideFlags: 0
@@ -1151,6 +1181,7 @@ GameObject:
   - component: {fileID: 5414111119264556988}
   - component: {fileID: 2515622460251761933}
   - component: {fileID: 4717624159096503801}
+  - component: {fileID: 8595669776448032316}
   m_Layer: 5
   m_Name: Warrior
   m_TagString: Untagged
@@ -1215,6 +1246,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8595669776448032316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5556075232357680039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a472601a96d0f9c49a4b74d92abb75a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: WARRIOR CHICKEN!
+  tooltipManager: {fileID: 1027867562662294109}
 --- !u!1 &5883587743511592443
 GameObject:
   m_ObjectHideFlags: 0
@@ -1454,7 +1499,7 @@ RectTransform:
   m_GameObject: {fileID: 7607395716268819875}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1628, y: 1.3592, z: 1}
+  m_LocalScale: {x: 1.1628002, y: 1.3592002, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8231011488801968497}
