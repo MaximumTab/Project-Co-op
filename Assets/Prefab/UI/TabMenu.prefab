@@ -227,6 +227,7 @@ MonoBehaviour:
   lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   sprequirement: 3
   branch: 3
+  changeweapon: 0
 --- !u!114 &2828148694565162626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -633,6 +634,7 @@ MonoBehaviour:
   lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   sprequirement: 2
   branch: 1
+  changeweapon: 0
 --- !u!114 &9022728864596302274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1011,6 +1013,7 @@ MonoBehaviour:
   lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   sprequirement: 2
   branch: 3
+  changeweapon: 0
 --- !u!114 &7583547194920409146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1164,6 +1167,7 @@ MonoBehaviour:
   lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   sprequirement: 4
   branch: 2
+  changeweapon: 0
 --- !u!114 &4107083312856238337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1567,6 +1571,7 @@ MonoBehaviour:
   lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   sprequirement: 1
   branch: 2
+  changeweapon: 1
 --- !u!114 &3942449980925514458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1948,6 +1953,7 @@ MonoBehaviour:
   lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   sprequirement: 1
   branch: 1
+  changeweapon: 1
 --- !u!114 &1124169508810738157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2101,6 +2107,7 @@ MonoBehaviour:
   lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   sprequirement: 2
   branch: 2
+  changeweapon: 0
 --- !u!114 &797319478740413808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2361,6 +2368,7 @@ MonoBehaviour:
   lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   sprequirement: 3
   branch: 1
+  changeweapon: 0
 --- !u!114 &3293205366539787178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2514,6 +2522,7 @@ MonoBehaviour:
   lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   sprequirement: 4
   branch: 3
+  changeweapon: 0
 --- !u!114 &9183728418420984394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2874,6 +2883,7 @@ MonoBehaviour:
   lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   sprequirement: 1
   branch: 3
+  changeweapon: 1
 --- !u!1 &5883587743511592443
 GameObject:
   m_ObjectHideFlags: 0
@@ -3357,6 +3367,7 @@ MonoBehaviour:
   lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   sprequirement: 4
   branch: 1
+  changeweapon: 0
 --- !u!114 &8635964807806571247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3615,6 +3626,7 @@ MonoBehaviour:
   lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   sprequirement: 0
   branch: 0
+  changeweapon: 0
 --- !u!114 &4476715197148616549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3982,6 +3994,7 @@ MonoBehaviour:
   lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   sprequirement: 3
   branch: 2
+  changeweapon: 0
 --- !u!114 &7767417848574472064
 MonoBehaviour:
   m_ObjectHideFlags: 0

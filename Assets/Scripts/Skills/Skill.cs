@@ -82,13 +82,17 @@ public class Skill : MonoBehaviour
 
     public void ChangeWeapon()
     {
-        FindAnyObjectByType<PlayerManager>().ChangeWeapon();
+        FindAnyObjectByType<PlayerManager>().ChangeWeapon(branch);
     }
 
     public void OnEquip()
     {
         if (isUnlocked)
         {
+            if (changeweapon)
+            {
+                ChangeWeapon();
+            }
             isequiped = true;
             UpdateVisual();
         }
