@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: MageGoose
   isBoss: 1
-  BaseAtk: 30
+  BaseAtk: 25
   GrowAtk: 5
-  BaseHp: 500
+  BaseHp: 300
   GrowHp: 50
   BaseAspd: 100
   GrowAspd: 0
   BaseAC: 100
   GrowAC: 0
-  BaseExp: 150
+  BaseExp: 300
   GrowExp: 0.2
   JumpForce: 10
   BonusJumps: 0

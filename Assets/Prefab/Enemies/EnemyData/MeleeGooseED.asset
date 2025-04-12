@@ -22,7 +22,7 @@ MonoBehaviour:
   GrowAspd: 0
   BaseAC: 100
   GrowAC: 0
-  BaseExp: 150
+  BaseExp: 300
   GrowExp: 0.2
   JumpForce: 10
   BonusJumps: 0
