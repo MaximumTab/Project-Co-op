@@ -15,6 +15,7 @@ public class ProjectileSpawner : WeaponComp
     public override void Start()
     {
         base.Start();
+        Debug.Log(OnceOnHit != null);
         Proj.GetComponent<Projectile>().WC=this;
         Proj.GetComponent<Projectile>().WD=WD;
         Proj.GetComponent<Projectile>().PS=PS;
@@ -36,14 +37,13 @@ public class ProjectileSpawner : WeaponComp
             TempProj.GetComponent<Projectile>().PS=PS;*/
             
             WeaponColliders.AddRange(TempProj.GetComponentsInChildren<Collider>());
-            
+            foreach (Collider col in TempProj.GetComponentsInChildren<Collider>())
+            {
+                OnceOnHit.Add(col,new List<EntityManager>());
+                WeaponColliderIndex.Add(col,colliderIndex);
+            }
             yield return new WaitForSeconds(IntBetweenSpawns);
         }
-
-        foreach (Collider col in WeaponColliders)
-        {
-            OnceOnHit.Add(col,new List<EntityManager>());
-            WeaponColliderIndex.Add(col,colliderIndex);
-        }
+        yield return null;
     }
 }

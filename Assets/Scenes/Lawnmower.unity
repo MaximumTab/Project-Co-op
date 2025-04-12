@@ -536,7 +536,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 809086207983335298, guid: 723a75b0141b9f940918872b702fdf4c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 28.6
       objectReference: {fileID: 0}
     - target: {fileID: 809086207983335298, guid: 723a75b0141b9f940918872b702fdf4c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1061,6 +1061,14 @@ PrefabInstance:
     - target: {fileID: 4499390029577041607, guid: 5c9acabf2dfbb1148bdead9fa0f5f56f, type: 3}
       propertyPath: Lvl
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4499390029577041607, guid: 5c9acabf2dfbb1148bdead9fa0f5f56f, type: 3}
+      propertyPath: 'OneInNumberAtkAttempt.Array.data[0]'
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4499390029577041607, guid: 5c9acabf2dfbb1148bdead9fa0f5f56f, type: 3}
+      propertyPath: 'OneInNumberAtkAttempt.Array.data[1]'
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7225548477055481342, guid: 5c9acabf2dfbb1148bdead9fa0f5f56f, type: 3}
       propertyPath: Lvl
