@@ -20,6 +20,8 @@ public class EntityManager : MonoBehaviour
     public float timeToDie;
     [SerializeField] private Weapons[] weaponsArray;
     [SerializeField] private int WeaponInUse;
+    [SerializeField] private Vector3 RelativeWeaponSpawnPosition;
+    [SerializeField] private bool kill;
     public Weapon Wp { get; private set; }
     public int Lvl;
 
@@ -75,6 +77,11 @@ public class EntityManager : MonoBehaviour
         {
             OnDeath();
         }
+
+        if(kill)
+        {
+           SM.ChangeHp(- SM.MaxHp); 
+        }
     }
 
     public virtual void AddXP(float xp)
@@ -113,6 +120,7 @@ public class EntityManager : MonoBehaviour
         if (weaponsArray.Length > WeaponInUse)
         {
             Weapon = Instantiate(weaponsArray[WeaponInUse].Weapon, transform.parent);
+            Weapon.transform.position += transform.rotation * RelativeWeaponSpawnPosition;
         }
 
         if (Weapon)
@@ -308,12 +316,10 @@ public class EntityManager : MonoBehaviour
         BusyAtk[a] = true;
         if (Wp.Attack(a))
         {
-            AttackCooldownUI uiCooldown = FindAnyObjectByType<AttackCooldownUI>();
-            if (uiCooldown)
+            if (this is PlayerManager)
             {
-                uiCooldown.TriggerCooldown(a);
-            }
-
+                AttackCooldownUI.Instance.TriggerCooldown(a);
+            }   
             if (Anim)
             {
                 Anim.SetFloat("Speed", SM.CurAspd());
