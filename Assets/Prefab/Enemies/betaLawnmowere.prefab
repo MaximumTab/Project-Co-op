@@ -837,10 +837,11 @@ MonoBehaviour:
   weaponsArray:
   - Weapon: {fileID: 4818326181242435578, guid: 7f216b49b313b3345be844d5834eded5, type: 3}
   WeaponInUse: 0
+  RelativeWeaponSpawnPosition: {x: 0, y: 0, z: 0}
   Lvl: 0
   OneInNumberAtkAttempt:
-  - 1.5
-  - 1.5
+  - 3
+  - 2
   - 1
   isDashing: 0
 --- !u!1 &9179825633237092929

@@ -124,10 +124,12 @@ public class Weapon : MonoBehaviour
         {
             return;
         }
-        
+        Debug.Log(CompScripts.Count+" CompScripts Count");
         foreach (WeaponComp WC in CompScripts.Values)
         {
-            foreach (Collider col in WC.OnceOnHit.Keys)
+            Debug.Log(WC.OnceOnHit.Count+" OnceOnHit Count");
+            Debug.Log(WC.WeaponColliders.Count+" WeaponColliders Count");
+            foreach (Collider col in WC.WeaponColliderIndex.Keys)
             {
                 if (!col)
                 {
