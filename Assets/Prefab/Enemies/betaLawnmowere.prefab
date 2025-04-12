@@ -839,7 +839,8 @@ MonoBehaviour:
   WeaponInUse: 0
   Lvl: 0
   OneInNumberAtkAttempt:
-  - 2
+  - 1.5
+  - 1.5
   - 1
   isDashing: 0
 --- !u!1 &9179825633237092929

@@ -10,10 +10,15 @@ public class LawnmowerWeap : Weapon
             case 1: // Mower Dash
                 yield return PS.StartCoroutine(MowerDash());
                 break;
+
+            case 2: // Grass Clipping Spin
+                yield return PS.StartCoroutine(MowerSpin());
+                break;
         }
 
         yield return base.SpecialDuration(i);
     }
+
 
     private IEnumerator MowerDash()
     {
@@ -76,4 +81,40 @@ public class LawnmowerWeap : Weapon
         Debug.Log("[MowerDash] Dash finished. Resuming normal behaviour.");
         boss.isDashing = false;
     }
+
+    private IEnumerator MowerSpin()
+    {
+        LawnmowerBossManager boss = PS as LawnmowerBossManager;
+        if (boss == null)
+        {
+            Debug.LogWarning("[MowerSpin] Boss is null — aborting.");
+            yield break;
+        }
+
+        Debug.Log("[MowerSpin] Starting spin.");
+        
+        // Stop and freeze movement
+        PS.rb.linearVelocity = Vector3.zero;
+        PS.rb.angularVelocity = Vector3.zero;
+        PS.rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+
+        boss.isDashing = true; // reuse flag to stop MoveInput and Look()
+
+        float duration = WD.AbilityStruct[2].AbilityDuration;
+        float timer = 0f;
+
+        while (timer < duration)
+        {
+            PS.transform.Rotate(Vector3.up * 720 * Time.deltaTime); // spinning visual
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        // Restore constraints to allow movement again
+        PS.rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+
+        boss.isDashing = false;
+        Debug.Log("[MowerSpin] Spin finished.");
+    }
+
 }

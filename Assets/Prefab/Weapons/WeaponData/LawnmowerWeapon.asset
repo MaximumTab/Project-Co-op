@@ -34,7 +34,7 @@ MonoBehaviour:
     HighHpLim: 100
     AbilityPercentages:
     - 10
-    AbilityDuration: 3
-    AbilityUnInterruptDuration: 3
+    AbilityDuration: 4
+    AbilityUnInterruptDuration: 4
     IsInterruptable: 0
     AbilityCooldown: 10

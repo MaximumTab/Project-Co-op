@@ -71,9 +71,9 @@ MonoBehaviour:
   WeaponComponents: []
   WeaponColliders: []
   PS: {fileID: 0}
-  Index: 0
+  Index: 2
   Anim: {fileID: 0}
   KillAfterDuration: 1
-  Proj: {fileID: 8798579571844823463, guid: 9684001051c82fb46b73240f0262d2ac, type: 3}
-  AmtSpawnedPerActivate: 125
-  IntBetweenSpawns: 0.02
+  Proj: {fileID: 3583396140342058210, guid: 5bc2088bedb80e448b3fb2b666d2c6d9, type: 3}
+  AmtSpawnedPerActivate: 1000
+  IntBetweenSpawns: 0.25
