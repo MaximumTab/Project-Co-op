@@ -308,6 +308,10 @@ public class EntityManager : MonoBehaviour
         BusyAtk[a] = true;
         if (Wp.Attack(a))
         {
+            if (this is PlayerManager)
+            {
+                AttackCooldownUI.Instance.TriggerCooldown(a);
+            }   
             if (Anim)
             {
                 Anim.SetFloat("Speed", SM.CurAspd());

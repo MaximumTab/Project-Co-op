@@ -58,10 +58,6 @@ public class Weapon : MonoBehaviour
         {
             if (WeaponComponents.Length>i&& WeaponComponents[i])
             {
-                if (PS is PlayerManager)
-                {
-                    AttackCooldownUI.Instance?.TriggerCooldown(i);
-                }
                 GameObject WC = Instantiate(WeaponComponents[i], gameObject.transform);
                 WC.GetComponent<WeaponComp>().GiveStats(i,this);
                 int Index = FindEmptyKey();
