@@ -15,24 +15,23 @@ public class LawnmowerBossManager : BaseEnemyManager
         direction.y = 0;
 
         MoveDir = direction;
-
-        float speed = 8f;
-        rb.linearVelocity = direction * speed;
     }
 
 
     public override void Look()
     {
-        if (GetTarget() == null) return;
-        if (isDashing) return;
-        Vector3 lookDirection = (target.position - transform.position);
-        lookDirection.y = 0;
+        if (GetTarget() == null || isDashing) return;
 
-        if (lookDirection != Vector3.zero)
+        Vector3 direction = GetTarget().position - transform.position;
+        direction.y = 0;
+
+        if (direction != Vector3.zero)
         {
-            transform.rotation = Quaternion.LookRotation(lookDirection);
+            LookDir = Quaternion.LookRotation(direction);
         }
+        base.Look();
     }
+
 
     public Transform GetTarget()
     {
