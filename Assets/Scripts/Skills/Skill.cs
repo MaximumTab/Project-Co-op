@@ -9,12 +9,26 @@ public class Skill : MonoBehaviour
     public bool isUnlocked = false;
     private Image image;
 
+    private bool isequiped = false;
+
     public Color unlockedColor = Color.white;
     public Color lockedColor = Color.gray;
+    [SerializeField] private int sprequirement;
+
+
+    [SerializeField] public int branch;
+
+    [SerializeField] private bool changeweapon;
 
     void Start()
     {
         image = GetComponent<Image>();
+    
+        if (branch == 0 )
+        {
+            isequiped = true;
+            isUnlocked = true;
+        }
         UpdateVisual();
     }
 
@@ -23,30 +37,65 @@ public class Skill : MonoBehaviour
         if (CanUnlock())
         {
             isUnlocked = true;
-            UpdateVisual();
-            Debug.Log($"Unlocked {skillName}");
+            OnEquip();
+            SkillParent.Instance.ChangeSkillPoints(sprequirement);
         }
     }
-
     public bool CanUnlock()
     {
         foreach (Skill prereq in prerequisites)
         {
-            if (!prereq.isUnlocked)
+            if (!prereq.isUnlocked || !prereq.isequiped)
                 return false;
         }
+        if (sprequirement > SkillParent.Instance.GetSkillPoints())
+            return false;
         return true;
     }
 
     private void UpdateVisual()
     {
         if (image != null)
-            image.color = isUnlocked ? unlockedColor : lockedColor;
+            image.color = isequiped ? unlockedColor : lockedColor;
     }
 
-    // Optional: for buttons
     public void OnClick()
     {
-        TryUnlock();
+        TryEquip();
+        if (isUnlocked)
+        {
+             SkillParent.Instance.ChangeBranch(branch);
+        }
+    }
+
+    public void TryEquip()
+    {
+        if (!isequiped && isUnlocked)
+        {
+            OnEquip();
+        }
+        else if (!isequiped)
+        {
+            TryUnlock();
+        }
+    }
+
+    public void ChangeWeapon()
+    {
+        FindAnyObjectByType<PlayerManager>().ChangeWeapon();
+    }
+
+    public void OnEquip()
+    {
+        if (isUnlocked)
+        {
+            isequiped = true;
+            UpdateVisual();
+        }
+    }
+       public void OnRemove()
+    {
+            isequiped = false;
+            UpdateVisual();
     }
 }
