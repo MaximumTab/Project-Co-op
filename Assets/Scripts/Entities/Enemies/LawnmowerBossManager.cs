@@ -24,7 +24,7 @@ public class LawnmowerBossManager : BaseEnemyManager
     public override void Look()
     {
         if (GetTarget() == null) return;
-
+        if (isDashing) return;
         Vector3 lookDirection = (target.position - transform.position);
         lookDirection.y = 0;
 
