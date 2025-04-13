@@ -5,15 +5,11 @@ using UnityEngine;
 
 public class SkillParent : MonoBehaviour
 {
-    public static SkillParent Instance;
+    public static SkillParent Instance = new SkillParent();
     public static List<Skill>[] SkillTree;
     [SerializeField]TMP_Text Skillpointui;
     [SerializeField]public int Skillpoints = 0;
-
-    void Awake()
-    {
-        Instance = this;
-    }
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         SkillTree = new List<Skill> [4];
@@ -25,6 +21,7 @@ public class SkillParent : MonoBehaviour
         
     }
 
+    // Update is called once per frame
     void Update()
     {
         
@@ -43,7 +40,6 @@ public class SkillParent : MonoBehaviour
     public void ChangeSkillPoints(int sp)
     {
         Skillpoints -= sp;
-        SkillpointText();
     }
 
     public int GetSkillPoints()
