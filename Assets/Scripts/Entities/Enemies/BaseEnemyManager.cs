@@ -5,6 +5,7 @@ public class BaseEnemyManager : EntityManager
     public float[] OneInNumberAtkAttempt;
     private Transform target;
     private bool targetSearched = false;
+    [SerializeField] private float DistanceToActivate=100;
 
     public override void Start()
     {
@@ -19,7 +20,11 @@ public class BaseEnemyManager : EntityManager
 
     public override void Update()
     {
-        base.Update();
+        if ((transform.position - GetTarget().position).magnitude < DistanceToActivate)
+        {
+            base.Update();
+        }
+
         if (ED&& ED.isBoss&& HealthManager.Instance[1])
         { 
             HealthManager.Instance[1].SetCurHp(SM.Hp);
