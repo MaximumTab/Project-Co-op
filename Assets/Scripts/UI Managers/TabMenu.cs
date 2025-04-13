@@ -30,7 +30,7 @@ public class TabMenu : MonoBehaviour
             Debug.Log("Reaches is paused condition");
             Time.timeScale = 0; // Pauses the game
             TabMenuWindow.SetActive(true);
-            
+            SkillParent.Instance.SkillpointText();            
         }
         else
         {

@@ -395,10 +395,11 @@ MonoBehaviour:
   timeToDie: 0
   weaponsArray:
   - Weapon: {fileID: 1831454744318722604, guid: bb25ebf711eff534d993b8f43dace404, type: 3}
-  - Weapon: {fileID: 2855318620135022137, guid: e19b4927f98d59443a96e77dbbc6ead4, type: 3}
   - Weapon: {fileID: 3020588053825063237, guid: 742990ecc36922042a254304a7ef8181, type: 3}
   - Weapon: {fileID: 6739539731601580124, guid: 2203d7b9d30202d49bc6c8a27aa828a0, type: 3}
+  - Weapon: {fileID: 2855318620135022137, guid: e19b4927f98d59443a96e77dbbc6ead4, type: 3}
   WeaponInUse: 1
+  RelativeWeaponSpawnPosition: {x: 0, y: 0, z: 0}
   Lvl: 0
   CameraRotation: {fileID: 7839474449267695542}
   Exp: 0

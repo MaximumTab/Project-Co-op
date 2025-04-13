@@ -48,7 +48,7 @@ public class EntityManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public virtual void Start()
     {
-        ChangeWeapon();
+        ChangeWeapon(WeaponInUse);
         SM = new StatManager();
         Anim = gameObject.GetComponentInChildren<Animator>();
         if (gameObject.GetComponent<Rigidbody>())
@@ -107,7 +107,7 @@ public class EntityManager : MonoBehaviour
         Destroy(gameObject.transform.parent.gameObject);
     }
 
-    public void ChangeWeapon()
+    public void ChangeWeapon(int WeaponInUse)
     {
         if (Wp)
         {
