@@ -839,12 +839,14 @@ MonoBehaviour:
   - Weapon: {fileID: 4818326181242435578, guid: 7f216b49b313b3345be844d5834eded5, type: 3}
   WeaponInUse: 0
   RelativeWeaponSpawnPosition: {x: 0, y: 0, z: 0}
-  Lvl: 0
+  kill: 0
+  Lvl: 5
   DashCool: 1
   OneInNumberAtkAttempt:
   - 3
   - 2
   - 1
+  DistanceToActivate: 100
 --- !u!1 &9179825633237092929
 GameObject:
   m_ObjectHideFlags: 0
