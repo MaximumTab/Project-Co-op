@@ -15,9 +15,10 @@ MonoBehaviour:
   WName: MageGooseWeapon
   AbilityStruct:
   - LowHpLim: 0
-    HighHpLim: 0
-    AbilityPercentages: []
-    AbilityDuration: 0
-    AbilityUnInterruptDuration: 0
+    HighHpLim: 100
+    AbilityPercentages:
+    - 100
+    AbilityDuration: 1
+    AbilityUnInterruptDuration: 1
     IsInterruptable: 0
-    AbilityCooldown: 0
+    AbilityCooldown: 15

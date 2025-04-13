@@ -8,7 +8,7 @@ public class BeakWeap : Weapon
         switch(i)
         {
             case 2:
-                PS.rb.linearVelocity = PS.rb.rotation * Vector3.forward * (PS.Speed * MultSpeed)+Vector3.up*PS.rb.linearVelocity.y;
+                PS.rb.linearVelocity = PS.rb.rotation * Vector3.forward * (PS.ED.Speed * MultSpeed)+Vector3.up*PS.rb.linearVelocity.y;
                 break;
         }
     }

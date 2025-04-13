@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2809786215582625132
+--- !u!1 &1526379448677844532
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6075544895316442876}
-  - component: {fileID: 6566514064396045668}
-  - component: {fileID: 1520540723874012187}
+  - component: {fileID: 2452085058934292544}
+  - component: {fileID: -5501556322610522393}
+  - component: {fileID: -7695816804366318918}
   m_Layer: 0
-  m_Name: MeleeGooseWeapon
+  m_Name: MageGooseWeap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6075544895316442876
+--- !u!4 &2452085058934292544
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2809786215582625132}
+  m_GameObject: {fileID: 1526379448677844532}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -33,13 +33,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &6566514064396045668
+--- !u!54 &-5501556322610522393
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2809786215582625132}
+  m_GameObject: {fileID: 1526379448677844532}
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
@@ -60,22 +60,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1520540723874012187
+--- !u!114 &-7695816804366318918
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2809786215582625132}
+  m_GameObject: {fileID: 1526379448677844532}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50f1fd7d97aafc745a2f36ec0f19dbea, type: 3}
+  m_Script: {fileID: 11500000, guid: ffd750ab6b5b07547b57f7a24dc12dbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WD: {fileID: 11400000, guid: f9d4a5d571ed6644db5bce1db93ac698, type: 2}
+  WD: {fileID: 11400000, guid: 944be7006d0bf944982f5669d57f237d, type: 2}
   WeaponComponents:
-  - {fileID: 5736104401463869178, guid: 6d89bf959d4e6b74ca6a56b84468c15a, type: 3}
-  - {fileID: 5004466094445326367, guid: fab9881407ab7c64f83d261c822fbf96, type: 3}
+  - {fileID: 8479305292652553567, guid: 9c31f981c8913a54f9b6f248344c3174, type: 3}
   CompNum: 0
   WeaponColliders: []
   PS: {fileID: 0}

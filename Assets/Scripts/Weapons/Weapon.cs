@@ -138,6 +138,7 @@ public class Weapon : MonoBehaviour
                 if (col.bounds.Intersects(other.bounds) &&col.enabled && !WC.HitEMYet(col, TargetEM)) //https://discussions.unity.com/t/is-there-a-way-to-know-which-of-the-triggers-in-a-game-object-has-triggered-the-on-trigger-enter/861484/9
                 {
                     Damage(WC.WeaponColliderIndex[col],WC.CompNum);
+                    //add force to other.gameobject
                     break;
                 }
             }

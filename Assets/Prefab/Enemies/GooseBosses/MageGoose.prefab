@@ -26,11 +26,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2.5, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1720094918691899974}
-  - {fileID: 2011272437561894730}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2999284467400079832
@@ -60,12 +59,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2999284467400079832}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.499, z: 0.35}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0.34999847}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2408859096927835081}
+  m_Father: {fileID: 1720094918691899974}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7415534416552105215
 MeshFilter:
@@ -155,6 +154,7 @@ GameObject:
   - component: {fileID: 5824111310350688587}
   - component: {fileID: 7225768306948448214}
   - component: {fileID: 3254430771393059515}
+  - component: {fileID: 3816970032447474500}
   m_Layer: 0
   m_Name: Hitbox
   m_TagString: Untagged
@@ -171,10 +171,11 @@ Transform:
   m_GameObject: {fileID: 3364317143864546313}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2011272437561894730}
   m_Father: {fileID: 2408859096927835081}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4407995231046401598
@@ -278,7 +279,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &3254430771393059515
 MonoBehaviour:
@@ -287,17 +288,44 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3364317143864546313}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bcdd8ab840785be4c9808e1807e58b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ED: {fileID: 11400000, guid: 9b536bbe83aa297488c1493d0dfff71b, type: 2}
+  Anim: {fileID: 0}
+  ED: {fileID: 11400000, guid: 0e084e3c2c94be44db76003a1f37ceaf, type: 2}
   timeToDie: 0
   weaponsArray:
-  - Weapon: {fileID: 2809786215582625132, guid: 69f0aa8d1f5acb345993ae12e4e350ca, type: 3}
+  - Weapon: {fileID: 1526379448677844532, guid: 5d0e5f745985d8d42a6b33d1f7abba74, type: 3}
   WeaponInUse: 0
-  Lvl: 5
+  RelativeWeaponSpawnPosition: {x: 0, y: 0, z: 0}
+  kill: 0
+  Lvl: 0
+  DashCool: 1
   OneInNumberAtkAttempt:
-  - 3
-  - 2
+  - 1
+--- !u!114 &3816970032447474500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3364317143864546313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8386eca6894ffcf4cb7448b32aa80e54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Anim: {fileID: 0}
+  ED: {fileID: 11400000, guid: 0e084e3c2c94be44db76003a1f37ceaf, type: 2}
+  timeToDie: 0
+  weaponsArray:
+  - Weapon: {fileID: 1526379448677844532, guid: 5d0e5f745985d8d42a6b33d1f7abba74, type: 3}
+  WeaponInUse: 0
+  RelativeWeaponSpawnPosition: {x: 0, y: 0, z: 0}
+  kill: 0
+  Lvl: 0
+  DashCool: 1
+  OneInNumberAtkAttempt:
+  - 1
