@@ -27,9 +27,9 @@ public class MeleeGooseWeap : Weapon
 
     public IEnumerator Pecking()
     {
-       // PS.rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
-        yield return new WaitForSeconds(1.5f);  //duration of pecks is 1.5
-        //PS.rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+       PS.rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+       yield return new WaitForSeconds(1.5f);  //duration of pecks is 1.5
+       PS.rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
     
     

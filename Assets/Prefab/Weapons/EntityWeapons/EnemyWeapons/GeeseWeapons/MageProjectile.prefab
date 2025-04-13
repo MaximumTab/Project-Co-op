@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: fb6b2b6470ba236479800cb3e20c7997, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b520c93aa8a55b4ea42b9727adc00dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Anim: {fileID: 0}
   ED: {fileID: 11400000, guid: 5f4cedba36b228346bd7443d42c5076e, type: 2}
   timeToDie: 0
   weaponsArray: []
@@ -129,6 +130,7 @@ MonoBehaviour:
   RelativeWeaponSpawnPosition: {x: 0, y: 0, z: 0}
   kill: 0
   Lvl: 0
+  DashCool: 1
   OnAttack: 0
 --- !u!54 &6216972293273508713
 Rigidbody:
@@ -239,7 +241,7 @@ MonoBehaviour:
   Speed: 30
   WC: {fileID: 0}
   LifeSpan: 5
-  BM: {fileID: 0}
+  BM: {fileID: 5857386317695566237}
 --- !u!135 &-3879364524062598975
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8528116982276552359}
   - component: {fileID: 1354726985536512923}
   m_Layer: 0
-  m_Name: MageGooseProjectile
+  m_Name: MageGooseProjectileSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,4 +77,4 @@ MonoBehaviour:
   KillAfterDuration: 1
   Proj: {fileID: 3688080162627184057, guid: 3ac616225c363da48a6c4134e522751c, type: 3}
   AmtSpawnedPerActivate: 10
-  IntBetweenSpawns: 0
+  IntBetweenSpawns: 0.04

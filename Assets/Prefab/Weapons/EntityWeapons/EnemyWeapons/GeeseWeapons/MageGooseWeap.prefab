@@ -73,7 +73,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WD: {fileID: 11400000, guid: 944be7006d0bf944982f5669d57f237d, type: 2}
-  WeaponComponents: []
+  WeaponComponents:
+  - {fileID: 8479305292652553567, guid: 9c31f981c8913a54f9b6f248344c3174, type: 3}
   CompNum: 0
   WeaponColliders: []
   PS: {fileID: 0}

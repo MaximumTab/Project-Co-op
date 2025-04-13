@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: MeleeGoose
   isBoss: 1
-  BaseAtk: 30
+  BaseAtk: 15
   GrowAtk: 5
   BaseHp: 500
   GrowHp: 50
