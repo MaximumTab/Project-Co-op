@@ -3,6 +3,8 @@ using UnityEngine;
 public class BaseEnemyManager : EntityManager
 {
     public float[] OneInNumberAtkAttempt;
+    private Transform target;
+    private bool targetSearched = false;
 
     public override void Start()
     {
@@ -36,7 +38,21 @@ public class BaseEnemyManager : EntityManager
         }
         return (false,0);
     }
-    
+
+    public Transform GetTarget()
+    {
+        if (!targetSearched || target == null)
+        {
+            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+            if (playerObj)
+            {
+                target = playerObj.transform;
+            }
+            targetSearched = true;
+        }
+
+        return target;
+    }
 }
 
 //easteregg Rickytalk

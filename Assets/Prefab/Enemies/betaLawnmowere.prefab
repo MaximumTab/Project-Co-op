@@ -832,6 +832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e74f3618bdde4448488ffb9dd7bf9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Anim: {fileID: 0}
   ED: {fileID: 11400000, guid: c23d7c132cf760245a8e37973674acd9, type: 2}
   timeToDie: 0
   weaponsArray:
@@ -839,11 +840,11 @@ MonoBehaviour:
   WeaponInUse: 0
   RelativeWeaponSpawnPosition: {x: 0, y: 0, z: 0}
   Lvl: 0
+  DashCool: 1
   OneInNumberAtkAttempt:
   - 3
   - 2
   - 1
-  isDashing: 0
 --- !u!1 &9179825633237092929
 GameObject:
   m_ObjectHideFlags: 0

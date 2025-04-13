@@ -69,11 +69,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WD: {fileID: 0}
   WeaponComponents: []
+  CompNum: 0
   WeaponColliders: []
   PS: {fileID: 0}
   Index: 0
   Anim: {fileID: 0}
-  KillAfterDuration: 1
+  KillAfterDuration: 0
   Proj: {fileID: 3454148041619316282, guid: 0c66c026af93f784dad1d13d129e5885, type: 3}
   AmtSpawnedPerActivate: 3
   IntBetweenSpawns: 0.6

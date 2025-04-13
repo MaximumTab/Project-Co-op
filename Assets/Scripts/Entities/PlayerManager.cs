@@ -46,6 +46,8 @@ public class PlayerManager : EntityManager
             {
                 XPManager.Instance.UpdateXPUI(Exp, SM.Exp, Lvl);
             }
+            
+                SkillParent.Instance.ChangeSkillPoints(-1);
 
             if (HealthManager.Instance[0])
             {
