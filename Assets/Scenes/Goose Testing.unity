@@ -450,6 +450,10 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1163477506103887481, guid: 723a75b0141b9f940918872b702fdf4c, type: 3}
+      propertyPath: WeaponInUse
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1163477506103887481, guid: 723a75b0141b9f940918872b702fdf4c, type: 3}
       propertyPath: Acceleration
       value: 20
       objectReference: {fileID: 0}
@@ -594,6 +598,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1218262075918695309, guid: 7ac7f239446a91e41bcc321bde69975c, type: 3}
+      propertyPath: DistanceToActivate
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1925226038759954815, guid: 7ac7f239446a91e41bcc321bde69975c, type: 3}
       propertyPath: m_Name
       value: MeleeGoose

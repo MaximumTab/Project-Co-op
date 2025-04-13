@@ -281,4 +281,5 @@ MonoBehaviour:
   Lvl: 0
   DashCool: 0
   OneInNumberAtkAttempt: []
+  DistanceToActivate: 100
   distance: 10
