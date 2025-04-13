@@ -26,7 +26,6 @@ public class EntityManager : MonoBehaviour
     public int Lvl;
 
     private float Acceleration=1000;
-    public readonly float Speed=10;
     
     private bool isGrounded;
     private bool jumpCooldown=true;
@@ -237,7 +236,7 @@ public class EntityManager : MonoBehaviour
     Vector3 SpeedLimit()
     {
         Vector3 AdjustedSpeed = new Vector3();
-        if ((rb.linearVelocity - new Vector3(0, rb.linearVelocity.y, 0)).magnitude >= Speed)
+        if ((rb.linearVelocity - new Vector3(0, rb.linearVelocity.y, 0)).magnitude >= ED.Speed)
         {
             if (MoveDir.x * rb.linearVelocity.x < 0)
             {

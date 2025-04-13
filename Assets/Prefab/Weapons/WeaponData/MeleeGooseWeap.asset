@@ -17,24 +17,25 @@ MonoBehaviour:
   - LowHpLim: 0
     HighHpLim: 100
     AbilityPercentages:
-    - 100
+    - 25
+    - 25
     AbilityDuration: 1
     AbilityUnInterruptDuration: 1
     IsInterruptable: 0
-    AbilityCooldown: 7
+    AbilityCooldown: 5
   - LowHpLim: 0
     HighHpLim: 100
     AbilityPercentages:
-    - 100
-    AbilityDuration: 1
-    AbilityUnInterruptDuration: 1
+    - 30
+    - 20
+    - 10
+    - 40
+    - 25
+    - 15
+    - 50
+    - 30
+    - 20
+    AbilityDuration: 1.5
+    AbilityUnInterruptDuration: 1.5
     IsInterruptable: 0
     AbilityCooldown: 3.5
-  - LowHpLim: 0
-    HighHpLim: 100
-    AbilityPercentages:
-    - 10
-    AbilityDuration: 0.25
-    AbilityUnInterruptDuration: 0
-    IsInterruptable: 0
-    AbilityCooldown: 0
