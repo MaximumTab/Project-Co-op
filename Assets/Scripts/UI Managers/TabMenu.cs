@@ -9,7 +9,7 @@ public class TabMenu : MonoBehaviour
 
     private void Awake()
     {
-        ToggleMenu();
+        // ToggleMenu();
     }
 
     void Start()
