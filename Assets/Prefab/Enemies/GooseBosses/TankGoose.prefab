@@ -295,8 +295,10 @@ MonoBehaviour:
   ED: {fileID: 11400000, guid: 191b2faabba5ac64a81e2dc775564ef6, type: 2}
   timeToDie: 0
   weaponsArray:
-  - Weapon: {fileID: 0}
+  - Weapon: {fileID: 7429170543843963049, guid: 247858b963ae5fc458dd030eceeb3316, type: 3}
   WeaponInUse: 5
+  RelativeWeaponSpawnPosition: {x: 0, y: 0, z: 0}
+  kill: 0
   Lvl: 0
   OneInNumberAtkAttempt:
   - 1

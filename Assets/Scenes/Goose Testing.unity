@@ -768,6 +768,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TankGoose
       objectReference: {fileID: 0}
+    - target: {fileID: 1925226038759954815, guid: 0dcfe2df272c74b46bf0ee96dcdbfb0d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2408859096927835081, guid: 0dcfe2df272c74b46bf0ee96dcdbfb0d, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.7
@@ -1235,6 +1239,10 @@ PrefabInstance:
     - target: {fileID: 1925226038759954815, guid: fa51bda8b8dadc245b50b2f0e77610e6, type: 3}
       propertyPath: m_Name
       value: MageGoose
+      objectReference: {fileID: 0}
+    - target: {fileID: 1925226038759954815, guid: fa51bda8b8dadc245b50b2f0e77610e6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2408859096927835081, guid: fa51bda8b8dadc245b50b2f0e77610e6, type: 3}
       propertyPath: m_LocalPosition.x

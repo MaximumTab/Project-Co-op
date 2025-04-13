@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 78e1288dc23475144b98ad81e957cd3a, type: 3}
-  m_Name: MageGooseWeapon
+  m_Name: TankGooseWeapon
   m_EditorClassIdentifier: 
-  WName: MageGooseWeapon
+  WName: TankGooseWeap
   AbilityStruct:
   - LowHpLim: 0
     HighHpLim: 100
@@ -21,4 +21,4 @@ MonoBehaviour:
     AbilityDuration: 5
     AbilityUnInterruptDuration: 5
     IsInterruptable: 0
-    AbilityCooldown: 5
+    AbilityCooldown: 10

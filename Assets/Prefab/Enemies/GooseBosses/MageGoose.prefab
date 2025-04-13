@@ -292,11 +292,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcdd8ab840785be4c9808e1807e58b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ED: {fileID: 11400000, guid: 9b536bbe83aa297488c1493d0dfff71b, type: 2}
+  ED: {fileID: 11400000, guid: 0e084e3c2c94be44db76003a1f37ceaf, type: 2}
   timeToDie: 0
   weaponsArray:
-  - Weapon: {fileID: 2809786215582625132, guid: 69f0aa8d1f5acb345993ae12e4e350ca, type: 3}
+  - Weapon: {fileID: 0}
   WeaponInUse: 0
+  RelativeWeaponSpawnPosition: {x: 0, y: 0, z: 0}
+  kill: 0
   Lvl: 5
   OneInNumberAtkAttempt:
   - 3

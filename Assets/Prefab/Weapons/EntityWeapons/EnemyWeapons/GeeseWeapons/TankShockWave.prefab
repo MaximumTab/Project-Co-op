@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7735657001278772993}
   - component: {fileID: 1966725229480070743}
   m_Layer: 0
-  m_Name: ShockWave
+  m_Name: TankShockWave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
