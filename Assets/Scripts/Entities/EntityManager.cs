@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 
 public class EntityManager : MonoBehaviour
 {
-    protected Animator Anim;
+    public Animator Anim;
     public EntityData ED;
     public Rigidbody rb{ get; private set; }
     protected Vector3 MoveDir;
@@ -35,11 +35,8 @@ public class EntityManager : MonoBehaviour
     private float CayoteLength=0.5f;
     private float JumpWait = 0.2f;
     
-    private float DashDistance = 5;
-    private float BaseDashDist = 5;
-    private float DashDownTime = 2;
-    private float DashDuration = 0.1f;
-    private bool DashCool = true;
+    public bool DashCool = true;
+
     
     private float DropGrav = 0.5f;
     private float TerminalVel = 20f;
@@ -286,24 +283,24 @@ public class EntityManager : MonoBehaviour
         yield return new WaitForSeconds(JumpWait);
         jumpCooldown = true;
     }
-    IEnumerator DashCoolDown()
+    public IEnumerator DashCoolDown()
     {
         DashCool = false;
-        yield return new WaitForSeconds(DashDownTime);
+        yield return new WaitForSeconds(ED.DashDownTime);
         DashCool = true;
     }
     public IEnumerator Dashing(Vector3 MoveDir)
     {
         Vector3 Start = rb.linearVelocity;
-        Vector3 End = MoveDir * (DashDistance * BaseDashDist);
+        Vector3 End = MoveDir * (ED.DashDistance * ED.BaseDashDist);
         if (Anim)
         {
             Anim.SetTrigger("IsDashing");
         }
-
-        for (float time = 0; time < DashDuration; time += Time.deltaTime)
+        Debug.Log(End);
+        for (float time = 0; time < ED.DashDuration; time += Time.deltaTime)
         {
-            rb.linearVelocity = Vector3.Lerp(Start, End, time / DashDuration);
+            rb.linearVelocity = Vector3.Lerp(Start, End, time / ED.DashDuration);
             yield return null;
         }
         rb.linearVelocity = End;
@@ -316,7 +313,7 @@ public class EntityManager : MonoBehaviour
         BusyAtk[a] = true;
         if (Wp.Attack(a))
         {
-            if (this is PlayerManager)
+            if (this is PlayerManager && AttackCooldownUI.Instance)
             {
                 AttackCooldownUI.Instance.TriggerCooldown(a);
             }   

@@ -2,50 +2,29 @@ using UnityEngine;
 
 public class LawnmowerBossManager : BaseEnemyManager
 {
-    private Transform target;
-    private bool targetSearched = false;
-    public bool isDashing = false;
-
-
     public override void MoveInput()
     {
-        if (isDashing || GetTarget() == null) return;
+        if (!DashCool || GetTarget() == null) return;
 
         Vector3 direction = (GetTarget().position - transform.position).normalized;
         direction.y = 0;
 
         MoveDir = direction;
-
-        float speed = 8f;
-        rb.linearVelocity = direction * speed;
     }
 
 
     public override void Look()
     {
-        if (GetTarget() == null) return;
-        if (isDashing) return;
-        Vector3 lookDirection = (target.position - transform.position);
-        lookDirection.y = 0;
+        if (GetTarget() == null || !DashCool) return;
 
-        if (lookDirection != Vector3.zero)
+        Vector3 direction = GetTarget().position - transform.position;
+        direction.y = 0;
+
+        if (direction != Vector3.zero)
         {
-            transform.rotation = Quaternion.LookRotation(lookDirection);
+            LookDir = Quaternion.LookRotation(direction);
         }
+        base.Look();
     }
 
-    public Transform GetTarget()
-    {
-        if (!targetSearched || target == null)
-        {
-            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-            if (playerObj)
-            {
-                target = playerObj.transform;
-            }
-            targetSearched = true;
-        }
-
-        return target;
-    }
 }

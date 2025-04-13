@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class LawnmowerWeap : Weapon
 {
@@ -42,44 +43,20 @@ public class LawnmowerWeap : Weapon
         // lock in place
         PS.rb.linearVelocity = Vector3.zero;
         PS.rb.angularVelocity = Vector3.zero;
-        PS.rb.constraints = RigidbodyConstraints.FreezeAll;
+        PS.rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 
         Debug.Log("[MowerDash] Wind-up (3 seconds) — frozen.");
         yield return new WaitForSeconds(1f);
         Debug.Log("[MowerDash] Wind-up (2 seconds) — frozen.");
         yield return new WaitForSeconds(1f);
         Debug.Log("[MowerDash] Wind-up (1 seconds) — frozen.");
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1f);  
 
-        
-        // STEP 2: Get latest player position
-        Vector3 finalTarget = boss.GetTarget().position;
-        finalTarget.y = PS.transform.position.y;
-        Vector3 dashDir = (finalTarget - PS.transform.position).normalized;
+        PS.rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 
-        Debug.Log($"[MowerDash] Wind-up done. Dashing toward: {finalTarget}");
-        PS.rb.constraints = RigidbodyConstraints.FreezeRotation;
-
-
-        // STEP 3: Dash 
-        boss.isDashing = true;
-        float dashSpeed = 75f;
-        float dashDuration = 2f; 
-        float timer = 0f;
-
-        Debug.Log("[MowerDash] Dashing!");
-        while (timer < dashDuration)
-        {
-            PS.rb.linearVelocity = dashDir * dashSpeed;
-            timer += Time.deltaTime;
-            yield return null;
-        }
-        
-
-        // STEP 4: Stop 
-        PS.rb.linearVelocity = Vector3.zero;
-        Debug.Log("[MowerDash] Dash finished. Resuming normal behaviour.");
-        boss.isDashing = false;
+       // StartCoroutine(PS.Dashing(PS.transform.forward));
+        StartCoroutine(PS.DashCoolDown()); // start cooldown
+        yield return PS.Dashing(PS.transform.forward); // wait for dash to finish
     }
 
     private IEnumerator MowerSpin()
@@ -97,9 +74,8 @@ public class LawnmowerWeap : Weapon
         PS.rb.linearVelocity = Vector3.zero;
         PS.rb.angularVelocity = Vector3.zero;
         PS.rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
-
-        boss.isDashing = true; // reuse flag to stop MoveInput and Look()
-
+        StartCoroutine(PS.DashCoolDown());
+        
         float duration = WD.AbilityStruct[2].AbilityDuration;
         float timer = 0f;
 
@@ -112,8 +88,7 @@ public class LawnmowerWeap : Weapon
 
         // Restore constraints to allow movement again
         PS.rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
-
-        boss.isDashing = false;
+        
         Debug.Log("[MowerSpin] Spin finished.");
     }
 

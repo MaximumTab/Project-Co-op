@@ -10,23 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b97e52964d20cb2459cb7755ca1834d4, type: 3}
-  m_Name: LawnmowerD
+  m_Name: GreenBeeED
   m_EditorClassIdentifier: 
-  Name: Lawnmower
-  isBoss: 1
-  BaseAtk: 20
-  GrowAtk: 5
-  BaseHp: 300
-  GrowHp: 50
+  Name: 
+  isBoss: 0
+  BaseAtk: 0
+  GrowAtk: 0
+  BaseHp: 1
+  GrowHp: 0
   BaseAspd: 100
   GrowAspd: 0
   BaseAC: 100
   GrowAC: 0
-  BaseExp: 100
-  GrowExp: 0.2
+  BaseExp: 0
+  GrowExp: 0
   JumpForce: 10
   BonusJumps: 0
-  DashDistance: 10
-  BaseDashDist: 7
-  DashDownTime: 3
-  DashDuration: 0.1
