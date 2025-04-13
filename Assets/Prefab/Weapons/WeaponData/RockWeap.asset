@@ -13,13 +13,12 @@ MonoBehaviour:
   m_Name: RockWeap
   m_EditorClassIdentifier: 
   WName: RockWeap
-  WAtkPers:
-  - 100
-  WAtkDuration:
-  - 3
-  WCoolDown:
-  - 5
-  WNumAtks: 1
-  WAHPRFA:
-  - LowLim: 0
-    HighLim: 50
+  AbilityStruct:
+  - LowHpLim: 0
+    HighHpLim: 50
+    AbilityPercentages:
+    - 100
+    AbilityDuration: 3
+    AbilityUnInterruptDuration: 0
+    IsInterruptable: 0
+    AbilityCooldown: 5

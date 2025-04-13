@@ -1,20 +1,21 @@
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 [CreateAssetMenu(fileName = "WeaponData", menuName = "Weapons/WeaponData")]
 public class WeaponData : ScriptableObject
 {
     public string WName;
-    public float[] WAtkPers;
-    public float[] WAtkDuration;
-    public float[] WCoolDown;
-    public int WNumAtks;
-    public WActiveHpPercRangeForAtks[] WAHPRFA;
+    public WStruct[] AbilityStruct;
     [System.Serializable]
-    public struct WActiveHpPercRangeForAtks
+    public struct WStruct
     {
-        public float LowLim;
-        public float HighLim;
+        public float LowHpLim;
+        public float HighHpLim;
+        public float[] AbilityPercentages;
+        public float AbilityDuration;
+        public float AbilityUnInterruptDuration;
+        public bool IsInterruptable;
+        public float AbilityCooldown;
     }
     
 }
