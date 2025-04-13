@@ -32,15 +32,19 @@ public class Skill : MonoBehaviour
         UpdateVisual();
     }
 
-    public void TryUnlock()
+public void TryUnlock()
+{
+    if (isUnlocked)
+        return;
+
+    if (CanUnlock())
     {
-        if (CanUnlock())
-        {
-            isUnlocked = true;
-            OnEquip();
-            SkillParent.Instance.ChangeSkillPoints(sprequirement);
-        }
+        isUnlocked = true;
+        OnEquip();
+        SkillParent.Instance.ChangeSkillPoints(sprequirement);
+        SkillParent.Instance.SkillpointText();
     }
+}
     public bool CanUnlock()
     {
         foreach (Skill prereq in prerequisites)

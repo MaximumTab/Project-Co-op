@@ -1006,6 +1006,10 @@ PrefabInstance:
       value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 4708244058212290256, guid: 91497e4ace39d6944855cb2be048d2af, type: 3}
+      propertyPath: Lvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4708244058212290256, guid: 91497e4ace39d6944855cb2be048d2af, type: 3}
       propertyPath: timeToDie
       value: 10
       objectReference: {fileID: 0}
@@ -6343,6 +6347,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8221826561452375178, guid: 179d13ce10479454b9e7ffa27b2a1791, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8241501017702880532, guid: 179d13ce10479454b9e7ffa27b2a1791, type: 3}
+      propertyPath: Skillpoints
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8419886355425489340, guid: 179d13ce10479454b9e7ffa27b2a1791, type: 3}
