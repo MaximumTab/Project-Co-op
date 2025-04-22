@@ -18,6 +18,8 @@ MonoBehaviour:
     HighHpLim: 100
     AbilityPercentages:
     - 100
+    KnockBackStrengths:
+    - 1
     AbilityDuration: 1
     AbilityUnInterruptDuration: 1
     IsInterruptable: 0

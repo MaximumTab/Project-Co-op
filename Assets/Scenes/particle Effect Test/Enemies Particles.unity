@@ -183,6 +183,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestingEnemies
       objectReference: {fileID: 0}
+    - target: {fileID: 4708244058212290256, guid: 91497e4ace39d6944855cb2be048d2af, type: 3}
+      propertyPath: Lvl
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4708244058212290256, guid: 91497e4ace39d6944855cb2be048d2af, type: 3}
+      propertyPath: timeToDie
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

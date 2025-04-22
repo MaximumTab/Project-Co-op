@@ -12,6 +12,8 @@ public class WeaponData : ScriptableObject
         public float LowHpLim;
         public float HighHpLim;
         public float[] AbilityPercentages;
+        public float[] KnockBackStrengths;
+        public float[] KnockUpStrengths;
         public float AbilityDuration;
         public float AbilityUnInterruptDuration;
         public bool IsInterruptable;

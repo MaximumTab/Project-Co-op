@@ -46,13 +46,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcdd8ab840785be4c9808e1807e58b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Anim: {fileID: 0}
   ED: {fileID: 11400000, guid: 26e16d71edd4af04a9bd683ec4febf12, type: 2}
+  timeToDie: 0
   weaponsArray:
   - Weapon: {fileID: 5539868494548111095, guid: 6ff23902256784a43b19ff82f55cb9ae, type: 3}
   WeaponInUse: 0
+  RelativeWeaponSpawnPosition: {x: 0, y: 0, z: 0}
+  kill: 0
   Lvl: 5
+  DashCool: 1
   OneInNumberAtkAttempt:
+  - 2
   - 1
+  DistanceToActivate: 100
 --- !u!54 &505052740850208989
 Rigidbody:
   m_ObjectHideFlags: 0

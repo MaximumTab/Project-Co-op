@@ -111,6 +111,28 @@ public class Weapon : MonoBehaviour
         Debug.Log($"[DAMAGE] {attackerName} dealt {damageAmount} damage to {targetName}. Current HP: {targetCurrentHp}");
     }
 
+    void Knocking(int i, int CompNum)
+    {
+        float KnockAmount = KnockingAmount(WD.AbilityStruct[CompNum].KnockBackStrengths, i);
+        float KnockUpAmount = KnockingAmount(WD.AbilityStruct[CompNum].KnockUpStrengths,i);
+        Vector3 KnockDirection = (TargetEM.transform.position - transform.position).normalized;
+        TargetEM.rb.AddForce(KnockDirection*KnockAmount+Vector3.up*KnockUpAmount,ForceMode.Impulse);
+    }
+
+    float KnockingAmount(float[] knockAmounts, int targInt)
+    {
+        if (knockAmounts.Length > targInt)
+        {
+            return knockAmounts[targInt];
+        }
+        if(knockAmounts.Length!=0)
+        {
+            return knockAmounts[knockAmounts.Length - 1];
+        }
+
+        return 0;
+    }
+
     public virtual void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.transform.IsChildOf(PS.gameObject.transform.parent) )
@@ -138,6 +160,7 @@ public class Weapon : MonoBehaviour
                 if (col.bounds.Intersects(other.bounds) &&col.enabled && !WC.HitEMYet(col, TargetEM)) //https://discussions.unity.com/t/is-there-a-way-to-know-which-of-the-triggers-in-a-game-object-has-triggered-the-on-trigger-enter/861484/9
                 {
                     Damage(WC.WeaponColliderIndex[col],WC.CompNum);
+                    Knocking(WC.WeaponColliderIndex[col],WC.CompNum);
                     //add force to other.gameobject
                     break;
                 }
