@@ -92,6 +92,8 @@ public class Weapon : MonoBehaviour
     {
         Debug.Log(DamageDealt+" Incoming Damage");
         TargetEM.SM.ChangeHp(-DamageDealt);
+        TargetEM.GetComponent<BaseEnemyManager>()?.OnDamaged();
+
     }
 
     void Damage(int i, int CompNum)
