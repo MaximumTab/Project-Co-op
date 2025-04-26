@@ -6,7 +6,7 @@ using UnityEngine;
 public class SkillParent : MonoBehaviour
 {
     public static SkillParent Instance;
-    public static List<Skill>[] SkillTree;
+    public List<Skill>[] SkillTree;
     [SerializeField]TMP_Text Skillpointui;
     [SerializeField]public int Skillpoints = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -14,23 +14,12 @@ public class SkillParent : MonoBehaviour
     void Awake()
     {
         Instance = this;
-    }
-    void Start()
-    {
         SkillTree = new List<Skill> [4];
         SkillTree[0] = new List<Skill>();
         SkillTree[1] = new List<Skill>();
         SkillTree[2] = new List<Skill>();
         SkillTree[3] = new List<Skill>();
         GetAllSkills();
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-        
     }
 
     void GetAllSkills()
@@ -61,7 +50,7 @@ public class SkillParent : MonoBehaviour
     {
         for (int a = 1; a < 4; a++)
         {   
-            Debug.Log (SkillTree[a]);
+            Debug.Log (SkillTree[a].Count);
             foreach (Skill getskill in SkillTree[a])
             {
                 if (a == i)

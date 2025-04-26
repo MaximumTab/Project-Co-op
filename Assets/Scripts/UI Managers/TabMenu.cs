@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class TabMenu : MonoBehaviour
@@ -5,6 +6,17 @@ public class TabMenu : MonoBehaviour
     [SerializeField] private GameObject TabMenuWindow;
     private bool isPaused = false;
     // Update is called once per frame
+
+    private void Awake()
+    {
+        // ToggleMenu();
+    }
+
+    void Start()
+    {
+        ToggleMenu();
+    }
+
     void Update()
     {
         // Check if the 'P' key is pressed
