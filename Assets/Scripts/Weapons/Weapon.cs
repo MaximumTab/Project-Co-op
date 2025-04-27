@@ -90,7 +90,6 @@ public class Weapon : MonoBehaviour
 
     public virtual void Damaging(float DamageDealt)
     {
-        Debug.Log(DamageDealt+" Incoming Damage");
         TargetEM.SM.ChangeHp(-DamageDealt);
         TargetEM.OnDamaged();
 
@@ -148,11 +147,8 @@ public class Weapon : MonoBehaviour
         {
             return;
         }
-        Debug.Log(CompScripts.Count+" CompScripts Count");
         foreach (WeaponComp WC in CompScripts.Values)
         {
-            Debug.Log(WC.OnceOnHit.Count+" OnceOnHit Count");
-            Debug.Log(WC.WeaponColliders.Count+" WeaponColliders Count");
             foreach (Collider col in WC.OnceOnHit.Keys)
             {
                 if (!col)

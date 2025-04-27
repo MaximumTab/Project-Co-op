@@ -32,7 +32,10 @@ public class WeaponComp : Weapon
         }
 
         Anim = gameObject.GetComponent<Animator>();
-        Anim.SetFloat("Speed",Speed);
+        if (Anim)
+        {
+            Anim.SetFloat("Speed", Speed);
+        }
     }
 
     public bool HitEMYet(Collider i,EntityManager TargetEM)

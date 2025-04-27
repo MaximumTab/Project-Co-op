@@ -28,33 +28,39 @@ public class Projectile : Weapon
     public override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
-        if (!other.gameObject.transform.IsChildOf(PS.gameObject.transform.parent) &&!other.gameObject.transform.GetComponentInParent<Weapon>())
+        if (!other.gameObject.transform.IsChildOf(PS.gameObject.transform.parent) &&!other.gameObject.transform.GetComponentInParent<Weapon>()&&other.gameObject.transform.GetComponent<ProjEntityManager>()!=BM)
         {
-            if (BM.Wp)
-            {
-                BM.Wp.WD = WD;
-                BM.Wp.PS = PS;
-            }
-
-            BM.OnAttack = true;
-            int i = 0;
-            foreach (Collider col in gameObject.GetComponentsInChildren<Collider>())
-            {
-                
-                CompScripts[0].WeaponColliders.Remove(col);
-                CompScripts[0].OnceOnHit.Remove(col);
-            }
-            
-            if(CompScripts[0])
-            {
-                CompScripts[0].CheckNoProjs();
-            }
-            
-            StartCoroutine(BM.AfterTimeRemove(BM.timeToDie));
-            Debug.Log("Eaten by, "+other.gameObject.name);
-            rb.linearVelocity=Vector3.zero;
-            enabled = false;
+            hitAttack(other.gameObject.name);
         }
+    }
+
+    public void hitAttack(string cause)
+    {
+        if (BM.Wp)
+        {
+            BM.Wp.WD = WD;
+            BM.Wp.PS = PS;
+        }
+
+        BM.OnAttack = true;
+        rb.constraints=RigidbodyConstraints.FreezePosition;
+        int i = 0;
+        foreach (Collider col in gameObject.GetComponentsInChildren<Collider>())
+        {
+                
+            CompScripts[0].WeaponColliders.Remove(col);
+            CompScripts[0].OnceOnHit.Remove(col);
+        }
+            
+        if(CompScripts[0])
+        {
+            CompScripts[0].CheckNoProjs();
+        }
+            
+        StartCoroutine(BM.AfterTimeRemove(BM.timeToDie));
+        Debug.Log("Removed by "+cause);
+        rb.linearVelocity=Vector3.zero;
+        enabled = false;
     }
 
     IEnumerator LifeSpanExpiring()
@@ -65,6 +71,6 @@ public class Projectile : Weapon
             CompScripts[0].WeaponColliders.Remove(col);
             CompScripts[0].OnceOnHit.Remove(col);
         }
-        Destroy(gameObject);
+        hitAttack("Life Expiry");
     }
 }

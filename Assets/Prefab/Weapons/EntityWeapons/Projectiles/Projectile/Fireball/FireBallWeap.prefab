@@ -55,7 +55,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 126
@@ -75,5 +75,6 @@ MonoBehaviour:
   WD: {fileID: 11400000, guid: 0d736514b7ba4fd4199aeb43315e1c18, type: 2}
   WeaponComponents:
   - {fileID: 3602466438476372788, guid: 35e5859503f0e7e49b0ca6d4545366a3, type: 3}
+  CompNum: 0
   WeaponColliders: []
   PS: {fileID: 0}

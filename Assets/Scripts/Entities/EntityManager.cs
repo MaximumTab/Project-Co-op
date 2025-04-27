@@ -47,7 +47,6 @@ public class EntityManager : MonoBehaviour
     [SerializeField] private Color FlashColour=Color.red;
     [SerializeField] private float FlashTime = 0.25f;
     private List<Renderer> flashRenderers = new List<Renderer>();
-    private List<Color> originalColors = new List<Color>();
     private Coroutine flashCoroutine;
 
     public StatManager SM;
@@ -71,7 +70,6 @@ public class EntityManager : MonoBehaviour
             if (r.gameObject.name.ToLower().Contains("weapon")) continue;
             flashRenderers.Add(r);
             r.material.SetTexture("_MainTex",baseMat);
-            originalColors.Add(r.material.color);
             
         }
     }
@@ -348,7 +346,6 @@ public class EntityManager : MonoBehaviour
         {
             Anim.SetTrigger("IsDashing");
         }
-        Debug.Log(End);
         for (float time = 0; time < ED.DashDuration; time += Time.deltaTime)
         {
             rb.linearVelocity = Vector3.Lerp(Start, End, time / ED.DashDuration);
@@ -362,6 +359,7 @@ public class EntityManager : MonoBehaviour
     {
         Attacking[a] = true;
         BusyAtk[a] = true;
+        float i=Wp.WD.AbilityStruct[a].AbilityDuration + 0.05f;
         if (Wp.Attack(a))
         {
             if (this is PlayerManager && AttackCooldownUI.Instance)
@@ -374,7 +372,8 @@ public class EntityManager : MonoBehaviour
                 Anim.SetInteger("Attack",a);
             }
 
-            for (float i = 0; i < (Wp.WD.AbilityStruct[a].AbilityDuration + 0.05f) / SM.CurAspd(); i += Time.deltaTime)
+            
+            for (i = 0; i < (Wp.WD.AbilityStruct[a].AbilityDuration + 0.05f) / SM.CurAspd(); i += Time.deltaTime)
             {
                 if (Wp.WD.AbilityStruct[a].AbilityUnInterruptDuration / SM.CurAspd() <= i)
                 {
@@ -385,6 +384,7 @@ public class EntityManager : MonoBehaviour
                 Weapon.transform.rotation = LookDir;
                 yield return null;
             }
+
         }
 
         if (Anim)
@@ -394,6 +394,13 @@ public class EntityManager : MonoBehaviour
 
         Attacking[a] = false;
         BusyAtk[a] = false;
+        while (i < Wp.WD.AbilityStruct[a].AbilityDuration + 0.05f)
+        {
+            i += Time.deltaTime;
+            yield return null;
+            Weapon.transform.position = gameObject.transform.position;
+            Weapon.transform.rotation = LookDir;
+        }
         yield return null;
     }
     public virtual void MoveInput()//Change MoveDir in Child

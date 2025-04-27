@@ -16,7 +16,9 @@ public class ProjEntityManager : EntityManager
     {
         if (OnAttack)
         {
+            OnAttack = false;
             return (true, 0);
+            
         }
 
         return (false, 0);
