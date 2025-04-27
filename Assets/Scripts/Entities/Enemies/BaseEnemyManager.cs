@@ -8,21 +8,11 @@ public class BaseEnemyManager : EntityManager
     private bool targetSearched = false;
     [SerializeField] private float DistanceToActivate=100;
 
-    private List<Renderer> flashRenderers = new List<Renderer>();
-    private List<Color> originalColors = new List<Color>();
-    private Coroutine flashCoroutine;
+    
 
     public override void Start()
     {
         base.Start();
-        Renderer[] foundRenderers = GetComponentsInChildren<Renderer>();
-        foreach (Renderer r in transform.root.GetComponentsInChildren<Renderer>(true))
-        {
-            if (r.gameObject.name.ToLower().Contains("weapon")) continue; 
-            flashRenderers.Add(r);
-            r.material = new Material(r.material);
-            originalColors.Add(r.material.color);
-        }
         if (ED&& ED.isBoss&& HealthManager.Instance[1])
         { 
             HealthManager.Instance[1].Init(SM.MaxHp, ED.Name);
@@ -69,28 +59,6 @@ public class BaseEnemyManager : EntityManager
         }
 
         return target;
-    }
-
-    public void OnDamaged()
-    {
-        if (flashCoroutine != null)
-            StopCoroutine(flashCoroutine);
-
-        flashCoroutine = StartCoroutine(FlashRed());
-    }
-    private IEnumerator FlashRed()
-    {
-        for (int i = 0; i < flashRenderers.Count; i++)
-        {
-            flashRenderers[i].material.color = new Color(0.8f, 0.3f, 0.3f); 
-        }
-
-        yield return new WaitForSeconds(0.1f);
-
-        for (int i = 0; i < flashRenderers.Count; i++)
-        {
-            flashRenderers[i].material.color = originalColors[i];
-        }
     }
 
 }

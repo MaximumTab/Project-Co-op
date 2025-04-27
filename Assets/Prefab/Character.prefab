@@ -391,6 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2cb3251927a91f42a78dff74f0a55cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Anim: {fileID: 0}
   ED: {fileID: 11400000, guid: abba732553e20f845839c9d46811ede6, type: 2}
   timeToDie: 0
   weaponsArray:
@@ -400,7 +401,12 @@ MonoBehaviour:
   - Weapon: {fileID: 2855318620135022137, guid: e19b4927f98d59443a96e77dbbc6ead4, type: 3}
   WeaponInUse: 1
   RelativeWeaponSpawnPosition: {x: 0, y: 0, z: 0}
+  kill: 0
   Lvl: 0
+  DashCool: 1
+  baseMat: {fileID: 2800000, guid: 25ed9945375833342aaf45d0e24d9162, type: 3}
+  FlashColour: {r: 1, g: 0, b: 0, a: 1}
+  FlashTime: 0.25
   CameraRotation: {fileID: 7839474449267695542}
   Exp: 0
 --- !u!136 &7328471659442591423
@@ -490,6 +496,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: newChickem
       objectReference: {fileID: 0}
+    - target: {fileID: 7205140776170859923, guid: 549fad1bb19d6334c9c9094751a35e8e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 212f94a7fa6465248a6e7866a4fa14e4, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

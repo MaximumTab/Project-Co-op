@@ -43,6 +43,13 @@ public class EntityManager : MonoBehaviour
     private bool[] Attacking;
     private bool[] BusyAtk;
 
+    [SerializeField] private Texture2D  baseMat;
+    [SerializeField] private Color FlashColour=Color.red;
+    [SerializeField] private float FlashTime = 0.25f;
+    private List<Renderer> flashRenderers = new List<Renderer>();
+    private List<Color> originalColors = new List<Color>();
+    private Coroutine flashCoroutine;
+
     public StatManager SM;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public virtual void Start()
@@ -58,6 +65,15 @@ public class EntityManager : MonoBehaviour
         SM.LevelUp(ED,Lvl);
         Lvl=SM.IncreaseLvl(Lvl);
         SM.CurAspd();
+        Renderer[] foundRenderers = GetComponentsInChildren<Renderer>(true);
+        foreach (Renderer r in foundRenderers)
+        {
+            if (r.gameObject.name.ToLower().Contains("weapon")) continue;
+            flashRenderers.Add(r);
+            r.material.SetTexture("_MainTex",baseMat);
+            originalColors.Add(r.material.color);
+            
+        }
     }
 
     // Update is called once per frame
@@ -88,6 +104,42 @@ public class EntityManager : MonoBehaviour
     public virtual void LevelingUp()
     {
         
+    }
+    public void OnDamaged()
+    {
+        if (flashCoroutine != null)
+            StopCoroutine(flashCoroutine);
+
+        flashCoroutine = StartCoroutine(FlashRed());
+    }
+    private IEnumerator FlashRed()
+    {
+        SetFlashColor();
+        float CurrentFlashAmount = 0f;
+        float elaspedTime = 0f;
+        while (elaspedTime < FlashTime)
+        {
+            elaspedTime += Time.deltaTime;
+            CurrentFlashAmount = Mathf.Lerp(1, 0, elaspedTime / FlashTime);
+            SetFlashAmount(CurrentFlashAmount);
+            yield return null;
+        }
+    }
+
+    private void SetFlashColor()
+    {
+        for (int i = 0; i < flashRenderers.Count; i++)
+        {
+            flashRenderers[i].material.SetColor("_Flash_Color",FlashColour); 
+        }
+    }
+
+    private void SetFlashAmount(float amount)
+    {
+        for (int i = 0; i < flashRenderers.Count; i++)
+        {
+            flashRenderers[i].material.SetFloat("_Flash_Amount",amount);
+        }
     }
 
     public virtual void OnDeath()
