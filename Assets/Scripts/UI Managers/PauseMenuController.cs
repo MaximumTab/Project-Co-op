@@ -10,18 +10,19 @@ public class PauseMenuController : MonoBehaviour
     private void Awake()
     {
         inputActions = new InputSystem_Actions();
+        inputActions.UI.Enable();
     }
 
     private void OnEnable()
     {
-        inputActions.Enable();
-        inputActions.Player.PauseMenu.performed += ctx => TogglePause(); 
+        inputActions.Player.Disable();
+        inputActions.UI.PauseMenu.performed += ctx => TogglePause(); 
     }
 
     private void OnDisable()
     {
-        inputActions.Player.PauseMenu.performed -= ctx => TogglePause();
-        inputActions.Disable();
+        inputActions.UI.PauseMenu.performed -= ctx => TogglePause();
+        inputActions.Player.Enable();
     }
 
     void TogglePause()
@@ -36,12 +37,13 @@ public class PauseMenuController : MonoBehaviour
         {
             Time.timeScale = 0;
             pauseMenuWindow.SetActive(true);
+            inputActions.Player.Disable();
         }
         else
         {
             Time.timeScale = 1;
             pauseMenuWindow.SetActive(false);
-
+            inputActions.Player.Enable();
             UnityEngine.Cursor.visible = false;
             UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         }

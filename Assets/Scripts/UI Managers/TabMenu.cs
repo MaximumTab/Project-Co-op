@@ -11,18 +11,20 @@ public class TabMenu : MonoBehaviour
     private void Awake()
     {
         inputActions = new InputSystem_Actions();
+        inputActions.UI.Enable();
     }
 
     private void OnEnable()
     {
-        inputActions.Enable();
-        inputActions.Player.SkillMenu.performed += ctx => ToggleMenu();
+        inputActions.Player.Disable();
+        
+        inputActions.UI.SkillMenu.performed += ctx => ToggleMenu();
     }
 
     private void OnDisable()
     {
-        inputActions.Player.SkillMenu.performed -= ctx => ToggleMenu();
-        inputActions.Disable();
+        inputActions.UI.SkillMenu.performed -= ctx => ToggleMenu();
+        inputActions.Player.Enable();
     }
 
     void Start()
@@ -42,12 +44,14 @@ public class TabMenu : MonoBehaviour
         {
             Time.timeScale = 0;
             TabMenuWindow.SetActive(true);
+            inputActions.Player.Disable();
             SkillParent.Instance.SkillpointText();
         }
         else
         {
             Time.timeScale = 1;
             TabMenuWindow.SetActive(false);
+            inputActions.Player.Enable();
             UnityEngine.Cursor.visible = false;
             UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         }
