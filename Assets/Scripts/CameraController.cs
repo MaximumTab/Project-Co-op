@@ -29,6 +29,12 @@ public class CameraController : MonoBehaviour
 
     private InputSystem_Actions input;
 
+    public float GetXSensitivity() => xSensitivity;
+    public float GetYSensitivity() => ySensitivity;
+
+    public void SetXSensitivity(float value) => xSensitivity = value;
+    public void SetYSensitivity(float value) => ySensitivity = value;
+
     private void Start()
     {
         UnityEngine.Cursor.visible = false;
@@ -41,14 +47,20 @@ public class CameraController : MonoBehaviour
     }
 
     private void Update()
-    {   
+    {
         if (Time.timeScale == 0) return;
+
         Vector2 lookInput = input.Player.Look.ReadValue<Vector2>();
+
+        if (Mouse.current != null && Mouse.current.delta.IsActuated())
+        {
+            lookInput *= 0.1f; 
+        }
+
         yRotation += lookInput.x * ySensitivity;
         xRotation += lookInput.y * xSensitivity * xInvertedValue;
         xRotation = Mathf.Clamp(xRotation, xRotationMin, xRotationMax);
     }
-
     private void LateUpdate()
     {
         xRotationClamped = Mathf.Clamp(xRotation, xRotationMin, xRotationMax);
