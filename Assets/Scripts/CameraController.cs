@@ -43,10 +43,10 @@ public class CameraController : MonoBehaviour
     private void Update()
     {   
         if (Time.timeScale == 0) return;
-        
         Vector2 lookInput = input.Player.Look.ReadValue<Vector2>();
         yRotation += lookInput.x * ySensitivity;
         xRotation += lookInput.y * xSensitivity * xInvertedValue;
+        xRotation = Mathf.Clamp(xRotation, xRotationMin, xRotationMax);
     }
 
     private void LateUpdate()
