@@ -10,12 +10,12 @@ public class PauseMenuController : MonoBehaviour
     private void Awake()
     {
         inputActions = new InputSystem_Actions();
-        inputActions.UI.Enable();
     }
 
     private void OnEnable()
     {
         inputActions.Player.Disable();
+        inputActions.UI.Enable();
         inputActions.UI.PauseMenu.performed += ctx => TogglePause(); 
     }
 
@@ -23,6 +23,7 @@ public class PauseMenuController : MonoBehaviour
     {
         inputActions.UI.PauseMenu.performed -= ctx => TogglePause();
         inputActions.Player.Enable();
+        inputActions.UI.Disable();  
     }
 
     void TogglePause()

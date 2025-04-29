@@ -17,7 +17,7 @@ public class TabMenu : MonoBehaviour
     private void OnEnable()
     {
         inputActions.Player.Disable();
-        
+        inputActions.UI.Enable();
         inputActions.UI.SkillMenu.performed += ctx => ToggleMenu();
     }
 
@@ -25,6 +25,7 @@ public class TabMenu : MonoBehaviour
     {
         inputActions.UI.SkillMenu.performed -= ctx => ToggleMenu();
         inputActions.Player.Enable();
+        inputActions.UI.Disable(); // unity yells at me if i dont disable ui even though its not active
     }
 
     void Start()
