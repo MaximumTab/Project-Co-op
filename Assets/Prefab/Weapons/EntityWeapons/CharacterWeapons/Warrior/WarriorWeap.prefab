@@ -76,6 +76,8 @@ MonoBehaviour:
   WeaponComponents:
   - {fileID: 4318510445723138572, guid: 907b606eb71a44f498e701de2067f2b4, type: 3}
   - {fileID: 3862302455194193787, guid: dd38a351149ae4446b85d6219549ef49, type: 3}
+  - {fileID: 6711914478746029939, guid: 3fa8558399dcaf04cac1cb7d753009c9, type: 3}
+  CompNum: 0
   WeaponColliders: []
   PS: {fileID: 0}
   LifeStealPercent: 25

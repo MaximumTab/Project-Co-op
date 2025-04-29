@@ -49,6 +49,9 @@ MonoBehaviour:
   WeaponComponents:
   - {fileID: 5594436628491138835, guid: 230699fa8c7fd8e499febdd3b3746295, type: 3}
   - {fileID: 6183478869787880025, guid: 1e4974f12ac37464aa8ad3bddcab980c, type: 3}
+  - {fileID: 3340169282893756296, guid: 1e929d2603854d2499a7fa1b88106d79, type: 3}
+  CompNum: 0
+  WeaponColliders: []
   PS: {fileID: 0}
   MultSpeed: 2
 --- !u!54 &8700291776103867449
