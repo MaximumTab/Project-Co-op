@@ -215,6 +215,9 @@ public class EntityManager : MonoBehaviour
 
                 StartCoroutine(WFiring(InputAtk.Item2));
             }
+            Weapon.transform.position = gameObject.transform.position;
+            Weapon.transform.rotation = LookDir;
+            Wp.ChangePrev(InputAtk.Item2);
         }
     }
     void Jump()
@@ -305,21 +308,6 @@ public class EntityManager : MonoBehaviour
 
         return AdjustedSpeed;
     }
-    
-   /* public IEnumerator LerpRotation(Quaternion target, Quaternion goal)
-    {
-        LookCooldown = false;
-        Quaternion StartRot = target;
-        for(float time=0;time<TurnDuration;time+=Time.deltaTime){
-            transform.rotation=Quaternion.Lerp(StartRot, goal,time/TurnDuration);
-            yield return null;
-        }
-
-        LastLook = goal;
-        transform.rotation = goal;
-        yield return null;
-        LookCooldown = true;
-    }*/
     IEnumerator CayoteTime()
     {
         yield return new WaitForSeconds(CayoteLength);
@@ -379,9 +367,8 @@ public class EntityManager : MonoBehaviour
                 {
                     Attacking[a] = false;
                 }
-
-                Weapon.transform.position = gameObject.transform.position;
-                Weapon.transform.rotation = LookDir;
+                
+                
                 yield return null;
             }
 
@@ -398,8 +385,6 @@ public class EntityManager : MonoBehaviour
         {
             i += Time.deltaTime;
             yield return null;
-            Weapon.transform.position = gameObject.transform.position;
-            Weapon.transform.rotation = LookDir;
         }
         yield return null;
     }
@@ -409,7 +394,7 @@ public class EntityManager : MonoBehaviour
     }
     public virtual (bool,int) AtkInput() //Choose how to Shoot in Child
     {
-        return (false,0);
+        return (false,-1);
     }
     public virtual bool JumpInput() //Choose how to Jump in Child
     {

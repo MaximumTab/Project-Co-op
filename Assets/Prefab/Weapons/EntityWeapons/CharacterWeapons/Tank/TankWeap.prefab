@@ -76,5 +76,7 @@ MonoBehaviour:
   WeaponComponents:
   - {fileID: 6711198178350125143, guid: b50d0f48b05788a49bfd60ab8c377edd, type: 3}
   - {fileID: 6711198178350125143, guid: b50d0f48b05788a49bfd60ab8c377edd, type: 3}
+  - {fileID: 7995268253705547530, guid: 819bbbe76f910b94c9c9a21b369ad19b, type: 3}
+  CompNum: 0
   WeaponColliders: []
   PS: {fileID: 0}

@@ -43,7 +43,7 @@ public class BaseEnemyManager : EntityManager
                 return (true, i);
             }
         }
-        return (false,0);
+        return (false,-1);
     }
 
     public Transform GetTarget()
