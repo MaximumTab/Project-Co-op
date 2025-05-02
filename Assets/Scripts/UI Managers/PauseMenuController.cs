@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PauseMenuController : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class PauseMenuController : MonoBehaviour
         inputActions.UI.Disable();  
     }
 
-    void TogglePause()
+    void TogglePause()   
     {
         UnityEngine.Cursor.visible = true;
         UnityEngine.Cursor.lockState = CursorLockMode.None;
@@ -49,4 +50,16 @@ public class PauseMenuController : MonoBehaviour
             UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         }
     }
+
+    public void QuitGame()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    
+    
 }
