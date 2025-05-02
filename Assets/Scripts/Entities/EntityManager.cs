@@ -13,7 +13,8 @@ public class EntityManager : MonoBehaviour
     protected Vector3 MoveDir;
     protected Quaternion LookDir;
     public Quaternion LastLook{ get; private set; }
-    private bool LookCooldown = true;
+
+    public bool LookCooldown = true;
     //public float TurnDuration = 0.15f;
     
     private GameObject Weapon;
@@ -53,6 +54,7 @@ public class EntityManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public virtual void Start()
     {
+        LookCooldown = true;
         ChangeWeapon(WeaponInUse);
         SM = new StatManager();
         Anim = gameObject.GetComponentInChildren<Animator>();

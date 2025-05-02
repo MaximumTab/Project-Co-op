@@ -30,7 +30,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8651021528319985827}
-  - {fileID: 1921585100428169420}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3561876238479953184
@@ -46,6 +45,7 @@ GameObject:
   - component: {fileID: 4680051395979213151}
   - component: {fileID: 752124280337994157}
   - component: {fileID: 3426052496805426122}
+  - component: {fileID: 7795717597404210049}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -63,9 +63,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1921585100428169420}
   m_Father: {fileID: 6694126509643934807}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8103162728889273650
@@ -140,10 +141,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.6
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.53, z: 0}
 --- !u!114 &3426052496805426122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,6 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Anim: {fileID: 0}
   ED: {fileID: 11400000, guid: 7547f989d2081014d80d2f1b548becd5, type: 2}
+  LookCooldown: 1
   timeToDie: 0
   weaponsArray:
   - Weapon: {fileID: 1747624984856779055, guid: 26fdebb8b45c77e499b241706ca90b01, type: 3}
@@ -166,18 +168,48 @@ MonoBehaviour:
   kill: 0
   Lvl: 5
   DashCool: 1
+  baseMat: {fileID: 2800000, guid: dde616c583ff69a48b7e2f497fe706ba, type: 3}
+  FlashColour: {r: 1, g: 0, b: 0, a: 1}
+  FlashTime: 0.25
   OneInNumberAtkAttempt:
   - 3
   - 2
   - 1
   DistanceToActivate: 100
+--- !u!54 &7795717597404210049
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3561876238479953184}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1001 &2098798418704545575
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 6694126509643934807}
+    m_TransformParent: {fileID: 8651021528319985827}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6b68833efcfff56469dd6a8e3364d4a3, type: 3}
       propertyPath: m_LocalScale.x
@@ -197,7 +229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6b68833efcfff56469dd6a8e3364d4a3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.899
+      value: -0.44950008
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6b68833efcfff56469dd6a8e3364d4a3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -231,6 +263,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 6b68833efcfff56469dd6a8e3364d4a3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 212f94a7fa6465248a6e7866a4fa14e4, type: 2}
     - target: {fileID: 919132149155446097, guid: 6b68833efcfff56469dd6a8e3364d4a3, type: 3}
       propertyPath: m_Name
       value: beehive
