@@ -54,7 +54,7 @@ public class CameraController : MonoBehaviour
 
         if (Mouse.current != null && Mouse.current.delta.IsActuated())
         {
-            lookInput *= 0.1f; 
+            lookInput *= 0.2f; 
         }
 
         yRotation += lookInput.x * ySensitivity;

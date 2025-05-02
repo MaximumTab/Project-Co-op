@@ -18,13 +18,13 @@ public class SensitivitySlider : MonoBehaviour
             return;
         }
 
-        xSlider.minValue = 0.01f;
-        xSlider.maxValue = 2f;
+        xSlider.minValue = 0.1f;
+        xSlider.maxValue = 3f;
         xSlider.value = cameraController.GetXSensitivity();
         xSlider.onValueChanged.AddListener(cameraController.SetXSensitivity);
 
-        ySlider.minValue = 0.01f;
-        ySlider.maxValue = 2f;
+        ySlider.minValue = 0.1f;
+        ySlider.maxValue = 3f;
         ySlider.value = cameraController.GetYSensitivity();
         ySlider.onValueChanged.AddListener(cameraController.SetYSensitivity);
     }
