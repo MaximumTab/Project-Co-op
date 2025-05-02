@@ -147,8 +147,7 @@ MonoBehaviour:
   posheight: 2
   xRotationMin: -80
   xRotationMax: 80
-  xSensitivity: 0.2
-  ySensitivity: 0.2
+  sensitivity: 2
   invertX: 1
 --- !u!1 &3189890991512007504
 GameObject:

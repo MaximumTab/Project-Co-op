@@ -37,7 +37,6 @@ public class BaseEnemyManager : EntityManager
                     HealthManager.RegisterBoss(this, SM.MaxHp, ED.Name);
                 }
 
-                HealthManager.UpdateBossHealth(this, SM.Hp);
 
                 if (SM.Hp <= 0)
                 {

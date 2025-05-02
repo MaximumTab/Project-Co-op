@@ -13,6 +13,8 @@ public class HealthManager : MonoBehaviour
     private bool isVisible;
     private string bossName;
     private static Dictionary<BaseEnemyManager, (float, float, string)> activeBosses = new Dictionary<BaseEnemyManager, (float, float, string)>();
+    private static HashSet<BaseEnemyManager> damagedBosses = new HashSet<BaseEnemyManager>();
+
     private static BaseEnemyManager currentDisplayedBoss;
 
     [Header("UI")]
@@ -34,33 +36,31 @@ public class HealthManager : MonoBehaviour
     {
         activeBosses[boss] = (maxHP, maxHP, name);
     }
-
     public static void UpdateBossHealth(BaseEnemyManager boss, float currentHP)
     {
-        if (activeBosses.ContainsKey(boss))
-        {
-            var (maxHP, _, name) = activeBosses[boss];
-            activeBosses[boss] = (maxHP, currentHP, name);
-            
-            // Switch to this boss if it's taking damage
-            if (currentHP < maxHP || currentDisplayedBoss == null)
-            {
-                currentDisplayedBoss = boss;
-                UpdateBossUI();
-            }
-        }
+        if (!activeBosses.ContainsKey(boss))
+            return;
+
+        var (maxHP, _, name) = activeBosses[boss];
+        activeBosses[boss] = (maxHP, currentHP, name);
+
+        // Always switch to the boss who was just hit
+        currentDisplayedBoss = boss;
+        UpdateBossUI();
     }
+
 
     public static void UnregisterBoss(BaseEnemyManager boss)
     {
         if (activeBosses.ContainsKey(boss))
-        {
             activeBosses.Remove(boss);
-            if (currentDisplayedBoss == boss)
-            {
-                currentDisplayedBoss = null;
-                Instance[1]?.HideHealthBar();
-            }
+
+        damagedBosses.Remove(boss);
+
+        if (currentDisplayedBoss == boss)
+        {
+            currentDisplayedBoss = null;
+            Instance[1]?.HideHealthBar();
         }
     }
 
