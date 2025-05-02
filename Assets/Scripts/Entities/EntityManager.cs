@@ -109,6 +109,10 @@ public class EntityManager : MonoBehaviour
             StopCoroutine(flashCoroutine);
 
         flashCoroutine = StartCoroutine(FlashRed());
+        if (ED != null && ED.isBoss && this is BaseEnemyManager bem)
+        {
+            HealthManager.UpdateBossHealth(bem, SM.Hp);
+        }
     }
     private IEnumerator FlashRed()
     {
