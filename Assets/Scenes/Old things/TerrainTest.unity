@@ -3229,6 +3229,10 @@ PrefabInstance:
       propertyPath: Acceleration
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 1314977135051964829, guid: 723a75b0141b9f940918872b702fdf4c, type: 3}
+      propertyPath: sensitivity
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3189890991512007504, guid: 723a75b0141b9f940918872b702fdf4c, type: 3}
       propertyPath: m_Name
       value: Character
@@ -26228,7 +26232,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1862917029}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 880987306468f48449b0e7583663eab4, type: 3}
+  m_Script: {fileID: 11500000, guid: acfe418c46926424082bd38bedeec3ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1863054654

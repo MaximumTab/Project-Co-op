@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class SensitivitySlider : MonoBehaviour
 {
-    [SerializeField] private Slider xSlider;
-    [SerializeField] private Slider ySlider;
+    [SerializeField] private Slider sensitivitySlider;
+
 
     private CameraController cameraController;
 
@@ -17,15 +17,10 @@ public class SensitivitySlider : MonoBehaviour
             Debug.LogError("CameraController not found in scene!");
             return;
         }
-
-        xSlider.minValue = 0.1f;
-        xSlider.maxValue = 3f;
-        xSlider.value = cameraController.GetXSensitivity();
-        xSlider.onValueChanged.AddListener(cameraController.SetXSensitivity);
-
-        ySlider.minValue = 0.1f;
-        ySlider.maxValue = 3f;
-        ySlider.value = cameraController.GetYSensitivity();
-        ySlider.onValueChanged.AddListener(cameraController.SetYSensitivity);
+        
+        sensitivitySlider.onValueChanged.AddListener(cameraController.SetSensitivity);
+        sensitivitySlider.minValue = 0.5f;
+        sensitivitySlider.maxValue = 3f;
+        sensitivitySlider.value = cameraController.GetSensitivity();
     }
 }

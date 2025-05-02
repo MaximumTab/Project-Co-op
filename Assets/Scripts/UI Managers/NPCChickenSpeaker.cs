@@ -6,7 +6,7 @@ public class NPCChickenSpeaker : MonoBehaviour
 {
     [SerializeField] private TextMeshPro textBubble;
     [TextArea]
-    [SerializeField] private string dialogueLine = "BAWK. The corn’s cursed.";
+    [SerializeField] private string dialogueLine = "";
     [SerializeField] private float displayTime = 6f;
     [SerializeField] private InputActionReference interactAction;
 
@@ -15,48 +15,40 @@ public class NPCChickenSpeaker : MonoBehaviour
 
     private void Start()
     {
-        if (interactAction != null)
-            interactAction.action.Enable();
-
-        if (textBubble != null)
-            textBubble.gameObject.SetActive(false);
+        interactAction?.action.Enable();
+        textBubble?.gameObject.SetActive(false);
+        InteractPrompt.Instance?.HidePrompt();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"Triggered with: {other.name}");
+        if (!other.CompareTag("Player")) return;
 
-        if (other.CompareTag("Player"))
-        {
-            Debug.Log("Player entered trigger zone!");
-            playerInRange = true;
-            playerTransform = other.transform;
-        }
+        playerInRange = true;
+        playerTransform = other.transform;
+
+        InteractPrompt.Instance?.ShowPrompt("Speak to chicken");
     }
-
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            Debug.Log("Player left trigger zone!");
-            playerInRange = false;
-            playerTransform = null;
+        if (!other.CompareTag("Player")) return;
 
-            // Start countdown only when leaving range
-            if (textBubble != null && textBubble.gameObject.activeSelf)
-                StartCoroutine(HideAfterDelay());
-        }
+        playerInRange = false;
+        playerTransform = null;
+
+        if (textBubble != null && textBubble.gameObject.activeSelf)
+            StartCoroutine(HideAfterDelay());
+
+        InteractPrompt.Instance?.HidePrompt();
     }
-
 
     private void Update()
     {
-        // Always rotate toward player if text is visible and we still know their position
         if (textBubble != null && textBubble.gameObject.activeSelf && playerTransform != null)
         {
             Vector3 direction = textBubble.transform.position - playerTransform.position;
-            direction.y = 0; // Keep upright
+            direction.y = 0;
             textBubble.transform.rotation = Quaternion.LookRotation(direction);
         }
 
@@ -65,7 +57,6 @@ public class NPCChickenSpeaker : MonoBehaviour
         if (interactAction.action.WasPressedThisFrame())
             TriggerDialogue();
     }
-
 
     private void TriggerDialogue()
     {
@@ -76,12 +67,18 @@ public class NPCChickenSpeaker : MonoBehaviour
             textBubble.text = dialogueLine;
             textBubble.gameObject.SetActive(true);
         }
+
+        InteractPrompt.Instance?.HidePrompt();
     }
 
     private System.Collections.IEnumerator HideAfterDelay()
     {
         yield return new WaitForSeconds(displayTime);
+
         if (textBubble != null)
             textBubble.gameObject.SetActive(false);
+
+        if (playerInRange)
+        InteractPrompt.Instance?.ShowPrompt("Speak to chicken");
     }
 }

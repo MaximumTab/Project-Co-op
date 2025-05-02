@@ -19,8 +19,8 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float xRotationMin;
     [SerializeField] private float xRotationMax;
 
-    [SerializeField] private float xSensitivity;
-    [SerializeField] private float ySensitivity;
+    [SerializeField] private float sensitivity = 2f;
+
 
     [SerializeField] private bool invertX;
     private int xInvertedValue;
@@ -29,12 +29,8 @@ public class CameraController : MonoBehaviour
 
     private InputSystem_Actions input;
 
-    public float GetXSensitivity() => xSensitivity;
-    public float GetYSensitivity() => ySensitivity;
-
-    public void SetXSensitivity(float value) => xSensitivity = value;
-    public void SetYSensitivity(float value) => ySensitivity = value;
-
+    public float GetSensitivity() => sensitivity;
+    public void SetSensitivity(float value) => sensitivity = value;
     private void Start()
     {
         UnityEngine.Cursor.visible = false;
@@ -57,8 +53,8 @@ public class CameraController : MonoBehaviour
             lookInput *= 0.2f; 
         }
 
-        yRotation += lookInput.x * ySensitivity;
-        xRotation += lookInput.y * xSensitivity * xInvertedValue;
+        yRotation += lookInput.x * sensitivity;
+        xRotation += lookInput.y * sensitivity * xInvertedValue;
         xRotation = Mathf.Clamp(xRotation, xRotationMin, xRotationMax);
     }
     private void LateUpdate()
