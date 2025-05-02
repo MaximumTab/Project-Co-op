@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textBubble: {fileID: 117154820469601406}
-  dialogueLine: "BAWK. The corn\u2019s cursed."
+  dialogueLine: Kill the rock and take back the farm!
   displayTime: 3
   interactAction: {fileID: 1781555164194001046, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &1736320184941486035
