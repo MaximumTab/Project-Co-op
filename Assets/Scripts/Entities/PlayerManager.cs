@@ -126,7 +126,9 @@ public class PlayerManager : EntityManager
     {
         base.OnDeath();
         Time.timeScale = 1; 
-        SceneManager.LoadScene(0); 
+        UnityEngine.Cursor.visible = true;
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
+        SceneManager.LoadScene(2); 
     }
 
 }

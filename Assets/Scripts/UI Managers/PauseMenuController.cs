@@ -32,7 +32,7 @@ public class PauseMenuController : MonoBehaviour
     void TogglePause()
     {
         isPaused = !isPaused;
-        Debug.Log("isPaused is currently = " + isPaused);
+       // Debug.Log("isPaused is currently = " + isPaused);
 
         if (isPaused)
         {
