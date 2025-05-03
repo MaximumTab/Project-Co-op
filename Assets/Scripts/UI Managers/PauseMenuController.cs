@@ -7,31 +7,27 @@ public class PauseMenuController : MonoBehaviour
     [SerializeField] private GameObject pauseMenuWindow;
     private bool isPaused = false;
     private InputSystem_Actions inputActions;
-
-    private void Awake()
-    {
-        inputActions = new InputSystem_Actions();
-    }
+    private InputAction pauseAction;
 
     private void OnEnable()
     {
-        inputActions.Player.Disable();
+        inputActions = InputManager.Instance.Actions;
         inputActions.UI.Enable();
-        inputActions.UI.PauseMenu.performed += ctx => TogglePause(); 
+
+        pauseAction = inputActions.UI.PauseMenu;
+        pauseAction.Enable();
     }
 
-    private void OnDisable()
+    private void Update()
     {
-        inputActions.UI.PauseMenu.performed -= ctx => TogglePause();
-        inputActions.Player.Enable();
-        inputActions.UI.Disable();  
+        if (pauseAction != null && pauseAction.triggered)
+        {
+            TogglePause();
+        }
     }
 
-    void TogglePause()   
+    void TogglePause()
     {
-        UnityEngine.Cursor.visible = true;
-        UnityEngine.Cursor.lockState = CursorLockMode.None;
-
         isPaused = !isPaused;
         Debug.Log("isPaused is currently = " + isPaused);
 
@@ -39,13 +35,13 @@ public class PauseMenuController : MonoBehaviour
         {
             Time.timeScale = 0;
             pauseMenuWindow.SetActive(true);
-            inputActions.Player.Disable();
+            UnityEngine.Cursor.visible = true;
+            UnityEngine.Cursor.lockState = CursorLockMode.None;
         }
         else
         {
             Time.timeScale = 1;
             pauseMenuWindow.SetActive(false);
-            inputActions.Player.Enable();
             UnityEngine.Cursor.visible = false;
             UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         }
@@ -55,7 +51,6 @@ public class PauseMenuController : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
-        
     }
 
     public void RestartGame()
@@ -63,6 +58,4 @@ public class PauseMenuController : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-    
-    
 }

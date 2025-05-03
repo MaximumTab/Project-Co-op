@@ -18,8 +18,7 @@ public class PlayerManager : EntityManager
         {
             HealthManager.Instance[0].SetHp(SM.MaxHp);
         }
-        input = new InputSystem_Actions();
-        input.Enable();
+        input = InputManager.Instance.Actions;
         if (XPManager.Instance)
         {
             XPManager.Instance.UpdateXPUI(Exp, SM.Exp, Lvl);

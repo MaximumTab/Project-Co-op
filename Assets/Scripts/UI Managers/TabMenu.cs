@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,30 +7,22 @@ public class TabMenu : MonoBehaviour
     private bool isPaused = false;
     private InputSystem_Actions inputActions;
 
-    private void Awake()
-    {
-        inputActions = new InputSystem_Actions();
-        inputActions.UI.Enable();
-    }
-
     private void OnEnable()
     {
-        inputActions.Player.Disable();
+        inputActions = InputManager.Instance.Actions;
         inputActions.UI.Enable();
-        inputActions.UI.SkillMenu.performed += ctx => ToggleMenu();
+        inputActions.UI.SkillMenu.performed += ToggleMenu;
     }
 
     private void OnDisable()
     {
-        inputActions.UI.SkillMenu.performed -= ctx => ToggleMenu();
-        inputActions.Player.Enable();
-        inputActions.UI.Disable(); // unity yells at me if i dont disable ui even though its not active
+        if (inputActions != null)
+        {
+            inputActions.UI.SkillMenu.performed -= ToggleMenu;
+        }
     }
 
-    void Start()
-    {
-        //ToggleMenu(); dont show on start
-    }
+    void ToggleMenu(InputAction.CallbackContext ctx) => ToggleMenu();
 
     void ToggleMenu()
     {
@@ -45,14 +36,12 @@ public class TabMenu : MonoBehaviour
         {
             Time.timeScale = 0;
             TabMenuWindow.SetActive(true);
-            inputActions.Player.Disable();
             SkillParent.Instance.SkillpointText();
         }
         else
         {
             Time.timeScale = 1;
             TabMenuWindow.SetActive(false);
-            inputActions.Player.Enable();
             UnityEngine.Cursor.visible = false;
             UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         }

@@ -38,8 +38,8 @@ public class CameraController : MonoBehaviour
 
         xInvertedValue = invertX ? -1 : 1;
 
-        input = new InputSystem_Actions();
-        input.Enable();
+        input = InputManager.Instance.Actions;
+
     }
 
     private void Update()
