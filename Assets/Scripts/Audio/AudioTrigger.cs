@@ -19,4 +19,13 @@ public class AudioTrigger : MonoBehaviour
         if (other.tag == "Player" && !audioSource.isPlaying)
         audioSource.Play();
     }
+
+        private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player") && audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
+    }
 }
+
