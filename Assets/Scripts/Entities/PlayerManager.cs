@@ -1,6 +1,8 @@
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerManager : EntityManager
 {
@@ -119,4 +121,12 @@ public class PlayerManager : EntityManager
         transform.rotation= CameraRot;
     }
     
+
+    public override void OnDeath()
+    {
+        base.OnDeath();
+        Time.timeScale = 1; 
+        SceneManager.LoadScene(0); 
+    }
+
 }
