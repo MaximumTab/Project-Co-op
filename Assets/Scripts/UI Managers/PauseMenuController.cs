@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class PauseMenuController : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenuWindow;
+    [SerializeField] private Selectable firstSelectable; // e.g., SFX slider
     private bool isPaused = false;
     private InputSystem_Actions inputActions;
     private InputAction pauseAction;
@@ -37,6 +40,12 @@ public class PauseMenuController : MonoBehaviour
             pauseMenuWindow.SetActive(true);
             UnityEngine.Cursor.visible = true;
             UnityEngine.Cursor.lockState = CursorLockMode.None;
+
+            if (InputDetector.CurrentInput == InputType.Controller && firstSelectable != null)
+            {
+                EventSystem.current.SetSelectedGameObject(null); // clear first to force reselection
+                EventSystem.current.SetSelectedGameObject(firstSelectable.gameObject);
+            }
         }
         else
         {
@@ -44,6 +53,7 @@ public class PauseMenuController : MonoBehaviour
             pauseMenuWindow.SetActive(false);
             UnityEngine.Cursor.visible = false;
             UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+            EventSystem.current.SetSelectedGameObject(null);
         }
     }
 
@@ -59,3 +69,4 @@ public class PauseMenuController : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
+
