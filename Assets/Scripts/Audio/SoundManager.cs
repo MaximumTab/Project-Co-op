@@ -5,7 +5,11 @@ using UnityEngine.Audio;
 public enum SoundType
 {
     Jump,
-    Dash
+    Dash,
+    Peck,
+    BigPeck,
+    Claw,
+
 }
 
 [RequireComponent(typeof(AudioSource)), ExecuteInEditMode]
