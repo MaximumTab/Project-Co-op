@@ -9,13 +9,13 @@ public class LawnmowerBossManager : BaseEnemyManager
         Vector3 direction = (GetTarget().position - transform.position).normalized;
         direction.y = 0;
 
-        MoveDir = direction;
+        MoveDir = direction; 
     }
 
 
     public override void Look()
     {
-        if (GetTarget() == null || !DashCool) return;
+        if (GetTarget() == null || !DashCool||!LookCooldown) return;
 
         Vector3 direction = GetTarget().position - transform.position;
         direction.y = 0;

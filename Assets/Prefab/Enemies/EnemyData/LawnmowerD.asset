@@ -24,9 +24,10 @@ MonoBehaviour:
   GrowAC: 0
   BaseExp: 100
   GrowExp: 0.2
+  Speed: 10
   JumpForce: 10
   BonusJumps: 0
-  DashDistance: 10
+  DashDistance: 8
   BaseDashDist: 7
-  DashDownTime: 3
+  DashDownTime: 2
   DashDuration: 0.1

@@ -13,6 +13,7 @@ public class WeaponComp : Weapon
     public Animator Anim;
     protected int colliderIndex = 0;
     [SerializeField] private bool KillAfterDuration=true;
+    public bool HoldToKeep = false;
     private float Speed;
     public override void Start()
     {
@@ -67,6 +68,11 @@ public class WeaponComp : Weapon
     {
         Debug.Log("Deleting after "+WD.AbilityStruct[CompNum].AbilityDuration);
         yield return new WaitForSeconds(WD.AbilityStruct[CompNum].AbilityDuration);
+        if (HoldToKeep)
+        {
+            yield return new WaitWhile(ParentWeapon.holdAttack);
+        }
+
         ParentWeapon.CompScripts.Remove(Index);
         Destroy(gameObject);
         Debug.Log("Removed");

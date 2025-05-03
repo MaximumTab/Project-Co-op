@@ -21,6 +21,6 @@ public class ProjEntityManager : EntityManager
             
         }
 
-        return (false, 0);
+        return (false, -1);
     }
 }
