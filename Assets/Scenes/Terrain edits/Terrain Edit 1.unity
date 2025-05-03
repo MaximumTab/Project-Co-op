@@ -6534,6 +6534,26 @@ PrefabInstance:
       propertyPath: linkedPrefab
       value: 
       objectReference: {fileID: 32963435}
+    - target: {fileID: 2853073977376391971, guid: 33d8c21136352574395a7dccd734aa0f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -171.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853073977376391971, guid: 33d8c21136352574395a7dccd734aa0f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 29.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853073977376391971, guid: 33d8c21136352574395a7dccd734aa0f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99657995
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853073977376391971, guid: 33d8c21136352574395a7dccd734aa0f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.08263426
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853073977376391971, guid: 33d8c21136352574395a7dccd734aa0f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -9.48
+      objectReference: {fileID: 0}
     - target: {fileID: 4070064231387802080, guid: 33d8c21136352574395a7dccd734aa0f, type: 3}
       propertyPath: linkedPrefab
       value: 
@@ -6585,6 +6605,22 @@ PrefabInstance:
     - target: {fileID: 5003049720027269658, guid: 33d8c21136352574395a7dccd734aa0f, type: 3}
       propertyPath: m_Name
       value: AudioTriggers
+      objectReference: {fileID: 0}
+    - target: {fileID: 8131678390867991110, guid: 33d8c21136352574395a7dccd734aa0f, type: 3}
+      propertyPath: m_Size.x
+      value: 201.81898
+      objectReference: {fileID: 0}
+    - target: {fileID: 8131678390867991110, guid: 33d8c21136352574395a7dccd734aa0f, type: 3}
+      propertyPath: m_Size.z
+      value: 229.52496
+      objectReference: {fileID: 0}
+    - target: {fileID: 8131678390867991110, guid: 33d8c21136352574395a7dccd734aa0f, type: 3}
+      propertyPath: m_Center.x
+      value: -3.4623413
+      objectReference: {fileID: 0}
+    - target: {fileID: 8131678390867991110, guid: 33d8c21136352574395a7dccd734aa0f, type: 3}
+      propertyPath: m_Center.z
+      value: -43.80836
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
