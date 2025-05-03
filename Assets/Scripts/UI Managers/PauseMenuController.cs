@@ -53,11 +53,14 @@ public class PauseMenuController : MonoBehaviour
 
     public void QuitGame()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(0);
+        
     }
 
     public void RestartGame()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     
