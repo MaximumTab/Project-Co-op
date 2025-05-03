@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.ProBuilder;
 using UnityEngine.Rendering;
 
 public class LawnmowerWeap : Weapon
@@ -73,19 +74,19 @@ public class LawnmowerWeap : Weapon
         // Stop and freeze movement
         PS.rb.linearVelocity = Vector3.zero;
         PS.rb.angularVelocity = Vector3.zero;
-        PS.rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        PS.rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX;
         StartCoroutine(PS.DashCoolDown());
-        
+        PS.LookCooldown = false;
         float duration = WD.AbilityStruct[2].AbilityDuration;
         float timer = 0f;
 
         while (timer < duration)
         {
-            PS.transform.Rotate(Vector3.up * 720 * Time.deltaTime); // spinning visual
+            PS.rb.angularVelocity = new Vector3(0, 4*Mathf.PI, 0); // spinning visual
             timer += Time.deltaTime;
             yield return null;
         }
-
+        PS.LookCooldown = true;
         // Restore constraints to allow movement again
         PS.rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
         

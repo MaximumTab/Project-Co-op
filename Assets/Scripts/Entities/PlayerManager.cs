@@ -97,7 +97,7 @@ public class PlayerManager : EntityManager
         if (input.Player.Attack3.IsPressed())
             return (true, 2);
         
-        return (false,0);
+        return (false,-1);
     }
     public override bool JumpInput() //Choose how to Jump in Child
     {
