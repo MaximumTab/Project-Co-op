@@ -79,6 +79,8 @@ public class EntityManager : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
+        if (Time.timeScale == 0)
+            return;
         Move();
         Jump();
         Shoot();
