@@ -5995,11 +5995,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4886099821980392366, guid: a25964cde5bc2f943b45ec53b1d45a0f, type: 3}
   m_PrefabInstance: {fileID: 1552094344}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1557155748 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1925226038759954815, guid: 7ac7f239446a91e41bcc321bde69975c, type: 3}
-  m_PrefabInstance: {fileID: 1482749477}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1566564995
 GameObject:
   m_ObjectHideFlags: 0
@@ -7777,7 +7772,7 @@ PrefabInstance:
     - target: {fileID: 8467710417489306313, guid: d412daa13f33d7549861852159462de0, type: 3}
       propertyPath: 'trackedObjects.Array.data[1]'
       value: 
-      objectReference: {fileID: 1557155748}
+      objectReference: {fileID: 0}
     - target: {fileID: 8467710417489306313, guid: d412daa13f33d7549861852159462de0, type: 3}
       propertyPath: 'trackedObjects.Array.data[2]'
       value: 
