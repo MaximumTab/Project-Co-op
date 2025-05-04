@@ -12,6 +12,8 @@ public class TabMenu : MonoBehaviour
     private InputSystem_Actions inputActions;
     private InputAction tabAction;
 
+    public static bool IsPaused { get; private set; }
+
     private void OnEnable()
     {
         inputActions = InputManager.Instance.Actions;
@@ -29,7 +31,7 @@ public class TabMenu : MonoBehaviour
 
     private void Update()
     {
-        if (tabAction != null && tabAction.triggered)
+        if (tabAction != null && tabAction.triggered && !PauseMenuController.IsPaused)
         {
             ToggleMenu();
         }
@@ -38,6 +40,7 @@ public class TabMenu : MonoBehaviour
     void ToggleMenu()
     {
         isPaused = !isPaused;
+        IsPaused = isPaused;
         Debug.Log("isPaused is currently = " + isPaused);
 
         if (isPaused)
