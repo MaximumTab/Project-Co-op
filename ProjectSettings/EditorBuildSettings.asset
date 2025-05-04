@@ -6,14 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Menus/MainMenu.unity
+    path: Assets/Scenes/Old things/MainMenu.unity
     guid: b4fc802deca6102499f2377b9d10a8b5
   - enabled: 1
-    path: Assets/Scenes/Old things/TerrainTest.unity
-    guid: db668277a27d0b0408cf2aae42f60dff
-  - enabled: 1
-    path: Assets/Scenes/Menus/GameOver.unity
-    guid: 5e587eb3ab036d74c9035e124d6eae7a
+    path: Assets/Scenes/Terrain edits/Terrain Edit 1.unity
+    guid: 074b75f4d9af06f4fb8258690a6d6152
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

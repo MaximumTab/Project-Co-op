@@ -18,7 +18,9 @@ MonoBehaviour:
     HighHpLim: 100
     AbilityPercentages:
     - 5
-    KnockBackStrengths: []
+    KnockBackStrengths:
+    - 5
+    KnockUpStrengths: []
     AbilityDuration: 2
     AbilityUnInterruptDuration: 0
     IsInterruptable: 0
@@ -28,7 +30,8 @@ MonoBehaviour:
     AbilityPercentages:
     - 8
     KnockBackStrengths:
-    - 1
+    - 10
+    KnockUpStrengths: []
     AbilityDuration: 2.1
     AbilityUnInterruptDuration: 0
     IsInterruptable: 0
@@ -38,7 +41,8 @@ MonoBehaviour:
     AbilityPercentages:
     - 10
     KnockBackStrengths:
-    - 0.5
+    - 20
+    KnockUpStrengths: []
     AbilityDuration: 2.2
     AbilityUnInterruptDuration: 0
     IsInterruptable: 0

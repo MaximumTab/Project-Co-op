@@ -32,19 +32,23 @@ public class Skill : MonoBehaviour
         UpdateVisual();
     }
 
-public void TryUnlock()
-{
-    if (isUnlocked)
-        return;
-
-    if (CanUnlock())
+    public void TryUnlock()
     {
-        isUnlocked = true;
-        OnEquip();
-        SkillParent.Instance.ChangeSkillPoints(sprequirement);
-        SkillParent.Instance.SkillpointText();
+        if (isUnlocked)
+            return;
+
+        if (CanUnlock())
+        {
+            isUnlocked = true;
+            OnEquip();
+            SkillParent.Instance.ChangeSkillPoints(sprequirement);
+            SkillParent.Instance.SkillpointText();
+        }
+        else
+        {
+            GetComponent<SkillTooltipTrigger>()?.tooltipManager.ShowErrorTooltip("Not Enough Points");
+        }
     }
-}
     public bool CanUnlock()
     {
         foreach (Skill prereq in prerequisites)

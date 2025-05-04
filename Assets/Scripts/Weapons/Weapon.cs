@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
+using UnityEditor.ShaderGraph.Drawing.Inspector.PropertyDrawers;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -11,11 +12,13 @@ public class Weapon : MonoBehaviour
     public GameObject[] WeaponComponents;
     public int CompNum;
     public List<Collider> WeaponColliders=new List<Collider>();
+    public bool HoldingAttack { get; private set; }
     public Dictionary<int,WeaponComp> CompScripts;
 
     private Animator WAnim;
     private bool[] Atking;
     private EntityManager TargetEM;
+    private int prevAttack=-1;
     
     public EntityManager PS;
 
@@ -57,8 +60,25 @@ public class Weapon : MonoBehaviour
         CompNum = CNum;
     }
 
+    public void ChangePrev(int i)
+    {
+        Debug.Log(prevAttack+", "+i+" from "+PS.name);
+        if (prevAttack == i&&i!=-1)
+        {
+            HoldingAttack = true;
+        }
+        else
+        {
+            HoldingAttack = false;
+            prevAttack = i;
+        }
+
+        
+    }
+
     public bool Attack(int i)
     {
+
         if (!Atking[i]&&Castable(i))
         {
             if (WeaponComponents.Length>i&& WeaponComponents[i])
@@ -186,6 +206,10 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    public bool holdAttack()
+    {
+        return HoldingAttack;
+    }
     IEnumerator Attacking(int i)
     {
         Atking[i] = true;
@@ -194,6 +218,15 @@ public class Weapon : MonoBehaviour
         //WAnim.SetBool("Attack"+i, false);
         //WAnim.SetFloat("Speed",PS.SM.CurAspd());
         yield return new WaitForSeconds(WD.AbilityStruct[i].AbilityCooldown*PS.SM.CurAcd());
+        
+        foreach (WeaponComp WC in CompScripts.Values)
+        {
+            if (WC.HoldToKeep&&WC.CompNum==i)
+            {
+                yield return new WaitWhile(holdAttack);
+                break;
+            }
+        }
         Atking[i] = false;
     }
 }

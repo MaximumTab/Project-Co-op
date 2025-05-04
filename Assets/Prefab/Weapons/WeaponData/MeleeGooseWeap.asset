@@ -20,7 +20,7 @@ MonoBehaviour:
     - 25
     - 25
     KnockBackStrengths:
-    - 3
+    - 10
     KnockUpStrengths: []
     AbilityDuration: 1
     AbilityUnInterruptDuration: 1
@@ -39,8 +39,9 @@ MonoBehaviour:
     - 30
     - 20
     KnockBackStrengths:
-    - -2
-    KnockUpStrengths: []
+    - -10
+    KnockUpStrengths:
+    - -5
     AbilityDuration: 1.5
     AbilityUnInterruptDuration: 1.5
     IsInterruptable: 0

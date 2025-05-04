@@ -13,7 +13,8 @@ public class EntityManager : MonoBehaviour
     protected Vector3 MoveDir;
     protected Quaternion LookDir;
     public Quaternion LastLook{ get; private set; }
-    private bool LookCooldown = true;
+
+    public bool LookCooldown = true;
     //public float TurnDuration = 0.15f;
     
     private GameObject Weapon;
@@ -53,6 +54,7 @@ public class EntityManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public virtual void Start()
     {
+        LookCooldown = true;
         ChangeWeapon(WeaponInUse);
         SM = new StatManager();
         Anim = gameObject.GetComponentInChildren<Animator>();
@@ -77,6 +79,8 @@ public class EntityManager : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
+        if (Time.timeScale == 0)
+            return;
         Move();
         Jump();
         Shoot();
@@ -219,6 +223,9 @@ public class EntityManager : MonoBehaviour
 
                 StartCoroutine(WFiring(InputAtk.Item2));
             }
+            Weapon.transform.position = gameObject.transform.position;
+            Weapon.transform.rotation = LookDir;
+            Wp.ChangePrev(InputAtk.Item2);
         }
     }
     void Jump()
@@ -309,21 +316,6 @@ public class EntityManager : MonoBehaviour
 
         return AdjustedSpeed;
     }
-    
-   /* public IEnumerator LerpRotation(Quaternion target, Quaternion goal)
-    {
-        LookCooldown = false;
-        Quaternion StartRot = target;
-        for(float time=0;time<TurnDuration;time+=Time.deltaTime){
-            transform.rotation=Quaternion.Lerp(StartRot, goal,time/TurnDuration);
-            yield return null;
-        }
-
-        LastLook = goal;
-        transform.rotation = goal;
-        yield return null;
-        LookCooldown = true;
-    }*/
     IEnumerator CayoteTime()
     {
         yield return new WaitForSeconds(CayoteLength);
@@ -383,9 +375,8 @@ public class EntityManager : MonoBehaviour
                 {
                     Attacking[a] = false;
                 }
-
-                Weapon.transform.position = gameObject.transform.position;
-                Weapon.transform.rotation = LookDir;
+                
+                
                 yield return null;
             }
 
@@ -402,8 +393,6 @@ public class EntityManager : MonoBehaviour
         {
             i += Time.deltaTime;
             yield return null;
-            Weapon.transform.position = gameObject.transform.position;
-            Weapon.transform.rotation = LookDir;
         }
         yield return null;
     }
@@ -413,7 +402,7 @@ public class EntityManager : MonoBehaviour
     }
     public virtual (bool,int) AtkInput() //Choose how to Shoot in Child
     {
-        return (false,0);
+        return (false,-1);
     }
     public virtual bool JumpInput() //Choose how to Jump in Child
     {

@@ -1,34 +1,42 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class TabMenu : MonoBehaviour
 {
     [SerializeField] private GameObject TabMenuWindow;
+    [SerializeField] private Selectable firstSelectable;
+
     private bool isPaused = false;
     private InputSystem_Actions inputActions;
+    private InputAction tabAction;
 
     private void OnEnable()
     {
         inputActions = InputManager.Instance.Actions;
         inputActions.UI.Enable();
-        inputActions.UI.SkillMenu.performed += ToggleMenu;
+
+        tabAction = inputActions.UI.SkillMenu;
+        tabAction.Enable();
     }
 
     private void OnDisable()
     {
-        if (inputActions != null)
+        if (tabAction != null)
+            tabAction.Disable();
+    }
+
+    private void Update()
+    {
+        if (tabAction != null && tabAction.triggered)
         {
-            inputActions.UI.SkillMenu.performed -= ToggleMenu;
+            ToggleMenu();
         }
     }
 
-    void ToggleMenu(InputAction.CallbackContext ctx) => ToggleMenu();
-
     void ToggleMenu()
     {
-        UnityEngine.Cursor.visible = true;
-        UnityEngine.Cursor.lockState = CursorLockMode.None;
-
         isPaused = !isPaused;
         Debug.Log("isPaused is currently = " + isPaused);
 
@@ -36,7 +44,16 @@ public class TabMenu : MonoBehaviour
         {
             Time.timeScale = 0;
             TabMenuWindow.SetActive(true);
+            UnityEngine.Cursor.visible = true;
+            UnityEngine.Cursor.lockState = CursorLockMode.None;
+
             SkillParent.Instance.SkillpointText();
+
+            if (InputDetector.CurrentInput == InputType.Controller && firstSelectable != null)
+            {
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(firstSelectable.gameObject);
+            }
         }
         else
         {
@@ -44,6 +61,7 @@ public class TabMenu : MonoBehaviour
             TabMenuWindow.SetActive(false);
             UnityEngine.Cursor.visible = false;
             UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+            EventSystem.current.SetSelectedGameObject(null);
         }
     }
 }
