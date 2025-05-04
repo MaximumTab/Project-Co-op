@@ -7,10 +7,12 @@ using UnityEngine.UI;
 public class PauseMenuController : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenuWindow;
-    [SerializeField] private Selectable firstSelectable; // e.g., SFX slider
+    [SerializeField] private Selectable firstSelectable; 
     private bool isPaused = false;
     private InputSystem_Actions inputActions;
     private InputAction pauseAction;
+
+    public static bool IsPaused { get; private set; }
 
     private void OnEnable()
     {
@@ -23,7 +25,7 @@ public class PauseMenuController : MonoBehaviour
 
     private void Update()
     {
-        if (pauseAction != null && pauseAction.triggered)
+        if (pauseAction != null && pauseAction.triggered && !TabMenu.IsPaused)
         {
             TogglePause();
         }
@@ -32,7 +34,7 @@ public class PauseMenuController : MonoBehaviour
     void TogglePause()
     {
         isPaused = !isPaused;
-       // Debug.Log("isPaused is currently = " + isPaused);
+        IsPaused = isPaused;
 
         if (isPaused)
         {
@@ -43,7 +45,7 @@ public class PauseMenuController : MonoBehaviour
 
             if (InputDetector.CurrentInput == InputType.Controller && firstSelectable != null)
             {
-                EventSystem.current.SetSelectedGameObject(null); // clear first to force reselection
+                EventSystem.current.SetSelectedGameObject(null); 
                 EventSystem.current.SetSelectedGameObject(firstSelectable.gameObject);
             }
         }
@@ -69,4 +71,3 @@ public class PauseMenuController : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
-
