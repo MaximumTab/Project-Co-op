@@ -437,7 +437,7 @@ GameObject:
   - component: {fileID: 255484678}
   - component: {fileID: 255484677}
   m_Layer: 5
-  m_Name: RetryButton
+  m_Name: PlayButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3113,7 +3113,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: YOU DIED
+  m_text: YOU WIN!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b47bacfedcb87c14e8841aa31f4f5280, type: 2}
   m_sharedMaterial: {fileID: 5467918710590884895, guid: b47bacfedcb87c14e8841aa31f4f5280, type: 2}
@@ -3435,7 +3435,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: RETRY
+  m_text: PLAY AGAIN
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b47bacfedcb87c14e8841aa31f4f5280, type: 2}
   m_sharedMaterial: {fileID: 5467918710590884895, guid: b47bacfedcb87c14e8841aa31f4f5280, type: 2}
@@ -3462,8 +3462,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
