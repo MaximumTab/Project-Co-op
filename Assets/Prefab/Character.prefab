@@ -148,6 +148,7 @@ MonoBehaviour:
   xRotationMin: -80
   xRotationMax: 80
   sensitivity: 2
+  mouseMultiplier: 0.1
   invertX: 1
 --- !u!1 &3189890991512007504
 GameObject:

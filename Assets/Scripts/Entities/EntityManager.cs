@@ -562,7 +562,7 @@ public class EntityManager : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if (jumpCooldown&&!other.gameObject.transform.IsChildOf(gameObject.transform.parent))
+        if (jumpCooldown&&!other.gameObject.transform.IsChildOf(gameObject.transform.parent)&&!other.gameObject.layer.Equals(8))
         {
             isGrounded = true;
             Jumps = ED.BonusJumps;

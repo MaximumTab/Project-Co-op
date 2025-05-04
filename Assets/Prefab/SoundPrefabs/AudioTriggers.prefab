@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1396594028992272857}
   - component: {fileID: 1727818255351320774}
   - component: {fileID: 2039907490695789967}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LawnmowerTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,6 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1727818255351320774}
   linkedPrefab: {fileID: 0}
+  fadeDuration: 2
 --- !u!1 &1499100814507513932
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,7 +179,7 @@ GameObject:
   - component: {fileID: 8131678390867991110}
   - component: {fileID: 6749734714806233147}
   - component: {fileID: 1798000685475847018}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Forest Theme
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332,6 +333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 6749734714806233147}
   linkedPrefab: {fileID: 1499100814507513932}
+  fadeDuration: 2
 --- !u!1 &3684491596823489266
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,7 +346,7 @@ GameObject:
   - component: {fileID: 4164767443947159773}
   - component: {fileID: 809001731556934507}
   - component: {fileID: 4070064231387802080}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RockTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,6 +500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 809001731556934507}
   linkedPrefab: {fileID: 0}
+  fadeDuration: 2
 --- !u!1 &5003049720027269658
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,7 +510,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4690643524759089631}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AudioTriggers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -547,7 +550,7 @@ GameObject:
   - component: {fileID: 5577258937268079464}
   - component: {fileID: 4465690833469924482}
   - component: {fileID: 7139047116531387718}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Overworld theme 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -701,6 +704,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 4465690833469924482}
   linkedPrefab: {fileID: 5271141896267252450}
+  fadeDuration: 2
 --- !u!1 &7940653028005982381
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,7 +717,7 @@ GameObject:
   - component: {fileID: 414516499568101570}
   - component: {fileID: 8756064945584390246}
   - component: {fileID: 2867263269733470563}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GeeseTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -867,6 +871,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 8756064945584390246}
   linkedPrefab: {fileID: 7940653028005982381}
+  fadeDuration: 2
 --- !u!1 &8812549222349952012
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,7 +884,7 @@ GameObject:
   - component: {fileID: 3751490593794468456}
   - component: {fileID: 4176123600796402391}
   - component: {fileID: 4078824222455434644}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BeeTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1033,3 +1038,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 4176123600796402391}
   linkedPrefab: {fileID: 0}
+  fadeDuration: 2
