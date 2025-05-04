@@ -47,6 +47,9 @@ public class EntityManager : MonoBehaviour
     [SerializeField] private Texture2D  baseMat;
     [SerializeField] private Color FlashColour=Color.red;
     [SerializeField] private float FlashTime = 0.25f;
+
+    private int currentWeaponIndex = 0;
+    public int GetCurrentWeaponIndex() => currentWeaponIndex;
     private List<Renderer> flashRenderers = new List<Renderer>();
     private Coroutine flashCoroutine;
 
@@ -166,8 +169,10 @@ public class EntityManager : MonoBehaviour
         Destroy(gameObject.transform.parent.gameObject);
     }
 
+
     public void ChangeWeapon(int WeaponInUse)
     {
+        currentWeaponIndex = WeaponInUse;
         if (Wp)
         {
             Wp.RemoveMe();
@@ -187,6 +192,7 @@ public class EntityManager : MonoBehaviour
             BusyAtk = new bool[Wp.WD.AbilityStruct.Length];
         }
     }
+
 
 
     bool isJumpable()
