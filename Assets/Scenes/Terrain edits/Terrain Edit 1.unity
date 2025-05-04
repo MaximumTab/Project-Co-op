@@ -7218,6 +7218,14 @@ PrefabInstance:
       value: VictoryManagers
       objectReference: {fileID: 0}
     - target: {fileID: 3845789346167577389, guid: d412daa13f33d7549861852159462de0, type: 3}
+      propertyPath: volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845789346167577389, guid: d412daa13f33d7549861852159462de0, type: 3}
+      propertyPath: outputMixerGroup
+      value: 
+      objectReference: {fileID: -4656375762605449436, guid: ee487c256b1f039409f22f13091e2cd0, type: 2}
+    - target: {fileID: 3845789346167577389, guid: d412daa13f33d7549861852159462de0, type: 3}
       propertyPath: 'trackedObjects.Array.data[0]'
       value: 
       objectReference: {fileID: 510851097}
@@ -7262,13 +7270,37 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6075518525654951709, guid: d412daa13f33d7549861852159462de0, type: 3}
+      propertyPath: volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075518525654951709, guid: d412daa13f33d7549861852159462de0, type: 3}
+      propertyPath: outputMixerGroup
+      value: 
+      objectReference: {fileID: -4656375762605449436, guid: ee487c256b1f039409f22f13091e2cd0, type: 2}
+    - target: {fileID: 6075518525654951709, guid: d412daa13f33d7549861852159462de0, type: 3}
       propertyPath: 'trackedObjects.Array.data[0]'
       value: 
       objectReference: {fileID: 32963435}
     - target: {fileID: 6082755737204256709, guid: d412daa13f33d7549861852159462de0, type: 3}
+      propertyPath: volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082755737204256709, guid: d412daa13f33d7549861852159462de0, type: 3}
+      propertyPath: outputMixerGroup
+      value: 
+      objectReference: {fileID: -4656375762605449436, guid: ee487c256b1f039409f22f13091e2cd0, type: 2}
+    - target: {fileID: 6082755737204256709, guid: d412daa13f33d7549861852159462de0, type: 3}
       propertyPath: 'trackedObjects.Array.data[0]'
       value: 
       objectReference: {fileID: 1411184305}
+    - target: {fileID: 8467710417489306313, guid: d412daa13f33d7549861852159462de0, type: 3}
+      propertyPath: volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8467710417489306313, guid: d412daa13f33d7549861852159462de0, type: 3}
+      propertyPath: outputMixerGroup
+      value: 
+      objectReference: {fileID: -4656375762605449436, guid: ee487c256b1f039409f22f13091e2cd0, type: 2}
     - target: {fileID: 8467710417489306313, guid: d412daa13f33d7549861852159462de0, type: 3}
       propertyPath: 'trackedObjects.Array.data[0]'
       value: 

@@ -1,11 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class VictoryManager : MonoBehaviour
 {
     [Header("Victory Settings")]
     public AudioClip victoryMusic;
     public float volume = 1.0f;
+
+    [Header("Audio Mixer Settings")]
+    public AudioMixerGroup outputMixerGroup; 
 
     [Header("Tracked Objects")]
     public List<GameObject> trackedObjects = new List<GameObject>();
@@ -16,7 +20,7 @@ public class VictoryManager : MonoBehaviour
     {
         if (!musicPlayed)
         {
-            // Remove any null (destroyed) objects
+            
             trackedObjects.RemoveAll(obj => obj == null);
 
             if (trackedObjects.Count == 0 && victoryMusic != null)
@@ -33,8 +37,14 @@ public class VictoryManager : MonoBehaviour
 
         audioSource.clip = victoryMusic;
         audioSource.volume = volume;
-        audioSource.Play();
 
+       
+        if (outputMixerGroup != null)
+        {
+            audioSource.outputAudioMixerGroup = outputMixerGroup;
+        }
+
+        audioSource.Play();
         Destroy(musicPlayer, victoryMusic.length);
         musicPlayed = true;
     }
