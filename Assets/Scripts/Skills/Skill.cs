@@ -43,12 +43,24 @@ public class Skill : MonoBehaviour
             OnEquip();
             SkillParent.Instance.ChangeSkillPoints(sprequirement);
             SkillParent.Instance.SkillpointText();
+
+            var tabMenu = FindAnyObjectByType<TabMenu>();
+            if (tabMenu != null)
+            {
+                var first = tabMenu.GetComponent<TabMenu>().firstSelectable;
+                if (first != null)
+                {
+                    UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+                    UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(first.gameObject);
+                }
+            }
         }
         else
         {
             GetComponent<SkillTooltipTrigger>()?.tooltipManager.ShowErrorTooltip("Not Enough Points");
         }
     }
+
     public bool CanUnlock()
     {
         foreach (Skill prereq in prerequisites)

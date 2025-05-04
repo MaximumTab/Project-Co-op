@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TabMenu : MonoBehaviour
 {
     [SerializeField] private GameObject TabMenuWindow;
-    [SerializeField] private Selectable firstSelectable;
+    [SerializeField] public Selectable firstSelectable;
 
     private bool isPaused = false;
     private InputSystem_Actions inputActions;
