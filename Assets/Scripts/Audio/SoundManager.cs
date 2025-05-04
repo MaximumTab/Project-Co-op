@@ -5,7 +5,16 @@ using UnityEngine.Audio;
 public enum SoundType
 {
     Jump,
-    Dash
+    Dash,
+    WarriorSlice,
+    WarriorWhirlwind,
+    WarriorBuff,
+    FireballCast,
+    FireballExplosion,
+    ASPDBUFF,
+    Projectile,
+    VICTORYTHEME,
+
 }
 
 [RequireComponent(typeof(AudioSource)), ExecuteInEditMode]
