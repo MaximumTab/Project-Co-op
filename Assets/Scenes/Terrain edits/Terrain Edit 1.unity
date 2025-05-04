@@ -3719,11 +3719,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &995601197 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8812549222349952012, guid: 33d8c21136352574395a7dccd734aa0f, type: 3}
-  m_PrefabInstance: {fileID: 1219153691130158821}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1002826680
 GameObject:
   m_ObjectHideFlags: 0
@@ -6000,6 +5995,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4886099821980392366, guid: a25964cde5bc2f943b45ec53b1d45a0f, type: 3}
   m_PrefabInstance: {fileID: 1552094344}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1557155748 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1925226038759954815, guid: 7ac7f239446a91e41bcc321bde69975c, type: 3}
+  m_PrefabInstance: {fileID: 1482749477}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1566564995
 GameObject:
   m_ObjectHideFlags: 0
@@ -6845,11 +6845,6 @@ Transform:
   - {fileID: 139227271}
   m_Father: {fileID: 1515642007}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1860597247 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 994366504352073349, guid: 33d8c21136352574395a7dccd734aa0f, type: 3}
-  m_PrefabInstance: {fileID: 1219153691130158821}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1943812978
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7541,7 +7536,7 @@ PrefabInstance:
     - target: {fileID: 2039907490695789967, guid: 33d8c21136352574395a7dccd734aa0f, type: 3}
       propertyPath: linkedPrefab
       value: 
-      objectReference: {fileID: 1860597247}
+      objectReference: {fileID: 32963435}
     - target: {fileID: 2853073977376391971, guid: 33d8c21136352574395a7dccd734aa0f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -171.9
@@ -7581,7 +7576,7 @@ PrefabInstance:
     - target: {fileID: 4078824222455434644, guid: 33d8c21136352574395a7dccd734aa0f, type: 3}
       propertyPath: linkedPrefab
       value: 
-      objectReference: {fileID: 995601197}
+      objectReference: {fileID: 510851097}
     - target: {fileID: 4164767443947159773, guid: 33d8c21136352574395a7dccd734aa0f, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
       value: 1
@@ -7693,7 +7688,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3845789346167577389, guid: d412daa13f33d7549861852159462de0, type: 3}
       propertyPath: volume
-      value: 1
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 3845789346167577389, guid: d412daa13f33d7549861852159462de0, type: 3}
       propertyPath: outputMixerGroup
@@ -7745,7 +7740,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6075518525654951709, guid: d412daa13f33d7549861852159462de0, type: 3}
       propertyPath: volume
-      value: 1
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 6075518525654951709, guid: d412daa13f33d7549861852159462de0, type: 3}
       propertyPath: outputMixerGroup
@@ -7757,7 +7752,7 @@ PrefabInstance:
       objectReference: {fileID: 32963435}
     - target: {fileID: 6082755737204256709, guid: d412daa13f33d7549861852159462de0, type: 3}
       propertyPath: volume
-      value: 1
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 6082755737204256709, guid: d412daa13f33d7549861852159462de0, type: 3}
       propertyPath: outputMixerGroup
@@ -7769,7 +7764,7 @@ PrefabInstance:
       objectReference: {fileID: 1411184305}
     - target: {fileID: 8467710417489306313, guid: d412daa13f33d7549861852159462de0, type: 3}
       propertyPath: volume
-      value: 1
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 8467710417489306313, guid: d412daa13f33d7549861852159462de0, type: 3}
       propertyPath: outputMixerGroup
@@ -7782,7 +7777,7 @@ PrefabInstance:
     - target: {fileID: 8467710417489306313, guid: d412daa13f33d7549861852159462de0, type: 3}
       propertyPath: 'trackedObjects.Array.data[1]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1557155748}
     - target: {fileID: 8467710417489306313, guid: d412daa13f33d7549861852159462de0, type: 3}
       propertyPath: 'trackedObjects.Array.data[2]'
       value: 
