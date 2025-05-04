@@ -193,7 +193,7 @@ MonoBehaviour:
   kill: 0
   Lvl: 5
   DashCool: 1
-  baseMat: {fileID: 0}
+  baseMat: {fileID: 2800000, guid: b08ab236c54c48f48b0792fe2a4ea982, type: 3}
   FlashColour: {r: 1, g: 0, b: 0, a: 1}
   FlashTime: 0.25
   OneInNumberAtkAttempt:
@@ -261,6 +261,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8457516028548790995, guid: 1922c713d2f2a5748a50f3a2c855a3c5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 212f94a7fa6465248a6e7866a4fa14e4, type: 2}
     - target: {fileID: -4134787984425345221, guid: 1922c713d2f2a5748a50f3a2c855a3c5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.03689975
@@ -293,10 +297,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 2.43
       objectReference: {fileID: 0}
+    - target: {fileID: -2541856609765455805, guid: 1922c713d2f2a5748a50f3a2c855a3c5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 212f94a7fa6465248a6e7866a4fa14e4, type: 2}
     - target: {fileID: 919132149155446097, guid: 1922c713d2f2a5748a50f3a2c855a3c5, type: 3}
       propertyPath: m_Name
       value: Lawnmower
       objectReference: {fileID: 0}
+    - target: {fileID: 2074679485670627688, guid: 1922c713d2f2a5748a50f3a2c855a3c5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 212f94a7fa6465248a6e7866a4fa14e4, type: 2}
+    - target: {fileID: 4961471638432856087, guid: 1922c713d2f2a5748a50f3a2c855a3c5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 212f94a7fa6465248a6e7866a4fa14e4, type: 2}
+    - target: {fileID: 6072198132600819203, guid: 1922c713d2f2a5748a50f3a2c855a3c5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 212f94a7fa6465248a6e7866a4fa14e4, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: -7029948723529949830, guid: 1922c713d2f2a5748a50f3a2c855a3c5, type: 3}
