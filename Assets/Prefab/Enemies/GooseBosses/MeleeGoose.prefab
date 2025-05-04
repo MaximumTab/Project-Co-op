@@ -284,7 +284,7 @@ MonoBehaviour:
   kill: 0
   Lvl: 0
   DashCool: 0
-  baseMat: {fileID: 0}
+  baseMat: {fileID: 2800000, guid: 912c82de62e66d741bd79709907cb874, type: 3}
   FlashColour: {r: 1, g: 0, b: 0, a: 1}
   FlashTime: 0.25
   OneInNumberAtkAttempt: []
@@ -354,6 +354,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: KnifeGoose
       objectReference: {fileID: 0}
+    - target: {fileID: 7205140776170859923, guid: a7b3a2e260deb8045a12392ade525c26, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 212f94a7fa6465248a6e7866a4fa14e4, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
