@@ -6,9 +6,13 @@ public enum SoundType
 {
     Jump,
     Dash,
-    Peck,
-    BigPeck,
-    Claw,
+    WarriorSlice,
+    WarriorWhirlwind,
+    WarriorBuff,
+    FireballCast,
+    FireballExplosion,
+    ASPDBUFF,
+    Projectile
 
 }
 
