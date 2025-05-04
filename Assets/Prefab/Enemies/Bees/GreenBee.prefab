@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7314440794121190725}
   - component: {fileID: 137877257864373016}
   - component: {fileID: 4900535559564426480}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4846,7 +4846,7 @@ GameObject:
   - component: {fileID: 2725450165522698998}
   - component: {fileID: 8081081979705919757}
   - component: {fileID: 7298085508535365363}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: GreenBee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5054,7 +5054,7 @@ GameObject:
   - component: {fileID: 523551383355811254}
   - component: {fileID: 7021666230224364495}
   - component: {fileID: 4628554353796549581}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5277,7 +5277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5724d004794fc3244b2c169caa222a23, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
