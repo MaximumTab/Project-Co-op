@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5811446981626306598}
   - component: {fileID: 9007652723154642908}
   - component: {fileID: 3761080285407659815}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4845,7 +4845,7 @@ GameObject:
   - component: {fileID: 4647070401417070227}
   - component: {fileID: 8633593944846532141}
   - component: {fileID: 1474187812173186242}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RedBee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4933,7 +4933,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WD: {fileID: 11400000, guid: e8e0076536699f943ab650e5aa9097ec, type: 2}
   WeaponComponents: []
-  CompNum: 0
+  CompNum: 1
   WeaponColliders: []
   PS: {fileID: 0}
   Speed: 8
@@ -4956,7 +4956,7 @@ GameObject:
   - component: {fileID: 2241209988016530321}
   - component: {fileID: 7360593152603608698}
   - component: {fileID: 2976532756152712854}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5175,6 +5175,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2517a745503eb894eb49bbe240e6193f, type: 3}
       propertyPath: m_Name
       value: RedBee
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2517a745503eb894eb49bbe240e6193f, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

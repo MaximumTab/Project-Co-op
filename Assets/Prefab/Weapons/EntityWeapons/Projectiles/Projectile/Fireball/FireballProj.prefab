@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 927544013275969929}
   - component: {fileID: 5977637783653047581}
   - component: {fileID: 4926043774536068421}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4847,7 +4847,7 @@ GameObject:
   - component: {fileID: 385203557546747745}
   - component: {fileID: 1183663915307599818}
   - component: {fileID: 7393996858818669081}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4959,6 +4959,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Anim: {fileID: 0}
   ED: {fileID: 11400000, guid: 5f4cedba36b228346bd7443d42c5076e, type: 2}
+  LookCooldown: 1
   timeToDie: 1
   weaponsArray:
   - Weapon: {fileID: 7506048906471645384, guid: 8fd107cf1d7b52d4d87e1ceecbfb2f7b, type: 3}
@@ -5009,7 +5010,7 @@ GameObject:
   - component: {fileID: 1520352526912095746}
   - component: {fileID: 7793392518682548460}
   - component: {fileID: 72451759797712585}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9843,7 +9844,8 @@ GameObject:
   - component: {fileID: 2505887884281762340}
   - component: {fileID: 4790661005224484402}
   - component: {fileID: 1317123985503148492}
-  m_Layer: 0
+  - component: {fileID: 9092843884754228723}
+  m_Layer: 7
   m_Name: FireballProj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9907,9 +9909,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42d9c14f895a22c42bf355e3d57afdaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WD: {fileID: 0}
+  WD: {fileID: 11400000, guid: 0d736514b7ba4fd4199aeb43315e1c18, type: 2}
   WeaponComponents: []
-  CompNum: 0
+  CompNum: 1
   WeaponColliders: []
   PS: {fileID: 0}
   Speed: 35
@@ -9939,3 +9941,100 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &9092843884754228723
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8798579571844823463}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 1791762942064209643, guid: ee487c256b1f039409f22f13091e2cd0, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 034cebaec447f7d439fb8532c9116382, type: 3}
+  m_Resource: {fileID: 8300000, guid: 034cebaec447f7d439fb8532c9116382, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 100
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

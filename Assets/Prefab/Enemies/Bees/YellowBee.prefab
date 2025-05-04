@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8558178150435884509}
   - component: {fileID: 7679594756110795496}
   - component: {fileID: 4645094558601612885}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4845,7 +4845,7 @@ GameObject:
   - component: {fileID: -8215489959499524852}
   - component: {fileID: -3293507659269383164}
   - component: {fileID: 6786578919948822396}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: YellowBee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4931,7 +4931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d51acfac782aed4b9164f33ad9a8d37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WD: {fileID: 0}
+  WD: {fileID: 11400000, guid: e8e0076536699f943ab650e5aa9097ec, type: 2}
   WeaponComponents: []
   CompNum: 0
   WeaponColliders: []
@@ -4956,7 +4956,7 @@ GameObject:
   - component: {fileID: 2549633937638976443}
   - component: {fileID: 8749668366534291243}
   - component: {fileID: 2401625703606276793}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5175,6 +5175,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 98003f117ec16404ebdfb88768c985f0, type: 3}
       propertyPath: m_Name
       value: YellowBee
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 98003f117ec16404ebdfb88768c985f0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
