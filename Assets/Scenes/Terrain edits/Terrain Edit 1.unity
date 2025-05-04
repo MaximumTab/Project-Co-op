@@ -3211,6 +3211,10 @@ PrefabInstance:
       propertyPath: Skillpoints
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8241501017702880532, guid: 179d13ce10479454b9e7ffa27b2a1791, type: 3}
+      propertyPath: skillPointIndicator
+      value: 
+      objectReference: {fileID: 2104763739}
     - target: {fileID: 9084703338235881140, guid: 179d13ce10479454b9e7ffa27b2a1791, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -6995,6 +6999,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4131466542018368226, guid: df064dff9bfd65f4e87fa6307b360cc6, type: 3}
   m_PrefabInstance: {fileID: 2074028754}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2104763739 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4830049437845277541, guid: 7ef7d10e3e49d244388b8828b4e82f2c, type: 3}
+  m_PrefabInstance: {fileID: 536117768}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2117726575
 GameObject:

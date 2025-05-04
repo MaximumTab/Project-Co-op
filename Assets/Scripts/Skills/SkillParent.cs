@@ -9,6 +9,8 @@ public class SkillParent : MonoBehaviour
     public List<Skill>[] SkillTree;
     [SerializeField]TMP_Text Skillpointui;
     [SerializeField]public int Skillpoints = 0;
+    [SerializeField] private GameObject skillPointIndicator;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     void Awake()
@@ -20,8 +22,10 @@ public class SkillParent : MonoBehaviour
         SkillTree[2] = new List<Skill>();
         SkillTree[3] = new List<Skill>();
         GetAllSkills();
+        SkillpointText();
     }
 
+    
     void GetAllSkills()
     {
         foreach (Skill tempskill in gameObject.GetComponentsInChildren<Skill>())
@@ -43,7 +47,10 @@ public class SkillParent : MonoBehaviour
 
     public void SkillpointText()
     {
-        Skillpointui.text = "Skillpoint: "+ Skillpoints;
+        Skillpointui.text = "Skillpoint: " + Skillpoints;
+        
+        if (skillPointIndicator != null)
+            skillPointIndicator.SetActive(Skillpoints > 0);
     }
 
     public void ChangeBranch(int i)
