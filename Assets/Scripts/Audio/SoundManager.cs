@@ -12,7 +12,8 @@ public enum SoundType
     FireballCast,
     FireballExplosion,
     ASPDBUFF,
-    Projectile
+    Projectile,
+    VICTORYTHEME,
 
 }
 
