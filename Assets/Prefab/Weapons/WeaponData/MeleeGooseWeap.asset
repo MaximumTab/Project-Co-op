@@ -15,7 +15,7 @@ MonoBehaviour:
   WName: MeleeGooseWeap
   AbilityStruct:
   - LowHpLim: 0
-    HighHpLim: 100
+    HighHpLim: 99
     AbilityPercentages:
     - 25
     - 25
