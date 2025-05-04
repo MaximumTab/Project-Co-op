@@ -7,8 +7,6 @@ public class InteractPrompt : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI buttonText;
     [SerializeField] private TextMeshProUGUI descriptionText;
-
-    [SerializeField] private string keyboardButton = "Ｆ";     //sorry im changing this!! 
     [SerializeField] private string controllerButton = "↠";
 
     private string currentDescription = "";

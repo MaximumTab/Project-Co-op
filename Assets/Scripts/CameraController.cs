@@ -1,7 +1,5 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 using UnityEngine.InputSystem;
-
 
 public class CameraController : MonoBehaviour
 {
@@ -19,8 +17,8 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float xRotationMin;
     [SerializeField] private float xRotationMax;
 
-    [SerializeField] private float sensitivity = 2f;
-
+    [SerializeField] private float sensitivity = 2f; // Base sensitivity for controller
+    [SerializeField] private float mouseMultiplier = 0.1f; // Mouse sensitivity multiplier
 
     [SerializeField] private bool invertX;
     private int xInvertedValue;
@@ -31,6 +29,7 @@ public class CameraController : MonoBehaviour
 
     public float GetSensitivity() => sensitivity;
     public void SetSensitivity(float value) => sensitivity = value;
+
     private void Start()
     {
         UnityEngine.Cursor.visible = false;
@@ -39,7 +38,6 @@ public class CameraController : MonoBehaviour
         xInvertedValue = invertX ? -1 : 1;
 
         input = InputManager.Instance.Actions;
-
     }
 
     private void Update()
@@ -48,15 +46,18 @@ public class CameraController : MonoBehaviour
 
         Vector2 lookInput = input.Player.Look.ReadValue<Vector2>();
 
-        if (Mouse.current != null && Mouse.current.delta.IsActuated())
+        float appliedSensitivity = InputDetector.CurrentInput switch
         {
-            lookInput *= 0.2f; 
-        }
+            InputType.MouseKeyboard => sensitivity * mouseMultiplier,
+            InputType.Controller => sensitivity,
+            _ => sensitivity
+        };
 
-        yRotation += lookInput.x * sensitivity;
-        xRotation += lookInput.y * sensitivity * xInvertedValue;
+        yRotation += lookInput.x * appliedSensitivity;
+        xRotation += lookInput.y * appliedSensitivity * xInvertedValue;
         xRotation = Mathf.Clamp(xRotation, xRotationMin, xRotationMax);
     }
+
     private void LateUpdate()
     {
         xRotationClamped = Mathf.Clamp(xRotation, xRotationMin, xRotationMax);
@@ -65,11 +66,10 @@ public class CameraController : MonoBehaviour
         desiredPos = target.position - targetRotation * offset + Vector3.up * posheight;
 
         transform.position = desiredPos;
-        if(Time.timeScale != 0)
+        if (Time.timeScale != 0)
         {
             transform.LookAt(target.position + Vector3.up * lookheight);
         }
-      
     }
 
     public Quaternion YRotation => Quaternion.Euler(0.0f, yRotation, 0.0f);
