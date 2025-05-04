@@ -16,7 +16,7 @@ MonoBehaviour:
   isBoss: 0
   BaseAtk: 20
   GrowAtk: 5
-  BaseHp: 100
+  BaseHp: 50
   GrowHp: 10
   BaseAspd: 100
   GrowAspd: 0

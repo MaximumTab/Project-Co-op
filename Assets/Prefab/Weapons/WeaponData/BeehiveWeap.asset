@@ -17,7 +17,7 @@ MonoBehaviour:
   - LowHpLim: 0
     HighHpLim: 100
     AbilityPercentages:
-    - 5
+    - 10
     KnockBackStrengths:
     - 5
     KnockUpStrengths: []
@@ -28,7 +28,7 @@ MonoBehaviour:
   - LowHpLim: 0
     HighHpLim: 66
     AbilityPercentages:
-    - 8
+    - 15
     KnockBackStrengths:
     - 10
     KnockUpStrengths: []
@@ -39,7 +39,7 @@ MonoBehaviour:
   - LowHpLim: 0
     HighHpLim: 33
     AbilityPercentages:
-    - 10
+    - 30
     KnockBackStrengths:
     - 20
     KnockUpStrengths: []
