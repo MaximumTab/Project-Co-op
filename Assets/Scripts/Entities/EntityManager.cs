@@ -90,6 +90,7 @@ public class EntityManager : MonoBehaviour
         if (SM.Hp <= 0)
         {
             OnDeath();
+            
         }
 
         if(kill)
@@ -156,6 +157,7 @@ public class EntityManager : MonoBehaviour
         }
 
         StartCoroutine(AfterTimeRemove(timeToDie));
+        SoundManager.Play3DSound(SoundType.VICTORYTHEME, transform, 1f, 2f, 10f);
     }
 
     public IEnumerator AfterTimeRemove(float time)
