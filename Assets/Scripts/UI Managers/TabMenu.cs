@@ -6,11 +6,13 @@ using UnityEngine.UI;
 public class TabMenu : MonoBehaviour
 {
     [SerializeField] private GameObject TabMenuWindow;
-    [SerializeField] private Selectable firstSelectable;
+    [SerializeField] public Selectable firstSelectable;
 
     private bool isPaused = false;
     private InputSystem_Actions inputActions;
     private InputAction tabAction;
+
+    public static bool IsPaused { get; private set; }
 
     private void OnEnable()
     {
@@ -29,7 +31,7 @@ public class TabMenu : MonoBehaviour
 
     private void Update()
     {
-        if (tabAction != null && tabAction.triggered)
+        if (tabAction != null && tabAction.triggered && !PauseMenuController.IsPaused)
         {
             ToggleMenu();
         }
@@ -38,6 +40,7 @@ public class TabMenu : MonoBehaviour
     void ToggleMenu()
     {
         isPaused = !isPaused;
+        IsPaused = isPaused;
         Debug.Log("isPaused is currently = " + isPaused);
 
         if (isPaused)
