@@ -51,6 +51,7 @@ public class PlayerManager : EntityManager
             if (SkillParent.Instance)
             {
                 SkillParent.Instance.ChangeSkillPoints(-1);
+                SkillParent.Instance.SkillpointText();
             }
 
             if (HealthManager.Instance[0])
