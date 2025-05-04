@@ -415,6 +415,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 458030336418942501, guid: 5c9acabf2dfbb1148bdead9fa0f5f56f, type: 3}
   m_PrefabInstance: {fileID: 16915930}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &38392156 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1925226038759954815, guid: 7ac7f239446a91e41bcc321bde69975c, type: 3}
+  m_PrefabInstance: {fileID: 1482749477}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &44805434
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2996,6 +3001,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8deb23514f24834d825dbfa2fea2af3, type: 3}
+--- !u!1 &776090784 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1742350930313044918, guid: 91497e4ace39d6944855cb2be048d2af, type: 3}
+  m_PrefabInstance: {fileID: 20364847}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &795375624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4895,6 +4905,7 @@ GameObject:
   - component: {fileID: 1370255120}
   - component: {fileID: 1370255119}
   - component: {fileID: 1370255118}
+  - component: {fileID: 1370255123}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -4988,6 +4999,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1370255123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370255117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c95c99430afef14fa0388740de61b54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trackedObjects:
+  - {fileID: 776090784}
+  - {fileID: 32963435}
+  - {fileID: 510851097}
+  - {fileID: 1209940474}
+  - {fileID: 38392156}
+  - {fileID: 1400998660}
+  checkInterval: 0.5
+  sceneToLoadIndex: 3
 --- !u!1 &1400998660 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1925226038759954815, guid: 0dcfe2df272c74b46bf0ee96dcdbfb0d, type: 3}
@@ -7750,7 +7782,7 @@ PrefabInstance:
     - target: {fileID: 8467710417489306313, guid: d412daa13f33d7549861852159462de0, type: 3}
       propertyPath: 'trackedObjects.Array.data[1]'
       value: 
-      objectReference: {fileID: 221761006}
+      objectReference: {fileID: 0}
     - target: {fileID: 8467710417489306313, guid: d412daa13f33d7549861852159462de0, type: 3}
       propertyPath: 'trackedObjects.Array.data[2]'
       value: 
@@ -7788,3 +7820,4 @@ SceneRoots:
   - {fileID: 775817847}
   - {fileID: 1219153691130158821}
   - {fileID: 5115646284873119749}
+  - {fileID: 1753093026}
