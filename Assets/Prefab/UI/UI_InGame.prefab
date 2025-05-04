@@ -5334,6 +5334,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4025413630037364164}
+  - component: {fileID: 3529641600937387739}
   m_Layer: 0
   m_Name: AttackIcons
   m_TagString: Untagged
@@ -5364,6 +5365,38 @@ RectTransform:
   m_AnchoredPosition: {x: 20, y: 7}
   m_SizeDelta: {x: 160, y: 40}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &3529641600937387739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5177808499879358155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd5fb466b1203a84ca0e3e03e64c915f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconImages:
+  - {fileID: 1859755726371800017}
+  - {fileID: 6650901774144829850}
+  - {fileID: 9139179363961236841}
+  chickenSprites:
+  - {fileID: 21300000, guid: 335ee495c2987bb4d91d3d053d0d00c8, type: 3}
+  - {fileID: 21300000, guid: f6f520bd9851aa44f91f33d3a08527d3, type: 3}
+  - {fileID: 21300000, guid: c4b50b27813be1042a99c02f97672d5f, type: 3}
+  mageSprites:
+  - {fileID: 21300000, guid: 5db728e0cab49b54d85783a9cd80ab8f, type: 3}
+  - {fileID: 21300000, guid: 0da608930401ce34db83799300cf5d42, type: 3}
+  - {fileID: 21300000, guid: 14f36258400211645bb19326904ef8bc, type: 3}
+  tankSprites:
+  - {fileID: 21300000, guid: 0d7bb095924cd69429024d03beb71a14, type: 3}
+  - {fileID: 21300000, guid: 3bd337a75724e5c45874cd368446fce2, type: 3}
+  - {fileID: 21300000, guid: 304d208ab944fd84a916ca436691dcc5, type: 3}
+  warriorSprites:
+  - {fileID: 21300000, guid: 78a54e0db22a4e24688bcbec327084df, type: 3}
+  - {fileID: 21300000, guid: 6ef06f2a91cafb243ba11f71c893daac, type: 3}
+  - {fileID: 21300000, guid: c353d71e1c4fd7b4892358e76e97d5ec, type: 3}
 --- !u!1 &5244901466521606328
 GameObject:
   m_ObjectHideFlags: 0
@@ -6679,7 +6712,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonText: {fileID: 1726560724927377316}
   descriptionText: {fileID: 548451365400648423}
-  keyboardButton: "\uFF26"
   controllerButton: "\u21A0"
 --- !u!1 &6853147149175509234
 GameObject:
