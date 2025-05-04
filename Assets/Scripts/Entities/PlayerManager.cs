@@ -1,6 +1,8 @@
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerManager : EntityManager
 {
@@ -18,8 +20,7 @@ public class PlayerManager : EntityManager
         {
             HealthManager.Instance[0].SetHp(SM.MaxHp);
         }
-        input = new InputSystem_Actions();
-        input.Enable();
+        input = InputManager.Instance.Actions;
         if (XPManager.Instance)
         {
             XPManager.Instance.UpdateXPUI(Exp, SM.Exp, Lvl);
@@ -120,4 +121,14 @@ public class PlayerManager : EntityManager
         transform.rotation= CameraRot;
     }
     
+
+    public override void OnDeath()
+    {
+        base.OnDeath();
+        Time.timeScale = 1; 
+        UnityEngine.Cursor.visible = true;
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
+        SceneManager.LoadScene(2); 
+    }
+
 }

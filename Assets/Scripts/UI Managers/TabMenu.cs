@@ -1,42 +1,42 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class TabMenu : MonoBehaviour
 {
     [SerializeField] private GameObject TabMenuWindow;
+    [SerializeField] private Selectable firstSelectable;
+
     private bool isPaused = false;
     private InputSystem_Actions inputActions;
-
-    private void Awake()
-    {
-        inputActions = new InputSystem_Actions();
-        inputActions.UI.Enable();
-    }
+    private InputAction tabAction;
 
     private void OnEnable()
     {
-        inputActions.Player.Disable();
-        
-        inputActions.UI.SkillMenu.performed += ctx => ToggleMenu();
+        inputActions = InputManager.Instance.Actions;
+        inputActions.UI.Enable();
+
+        tabAction = inputActions.UI.SkillMenu;
+        tabAction.Enable();
     }
 
     private void OnDisable()
     {
-        inputActions.UI.SkillMenu.performed -= ctx => ToggleMenu();
-        inputActions.Player.Enable();
+        if (tabAction != null)
+            tabAction.Disable();
     }
 
-    void Start()
+    private void Update()
     {
-        //ToggleMenu(); dont show on start
+        if (tabAction != null && tabAction.triggered)
+        {
+            ToggleMenu();
+        }
     }
 
     void ToggleMenu()
     {
-        UnityEngine.Cursor.visible = true;
-        UnityEngine.Cursor.lockState = CursorLockMode.None;
-
         isPaused = !isPaused;
         Debug.Log("isPaused is currently = " + isPaused);
 
@@ -44,16 +44,24 @@ public class TabMenu : MonoBehaviour
         {
             Time.timeScale = 0;
             TabMenuWindow.SetActive(true);
-            inputActions.Player.Disable();
+            UnityEngine.Cursor.visible = true;
+            UnityEngine.Cursor.lockState = CursorLockMode.None;
+
             SkillParent.Instance.SkillpointText();
+
+            if (InputDetector.CurrentInput == InputType.Controller && firstSelectable != null)
+            {
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(firstSelectable.gameObject);
+            }
         }
         else
         {
             Time.timeScale = 1;
             TabMenuWindow.SetActive(false);
-            inputActions.Player.Enable();
             UnityEngine.Cursor.visible = false;
             UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+            EventSystem.current.SetSelectedGameObject(null);
         }
     }
 }

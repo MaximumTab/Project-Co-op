@@ -1,51 +1,72 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class PauseMenuController : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenuWindow;
+    [SerializeField] private Selectable firstSelectable; // e.g., SFX slider
     private bool isPaused = false;
     private InputSystem_Actions inputActions;
-
-    private void Awake()
-    {
-        inputActions = new InputSystem_Actions();
-        inputActions.UI.Enable();
-    }
+    private InputAction pauseAction;
 
     private void OnEnable()
     {
-        inputActions.Player.Disable();
-        inputActions.UI.PauseMenu.performed += ctx => TogglePause(); 
+        inputActions = InputManager.Instance.Actions;
+        inputActions.UI.Enable();
+
+        pauseAction = inputActions.UI.PauseMenu;
+        pauseAction.Enable();
     }
 
-    private void OnDisable()
+    private void Update()
     {
-        inputActions.UI.PauseMenu.performed -= ctx => TogglePause();
-        inputActions.Player.Enable();
+        if (pauseAction != null && pauseAction.triggered)
+        {
+            TogglePause();
+        }
     }
 
     void TogglePause()
     {
-        UnityEngine.Cursor.visible = true;
-        UnityEngine.Cursor.lockState = CursorLockMode.None;
-
         isPaused = !isPaused;
-        Debug.Log("isPaused is currently = " + isPaused);
+       // Debug.Log("isPaused is currently = " + isPaused);
 
         if (isPaused)
         {
             Time.timeScale = 0;
             pauseMenuWindow.SetActive(true);
-            inputActions.Player.Disable();
+            UnityEngine.Cursor.visible = true;
+            UnityEngine.Cursor.lockState = CursorLockMode.None;
+
+            if (InputDetector.CurrentInput == InputType.Controller && firstSelectable != null)
+            {
+                EventSystem.current.SetSelectedGameObject(null); // clear first to force reselection
+                EventSystem.current.SetSelectedGameObject(firstSelectable.gameObject);
+            }
         }
         else
         {
             Time.timeScale = 1;
             pauseMenuWindow.SetActive(false);
-            inputActions.Player.Enable();
             UnityEngine.Cursor.visible = false;
             UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+            EventSystem.current.SetSelectedGameObject(null);
         }
     }
+
+    public void QuitGame()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
+    }
+
+    public void RestartGame()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }
+
