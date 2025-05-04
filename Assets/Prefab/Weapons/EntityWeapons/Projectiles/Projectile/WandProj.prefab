@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2616073032993055045}
   - component: {fileID: 2599833689124382720}
   - component: {fileID: 7927898107972093023}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4847,7 +4847,7 @@ GameObject:
   - component: {fileID: 385203557546747745}
   - component: {fileID: 2730980379142147311}
   - component: {fileID: 9065989948908051116}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5009,7 +5009,7 @@ GameObject:
   - component: {fileID: 511175493411896485}
   - component: {fileID: 2231993089507046940}
   - component: {fileID: 7932518354730805337}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9844,7 +9844,7 @@ GameObject:
   - component: {fileID: 4790661005224484402}
   - component: {fileID: 4761829480903556010}
   - component: {fileID: 6125601573343937988}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: WandProj
   m_TagString: Untagged
   m_Icon: {fileID: 0}

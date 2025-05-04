@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 927544013275969929}
   - component: {fileID: 5977637783653047581}
   - component: {fileID: 4926043774536068421}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4847,7 +4847,7 @@ GameObject:
   - component: {fileID: 385203557546747745}
   - component: {fileID: 1183663915307599818}
   - component: {fileID: 7393996858818669081}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5010,7 +5010,7 @@ GameObject:
   - component: {fileID: 1520352526912095746}
   - component: {fileID: 7793392518682548460}
   - component: {fileID: 72451759797712585}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9845,7 +9845,7 @@ GameObject:
   - component: {fileID: 4790661005224484402}
   - component: {fileID: 1317123985503148492}
   - component: {fileID: 9092843884754228723}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: FireballProj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
