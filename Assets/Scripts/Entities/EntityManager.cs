@@ -176,6 +176,7 @@ public class EntityManager : MonoBehaviour
         if (Wp)
         {
             Wp.RemoveMe();
+            Wp = null;
         }
 
         if (weaponsArray.Length > WeaponInUse)
@@ -228,8 +229,8 @@ public class EntityManager : MonoBehaviour
                 {
                     Anim.SetTrigger("IsAttacking");
                 }
-
-                StartCoroutine(WFiring(InputAtk.Item2));
+                if(Wp)
+                    StartCoroutine(WFiring(InputAtk.Item2));
             }
             Weapon.transform.position = gameObject.transform.position;
             Weapon.transform.rotation = LookDir;
@@ -363,28 +364,31 @@ public class EntityManager : MonoBehaviour
     {
         Attacking[a] = true;
         BusyAtk[a] = true;
+       
         float i=Wp.WD.AbilityStruct[a].AbilityDuration + 0.05f;
+        
         if (Wp.Attack(a))
         {
             if (this is PlayerManager && AttackCooldownUI.Instance)
             {
                 AttackCooldownUI.Instance.TriggerCooldown(a);
-            }   
+            }
+
             if (Anim)
             {
                 Anim.SetFloat("Speed", SM.CurAspd());
-                Anim.SetInteger("Attack",a);
+                Anim.SetInteger("Attack", a);
             }
 
-            
+
             for (i = 0; i < (Wp.WD.AbilityStruct[a].AbilityDuration + 0.05f) / SM.CurAspd(); i += Time.deltaTime)
             {
                 if (Wp.WD.AbilityStruct[a].AbilityUnInterruptDuration / SM.CurAspd() <= i)
                 {
                     Attacking[a] = false;
                 }
-                
-                
+
+
                 yield return null;
             }
 
@@ -402,6 +406,7 @@ public class EntityManager : MonoBehaviour
             i += Time.deltaTime;
             yield return null;
         }
+
         yield return null;
     }
     public virtual void MoveInput()//Change MoveDir in Child

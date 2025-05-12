@@ -56,11 +56,11 @@ public class BaseEnemyManager : EntityManager
         }
     }
 
-public override void OnDeath()
-{
-    base.OnDeath();
-    SoundManager.Play3DSound(SoundType.VICTORYTHEME, transform, 1f, 2f, 10f);
-}
+    public override void OnDeath()
+    {
+        base.OnDeath();
+        SoundManager.Play3DSound(SoundType.VICTORYTHEME, transform, 1f, 2f, 10f);
+    }
 
     public override (bool,int) AtkInput() //Choose how to Shoot in Child
     {
