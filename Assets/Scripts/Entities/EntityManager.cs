@@ -58,7 +58,7 @@ public class EntityManager : MonoBehaviour
     public virtual void Start()
     {
         LookCooldown = true;
-        ChangeWeapon(WeaponInUse);
+        StartCoroutine( ChangeWeapon(WeaponInUse));
         SM = new StatManager();
         Anim = gameObject.GetComponentInChildren<Animator>();
         if (gameObject.GetComponent<Rigidbody>())
@@ -170,7 +170,7 @@ public class EntityManager : MonoBehaviour
     }
 
 
-    public void ChangeWeapon(int WeaponInUse)
+    public IEnumerator ChangeWeapon(int WeaponInUse)
     {
         currentWeaponIndex = WeaponInUse;
         if (Wp)
@@ -187,7 +187,11 @@ public class EntityManager : MonoBehaviour
 
         if (Weapon)
         {
-            Wp = Weapon.GetComponent<Weapon>();
+            while(Wp==null)
+            {
+                Wp = Weapon.GetComponent<Weapon>();
+                yield return null;
+            }
             Wp.PS = this;
             Attacking = new bool[Wp.WD.AbilityStruct.Length];
             BusyAtk = new bool[Wp.WD.AbilityStruct.Length];
@@ -223,6 +227,8 @@ public class EntityManager : MonoBehaviour
         if (Weapon)
         {
             (bool, int) InputAtk = AtkInput();
+            if (Attacking==null)
+                return;
             if (InputAtk.Item1 && !Attacking.Max() && !BusyAtk[InputAtk.Item2])
             {
                 if (Anim)
@@ -234,7 +240,8 @@ public class EntityManager : MonoBehaviour
             }
             Weapon.transform.position = gameObject.transform.position;
             Weapon.transform.rotation = LookDir;
-            Wp.ChangePrev(InputAtk.Item2);
+            if(Wp)
+                Wp.ChangePrev(InputAtk.Item2);
         }
     }
     void Jump()

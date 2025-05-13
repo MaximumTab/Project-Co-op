@@ -102,7 +102,7 @@ public class Skill : MonoBehaviour
 
     public void ChangeWeapon()
     {
-        FindAnyObjectByType<PlayerManager>().ChangeWeapon(branch);
+        StartCoroutine(FindAnyObjectByType<PlayerManager>().ChangeWeapon(branch));
     }
 
     public void OnEquip()

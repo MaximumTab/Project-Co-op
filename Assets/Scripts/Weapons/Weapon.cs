@@ -61,7 +61,7 @@ public class Weapon : MonoBehaviour
 
     public void ChangePrev(int i)
     {
-        Debug.Log(prevAttack+", "+i+" from "+PS.name);
+        //Debug.Log(prevAttack+", "+i+" from "+PS.name);
         if (prevAttack == i&&i!=-1)
         {
             HoldingAttack = true;
