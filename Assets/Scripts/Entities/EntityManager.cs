@@ -13,6 +13,9 @@ public class EntityManager : MonoBehaviour
     protected Vector3 MoveDir;
     protected Quaternion LookDir;
     public Quaternion LastLook{ get; private set; }
+    
+    protected bool AtkDelay;
+    [SerializeField] protected static float decisionDelayDuration=0.25f;
 
     public bool LookCooldown = true;
     //public float TurnDuration = 0.15f;
@@ -58,7 +61,7 @@ public class EntityManager : MonoBehaviour
     public virtual void Start()
     {
         LookCooldown = true;
-        StartCoroutine( ChangeWeapon(WeaponInUse));
+        ChangeWeapon(WeaponInUse);
         SM = new StatManager();
         Anim = gameObject.GetComponentInChildren<Animator>();
         if (gameObject.GetComponent<Rigidbody>())
@@ -77,6 +80,8 @@ public class EntityManager : MonoBehaviour
             r.material.SetTexture("_MainTex",baseMat);
             
         }
+
+        StartCoroutine(DecisionDelay());
     }
 
     // Update is called once per frame
@@ -170,13 +175,12 @@ public class EntityManager : MonoBehaviour
     }
 
 
-    public IEnumerator ChangeWeapon(int WeaponInUse)
+    public void ChangeWeapon(int WeaponInUse)
     {
         currentWeaponIndex = WeaponInUse;
         if (Wp)
         {
             Wp.RemoveMe();
-            Wp = null;
         }
 
         if (weaponsArray.Length > WeaponInUse)
@@ -187,11 +191,7 @@ public class EntityManager : MonoBehaviour
 
         if (Weapon)
         {
-            while(Wp==null)
-            {
-                Wp = Weapon.GetComponent<Weapon>();
-                yield return null;
-            }
+            Wp = Weapon.GetComponent<Weapon>();
             Wp.PS = this;
             Attacking = new bool[Wp.WD.AbilityStruct.Length];
             BusyAtk = new bool[Wp.WD.AbilityStruct.Length];
@@ -227,21 +227,18 @@ public class EntityManager : MonoBehaviour
         if (Weapon)
         {
             (bool, int) InputAtk = AtkInput();
-            if (Attacking==null)
-                return;
-            if (InputAtk.Item1 && !Attacking.Max() && !BusyAtk[InputAtk.Item2])
+            if (InputAtk.Item1 && !Attacking.Max() && !BusyAtk[InputAtk.Item2]&&SM.CurHpPerc()<=Wp.WD.AbStructHpHighMax())
             {
                 if (Anim)
                 {
                     Anim.SetTrigger("IsAttacking");
                 }
-                if(Wp)
-                    StartCoroutine(WFiring(InputAtk.Item2));
+
+                StartCoroutine(WFiring(InputAtk.Item2));
             }
             Weapon.transform.position = gameObject.transform.position;
             Weapon.transform.rotation = LookDir;
-            if(Wp)
-                Wp.ChangePrev(InputAtk.Item2);
+            Wp.ChangePrev(InputAtk.Item2);
         }
     }
     void Jump()
@@ -367,35 +364,38 @@ public class EntityManager : MonoBehaviour
         yield return null;
 
     }
+    protected IEnumerator DecisionDelay()
+    {
+        AtkDelay = true;
+        yield return new WaitForSeconds(decisionDelayDuration);
+        AtkDelay = false;
+    }
     IEnumerator WFiring(int a)
     {
         Attacking[a] = true;
         BusyAtk[a] = true;
-       
         float i=Wp.WD.AbilityStruct[a].AbilityDuration + 0.05f;
-        
         if (Wp.Attack(a))
         {
             if (this is PlayerManager && AttackCooldownUI.Instance)
             {
                 AttackCooldownUI.Instance.TriggerCooldown(a);
-            }
-
+            }   
             if (Anim)
             {
                 Anim.SetFloat("Speed", SM.CurAspd());
-                Anim.SetInteger("Attack", a);
+                Anim.SetInteger("Attack",a);
             }
 
-
+            
             for (i = 0; i < (Wp.WD.AbilityStruct[a].AbilityDuration + 0.05f) / SM.CurAspd(); i += Time.deltaTime)
             {
                 if (Wp.WD.AbilityStruct[a].AbilityUnInterruptDuration / SM.CurAspd() <= i)
                 {
                     Attacking[a] = false;
                 }
-
-
+                
+                
                 yield return null;
             }
 
@@ -413,7 +413,6 @@ public class EntityManager : MonoBehaviour
             i += Time.deltaTime;
             yield return null;
         }
-
         yield return null;
     }
     public virtual void MoveInput()//Change MoveDir in Child

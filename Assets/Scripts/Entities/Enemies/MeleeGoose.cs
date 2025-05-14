@@ -8,6 +8,11 @@ public class MeleeGoose : BaseEnemyManager
     {
         float targetDistance = (transform.position - GetTarget().position).magnitude;
 
+        if (AtkDelay)
+        {
+            return (false,-1);
+        }
+        StartCoroutine(DecisionDelay());
         if (targetDistance < distance)
         {
             return (true, 1);

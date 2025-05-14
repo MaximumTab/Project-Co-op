@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] private Selectable firstSelectable;
     private InputSystem_Actions inputActions;
+    private bool playing = false;
 
     private void Start()
     {
@@ -39,7 +40,11 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadSceneAsync(1);
+        if (!playing)
+        {
+            SceneManager.LoadSceneAsync(1);
+            playing = true;
+        }
     }
 
     public void QuitGame()

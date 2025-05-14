@@ -20,9 +20,9 @@ public class MeleeGooseWeap : Weapon
     public IEnumerator SliceDash()
     {
         StartCoroutine(PS.DashCoolDown());
-        yield return PS.Dashing(PS.transform.forward);  //dash
+        StartCoroutine(PS.Dashing(PS.rb.linearVelocity.normalized));  //dash
         yield return new WaitForSeconds(0.4f);  //small delay between second slash
-        yield return PS.Dashing(PS.transform.forward);  //dash again
+        StartCoroutine(PS.Dashing(PS.rb.linearVelocity.normalized));  //dash again
     }
 
     public IEnumerator Pecking()

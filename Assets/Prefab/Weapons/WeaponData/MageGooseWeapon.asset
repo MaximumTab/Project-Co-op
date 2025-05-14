@@ -20,6 +20,8 @@ MonoBehaviour:
     - 100
     KnockBackStrengths:
     - 1
+    KnockUpStrengths:
+    - 0
     AbilityDuration: 1
     AbilityUnInterruptDuration: 1
     IsInterruptable: 0

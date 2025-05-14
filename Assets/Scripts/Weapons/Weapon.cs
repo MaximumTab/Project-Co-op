@@ -128,19 +128,20 @@ public class Weapon : MonoBehaviour
         string targetName = TargetEM.ED != null ? TargetEM.ED.Name : TargetEM.gameObject.name;
         float targetCurrentHp = TargetEM.SM.Hp;
 
-        Debug.Log($"[DAMAGE] {attackerName} dealt {damageAmount} damage to {targetName}. Current HP: {targetCurrentHp}");
+        //Debug.Log($"[DAMAGE] {attackerName} dealt {damageAmount} damage to {targetName}. Current HP: {targetCurrentHp}");
     }
 
     void Knocking(int i, int CompNum)
     {
         float KnockAmount = KnockingAmount(WD.AbilityStruct[CompNum].KnockBackStrengths, i);
         float KnockUpAmount = KnockingAmount(WD.AbilityStruct[CompNum].KnockUpStrengths,i);
-        Vector3 KnockDirection = (TargetEM.transform.position - transform.position).normalized;
+        Vector3 KnockDirection = ((TargetEM.transform.position - transform.position)-Vector3.up*(TargetEM.transform.position.y - transform.position.y)).normalized;
         TargetEM.rb.AddForce(KnockDirection*KnockAmount+Vector3.up*KnockUpAmount,ForceMode.Impulse);
     }
 
     float KnockingAmount(float[] knockAmounts, int targInt)
     {
+        
         if (knockAmounts.Length > targInt)
         {
             return knockAmounts[targInt];

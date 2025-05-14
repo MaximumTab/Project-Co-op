@@ -19,5 +19,19 @@ public class WeaponData : ScriptableObject
         public bool IsInterruptable;
         public float AbilityCooldown;
     }
-    
+
+    public float AbStructHpHighMax()
+    {
+        float MaxHighHp = 0;
+        foreach (WStruct AbStruct in AbilityStruct)
+        {
+            if (AbStruct.HighHpLim > MaxHighHp)
+            {
+                MaxHighHp = AbStruct.HighHpLim;
+            }
+        }
+
+        return MaxHighHp;
+    }
+
 }
