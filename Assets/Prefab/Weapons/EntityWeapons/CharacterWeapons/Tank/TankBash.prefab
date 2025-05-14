@@ -141,7 +141,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.39, y: 1.21, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4493803218796253175
 GameObject:
@@ -5235,7 +5235,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

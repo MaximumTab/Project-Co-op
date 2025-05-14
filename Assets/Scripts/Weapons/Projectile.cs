@@ -28,7 +28,7 @@ public class Projectile : Weapon
     public override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
-        if (!other.gameObject.transform.IsChildOf(PS.gameObject.transform.parent) &&!other.gameObject.transform.GetComponentInParent<Weapon>()&&other.gameObject.transform.GetComponent<ProjEntityManager>()!=BM)
+        if (!other.gameObject.transform.IsChildOf(PS.gameObject.transform.parent) &&!other.isTrigger&&other.gameObject.transform.GetComponent<ProjEntityManager>()!=BM)
         {
             hitAttack(other.gameObject.name);
         }

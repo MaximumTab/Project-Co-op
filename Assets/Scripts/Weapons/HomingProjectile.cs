@@ -49,15 +49,14 @@ public class HomingBullet : Projectile
         hasHomingHappened = true;
         isHomingFixed = false;
         Vector3 Start = rb.linearVelocity;
-        Vector3 End = targetVelocity;
         float flightCorrectionDuration = Random.Range(3, 5);
 
         for (float time = 0; time < flightCorrectionDuration; time += Time.deltaTime)
         {
-            rb.linearVelocity = Vector3.Lerp(Start, End, time / flightCorrectionDuration);
+            rb.linearVelocity = Vector3.Lerp(Start, targetVelocity, time / flightCorrectionDuration);
             yield return null;
         }
-        rb.linearVelocity = End;
+        rb.linearVelocity = targetVelocity;
         isHomingFixed = true;
         yield return null;
 

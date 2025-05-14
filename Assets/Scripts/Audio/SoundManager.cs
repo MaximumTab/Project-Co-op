@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using UnityEngine.Audio;
 using System.Collections;
+using System.Collections.Generic;
 
 public enum SoundType
 {
@@ -20,7 +21,7 @@ public enum SoundType
 [RequireComponent(typeof(AudioSource))]
 public class SoundManager : MonoBehaviour
 {
-    [SerializeField] private SoundList[] soundList;
+    [SerializeField] private List<SoundList> soundList;
     private static SoundManager instance;
     private AudioSource audioSource;
     [SerializeField] private AudioMixerGroup audioMixerGroup;
@@ -34,7 +35,6 @@ public class SoundManager : MonoBehaviour
         else if (instance != this)
         {
             Destroy(gameObject);
-            return;
         }
     }
 
@@ -49,26 +49,22 @@ public class SoundManager : MonoBehaviour
     /// </summary>
     public static void Play3DSound(SoundType sound, Transform parent, float spatialBlend = 1f, float minDistance = 1f, float maxDistance = 50f, float volume = 1f)
     {
-        if (instance == null)
+        if (!instance)
         {
-            Debug.LogWarning("SoundManager instance not found.");
+            //Debug.LogWarning("SoundManager instance not found.");
             return;
         }
 
         AudioClip[] clips = instance.soundList[(int)sound].Sounds;
         if (clips == null || clips.Length == 0)
         {
-            Debug.LogWarning($"No AudioClips assigned for SoundType: {sound}");
+            //Debug.LogWarning($"No AudioClips assigned for SoundType: {sound}");
             return;
         }
 
         AudioClip randomClip = clips[UnityEngine.Random.Range(0, clips.Length)];
-
-        GameObject soundObject = new GameObject("3D_Sound_" + sound);
-        soundObject.transform.SetParent(parent, false);
-        soundObject.transform.localPosition = Vector3.zero;
-
-        AudioSource newAudioSource = soundObject.AddComponent<AudioSource>();
+        
+        AudioSource newAudioSource = parent.gameObject.AddComponent<AudioSource>();
         newAudioSource.clip = randomClip;
         newAudioSource.spatialBlend = spatialBlend;
         newAudioSource.rolloffMode = AudioRolloffMode.Linear;
@@ -76,7 +72,7 @@ public class SoundManager : MonoBehaviour
         newAudioSource.maxDistance = maxDistance;
         newAudioSource.volume = volume;
 
-        if (instance.audioMixerGroup != null)
+        if (instance.audioMixerGroup)
             newAudioSource.outputAudioMixerGroup = instance.audioMixerGroup;
 
         newAudioSource.Play();
@@ -85,7 +81,7 @@ public class SoundManager : MonoBehaviour
 
     private IEnumerator DestroyAfterPlay(AudioSource source)
     {
-        if (source == null || source.clip == null)
+        if (!source || !source.clip)
             yield break;
 
         float waitTime = source.clip.length;
@@ -94,16 +90,16 @@ public class SoundManager : MonoBehaviour
         float timer = 0f;
         while (timer < waitTime)
         {
-            if (source == null || source.gameObject == null)
+            if (!source || !source.gameObject )
                 yield break;
 
             timer += Time.deltaTime;
             yield return null;
         }
 
-        if (source != null && source.gameObject != null)
+        if (source && source.gameObject )
         {
-            Destroy(source.gameObject);
+            Destroy(source);
         }
     }
 
@@ -111,10 +107,11 @@ public class SoundManager : MonoBehaviour
     private void OnEnable()
     {
         string[] names = Enum.GetNames(typeof(SoundType));
-        Array.Resize(ref soundList, names.Length);
-        for (int i = 0; i < soundList.Length; i++)
+        int i = 0;
+        foreach (SoundList SL in soundList)
         {
-            soundList[i].name = names[i];
+            SoundList SoundComp = SL;
+            SoundComp.name = names[i++];
         }
     }
 #endif
