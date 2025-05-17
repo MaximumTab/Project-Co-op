@@ -58,15 +58,11 @@ public class WeaponComp : Weapon
         PS = inheritWeapon.PS;
         ParentWeapon = inheritWeapon;
         Speed = PS.SM.CurAspd();
-        if (KillAfterDuration)
-        {
-            StartCoroutine(KillAfterUse());
-        }
     }
 
     IEnumerator KillAfterUse()
     {
-        Debug.Log("Deleting after "+WD.AbilityStruct[CompNum].AbilityDuration);
+        //Debug.Log("Deleting after "+WD.AbilityStruct[CompNum].AbilityDuration);
         yield return new WaitForSeconds(WD.AbilityStruct[CompNum].AbilityDuration);
         if (HoldToKeep)
         {
@@ -75,7 +71,7 @@ public class WeaponComp : Weapon
 
         ParentWeapon.CompScripts.Remove(Index);
         Destroy(gameObject);
-        Debug.Log("Removed");
+        //Debug.Log("Removed");
     }
     public void CheckNoProjs()
     {

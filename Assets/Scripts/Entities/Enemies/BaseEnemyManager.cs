@@ -7,6 +7,7 @@ public class BaseEnemyManager : EntityManager
     public float[] OneInNumberAtkAttempt;
     private Transform target;
     private bool targetSearched = false;
+    
     [SerializeField] private float DistanceToActivate = 100;
 
     public override void Start()
@@ -29,6 +30,7 @@ public class BaseEnemyManager : EntityManager
 
         if (distanceToPlayer < DistanceToActivate)
         {
+            
             base.Update();
             if (ED && ED.isBoss)
             {
@@ -56,14 +58,19 @@ public class BaseEnemyManager : EntityManager
         }
     }
 
-public override void OnDeath()
-{
-    base.OnDeath();
-    SoundManager.Play3DSound(SoundType.VICTORYTHEME, transform, 1f, 2f, 10f);
-}
+    public override void OnDeath()
+    {
+        base.OnDeath();
+        SoundManager.Play3DSound(SoundType.VICTORYTHEME, transform, 1f, 2f, 10f);
+    }
 
     public override (bool,int) AtkInput() //Choose how to Shoot in Child
     {
+        if (AtkDelay)
+        {
+            return (false,-1);
+        }
+        StartCoroutine(DecisionDelay());
         for (int i = 0; i < OneInNumberAtkAttempt.Length; i++)
         {
             if (Random.Range(0, OneInNumberAtkAttempt[i]) < 1)

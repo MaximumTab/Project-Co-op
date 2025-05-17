@@ -283,7 +283,7 @@ MonoBehaviour:
   RelativeWeaponSpawnPosition: {x: 0, y: 0, z: 0}
   kill: 0
   Lvl: 0
-  DashCool: 0
+  DashCool: 1
   baseMat: {fileID: 2800000, guid: 912c82de62e66d741bd79709907cb874, type: 3}
   FlashColour: {r: 1, g: 0, b: 0, a: 1}
   FlashTime: 0.25

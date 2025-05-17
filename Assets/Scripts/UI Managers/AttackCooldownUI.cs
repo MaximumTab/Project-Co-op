@@ -47,7 +47,7 @@ public class AttackCooldownUI : MonoBehaviour
     {
         while (cooldownSliders[index].value > 0)
         {
-            cooldownSliders[index].value -= Time.deltaTime;
+            cooldownSliders[index].value -= Time.deltaTime*Time.timeScale;
             yield return null;
         }
         cooldownSliders[index].value = 0;

@@ -17,7 +17,7 @@ public class VolumeSlider : MonoBehaviour
         }
         else
         {
-        SetMusicVolume();
+            SetMusicVolume();
         }
     }
     public void SetMusicVolume()

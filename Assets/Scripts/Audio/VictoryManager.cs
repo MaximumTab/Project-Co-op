@@ -21,10 +21,10 @@ public class VictoryManager : MonoBehaviour
         if (musicPlayed || trackedObjects.Count == 0) return;
 
         // Remove all null (destroyed) objects from the list
-        trackedObjects.RemoveAll(obj => obj == null);
+        trackedObjects.RemoveAll(obj => !obj );
 
         // If all objects are destroyed, play the music
-        if (trackedObjects.Count == 0 && victoryMusic != null)
+        if (trackedObjects.Count == 0 && victoryMusic )
         {
             PlayVictoryMusic();
         }
@@ -38,7 +38,7 @@ public class VictoryManager : MonoBehaviour
         audioSource.clip = victoryMusic;
         audioSource.volume = volume;
 
-        if (outputMixerGroup != null)
+        if (outputMixerGroup )
         {
             audioSource.outputAudioMixerGroup = outputMixerGroup;
         }

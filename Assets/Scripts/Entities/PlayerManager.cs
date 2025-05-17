@@ -91,6 +91,10 @@ public class PlayerManager : EntityManager
     }
     public override (bool,int) AtkInput() //Choose how to Shoot in Child
     {
+        if (AtkDelay)
+        {
+            return (false,-1);
+        }
         if (input.Player.Attack1.IsPressed())
             return (true, 0); 
         if (input.Player.Attack2.IsPressed())

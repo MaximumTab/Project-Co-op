@@ -26,6 +26,7 @@ public class ProjectileSpawner : WeaponComp
     IEnumerator ShootProjs()
     {
         WeaponColliderIndex = new Dictionary<Collider, int>();
+        float duration=0;
         for (int i = 0; i < AmtSpawnedPerActivate; i++)
         {
             GameObject TempProj= Instantiate(Proj,gameObject.transform.position,gameObject.transform.rotation);
@@ -42,7 +43,13 @@ public class ProjectileSpawner : WeaponComp
                 OnceOnHit.Add(col,new List<EntityManager>());
                 WeaponColliderIndex.Add(col,colliderIndex);
             }
-            yield return new WaitForSeconds(IntBetweenSpawns);
+
+            for (float nothingburger=0;duration<IntBetweenSpawns;duration+=Time.deltaTime)
+            {
+                yield return null;
+            }
+
+            duration -= IntBetweenSpawns;
         }
         yield return null;
     }

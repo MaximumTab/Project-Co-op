@@ -9,9 +9,15 @@ public class AudioTrigger : MonoBehaviour
 
     private Coroutine currentFade;
 
+    private void Start()
+    {
+        audioSource.Play();
+        audioSource.Stop();
+    }
+
     private void Update()
     {
-        if (linkedPrefab == null && audioSource.isPlaying)
+        if (!linkedPrefab && audioSource.isPlaying)
         {
             if (currentFade != null) StopCoroutine(currentFade);
             currentFade = StartCoroutine(FadeOut(audioSource, fadeDuration));

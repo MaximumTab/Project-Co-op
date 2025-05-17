@@ -13,6 +13,9 @@ public class EntityManager : MonoBehaviour
     protected Vector3 MoveDir;
     protected Quaternion LookDir;
     public Quaternion LastLook{ get; private set; }
+    
+    protected bool AtkDelay;
+    [SerializeField] protected static float decisionDelayDuration=0.25f;
 
     public bool LookCooldown = true;
     //public float TurnDuration = 0.15f;
@@ -77,6 +80,8 @@ public class EntityManager : MonoBehaviour
             r.material.SetTexture("_MainTex",baseMat);
             
         }
+
+        StartCoroutine(DecisionDelay());
     }
 
     // Update is called once per frame
@@ -222,7 +227,7 @@ public class EntityManager : MonoBehaviour
         if (Weapon)
         {
             (bool, int) InputAtk = AtkInput();
-            if (InputAtk.Item1 && !Attacking.Max() && !BusyAtk[InputAtk.Item2])
+            if (InputAtk.Item1 && !Attacking.Max() && !BusyAtk[InputAtk.Item2]&&SM.CurHpPerc()<=Wp.WD.AbStructHpHighMax())
             {
                 if (Anim)
                 {
@@ -358,6 +363,12 @@ public class EntityManager : MonoBehaviour
         rb.linearVelocity = End;
         yield return null;
 
+    }
+    protected IEnumerator DecisionDelay()
+    {
+        AtkDelay = true;
+        yield return new WaitForSeconds(decisionDelayDuration);
+        AtkDelay = false;
     }
     IEnumerator WFiring(int a)
     {
@@ -562,7 +573,7 @@ public class EntityManager : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if (jumpCooldown&&!other.gameObject.transform.IsChildOf(gameObject.transform.parent)&&!other.gameObject.layer.Equals(8))
+        if (jumpCooldown&&!other.gameObject.transform.IsChildOf(gameObject.transform.parent)&&!other.isTrigger)
         {
             isGrounded = true;
             Jumps = ED.BonusJumps;
