@@ -28,6 +28,7 @@ public class VictoryManager : MonoBehaviour
         {
             //enemy defeated popup, move if you feel there's a better spot for this!
             NotificationManager.Instance.ShowNotification("Enemy Defeated!");   
+            NotificationManager.Instance.ShowNotification("Enemy Defeated!");  
             PlayVictoryMusic();
         }
     }

@@ -10,8 +10,10 @@ public class NotificationManager : MonoBehaviour
     [SerializeField] private Transform notificationContainer;   //window that holds the notifs
     [SerializeField] private float displayDuration = 3f;
     // [SerializeField] private float fadeDuration = 0.5f;
-    [SerializeField] private Animator animator;
+    //[SerializeField] private Animator animator;
     
+    private static readonly int SlideOut = Animator.StringToHash("SlideOut");
+
     void Awake()
     { 
         if (Instance == null){ Instance = this;}
@@ -22,13 +24,13 @@ public class NotificationManager : MonoBehaviour
     public void ShowNotification(string message)
     {
         GameObject notifInstance = Instantiate(notificationPrefab, notificationContainer);
-        TextMeshProUGUI notifText = notifInstance.GetComponentInChildren<TextMeshProUGUI>(); //just accessing the 
-        
+        TextMeshProUGUI notifText = notifInstance.GetComponentInChildren<TextMeshProUGUI>(); 
         if (notifText != null) {notifText.text = message;}    //if there is text, set to incoming argument
-        StartCoroutine(HandleNotification(notifInstance));
+        Animator notifAnimator = notifInstance.GetComponentInChildren<Animator>();
+        StartCoroutine(HandleNotification(notifInstance, notifAnimator));
     }
 
-    private IEnumerator HandleNotification(GameObject notifObj)
+    private IEnumerator HandleNotification(GameObject notifObj, Animator notifAnimator)
     {
         // // Logic for fading or sliding
         // CanvasGroup canvasGroup = notifInstance.GetComponent<CanvasGroup>();
@@ -62,15 +64,24 @@ public class NotificationManager : MonoBehaviour
     
        // animator.SetTrigger("SlideIn");
         
+       
+       
+       
+       
         // Wait for the display duration
         yield return new WaitForSeconds(displayDuration);
 
         // Trigger slide-out animation
-        animator.SetTrigger("SlideOut");
+        notifAnimator.SetTrigger(SlideOut);
+        
+        AnimatorStateInfo stateInfo = notifAnimator.GetCurrentAnimatorStateInfo(0);
+        float animationLength = stateInfo.length;
+
+        yield return new WaitForSeconds(animationLength);
 
         // Wait for the slide-out animation to finish
        // float animationLength = 0.1f; // might need to access animation clip itself or to check if this clip has finished
-        yield return new WaitForSeconds(displayDuration);
+        //yield return new WaitForSeconds(displayDuration);
 
         Destroy(notifObj);
         
