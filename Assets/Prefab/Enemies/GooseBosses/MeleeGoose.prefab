@@ -288,6 +288,8 @@ MonoBehaviour:
   FlashColour: {r: 1, g: 0, b: 0, a: 1}
   FlashTime: 0.25
   OneInNumberAtkAttempt: []
+  stationary: 0
+  CloseEnough: 10
   DistanceToActivate: 100
   distance: 10
 --- !u!1001 &774613043581498186

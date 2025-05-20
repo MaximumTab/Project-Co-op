@@ -310,6 +310,8 @@ MonoBehaviour:
   FlashTime: 0.25
   OneInNumberAtkAttempt:
   - 1
+  stationary: 0
+  CloseEnough: 10
   DistanceToActivate: 100
 --- !u!1001 &1890968581651370625
 PrefabInstance:

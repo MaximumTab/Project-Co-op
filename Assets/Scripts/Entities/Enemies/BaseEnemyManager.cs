@@ -5,8 +5,10 @@ using UnityEngine;
 public class BaseEnemyManager : EntityManager
 {
     public float[] OneInNumberAtkAttempt;
-    private Transform target;
+    protected Transform target;
     private bool targetSearched = false;
+    [SerializeField] private bool stationary = true;
+    [SerializeField] private float CloseEnough=10;
     
     [SerializeField] private float DistanceToActivate = 100;
 
@@ -22,6 +24,8 @@ public class BaseEnemyManager : EntityManager
             }
         }
         Anim = gameObject.GetComponentInParent<Animator>();
+        targetSearched = false;
+        GetTarget();
     }
 
     public override void Update()
@@ -80,10 +84,38 @@ public class BaseEnemyManager : EntityManager
         }
         return (false,-1);
     }
+    public override void MoveInput()
+    {
+        if (!DashCool || !target||stationary) return;
+        
+        Vector3 direction = (target.position - transform.position).normalized;
+        direction.y = 0;
+        if ((target.position - transform.position).magnitude<CloseEnough)
+        {
+            direction*=0;
+        }
+
+        MoveDir = direction;
+    }
+
+
+    public override void Look()
+    {
+        if (!target || !DashCool||stationary) return;
+
+        Vector3 direction = target.position - transform.position;
+        direction.y = 0;
+
+        if (direction != Vector3.zero)
+        {
+            LookDir = Quaternion.LookRotation(direction);
+        }
+        base.Look();
+    }
 
     public Transform GetTarget()
     {
-        if (!targetSearched || target == null)
+        if (!targetSearched || !target)
         {
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
             if (playerObj)

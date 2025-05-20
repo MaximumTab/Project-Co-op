@@ -25,7 +25,7 @@ public class LawnmowerWeap : Weapon
     private IEnumerator MowerDash()
     {
         LawnmowerBossManager boss = PS as LawnmowerBossManager;
-        if (boss == null || boss.GetTarget() == null)
+        if (!boss || !boss.GetTarget())
         {
             Debug.LogWarning("[MowerDash] Boss or target is null — aborting.");
             yield break;
@@ -46,12 +46,12 @@ public class LawnmowerWeap : Weapon
         PS.rb.angularVelocity = Vector3.zero;
         PS.rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 
-        Debug.Log("[MowerDash] Wind-up (3 seconds) — frozen.");
-        yield return new WaitForSeconds(1f);
-        Debug.Log("[MowerDash] Wind-up (2 seconds) — frozen.");
-        yield return new WaitForSeconds(1f);
-        Debug.Log("[MowerDash] Wind-up (1 seconds) — frozen.");
-        yield return new WaitForSeconds(1f);  
+        //Debug.Log("[MowerDash] Wind-up (3 seconds) — frozen.");
+        yield return new WaitForSeconds(3);
+        //Debug.Log("[MowerDash] Wind-up (2 seconds) — frozen.");
+        //yield return new WaitForSeconds(1f);
+        //Debug.Log("[MowerDash] Wind-up (1 seconds) — frozen.");
+        //yield return new WaitForSeconds(1f);  
 
         PS.rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 
@@ -63,13 +63,13 @@ public class LawnmowerWeap : Weapon
     private IEnumerator MowerSpin()
     {
         LawnmowerBossManager boss = PS as LawnmowerBossManager;
-        if (boss == null)
+        if (!boss)
         {
-            Debug.LogWarning("[MowerSpin] Boss is null — aborting.");
+            //Debug.LogWarning("[MowerSpin] Boss is null — aborting.");
             yield break;
         }
 
-        Debug.Log("[MowerSpin] Starting spin.");
+        //Debug.Log("[MowerSpin] Starting spin.");
         
         // Stop and freeze movement
         PS.rb.linearVelocity = Vector3.zero;
@@ -90,7 +90,7 @@ public class LawnmowerWeap : Weapon
         // Restore constraints to allow movement again
         PS.rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
         
-        Debug.Log("[MowerSpin] Spin finished.");
+        //Debug.Log("[MowerSpin] Spin finished.");
     }
 
 }

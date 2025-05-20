@@ -269,14 +269,7 @@ public class EntityManager : MonoBehaviour
     }
     public virtual void Look()
     {
-        if (MoveDir != Vector3.zero&&LookCooldown)
-        {
-            transform.rotation= Quaternion.LookRotation(MoveDir);
-        }
-        else
-        {
-            transform.rotation = LastLook;
-        }
+        transform.rotation= LookDir;
     }
     void Move()
     {
