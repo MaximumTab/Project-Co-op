@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6694829108849443064}
   - component: {fileID: 6534227248795033981}
   - component: {fileID: 3380519229644605886}
+  - component: {fileID: 2485226098801948111}
   m_Layer: 0
   m_Name: Hitbox
   m_TagString: Untagged
@@ -166,10 +167,38 @@ MonoBehaviour:
   baseMat: {fileID: 2800000, guid: 2c6d1fc23d49f564fbdae33cf4c90d7e, type: 3}
   FlashColour: {r: 1, g: 0, b: 0, a: 1}
   FlashTime: 0.25
-  OneInNumberAtkAttempt: []
+  OneInNumberAtkAttempt:
+  - 2
+  - 2
+  - 1
   stationary: 0
   CloseEnough: 10
-  DistanceToActivate: 100
+  DistanceToActivate: 150
+  AttackRange:
+  - 50
+  - 100
+  - 200
+--- !u!135 &2485226098801948111
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608023638549214972}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1
+  m_Center: {x: 0, y: -1, z: 0}
 --- !u!1 &1428030661254354552
 GameObject:
   m_ObjectHideFlags: 0

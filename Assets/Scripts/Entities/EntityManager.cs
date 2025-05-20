@@ -45,7 +45,7 @@ public class EntityManager : MonoBehaviour
     private float TerminalVel = 20f;
     
     private bool[] Attacking;
-    private bool[] BusyAtk;
+    protected bool[] BusyAtk;
 
     [SerializeField] private Texture2D  baseMat;
     [SerializeField] private Color FlashColour=Color.red;
@@ -90,8 +90,8 @@ public class EntityManager : MonoBehaviour
         if (Time.timeScale == 0)
             return;
         Move();
-        Jump();
         Shoot();
+        Jump();
         Look();
         Drop();
         LevelingUp();

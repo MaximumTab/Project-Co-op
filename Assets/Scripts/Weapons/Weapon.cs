@@ -75,10 +75,15 @@ public class Weapon : MonoBehaviour
         
     }
 
+    public bool CanAtk(int i)
+    {
+        return !Atking[i] && Castable(i);
+    }
+
     public bool Attack(int i)
     {
 
-        if (!Atking[i]&&Castable(i))
+        if (CanAtk(i))
         {
             if (WeaponComponents.Length>i&& WeaponComponents[i])
             {

@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BaseEnemyManager : EntityManager
 {
@@ -11,6 +14,7 @@ public class BaseEnemyManager : EntityManager
     [SerializeField] private float CloseEnough=10;
     
     [SerializeField] private float DistanceToActivate = 100;
+    protected bool Jumpy;
 
     public override void Start()
     {
@@ -77,7 +81,7 @@ public class BaseEnemyManager : EntityManager
         StartCoroutine(DecisionDelay());
         for (int i = 0; i < OneInNumberAtkAttempt.Length; i++)
         {
-            if (Random.Range(0, OneInNumberAtkAttempt[i]) < 1)
+            if (Random.Range(0, OneInNumberAtkAttempt[i]) < 1&&!BusyAtk.Max())
             {
                 return (true, i);
             }
@@ -113,6 +117,14 @@ public class BaseEnemyManager : EntityManager
         base.Look();
     }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        if (!stationary&&(target.position.y - transform.position.y)>0)
+        {
+            StartCoroutine(Jumping());
+        }
+    }
+
     public Transform GetTarget()
     {
         if (!targetSearched || !target)
@@ -126,6 +138,17 @@ public class BaseEnemyManager : EntityManager
         }
 
         return target;
+    }
+    public override bool JumpInput()
+    {
+        return Jumpy;
+    }
+   protected IEnumerator Jumping()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Jumpy = true;
+        yield return new WaitForSeconds(0.05f);
+        Jumpy = false;
     }
 
 }

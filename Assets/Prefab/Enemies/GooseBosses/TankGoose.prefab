@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 5824111310350688587}
   - component: {fileID: 7225768306948448214}
   - component: {fileID: 2779163329863252357}
+  - component: {fileID: 6638474985753214754}
   m_Layer: 0
   m_Name: Hitbox
   m_TagString: Untagged
@@ -205,6 +206,27 @@ MonoBehaviour:
   stationary: 0
   CloseEnough: 10
   DistanceToActivate: 100
+--- !u!135 &6638474985753214754
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3364317143864546313}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.25
+  m_Center: {x: 0, y: -0.85, z: 0}
 --- !u!1001 &2871549493545738636
 PrefabInstance:
   m_ObjectHideFlags: 0
