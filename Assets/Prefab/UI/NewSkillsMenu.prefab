@@ -104,7 +104,6 @@ RectTransform:
   - {fileID: 5068488258325607639}
   - {fileID: 1660942908904106889}
   - {fileID: 5466859087760610593}
-  - {fileID: 8897086061080419931}
   m_Father: {fileID: 4291478869114452382}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -272,9 +271,7 @@ GameObject:
   - component: {fileID: 642612610287612825}
   - component: {fileID: 7624323324447502162}
   - component: {fileID: 6806908539226743532}
-  - component: {fileID: 4022128530090984807}
   - component: {fileID: 2828148694565162626}
-  - component: {fileID: 4591516216171473207}
   m_Layer: 5
   m_Name: WPassive2
   m_TagString: Untagged
@@ -339,27 +336,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4022128530090984807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 380576686263417016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b92cae1c6eb25248b44d87e3979375e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillName: DoubleDash
-  prerequisites:
-  - {fileID: 7036176603922341469}
-  isUnlocked: 0
-  unlockedColor: {r: 1, g: 1, b: 1, a: 1}
-  lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  sprequirement: 3
-  branch: 3
-  changeweapon: 0
 --- !u!114 &2828148694565162626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,7 +349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 7767417848574472064}
     m_SelectOnDown: {fileID: 3293205366539787178}
@@ -404,7 +380,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4022128530090984807}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Skill, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
@@ -416,20 +392,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4591516216171473207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 380576686263417016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a472601a96d0f9c49a4b74d92abb75a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  message: Double Dash
-  tooltipManager: {fileID: 1027867562662294109}
 --- !u!1 &470162664113620662
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,6 +562,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3828875974276256270}
+  - {fileID: 963869378835212120}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -710,8 +673,6 @@ GameObject:
   - component: {fileID: 6241874193600607582}
   - component: {fileID: 2364488617612054450}
   - component: {fileID: 7651954073412025517}
-  - component: {fileID: 8096346845419627992}
-  - component: {fileID: 9022728864596302274}
   - component: {fileID: 8508746997179868345}
   m_Layer: 5
   m_Name: MPassive1
@@ -777,41 +738,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8096346845419627992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 744783061876058684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b92cae1c6eb25248b44d87e3979375e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillName: AttackBuff
-  prerequisites:
-  - {fileID: 3358316497576785357}
-  isUnlocked: 0
-  unlockedColor: {r: 1, g: 1, b: 1, a: 1}
-  lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  sprequirement: 2
-  branch: 1
-  changeweapon: 0
---- !u!114 &9022728864596302274
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 744783061876058684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a472601a96d0f9c49a4b74d92abb75a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  message: +5% attack
-  tooltipManager: {fileID: 1027867562662294109}
 --- !u!114 &8508746997179868345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -825,7 +751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 7583547194920409146}
     m_SelectOnDown: {fileID: 797319478740413808}
@@ -856,7 +782,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8096346845419627992}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Skill, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
@@ -1377,9 +1303,7 @@ GameObject:
   - component: {fileID: 7647667572781875499}
   - component: {fileID: 6842971412281902558}
   - component: {fileID: 592858569735991503}
-  - component: {fileID: 7036176603922341469}
   - component: {fileID: 7583547194920409146}
-  - component: {fileID: 323247183040605625}
   m_Layer: 5
   m_Name: WPassive1
   m_TagString: Untagged
@@ -1444,27 +1368,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7036176603922341469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1329961344663509773}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b92cae1c6eb25248b44d87e3979375e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillName: ' MovSpeed'
-  prerequisites:
-  - {fileID: 2111796880173547071}
-  isUnlocked: 0
-  unlockedColor: {r: 1, g: 1, b: 1, a: 1}
-  lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  sprequirement: 2
-  branch: 3
-  changeweapon: 0
 --- !u!114 &7583547194920409146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1478,7 +1381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 797319478740413808}
     m_SelectOnDown: {fileID: 8508746997179868345}
@@ -1509,7 +1412,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7036176603922341469}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Skill, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
@@ -1521,20 +1424,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &323247183040605625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1329961344663509773}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a472601a96d0f9c49a4b74d92abb75a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  message: Movement Speed Up
-  tooltipManager: {fileID: 1027867562662294109}
 --- !u!1 &1361904445813050269
 GameObject:
   m_ObjectHideFlags: 0
@@ -1546,9 +1435,7 @@ GameObject:
   - component: {fileID: 8020193086813734401}
   - component: {fileID: 32553958100561559}
   - component: {fileID: 21595066536727839}
-  - component: {fileID: 8955926313272432354}
   - component: {fileID: 4107083312856238337}
-  - component: {fileID: 7272908961847903016}
   m_Layer: 5
   m_Name: TPassive3
   m_TagString: Untagged
@@ -1613,27 +1500,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8955926313272432354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361904445813050269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b92cae1c6eb25248b44d87e3979375e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillName: Hp Regen
-  prerequisites:
-  - {fileID: 4831361409526731985}
-  isUnlocked: 0
-  unlockedColor: {r: 1, g: 1, b: 1, a: 1}
-  lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  sprequirement: 4
-  branch: 2
-  changeweapon: 0
 --- !u!114 &4107083312856238337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1647,7 +1513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 8635964807806571247}
     m_SelectOnDown: {fileID: 9183728418420984394}
@@ -1678,7 +1544,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8955926313272432354}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Skill, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
@@ -1690,20 +1556,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7272908961847903016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361904445813050269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a472601a96d0f9c49a4b74d92abb75a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  message: HP Regen
-  tooltipManager: {fileID: 1027867562662294109}
 --- !u!1 &1449302235617900822
 GameObject:
   m_ObjectHideFlags: 0
@@ -2472,7 +2324,7 @@ MonoBehaviour:
     m_SelectOnUp: {fileID: 1124169508810738157}
     m_SelectOnDown: {fileID: 4638353644773406160}
     m_SelectOnLeft: {fileID: 4476715197148616549}
-    m_SelectOnRight: {fileID: 797319478740413808}
+    m_SelectOnRight: {fileID: 4476715197148616549}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -3127,7 +2979,7 @@ MonoBehaviour:
     m_SelectOnUp: {fileID: 4638353644773406160}
     m_SelectOnDown: {fileID: 3942449980925514458}
     m_SelectOnLeft: {fileID: 4476715197148616549}
-    m_SelectOnRight: {fileID: 8508746997179868345}
+    m_SelectOnRight: {fileID: 4476715197148616549}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -3176,9 +3028,7 @@ GameObject:
   - component: {fileID: 8419886355425489340}
   - component: {fileID: 7704493093605459316}
   - component: {fileID: 4412338376733525738}
-  - component: {fileID: 640587971025136696}
   - component: {fileID: 797319478740413808}
-  - component: {fileID: 6508721056042986731}
   m_Layer: 5
   m_Name: TPassive1
   m_TagString: Untagged
@@ -3243,27 +3093,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &640587971025136696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3246229772717575634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b92cae1c6eb25248b44d87e3979375e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillName: Damage Reduction
-  prerequisites:
-  - {fileID: 9223297790844314184}
-  isUnlocked: 0
-  unlockedColor: {r: 1, g: 1, b: 1, a: 1}
-  lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  sprequirement: 2
-  branch: 2
-  changeweapon: 0
 --- !u!114 &797319478740413808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3277,7 +3106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 8508746997179868345}
     m_SelectOnDown: {fileID: 7583547194920409146}
@@ -3308,7 +3137,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 640587971025136696}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Skill, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
@@ -3320,20 +3149,66 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6508721056042986731
-MonoBehaviour:
+--- !u!1 &3393358083646200453
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3246229772717575634}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 963869378835212120}
+  - component: {fileID: 4029273959772365573}
+  m_Layer: 5
+  m_Name: ttfix
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &963869378835212120
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3393358083646200453}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8897086061080419931}
+  m_Father: {fileID: 667153701619232399}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -154.99997, y: 125}
+  m_SizeDelta: {x: 100, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!223 &4029273959772365573
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3393358083646200453}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a472601a96d0f9c49a4b74d92abb75a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  message: Damage Reduction
-  tooltipManager: {fileID: 1027867562662294109}
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 100
+  m_TargetDisplay: 0
 --- !u!1 &3491877949546406632
 GameObject:
   m_ObjectHideFlags: 0
@@ -3879,9 +3754,7 @@ GameObject:
   - component: {fileID: 6548600093695878195}
   - component: {fileID: 2143319324322093251}
   - component: {fileID: 480678888350871228}
-  - component: {fileID: 8603839423815574449}
   - component: {fileID: 3293205366539787178}
-  - component: {fileID: 1992110666076533275}
   m_Layer: 5
   m_Name: MPassive2
   m_TagString: Untagged
@@ -3946,27 +3819,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8603839423815574449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4426765961939277104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b92cae1c6eb25248b44d87e3979375e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillName: CLD
-  prerequisites:
-  - {fileID: 8096346845419627992}
-  isUnlocked: 0
-  unlockedColor: {r: 1, g: 1, b: 1, a: 1}
-  lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  sprequirement: 3
-  branch: 1
-  changeweapon: 0
 --- !u!114 &3293205366539787178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3980,7 +3832,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 2828148694565162626}
     m_SelectOnDown: {fileID: 7767417848574472064}
@@ -4011,7 +3863,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8603839423815574449}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Skill, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
@@ -4023,20 +3875,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1992110666076533275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4426765961939277104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a472601a96d0f9c49a4b74d92abb75a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  message: Cooldown Reduction
-  tooltipManager: {fileID: 1027867562662294109}
 --- !u!1 &4899997140181736647
 GameObject:
   m_ObjectHideFlags: 0
@@ -4048,9 +3886,7 @@ GameObject:
   - component: {fileID: 3802413066556423742}
   - component: {fileID: 9181621017356124389}
   - component: {fileID: 5910608368620921166}
-  - component: {fileID: 5209301015301725838}
   - component: {fileID: 9183728418420984394}
-  - component: {fileID: 1368910301105608041}
   m_Layer: 5
   m_Name: WPassive3
   m_TagString: Untagged
@@ -4115,27 +3951,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5209301015301725838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4899997140181736647}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b92cae1c6eb25248b44d87e3979375e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillName: TripleJump
-  prerequisites:
-  - {fileID: 4022128530090984807}
-  isUnlocked: 0
-  unlockedColor: {r: 1, g: 1, b: 1, a: 1}
-  lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  sprequirement: 4
-  branch: 3
-  changeweapon: 0
 --- !u!114 &9183728418420984394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4149,7 +3964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 4107083312856238337}
     m_SelectOnDown: {fileID: 8635964807806571247}
@@ -4180,7 +3995,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5209301015301725838}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Skill, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
@@ -4192,20 +4007,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1368910301105608041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4899997140181736647}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a472601a96d0f9c49a4b74d92abb75a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  message: Triple Jump
-  tooltipManager: {fileID: 1027867562662294109}
 --- !u!1 &4975829723647092634
 GameObject:
   m_ObjectHideFlags: 0
@@ -4589,7 +4390,7 @@ MonoBehaviour:
     m_SelectOnUp: {fileID: 3942449980925514458}
     m_SelectOnDown: {fileID: 1124169508810738157}
     m_SelectOnLeft: {fileID: 4476715197148616549}
-    m_SelectOnRight: {fileID: 7583547194920409146}
+    m_SelectOnRight: {fileID: 4476715197148616549}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -5269,9 +5070,7 @@ GameObject:
   - component: {fileID: 1682749075139849848}
   - component: {fileID: 7234475598491082529}
   - component: {fileID: 6723803690357303850}
-  - component: {fileID: 7732164762387265332}
   - component: {fileID: 8635964807806571247}
-  - component: {fileID: 2743134489914290592}
   m_Layer: 5
   m_Name: MPassive3
   m_TagString: Untagged
@@ -5336,27 +5135,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7732164762387265332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7054905925213097489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b92cae1c6eb25248b44d87e3979375e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillName: fireball
-  prerequisites:
-  - {fileID: 8603839423815574449}
-  isUnlocked: 0
-  unlockedColor: {r: 1, g: 1, b: 1, a: 1}
-  lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  sprequirement: 4
-  branch: 1
-  changeweapon: 0
 --- !u!114 &8635964807806571247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5370,7 +5148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 9183728418420984394}
     m_SelectOnDown: {fileID: 4107083312856238337}
@@ -5401,7 +5179,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7732164762387265332}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Skill, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
@@ -5413,20 +5191,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2743134489914290592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7054905925213097489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a472601a96d0f9c49a4b74d92abb75a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  message: Teleport Ability
-  tooltipManager: {fileID: 1027867562662294109}
 --- !u!1 &7306159793243772664
 GameObject:
   m_ObjectHideFlags: 0
@@ -5710,11 +5474,11 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8231011488801968497}
-  m_Father: {fileID: 9093467765986717522}
+  m_Father: {fileID: 963869378835212120}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0.000015258789, y: 0}
+  m_AnchoredPosition: {x: 50.00003, y: -20}
   m_SizeDelta: {x: 100, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &4655479242943411481
@@ -6317,9 +6081,7 @@ GameObject:
   - component: {fileID: 9071678194564135873}
   - component: {fileID: 6875041945064707212}
   - component: {fileID: 7085418102457168193}
-  - component: {fileID: 4831361409526731985}
   - component: {fileID: 7767417848574472064}
-  - component: {fileID: 9017727631059137077}
   m_Layer: 5
   m_Name: TPassive2
   m_TagString: Untagged
@@ -6384,27 +6146,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4831361409526731985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8215783322590043702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b92cae1c6eb25248b44d87e3979375e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillName: Damage Up
-  prerequisites:
-  - {fileID: 640587971025136696}
-  isUnlocked: 0
-  unlockedColor: {r: 1, g: 1, b: 1, a: 1}
-  lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  sprequirement: 3
-  branch: 2
-  changeweapon: 0
 --- !u!114 &7767417848574472064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6418,7 +6159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 3293205366539787178}
     m_SelectOnDown: {fileID: 2828148694565162626}
@@ -6449,7 +6190,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4831361409526731985}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Skill, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
@@ -6461,20 +6202,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &9017727631059137077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8215783322590043702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a472601a96d0f9c49a4b74d92abb75a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  message: Damage Up
-  tooltipManager: {fileID: 1027867562662294109}
 --- !u!1 &8236254948861196525
 GameObject:
   m_ObjectHideFlags: 0
