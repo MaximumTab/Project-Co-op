@@ -141,6 +141,22 @@ public class EntityManager : MonoBehaviour
         }
     }
 
+    protected IEnumerator MakeInvis(int a)
+    {
+        for (int i = 0; i < flashRenderers.Count; i++)
+        {
+            flashRenderers[i].enabled = false;
+            flashRenderers[i].material.SetFloat("_InvisNum",0); 
+        }
+
+        yield return new WaitForSeconds(Wp.WD.AbilityStruct[a].AbilityDuration-1f);
+        for (int i = 0; i < flashRenderers.Count; i++)
+        {
+            flashRenderers[i].enabled = true;
+            flashRenderers[i].material.SetFloat("_InvisNum",1); 
+        }
+    }
+
     private void SetFlashColor()
     {
         for (int i = 0; i < flashRenderers.Count; i++)

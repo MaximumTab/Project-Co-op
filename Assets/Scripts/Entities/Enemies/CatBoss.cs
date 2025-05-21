@@ -26,11 +26,18 @@ public class CatBoss : BaseEnemyManager
                 {
                     StartCoroutine(Jumping());
                 }
+
+                if (i == 2 && Wp.CanAtk(i))
+                {
+                    StartCoroutine(MakeInvis(i));
+                }
+
                 return (true, i);
             }
         }
 
         return (false,-1);
     }
-    
+
+
 }

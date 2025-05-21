@@ -12,6 +12,7 @@ public class CatWeap : Weapon
         }
         else if(i==2)
         {
+            yield return new WaitForSeconds(1f);
             if (Random.Range(0f, 2f) < 1f)
             {
                 yield return StartCoroutine(PS.Dashing((PS.transform.right+PS.transform.forward).normalized));
