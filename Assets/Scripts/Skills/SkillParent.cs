@@ -7,9 +7,11 @@ public class SkillParent : MonoBehaviour
 {
     public static SkillParent Instance;
     public List<Skill>[] SkillTree;
-    [SerializeField]TMP_Text Skillpointui;
-    [SerializeField]public int Skillpoints = 0;
+    [SerializeField] TMP_Text Skillpointui;
+    [SerializeField] public int Skillpoints = 0;
     [SerializeField] private GameObject skillPointIndicator;
+    [SerializeField] private TMP_Text equippedText;
+
 
     public int CurrentBranch { get; private set; } = 0;
 
@@ -18,7 +20,7 @@ public class SkillParent : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        SkillTree = new List<Skill> [4];
+        SkillTree = new List<Skill>[4];
         SkillTree[0] = new List<Skill>();
         SkillTree[1] = new List<Skill>();
         SkillTree[2] = new List<Skill>();
@@ -27,13 +29,13 @@ public class SkillParent : MonoBehaviour
         SkillpointText();
     }
 
-    
+
     void GetAllSkills()
     {
         foreach (Skill tempskill in gameObject.GetComponentsInChildren<Skill>())
         {
-            Debug.Log (tempskill.name);
-            SkillTree[tempskill.branch].Add (tempskill);
+            Debug.Log(tempskill.name);
+            SkillTree[tempskill.branch].Add(tempskill);
         }
     }
 
@@ -44,13 +46,13 @@ public class SkillParent : MonoBehaviour
 
     public int GetSkillPoints()
     {
-       return Skillpoints;
+        return Skillpoints;
     }
 
     public void SkillpointText()
     {
-        Skillpointui.text = "Skillpoint: " + Skillpoints;
-        
+        Skillpointui.text = "Unlock Tokens: " + Skillpoints;
+
         if (skillPointIndicator != null)
             skillPointIndicator.SetActive(Skillpoints > 0);
     }
@@ -66,12 +68,18 @@ public class SkillParent : MonoBehaviour
                 {
                     getskill.OnEquip();
                 }
-                else 
+                else
                 {
                     getskill.OnRemove();
                 }
             }
         }
+    }
+
+    public void UpdateEquippedText(string className)
+    {
+        if (equippedText != null)
+            equippedText.text = $"Equipped: {className}";
     }
 
 }

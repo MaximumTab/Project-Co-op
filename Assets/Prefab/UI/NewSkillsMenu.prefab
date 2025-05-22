@@ -4881,7 +4881,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 10.000009, y: -22.1}
-  m_SizeDelta: {x: 98.3382, y: 34}
+  m_SizeDelta: {x: 104.2359, y: 34}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &3556362399525612121
 CanvasRenderer:
@@ -4911,7 +4911,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Skill Points = 0
+  m_text: 'Unlock Tokens: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b47bacfedcb87c14e8841aa31f4f5280, type: 2}
   m_sharedMaterial: {fileID: 5467918710590884895, guid: b47bacfedcb87c14e8841aa31f4f5280, type: 2}
@@ -4999,7 +4999,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1794035628738809952
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5018,8 +5018,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 21, y: -84.00001}
-  m_SizeDelta: {x: 126.78528, y: 40}
+  m_AnchoredPosition: {x: 20.7, y: -101.1}
+  m_SizeDelta: {x: 126.7853, y: 45.3079}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &5136218154493012385
 CanvasRenderer:
@@ -5420,7 +5420,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3828875974276256270
 RectTransform:
   m_ObjectHideFlags: 0

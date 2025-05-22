@@ -84,7 +84,6 @@ public class Skill : MonoBehaviour
     {
         var tooltip = GetComponent<SkillTooltipTrigger>()?.tooltipManager;
 
-        // Only error if this is the equipped skill in the active branch
         if (isequiped && SkillParent.Instance.CurrentBranch == branch)
         {
             tooltip?.ShowErrorTooltip("Class Already Equipped");
@@ -92,7 +91,7 @@ public class Skill : MonoBehaviour
         else if (isUnlocked)
         {
             OnEquip();
-            SkillParent.Instance.ChangeBranch(branch); // this sets the correct equip state
+            SkillParent.Instance.ChangeBranch(branch);
             tooltip?.ShowTooltip($"{skillName} Equipped", GetComponent<RectTransform>());
         }
         else
@@ -116,6 +115,7 @@ public class Skill : MonoBehaviour
             }
             isequiped = true;
             UpdateVisual();
+            SkillParent.Instance.UpdateEquippedText(skillName);
         }
     }
        public void OnRemove()
