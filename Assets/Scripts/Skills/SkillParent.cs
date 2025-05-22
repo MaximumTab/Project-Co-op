@@ -11,6 +11,8 @@ public class SkillParent : MonoBehaviour
     [SerializeField]public int Skillpoints = 0;
     [SerializeField] private GameObject skillPointIndicator;
 
+    public int CurrentBranch { get; private set; } = 0;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     void Awake()
@@ -55,9 +57,9 @@ public class SkillParent : MonoBehaviour
 
     public void ChangeBranch(int i)
     {
+        CurrentBranch = i;
         for (int a = 1; a < 4; a++)
-        {   
-            Debug.Log (SkillTree[a].Count);
+        {
             foreach (Skill getskill in SkillTree[a])
             {
                 if (a == i)
@@ -71,4 +73,5 @@ public class SkillParent : MonoBehaviour
             }
         }
     }
+
 }
