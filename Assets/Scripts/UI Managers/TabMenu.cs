@@ -65,6 +65,7 @@ public class TabMenu : MonoBehaviour
             UnityEngine.Cursor.visible = false;
             UnityEngine.Cursor.lockState = CursorLockMode.Locked;
             EventSystem.current.SetSelectedGameObject(null);
+            FindObjectOfType<TooltipScript>()?.HideTooltip();
         }
     }
 }
