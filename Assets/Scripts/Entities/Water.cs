@@ -5,7 +5,7 @@ public class Water : MonoBehaviour
 {
     public CanvasGroup waterTintUI;
     public float damagePerSecond = 5f;
-    public float maxAlpha = 5f;
+    public float maxAlpha = 0.3f;
     public float fadeInSpeed = 1f;
     public float fadeOutSpeed = 3f;
 
