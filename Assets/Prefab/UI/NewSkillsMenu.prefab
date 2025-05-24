@@ -662,6 +662,7 @@ MonoBehaviour:
   Skillpointui: {fileID: 3870148423598719703}
   Skillpoints: 0
   skillPointIndicator: {fileID: 0}
+  equippedText: {fileID: 0}
 --- !u!1 &744783061876058684
 GameObject:
   m_ObjectHideFlags: 0
@@ -3245,7 +3246,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 70, y: -24.999992}
+  m_AnchoredPosition: {x: 70, y: -29.999992}
   m_SizeDelta: {x: 450, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &829074209597368803
@@ -4208,7 +4209,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Reach Lvl 1 to unlock new abilities and attacks!  |  Switch between base
+  m_text: Level up to unlock new abilities and attacks!   -  Switch between base
     and special classes by selecting their icon.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b47bacfedcb87c14e8841aa31f4f5280, type: 2}
@@ -5018,7 +5019,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20.7, y: -101.1}
+  m_AnchoredPosition: {x: 20.700012, y: -106.1}
   m_SizeDelta: {x: 126.7853, y: 45.3079}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &5136218154493012385
@@ -5228,7 +5229,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 20.700012, y: -25}
+  m_AnchoredPosition: {x: 20.700012, y: -30}
   m_SizeDelta: {x: 1250, y: 100}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &5750541162783352623
@@ -5420,7 +5421,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3828875974276256270
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5871,7 +5872,7 @@ GameObject:
   - component: {fileID: 216508999977384798}
   - component: {fileID: 4736284251000214255}
   m_Layer: 5
-  m_Name: Image
+  m_Name: MenuBorder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
