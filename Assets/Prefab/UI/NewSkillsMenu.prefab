@@ -678,6 +678,20 @@ MonoBehaviour:
   Skillpoints: 0
   skillPointIndicator: {fileID: 0}
   equippedText: {fileID: 4499980794036662986}
+  mageImages:
+  - {fileID: 7651954073412025517}
+  - {fileID: 480678888350871228}
+  - {fileID: 6723803690357303850}
+  tankImages:
+  - {fileID: 4412338376733525738}
+  - {fileID: 7085418102457168193}
+  - {fileID: 21595066536727839}
+  warriorImages:
+  - {fileID: 592858569735991503}
+  - {fileID: 6806908539226743532}
+  - {fileID: 5910608368620921166}
+  lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  unlockedColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &744783061876058684
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SkillParent : MonoBehaviour
 {
@@ -11,6 +12,13 @@ public class SkillParent : MonoBehaviour
     [SerializeField] public int Skillpoints = 0;
     [SerializeField] private GameObject skillPointIndicator;
     [SerializeField] private TMP_Text equippedText;
+    
+    [SerializeField] private List<Image> mageImages;
+    [SerializeField] private List<Image> tankImages;
+    [SerializeField] private List<Image> warriorImages;
+
+    [SerializeField] private Color lockedColor = Color.gray;
+    [SerializeField] private Color unlockedColor = Color.white;
 
 
     public int CurrentBranch { get; private set; } = 0;
@@ -27,6 +35,7 @@ public class SkillParent : MonoBehaviour
         SkillTree[3] = new List<Skill>();
         GetAllSkills();
         SkillpointText();
+        UpdateBranchImages();
     }
 
 
@@ -74,8 +83,27 @@ public class SkillParent : MonoBehaviour
                 }
             }
         }
+        UpdateBranchImages();
     }
 
+    private void UpdateBranchImages()
+    {
+        void SetImageStates(List<Image> images, bool active)
+        {
+            foreach (var img in images)
+            {
+                img.color = active ? unlockedColor : lockedColor;
+            }
+        }
+
+        bool isMage = CurrentBranch == 1;
+        bool isTank = CurrentBranch == 2;
+        bool isWarrior = CurrentBranch == 3;
+
+        SetImageStates(mageImages, isMage);
+        SetImageStates(tankImages, isTank);
+        SetImageStates(warriorImages, isWarrior);
+    }
     public void UpdateEquippedText(string className)
     {
         if (equippedText != null)
