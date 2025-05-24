@@ -353,9 +353,16 @@ public class EntityManager : MonoBehaviour
     public IEnumerator DashCoolDown()
     {
         DashCool = false;
+
+        if (this is PlayerManager && DashCooldownUI.Instance)
+        {
+            DashCooldownUI.Instance.TriggerDashCooldown(ED.DashDownTime);
+        }
+
         yield return new WaitForSeconds(ED.DashDownTime);
         DashCool = true;
     }
+
     public IEnumerator Dashing(Vector3 MoveDir)
     {
         Vector3 Start = rb.linearVelocity;

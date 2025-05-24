@@ -26,6 +26,8 @@ public class VictoryManager : MonoBehaviour
         // If all objects are destroyed, play the music
         if (trackedObjects.Count == 0 && victoryMusic )
         {
+            //enemy defeated popup, move if you feel there's a better spot for this!
+            NotificationManager.Instance.ShowNotification("Enemy Defeated!");
             PlayVictoryMusic();
         }
     }

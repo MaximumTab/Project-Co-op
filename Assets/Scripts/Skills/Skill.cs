@@ -44,16 +44,8 @@ public class Skill : MonoBehaviour
             SkillParent.Instance.ChangeSkillPoints(sprequirement);
             SkillParent.Instance.SkillpointText();
 
-            var tabMenu = FindAnyObjectByType<TabMenu>();
-            if (tabMenu != null)
-            {
-                var first = tabMenu.GetComponent<TabMenu>().firstSelectable;
-                if (first != null)
-                {
-                    UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
-                    UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(first.gameObject);
-                }
-            }
+            var tooltip = GetComponent<SkillTooltipTrigger>()?.tooltipManager;
+            tooltip?.ShowTooltip($"{skillName} Unlocked & Equipped", GetComponent<RectTransform>());
         }
         else
         {
@@ -90,11 +82,19 @@ public class Skill : MonoBehaviour
 
     public void TryEquip()
     {
-        if (!isequiped && isUnlocked)
+        var tooltip = GetComponent<SkillTooltipTrigger>()?.tooltipManager;
+
+        if (isequiped && SkillParent.Instance.CurrentBranch == branch)
+        {
+            tooltip?.ShowErrorTooltip("Class Already Equipped");
+        }
+        else if (isUnlocked)
         {
             OnEquip();
+            SkillParent.Instance.ChangeBranch(branch);
+            tooltip?.ShowTooltip($"{skillName} Equipped", GetComponent<RectTransform>());
         }
-        else if (!isequiped)
+        else
         {
             TryUnlock();
         }
@@ -115,6 +115,7 @@ public class Skill : MonoBehaviour
             }
             isequiped = true;
             UpdateVisual();
+            SkillParent.Instance.UpdateEquippedText(skillName);
         }
     }
        public void OnRemove()
