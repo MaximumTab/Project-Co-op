@@ -17992,7 +17992,7 @@ PrefabInstance:
     - target: {fileID: 8467710417489306313, guid: d412daa13f33d7549861852159462de0, type: 3}
       propertyPath: 'trackedObjects.Array.data[1]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 38392156}
     - target: {fileID: 8467710417489306313, guid: d412daa13f33d7549861852159462de0, type: 3}
       propertyPath: 'trackedObjects.Array.data[2]'
       value: 

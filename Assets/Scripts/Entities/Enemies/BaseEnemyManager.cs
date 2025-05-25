@@ -117,12 +117,14 @@ public class BaseEnemyManager : EntityManager
         base.Look();
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerStay(Collider other)
     {
-        if (!stationary&&(target.position.y - transform.position.y)>0)
+        if (!stationary&&(target.position.y - transform.position.y)>5)
         {
             StartCoroutine(Jumping());
         }
+
+        base.OnTriggerStay(other);
     }
 
     public Transform GetTarget()

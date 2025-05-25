@@ -587,7 +587,7 @@ public class EntityManager : MonoBehaviour
         }
         yield return null;
     }
-    private void OnTriggerStay(Collider other)
+    public virtual void OnTriggerStay(Collider other)
     {
         if (jumpCooldown&&!other.gameObject.transform.IsChildOf(gameObject.transform.parent)&&!other.isTrigger)
         {
