@@ -323,6 +323,7 @@ MonoBehaviour:
   audioSource: {fileID: 6362436854133187922}
   linkedPrefab: {fileID: 1428030661254354552}
   fadeDuration: 2
+  priority: 1
 --- !u!135 &519343722772479260
 SphereCollider:
   m_ObjectHideFlags: 0
