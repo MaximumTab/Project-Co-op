@@ -5884,7 +5884,7 @@ MonoBehaviour:
   lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   sprequirement: 0
   branch: 0
-  changeweapon: 0
+  changeweapon: 1
 --- !u!114 &4476715197148616549
 MonoBehaviour:
   m_ObjectHideFlags: 0
