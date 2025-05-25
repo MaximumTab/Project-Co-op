@@ -146,7 +146,8 @@ public class Weapon : MonoBehaviour
 
     float KnockingAmount(float[] knockAmounts, int targInt)
     {
-        
+        if (knockAmounts == null)
+            return 0;
         if (knockAmounts.Length > targInt)
         {
             return knockAmounts[targInt];
