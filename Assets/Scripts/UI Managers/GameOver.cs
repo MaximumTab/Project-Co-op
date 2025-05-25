@@ -13,6 +13,8 @@ public class GameOver : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(firstSelectable.gameObject);
         InputDetector.OnInputTypeChanged += HandleInputTypeChange;
+        UnityEngine.Cursor.visible = true;
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
     }
 
     private void OnDestroy()

@@ -28,7 +28,7 @@ MonoBehaviour:
   - LowHpLim: 0
     HighHpLim: 100
     AbilityPercentages:
-    - 100
+    - 175
     KnockBackStrengths:
     - 20
     KnockUpStrengths:
