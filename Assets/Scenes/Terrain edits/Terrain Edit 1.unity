@@ -1867,6 +1867,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CatBoss
       objectReference: {fileID: 0}
+    - target: {fileID: 4118532066707847665, guid: 34133e0b01373544d83742a95ea85130, type: 3}
+      propertyPath: priority
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7939783851974976466, guid: 34133e0b01373544d83742a95ea85130, type: 3}
       propertyPath: m_LocalPosition.x
       value: 123.257416
@@ -17859,6 +17863,10 @@ PrefabInstance:
     - target: {fileID: 6372484785048971585, guid: 33d8c21136352574395a7dccd734aa0f, type: 3}
       propertyPath: m_LocalPosition.z
       value: -113.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6749734714806233147, guid: 33d8c21136352574395a7dccd734aa0f, type: 3}
+      propertyPath: m_Volume
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 6749734714806233147, guid: 33d8c21136352574395a7dccd734aa0f, type: 3}
       propertyPath: m_Resource
