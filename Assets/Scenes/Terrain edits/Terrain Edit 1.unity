@@ -17860,6 +17860,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -113.1
       objectReference: {fileID: 0}
+    - target: {fileID: 6749734714806233147, guid: 33d8c21136352574395a7dccd734aa0f, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: c7fcd40265cf72d4b8f52fe61543f628, type: 3}
+    - target: {fileID: 6749734714806233147, guid: 33d8c21136352574395a7dccd734aa0f, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c7fcd40265cf72d4b8f52fe61543f628, type: 3}
     - target: {fileID: 7139047116531387718, guid: 33d8c21136352574395a7dccd734aa0f, type: 3}
       propertyPath: fadeDuration
       value: 2
