@@ -8,6 +8,8 @@ public class Water : MonoBehaviour
     public float maxAlpha = 0.3f;
     public float fadeInSpeed = 1f;
     public float fadeOutSpeed = 3f;
+    public float rampUpScale = 1f;
+    public float afterTimeInc=2f;
 
     private bool playerInside = false;
     private Coroutine tintRoutine;
@@ -20,6 +22,7 @@ public class Water : MonoBehaviour
         if (tintRoutine != null)
             StopCoroutine(tintRoutine);
         tintRoutine = StartCoroutine(FadeIn());
+        StartCoroutine(DamageInc());
     }
 
     private void OnTriggerStay(Collider other)
@@ -27,9 +30,9 @@ public class Water : MonoBehaviour
         if (!other.CompareTag("Player")) return;
 
         EntityManager em = other.GetComponent<EntityManager>();
-        if (em != null)
+        if (em)
         {
-            em.SM.ChangeHp(-damagePerSecond * Time.deltaTime);
+            em.SM.ChangeHp(-damagePerSecond*rampUpScale * Time.deltaTime);
         }
     }
 
@@ -41,6 +44,8 @@ public class Water : MonoBehaviour
         if (tintRoutine != null)
             StopCoroutine(tintRoutine);
         tintRoutine = StartCoroutine(FadeOut());
+        StopCoroutine(DamageInc());
+        rampUpScale = 1;
     }
 
     private IEnumerator FadeIn()
@@ -61,5 +66,21 @@ public class Water : MonoBehaviour
             yield return null;
         }
         waterTintUI.alpha = 0f;
+    }
+
+    private IEnumerator DamageInc()
+    {
+        yield return null;
+        for (int a = 0; a < 10; a++)
+        {
+            for (float i = 0; i < afterTimeInc; i += Time.deltaTime)
+            {
+                yield return null;
+            }
+
+            rampUpScale += 1;
+            yield return null;
+        }
+
     }
 }

@@ -883,6 +883,8 @@ MonoBehaviour:
   maxAlpha: 0.3
   fadeInSpeed: 1
   fadeOutSpeed: 3
+  rampUpScale: 1
+  afterTimeInc: 2
 --- !u!65 &109776672
 BoxCollider:
   m_ObjectHideFlags: 0
