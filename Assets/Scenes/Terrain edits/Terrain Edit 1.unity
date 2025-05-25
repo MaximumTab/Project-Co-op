@@ -2476,6 +2476,10 @@ PrefabInstance:
       value: CatSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 5355848070681052133, guid: ffbf3828d336b3d45bcd36ff1f8b0df5, type: 3}
+      propertyPath: ToDis
+      value: 
+      objectReference: {fileID: 537313731}
+    - target: {fileID: 5355848070681052133, guid: ffbf3828d336b3d45bcd36ff1f8b0df5, type: 3}
       propertyPath: trackedObjects.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -4449,7 +4453,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -11405,6 +11409,14 @@ PrefabInstance:
     - target: {fileID: 6656836211290300896, guid: 723a75b0141b9f940918872b702fdf4c, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693701996555068243, guid: 723a75b0141b9f940918872b702fdf4c, type: 3}
+      propertyPath: m_Dithering
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693701996555068243, guid: 723a75b0141b9f940918872b702fdf4c, type: 3}
+      propertyPath: m_RenderShadows
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6952167681960351349, guid: 723a75b0141b9f940918872b702fdf4c, type: 3}
       propertyPath: m_Layer

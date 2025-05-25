@@ -16,6 +16,7 @@ public class CatSpawning : MonoBehaviour
     [SerializeField] private int sceneToLoadIndex = 1;
     private bool ReadToSpawn;
     private bool hasSpawned;
+    [SerializeField] private Light ToDis;
 
     private float timer;
 
@@ -63,6 +64,10 @@ public class CatSpawning : MonoBehaviour
             GameObject CBA= Instantiate(CatBossArea,transform);
             CatBoss=CBA.GetComponentInChildren<BaseEnemyManager>();
             hasSpawned = true;
+            if (ToDis)
+            {
+                ToDis.enabled = false;
+            }
         }
     }
 }
