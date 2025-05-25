@@ -48,7 +48,7 @@ public class CatSpawning : MonoBehaviour
                 ReadToSpawn = true;
             }else if (ReadToSpawn&&hasSpawned)
             {
-                if(CatBoss && CatBoss.SM.CurHpPerc() <= 0)
+                if(!CatBoss)
                 {
                     SceneManager.LoadSceneAsync(sceneToLoadIndex);
                 }
