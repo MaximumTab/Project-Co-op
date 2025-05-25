@@ -17752,7 +17752,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2853073977376391971, guid: 33d8c21136352574395a7dccd734aa0f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -72.3
+      value: 51.6
       objectReference: {fileID: 0}
     - target: {fileID: 2853073977376391971, guid: 33d8c21136352574395a7dccd734aa0f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -17858,6 +17858,18 @@ PrefabInstance:
       propertyPath: m_IncludeLayers.m_Bits
       value: 128
       objectReference: {fileID: 0}
+    - target: {fileID: 6372484785048971585, guid: 33d8c21136352574395a7dccd734aa0f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -113.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6749734714806233147, guid: 33d8c21136352574395a7dccd734aa0f, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: c7fcd40265cf72d4b8f52fe61543f628, type: 3}
+    - target: {fileID: 6749734714806233147, guid: 33d8c21136352574395a7dccd734aa0f, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c7fcd40265cf72d4b8f52fe61543f628, type: 3}
     - target: {fileID: 7139047116531387718, guid: 33d8c21136352574395a7dccd734aa0f, type: 3}
       propertyPath: fadeDuration
       value: 2
@@ -17887,7 +17899,8 @@ PrefabInstance:
       value: 128
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3684491596823489266, guid: 33d8c21136352574395a7dccd734aa0f, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33d8c21136352574395a7dccd734aa0f, type: 3}
