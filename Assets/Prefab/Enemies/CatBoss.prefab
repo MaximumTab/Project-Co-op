@@ -107,7 +107,7 @@ MonoBehaviour:
   WeaponInUse: 0
   RelativeWeaponSpawnPosition: {x: 0, y: 0, z: 0}
   kill: 0
-  Lvl: 0
+  Lvl: 5
   DashCool: 1
   baseMat: {fileID: 2800000, guid: 2c6d1fc23d49f564fbdae33cf4c90d7e, type: 3}
   FlashColour: {r: 1, g: 0, b: 0, a: 1}
