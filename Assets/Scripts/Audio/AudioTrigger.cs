@@ -6,8 +6,10 @@ public class AudioTrigger : MonoBehaviour
     public AudioSource audioSource;
     public GameObject linkedPrefab;
     public float fadeDuration = 2f;
+    public int priority = 0;
 
     private Coroutine currentFade;
+    private static AudioTrigger currentActiveTrigger;
 
     private void Start()
     {
@@ -19,8 +21,11 @@ public class AudioTrigger : MonoBehaviour
     {
         if (!linkedPrefab && audioSource.isPlaying)
         {
-            if (currentFade != null) StopCoroutine(currentFade);
-            currentFade = StartCoroutine(FadeOut(audioSource, fadeDuration));
+            if (this != currentActiveTrigger)
+            {
+                if (currentFade != null) StopCoroutine(currentFade);
+                currentFade = StartCoroutine(FadeOut(audioSource, fadeDuration));
+            }
         }
     }
 
@@ -28,18 +33,32 @@ public class AudioTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (currentFade != null) StopCoroutine(currentFade);
-            currentFade = StartCoroutine(FadeIn(audioSource, fadeDuration));
+            if (currentActiveTrigger == null || priority > currentActiveTrigger.priority)
+            {
+                if (currentActiveTrigger != null)
+                    currentActiveTrigger.FadeOutSelf();
+
+                currentActiveTrigger = this;
+                if (currentFade != null) StopCoroutine(currentFade);
+                currentFade = StartCoroutine(FadeIn(audioSource, fadeDuration));
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && currentActiveTrigger == this)
         {
+            currentActiveTrigger = null;
             if (currentFade != null) StopCoroutine(currentFade);
             currentFade = StartCoroutine(FadeOut(audioSource, fadeDuration));
         }
+    }
+
+    private void FadeOutSelf()
+    {
+        if (currentFade != null) StopCoroutine(currentFade);
+        currentFade = StartCoroutine(FadeOut(audioSource, fadeDuration));
     }
 
     private IEnumerator FadeIn(AudioSource source, float duration)
