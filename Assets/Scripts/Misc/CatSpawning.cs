@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class CatSpawning : MonoBehaviour
 {
+    private ParticleSystem Beacon;
     [SerializeField] private List<GameObject> trackedObjects;
     public List<BaseEnemyManager> trackedObjScripts=new List<BaseEnemyManager>();
     public Dictionary<BaseEnemyManager,float> TOSHp=new Dictionary<BaseEnemyManager, float>();
@@ -27,7 +29,9 @@ public class CatSpawning : MonoBehaviour
             trackedObjScripts.Add(GO.GetComponentInChildren<BaseEnemyManager>());
         }
 
+        Beacon = gameObject.GetComponentInChildren<ParticleSystem>();
         CatBoss = CatBossArea.GetComponentInChildren<BaseEnemyManager>();
+        Beacon.Stop();
     }
     private void Update()
     {
@@ -47,6 +51,7 @@ public class CatSpawning : MonoBehaviour
             if ((trackedObjects.Count == 0||MaxTOSHp<=0)&&!ReadToSpawn)
             {
                 ReadToSpawn = true;
+                Beacon.Play();
             }else if (ReadToSpawn&&hasSpawned)
             {
                 if(!CatBoss)
@@ -66,6 +71,7 @@ public class CatSpawning : MonoBehaviour
             hasSpawned = true;
             if (ToDis)
             {
+                Beacon.Stop();
                 ToDis.enabled = false;
             }
         }
