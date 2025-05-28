@@ -15466,9 +15466,65 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 437485867840427481, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
+      propertyPath: AutomaticDolly.Method
+      value: 6783254929250451686
+      objectReference: {fileID: 0}
+    - target: {fileID: 437485867840427481, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
+      propertyPath: 'managedReferences[6783254929250451665]'
+      value: Unity.Cinemachine Unity.Cinemachine.SplineAutoDolly/FixedSpeed
+      objectReference: {fileID: 0}
+    - target: {fileID: 437485867840427481, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
+      propertyPath: 'managedReferences[6783254929250451686]'
+      value: Unity.Cinemachine Unity.Cinemachine.SplineAutoDolly/FixedSpeed
+      objectReference: {fileID: 0}
+    - target: {fileID: 437485867840427481, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
+      propertyPath: managedReferences[6783254929250451665].Speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 437485867840427481, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
+      propertyPath: managedReferences[6783254929250451686].Speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 706589295045335075, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
+      propertyPath: AutomaticDolly.Method
+      value: 6783254929250451687
+      objectReference: {fileID: 0}
+    - target: {fileID: 706589295045335075, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
+      propertyPath: 'managedReferences[6783254929250451666]'
+      value: Unity.Cinemachine Unity.Cinemachine.SplineAutoDolly/FixedSpeed
+      objectReference: {fileID: 0}
+    - target: {fileID: 706589295045335075, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
+      propertyPath: 'managedReferences[6783254929250451687]'
+      value: Unity.Cinemachine Unity.Cinemachine.SplineAutoDolly/FixedSpeed
+      objectReference: {fileID: 0}
+    - target: {fileID: 706589295045335075, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
+      propertyPath: managedReferences[6783254929250451666].Speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 706589295045335075, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
+      propertyPath: managedReferences[6783254929250451687].Speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1039066204568326966, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
+      propertyPath: m_Name
+      value: Group 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1402436604341085330, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
       propertyPath: m_Name
       value: ------ Cutscene -----------------------------
+      objectReference: {fileID: 0}
+    - target: {fileID: 1421018840954349945, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
+      propertyPath: m_Name
+      value: Group 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296520197735924466, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
+      propertyPath: m_Name
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3379505108037566009, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
+      propertyPath: m_Name
+      value: Group 3
       objectReference: {fileID: 0}
     - target: {fileID: 3568487675913631592, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15510,6 +15566,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3932100650805264763, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
+      propertyPath: AutomaticDolly.Method
+      value: 6783254929250451685
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932100650805264763, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
+      propertyPath: 'managedReferences[6783254929250451664]'
+      value: Unity.Cinemachine Unity.Cinemachine.SplineAutoDolly/FixedSpeed
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932100650805264763, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
+      propertyPath: 'managedReferences[6783254929250451685]'
+      value: Unity.Cinemachine Unity.Cinemachine.SplineAutoDolly/FixedSpeed
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932100650805264763, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
+      propertyPath: managedReferences[6783254929250451664].Speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932100650805264763, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
+      propertyPath: managedReferences[6783254929250451685].Speed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5259877092666035465, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.38028
@@ -15538,7 +15614,14 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.25811198
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6107750237624339845, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
+      propertyPath: m_Name
+      value: Timeline
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4020938412362845110, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
+    - {fileID: 6063815032015345999, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
+    - {fileID: 1991234847624899082, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
