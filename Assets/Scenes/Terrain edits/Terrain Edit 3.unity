@@ -1937,9 +1937,9 @@ MonoBehaviour:
         z: 17.663874
       Rotation:
         value:
-          x: 0.000018224491
+          x: 0.000018213821
           y: 0.051333852
-          z: -0.000437243
+          z: -0.00043745077
           w: 0.99868155
     - Position:
         x: 0
@@ -10013,6 +10013,18 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.051210962
       objectReference: {fileID: 0}
+    - target: {fileID: 2218689781480769496, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 3.704875
+      objectReference: {fileID: 0}
+    - target: {fileID: 2218689781480769496, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 321.369
+      objectReference: {fileID: 0}
+    - target: {fileID: 2218689781480769496, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 3.704992
+      objectReference: {fileID: 0}
     - target: {fileID: 3014787953760676390, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.140099
@@ -10231,7 +10243,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4193786593350083657, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
       propertyPath: m_SceneBindings.Array.size
-      value: 12
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4193786593350083657, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
       propertyPath: m_SceneBindings.Array.data[8].key
@@ -10252,11 +10264,11 @@ PrefabInstance:
     - target: {fileID: 4193786593350083657, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
       propertyPath: m_SceneBindings.Array.data[12].key
       value: 
-      objectReference: {fileID: 6123207142026068023, guid: d343ed88ac73847409d92842274afece, type: 2}
+      objectReference: {fileID: 3768841144798941464, guid: d343ed88ac73847409d92842274afece, type: 2}
     - target: {fileID: 4193786593350083657, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
       propertyPath: m_SceneBindings.Array.data[13].key
       value: 
-      objectReference: {fileID: 6123207142026068023, guid: d343ed88ac73847409d92842274afece, type: 2}
+      objectReference: {fileID: -2322329089306964114, guid: d343ed88ac73847409d92842274afece, type: 2}
     - target: {fileID: 4193786593350083657, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
       propertyPath: m_SceneBindings.Array.data[14].key
       value: 
@@ -10296,11 +10308,11 @@ PrefabInstance:
     - target: {fileID: 4193786593350083657, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
       propertyPath: m_SceneBindings.Array.data[12].value
       value: 
-      objectReference: {fileID: 788484198}
+      objectReference: {fileID: 1957030128}
     - target: {fileID: 4193786593350083657, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
       propertyPath: m_SceneBindings.Array.data[13].value
       value: 
-      objectReference: {fileID: 788484198}
+      objectReference: {fileID: 503589994}
     - target: {fileID: 4193786593350083657, guid: 00876ae480ce5cf4eb8d6a92502b72f9, type: 3}
       propertyPath: m_SceneBindings.Array.data[14].value
       value: 
@@ -24754,8 +24766,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1957030126}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.025669415, y: -0.9728719, z: -0.13332088, w: -0.18731502}
-  m_LocalPosition: {x: -22.805222, y: -25.081512, z: -30.221123}
+  m_LocalRotation: {x: 0.00079036684, y: -0.982855, z: -0.0041148434, w: -0.1843323}
+  m_LocalPosition: {x: -23.8779, y: -25.081385, z: -27.385849}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
