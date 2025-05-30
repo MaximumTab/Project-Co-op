@@ -52,7 +52,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_SplineSettings.Position
-    path: Cat
+    path: AnimCat
     classID: 114
     script: {fileID: 11500000, guid: 450f466b666a79a4698f2b19a5c87c03, type: 3}
     flags: 0
@@ -82,7 +82,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_SplineSettings.Units
-    path: Cat
+    path: AnimCat
     classID: 114
     script: {fileID: 11500000, guid: 450f466b666a79a4698f2b19a5c87c03, type: 3}
     flags: 1
@@ -95,7 +95,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 2786264392
+      path: 1238509857
       attribute: 1440463563
       script: {fileID: 11500000, guid: 450f466b666a79a4698f2b19a5c87c03, type: 3}
       typeID: 114
@@ -104,7 +104,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 2786264392
+      path: 1238509857
       attribute: 610911850
       script: {fileID: 11500000, guid: 450f466b666a79a4698f2b19a5c87c03, type: 3}
       typeID: 114
@@ -169,7 +169,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_SplineSettings.Position
-    path: Cat
+    path: AnimCat
     classID: 114
     script: {fileID: 11500000, guid: 450f466b666a79a4698f2b19a5c87c03, type: 3}
     flags: 0
@@ -199,7 +199,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_SplineSettings.Units
-    path: Cat
+    path: AnimCat
     classID: 114
     script: {fileID: 11500000, guid: 450f466b666a79a4698f2b19a5c87c03, type: 3}
     flags: 1
